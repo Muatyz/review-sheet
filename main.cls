@@ -41,3 +41,4 @@
 \usepackage{color}
 \usepackage{fancyhdr} %设置页眉、页脚
 \usepackage{hyperref}
+\usepackage{ulem}

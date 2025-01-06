@@ -38,7 +38,7 @@
     P_{i\rightarrow f}(t) &= \boxed{\frac{4\left|\langle f|V|i\rangle\right|^{2}}{\hbar^{2}(\Delta\omega)^{2}}\sin^{2}{\left(\frac{\Delta\omega t}{2}\right)}}
   \end{align*}}}
 
-  \item \textbf{算符 $\begin{aligned}
+\item *{\color{gray}{算符 $\begin{aligned}
     \Omega(t)\equiv U^{-1}(t)U_{0}(t)
   \end{aligned}$, 算符 $\begin{aligned}
     \Omega_{\pm}\equiv \lim_{t\rightarrow \mp\infty}\Omega(t)
@@ -49,12 +49,12 @@
     U(t) = e^{-\mathrm{i}Ht/\hbar}
   \end{aligned}$ 是短程势散射系统的时间演化算符. 
   \end{itemize}
-  $H = H_{0} + V$. 散射算符定义为 $S\equiv \Omega^{\dagger}_{-}\Omega_{+}$, 那么 $[S, H_{0}]=?$ }
+  $H = H_{0} + V$. 散射算符定义为 $S\equiv \Omega^{\dagger}_{-}\Omega_{+}$, 那么 $[S, H_{0}]=?$}}
   
   \item \textbf{动量空间中自由粒子的 Dirac 方程可以写为
   \begin{align*}
-    \left(E - \vec{\sigma}\cdot\vec{p}\right)\chi_{+}(\vec{p}) &= m\chi_{-}(\vec{p})\\
-    \left(E + \vec{\sigma}\cdot\vec{p}\right)\chi_{-}(\vec{p}) &= m\chi_{+}(\vec{p})
+    \left(E - \vec{\sigma}\cdot\vec{p}\right)\chi_{+}(\vec{p}) = m\chi_{-}(\vec{p}),\quad
+    \left(E + \vec{\sigma}\cdot\vec{p}\right)\chi_{-}(\vec{p}) = m\chi_{+}(\vec{p})
   \end{align*}
   当质量 $m=0$时, 两个 Weyl 旋量之间没有耦合, 得到动量空间中的 Weyl 方程
   \begin{align*}
@@ -66,7 +66,16 @@
     \hat{\vec{p}} = \frac{\vec{p}}{|\vec{p}|}
   \end{aligned}$, 那么可知 Weyl 旋量 $\chi_{\pm}$ 恰好是螺旋度算符的本征态, 本征值分别为?}
 
-  \item \textbf{一个可以制备 Bell 态的简单量子线路为}
+{\color{gray}{当 $m=0$ 且 $|\vec{p}| = E$ 时, 原 Dirac 方程即为
+  \begin{align*}
+    (1 - \hat{\vec{p}}\cdot \vec{\sigma})\chi_{+}(\vec{p}) &= 0,\quad (1 + \hat{\vec{p}}\cdot \vec{\sigma})\chi_{-}(\vec{p}) = 0\\
+    \Rightarrow (1 - 2\hat{h})\chi_{+}(\vec{p}) &= 0,\quad (1 + 2\hat{h})\chi_{-}(\vec{p}) = 0
+  \end{align*}
+  其中 $\hat{h}$ 即为螺旋度算符. 显然 $\chi_{+}$ 和 $\chi_{-}$ 分别是 $\hat{h}$ 的本征态, 本征值则为 $\begin{aligned}
+    \boxed{\pm\frac{1}{2}}
+  \end{aligned}$}}
+
+  \item \color{gray}{*一个可以制备 Bell 态的简单量子线路为
 
   \begin{tikzpicture}
 
@@ -78,7 +87,7 @@
     \draw[thick] (0.5,-0.25) rectangle (1.5,0.25); 
     \node at (1,0) {H};
     % 上线的黑圆点
-    \filldraw[black] (4,0) circle (0.1);
+    \filldraw[gray] (4,0) circle (0.1);
     % 下线的控制符号(十字)
     \draw[thick] (4,-1.5) circle (0.2); % 空心圆
     \draw[thick] (4,-1.7) -- (4,-1.4); % 垂直线
@@ -89,14 +98,58 @@
     \draw[dashed,thick] (3.5,0.5) rectangle (4.5,-2);
     \end{tikzpicture}
 
-  \textbf{它包含两个张量: 一个 Hadamard gate (H) 和一个 controlled NOT gate (CNOT)(虚线框里), 在 $S^{z}$ 表象下它们的矩阵表示为,
+  它包含两个张量: 一个 Hadamard gate (H) 和一个 controlled NOT gate (CNOT)(虚线框里), 在 $S^{z}$ 表象下它们的矩阵表示为,
   \begin{align*}
-    H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    H &= \frac{1}{\sqrt{2}}\begin{pmatrix}
       1 & 1\\
       1 & -1
     \end{pmatrix},\\
-    \text{CNOT} = e^{\frac{\mathrm{i}\pi}{4}(\mathbb{I} - \sigma_{1}^{z})\otimes (\mathbb{I} - \sigma_{2}^{x})}
+    \text{CNOT} &= \text{exp}\left\{\mathrm{i}\pi{\frac{1}{4}(\mathbb{I} - \sigma_{1}^{z})\otimes (\mathbb{I} - \sigma_{2}^{x})}\right\}
   \end{align*}
   将以上量子线路作用到 $|\uparrow\uparrow\rangle$ 上得到的态为?}
+
+{\color{gray}{  注意到
+\begin{align*}
+  A &= \frac{1}{4}(\mathbb{I} - \sigma_{1}^{z})\otimes (\mathbb{I} - \sigma_{2}^{x}) = \frac{1}{4}\begin{pmatrix}
+    & \\
+    & 2
+  \end{pmatrix}\otimes \begin{pmatrix}
+    1 & -1\\
+    -1 & 1
+  \end{pmatrix} = \begin{pmatrix}
+    & & & \\
+    & & & \\
+    & & \frac{1}{2} & -\frac{1}{2}\\
+    & & -\frac{1}{2} & \frac{1}{2}
+  \end{pmatrix}\\
+  A^{2} &= A \\
+  e^{i\alpha A} &= \sum_{n = 0}^{\infty}\frac{1}{n!}(i\alpha A)^{n} = \mathbb{I} + \sum_{n = 1}^{\infty}\frac{1}{n!}(i\alpha)^{n} (A)^{n} = \mathbb{I} + A\left(\sum_{n = 0}^{\infty}\frac{1}{n!}(i\alpha)^{n}-1\right)\\
+  &= \mathbb{I} + A(e^{i\alpha}-1)\\
+  \Rightarrow \text{CNOT} &= \mathbb{I} - 2A = \begin{pmatrix}
+    1 &   &   &  \\
+      & 1 &   &  \\
+      &   &   & 1\\
+      &   & 1 &
+  \end{pmatrix}.
+\end{align*}
+因此, CNOT 的作用是调换第三, 第四元素的位置, 这个作用当且仅当第一个量子比特为 $|\downarrow\rangle = \begin{pmatrix}
+  0\\
+  1
+\end{pmatrix}$ 时才会发生.
+\begin{align*}
+  &\left(\hat{H}_{(1)}\otimes \mathbb{I}_{(2)}\right) |\uparrow\rangle_{(1)}\otimes |\uparrow\rangle_{(2)} = \hat{H}_{(1)}|\uparrow\rangle_{(1)}\otimes |\uparrow\rangle_{(2)} = \left[\frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & 1\\
+    1 & -1
+  \end{pmatrix}\begin{pmatrix}
+    1\\
+    0
+  \end{pmatrix}\right]\otimes \begin{pmatrix}
+    1\\
+    0
+  \end{pmatrix} \\
+  &= \frac{1}{\sqrt{2}}(|\uparrow\rangle_{(1)} + |\downarrow\rangle_{(1)})\otimes |\uparrow\rangle_{(2)} = \frac{1}{\sqrt{2}}(|\uparrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)} + |\downarrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)}).\\
+  &\text{CNOT}\frac{1}{\sqrt{2}}(|\uparrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)} + |\downarrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)}) = \frac{1}{\sqrt{2}}(|\uparrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)} + \text{CNOT}|\downarrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)}) \\
+  &= \frac{1}{\sqrt{2}}(|\uparrow\rangle_{(1)}\otimes|\uparrow\rangle_{(2)} + |\downarrow\rangle_{(1)}\otimes|\downarrow\rangle_{(2)}) = \boxed{\frac{1}{\sqrt{2}}(|\uparrow\uparrow\rangle + |\downarrow\downarrow\rangle)},\quad\text{for simplicity.}
+\end{align*}}}
 \end{enumerate}
 \end{document}

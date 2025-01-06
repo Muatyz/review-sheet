@@ -244,18 +244,176 @@
 
   \item \textbf{角动量耦合}
   
-\textbf{  两个大小相等, 属于不同自由度的角动量 $\vec{J}_{1}$ 和 $\vec{J}_{2}$ 耦合成总角动量 $\vec{J} = \vec{J}_{1} + \vec{J}_{2}$, 设 $\vec{J}_{1}^{2} = \vec{J}_{2}^{2} = j(j+1)\hbar^{2}$, $J^{2} = J(J+1)\hbar^{2}$, $J = 2j, 2j-1, \cdots, 1, 0$. 在总角动量量子数 $J = 0$ 的状态下, 求 $J_{1,z}$ 和 $J_{2,z}$ 的可能取值及相应概率.}
+\textbf{两个大小相等, 属于不同自由度的角动量 $\vec{J}_{1}$ 和 $\vec{J}_{2}$ 耦合成总角动量 $\vec{J} = \vec{J}_{1} + \vec{J}_{2}$, 设 $\vec{J}_{1}^{2} = \vec{J}_{2}^{2} = j(j+1)\hbar^{2}$, $J^{2} = J(J+1)\hbar^{2}$, $J = 2j, 2j-1, \cdots, 1, 0$. 在总角动量量子数 $J = 0$ 的状态下, 求 $J_{1,z}$ 和 $J_{2,z}$ 的可能取值及相应概率.}
+
+
 
   \item \textbf{自旋-1 模型}
   
-\textbf{  考虑自旋-1 体系, 自旋算符为 $\vec{S}$, 考虑 $(\vec{S}^{2},S^{z})$ 表象, 基矢顺序为 $|1,1\rangle$, $|1,0\rangle$, $|1,-1\rangle$, 简记为 $|+1\rangle$, $|0\rangle$, $|-1\rangle$. 设 $\hbar = 1$. }
+\textbf{考虑自旋-1 体系, 自旋算符为 $\vec{S}$, 考虑 $(\vec{S}^{2},S^{z})$ 表象, 基矢顺序为 $|1,1\rangle$, $|1,0\rangle$, $|1,-1\rangle$, 简记为 $|+1\rangle$, $|0\rangle$, $|-1\rangle$. 设 $\hbar = 1$. }
   \begin{enumerate}
     \item \textbf{写出 $S^{x}$ 和 $S^{z}$ 的矩阵表示.}
-    \item \textbf{考虑哈密顿量 $H(\lambda) = H_{0} + \lambda V$, 其中 $H_{0} = (S^{z})^{2}$, $V = S^{x} + S^{z}$. 考虑为 $\lambda V$ 微扰, 利用微扰论计算微扰后的各能级和各能态, 其中能级微扰准确到二阶, 能态微扰准确到一阶. }
+    
+{\color{gray}{由于是在 $(\vec{S}^{2},S^{z})$ 表象, 所以 $S^{z}$ 的矩阵一定是对角矩阵. 选定基矢为 $\{|s,m\rangle\}$, 即$|1,1\rangle=\begin{pmatrix}
+      1\\
+      0\\
+      0
+    \end{pmatrix}$, $|1,0\rangle = \begin{pmatrix}
+      0\\
+      1\\
+      0
+    \end{pmatrix}$, $|1,-1\rangle = \begin{pmatrix}
+      0\\
+      0\\
+      1
+    \end{pmatrix}$. 根据本征方程 $S^{z}|s,m\rangle = m|s,m\rangle$, 得到
+    \begin{align*}
+      S^{z} = \boxed{\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & -1
+      \end{pmatrix}}
+    \end{align*} 
+    而对于 $S^{x}$ (包括题解不要求的 $S^{y}$), 我们实际上是使用的升降算符 $S^{\pm}$ 来定义的. 
+    \begin{align*}
+      S^{+}|s,m\rangle &= \sqrt{s(s+1)-m(m+1)}|s,m+1\rangle,\\
+      S^{-}|s,m\rangle &= \sqrt{s(s+1)-m(m-1)}|s,m-1\rangle.\\
+      \Rightarrow S^{+}|1,1\rangle &= 0,\quad S^{+}|1,0\rangle = \sqrt{2} |1,1\rangle,\quad S^{+}|1,-1\rangle = \sqrt{2}|1,0\rangle,\\
+      S^{-}|1,1\rangle &= \sqrt{2}|1,0\rangle, \quad S^{-}|1,0\rangle = \sqrt{2}|1,-1\rangle, \quad S^{-}|1,-1\rangle = 0.\\
+      \Rightarrow S^{+} &= \begin{pmatrix}
+        0 & \sqrt{2} & 0\\
+        0 & 0 & \sqrt{2}\\
+        0 & 0 & 0
+      \end{pmatrix},\quad S^{-} = \begin{pmatrix}
+        0 & 0 & 0\\
+        \sqrt{2} & 0 & 0\\
+        0 & \sqrt{2} & 0
+      \end{pmatrix}.\\
+      \Rightarrow S^{x} &= \frac{1}{2}\left(S^{+} + S^{-}\right) = \boxed{\frac{1}{\sqrt{2}}\begin{pmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 1\\
+        0 & 1 & 0
+      \end{pmatrix}}
+    \end{align*}}}
+    \item \textbf{考虑哈密顿量 $H(\lambda) = H_{0} + \lambda V$, 其中 $H_{0} = (S^{z})^{2}$, $V = S^{x} + S^{z}$. 考虑为 $\lambda V$ 微扰, 利用微扰论计算微扰后的各能级和各能态, 其中能级微扰准确到二阶, 能态微扰准确到一阶.}
+{\color{gray}{\begin{align*}
+      H_{0}|s,m\rangle &= \left(S^{z}\right)^{2}|s,m\rangle = m^{2}|s,m\rangle\\
+      \Rightarrow E_{-1}^{(0)} & = 1,\quad E_{0} = 0,\quad E_{1} = 1
+    \end{align*}
+    注意到 $m^{2}$ 会带来 $m=\pm 1$ 的简并, 所以后续计算时会涉及简并态的微扰处理. 首先观察简并态, 简并态矢张成独立子空间, 于是求解这个子空间中 $V$ 的矩阵:
+    \begin{align*}
+      V_{\text{sub}} &= \begin{pmatrix}
+        \langle 1,1|V|1,1\rangle & \langle 1,1|V|1,-1\rangle\\
+        \langle 1,-1|V|1,1\rangle & \langle 1,-1|V|1,-1\rangle
+      \end{pmatrix}\\
+      \langle 1,1|V|1,1\rangle &= \begin{pmatrix}
+        1 & 0 & 0
+      \end{pmatrix}\begin{pmatrix}
+        1 & \frac{1}{\sqrt{2}}& \\
+        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+          & \frac{1}{\sqrt{2}} & -1
+       \end{pmatrix}\begin{pmatrix}
+          1\\
+          0\\
+          0
+       \end{pmatrix} = 1,\\
+       \langle 1,1|V|1,-1\rangle &= \begin{pmatrix}
+        1 & 0 & 0
+      \end{pmatrix}\begin{pmatrix}
+        1 & \frac{1}{\sqrt{2}}& \\
+        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+          & \frac{1}{\sqrt{2}} & -1
+       \end{pmatrix}\begin{pmatrix}
+          0\\
+          0\\
+          1
+        \end{pmatrix} = 0,\\
+        \langle 1,-1|V|1,1\rangle &= 0,\\
+        \langle 1,-1|V|1,-1\rangle &= \begin{pmatrix}
+          0 & 0 & 1
+        \end{pmatrix}\begin{pmatrix}
+          1 & \frac{1}{\sqrt{2}}& \\
+          \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+            & \frac{1}{\sqrt{2}} & -1
+         \end{pmatrix}\begin{pmatrix}
+            0\\
+            0\\
+            1
+         \end{pmatrix} = -1.\\
+         \Rightarrow V_{\text{sub}} &= \begin{pmatrix}
+          1 & 0\\
+          0 & -1
+         \end{pmatrix}
+    \end{align*}
+    注意到计算得到的子空间中 $V_{\text{sub}}$ 完成了对角化, 这说明沿用的 $|s,m\rangle$ 基矢已经是 "好量子态". 所以回归到非简并微扰论的方法. 一阶能量修正各为
+    \begin{align*}
+      E_{1}^{(1)} &= \langle 1,1|V|1,1\rangle = \begin{pmatrix}
+        1 & 0 & 0
+      \end{pmatrix}\begin{pmatrix}
+        1 & \frac{1}{\sqrt{2}}& \\
+        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+          & \frac{1}{\sqrt{2}} & -1
+       \end{pmatrix}\begin{pmatrix}
+          1\\
+          0\\
+          0
+       \end{pmatrix} = \boxed{1},\\
+       E_{0}^{(1)} &= \langle 1,0|V|1,0\rangle = \begin{pmatrix}
+        0 & 1 & 0
+      \end{pmatrix}\begin{pmatrix}
+        1 & \frac{1}{\sqrt{2}}& \\
+        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+          & \frac{1}{\sqrt{2}} & -1
+       \end{pmatrix}\begin{pmatrix}
+          0\\
+          1\\
+          0
+       \end{pmatrix} = \boxed{0},\\
+       E_{-1}^{(1)} &= \langle 1,-1|V|1,-1\rangle = \begin{pmatrix}
+        0 & 0 & 1
+      \end{pmatrix}\begin{pmatrix}
+        1 & \frac{1}{\sqrt{2}}& \\
+        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+          & \frac{1}{\sqrt{2}} & -1
+       \end{pmatrix}\begin{pmatrix}
+          0\\
+          0\\
+          1
+       \end{pmatrix} = \boxed{-1},\\
+    \end{align*}
+    二阶能量修正由公式 $\begin{aligned}
+      E_{m}^{(n)} = \sum_{n\neq m}\frac{|\langle n|V|m\rangle|^{2}}{E_{m}^{(0)} - E_{n}^{(0)}}
+    \end{aligned}$ 给出:
+    \begin{align*}
+      E_{1}^{(2)} &= \frac{|\langle 1,0|V|1,1\rangle|^{2}}{E_{1}^{(0)}-E_{0}^{0}} + \frac{|\langle 1,-1|V|1,1\rangle|^{2}}{E_{1}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{1 - 0} + \frac{0^{2}}{1 - 1} = \boxed{\frac{1}{2}},\\
+      E_{0}^{(2)} &= \frac{|\langle 1,1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{1}^{(0)}} + \frac{|\langle 1,-1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{0-1} + \frac{0^{2}}{0 - (-1)} = \boxed{-\frac{1}{2}},\\
+      E_{-1}^{(2)} &= \frac{|\langle 1,0|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{0}^{(0)}} + \frac{|\langle 1,1|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{-1-0} + \frac{0^{2}}{1 - 1} = \boxed{-\frac{1}{2}}
+    \end{align*}
+    可见, 只要在 $E_{i}^{(1)} - E_{j}^{(1)}=0$ 时分子也为 $0$, 我们就可以无视分母为 $0$ 的问题. 
+    接下来是对态函数的微扰修正. 一阶修正由 $\begin{aligned}
+      |m\rangle^{(1)} = \sum_{n\neq m}|n\rangle\frac{\langle n|V|m\rangle}{E_{m}^{(0)} - E_{n}^{(0)}}
+    \end{aligned}$ 给出:
+    \begin{align*}
+      |1,1\rangle^{(1)} &= |1,0\rangle\frac{\langle 1,0|V|1,1\rangle}{E_{1}^{(0)} - E_{0}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,1\rangle}{E_{1}^{(0)} - E_{-1}^{(0)}} = |1,0\rangle\frac{1}{\sqrt{2}}\frac{1}{1 - 0} + |1,-1\rangle\cdot 0 \\
+      &= \boxed{\frac{1}{\sqrt{2}}|1,0\rangle}\\
+      |1,0\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,0\rangle}{E_{0}^{(0)} - E_{1}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,0\rangle}{E_{0}^{(0)} - E_{-1}^{(0)}} = |1,1\rangle \frac{1}{\sqrt{2}}\frac{1}{0-1} + |1,-1\rangle \frac{1}{\sqrt{2}}\cdot\frac{1}{0-(-1)} \\
+      &= \boxed{\frac{1}{\sqrt{2}}(-|1,1\rangle + |1,-1\rangle)}\\
+      |1,-1\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,-1\rangle}{E_{-1}^{(0)}-E_{1}^{(0)}} + |1,0\rangle\frac{\langle 1,0|V|1,-1\rangle}{E_{-1}^{(0)}-E_{0}^{(0)}} = |1,1\rangle\cdot 0 + |1,0\rangle\frac{1}{\sqrt{2}}\cdot\frac{1}{-1-0} \\
+      &= \boxed{-\frac{1}{\sqrt{2}}|1,0\rangle}
+    \end{align*}
+    总结:
+    \begin{align*}
+      E_{1} & = 1 + 1\lambda + \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
+      E_{0} & = 0 + 0\lambda - \frac{1}{2}\lambda^{2} +  \mathit{o}(\lambda^{2})\\
+      E_{-1} &= 1 - 1\lambda - \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
+      |1,1\rangle &= |1,1\rangle + \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)\\
+      |1,0\rangle &= |1,0\rangle + \frac{\lambda}{\sqrt{2}}(-|1,1\rangle + |1,-1\rangle) + \mathit{o}(\lambda)\\
+      |1,-1\rangle &= |1,-1\rangle - \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)
+    \end{align*}
+    对于这类可以使用矩阵形式讨论的问题, 还有一种笨办法, 就是直接严格对角化含 $\lambda$ 微扰的哈密顿量, 然后进行 Taylor 展开得到各级数. 但是在三阶矩阵下的计算已经非常复杂, 所以还是建议使用一般微扰论方法, 毕竟考试时是会给出公式的.}}
   \end{enumerate}
 
   \item \textbf{均匀电子气}
-  
 
 \textbf{考虑三维相互作用均匀电子气, 哈密顿量为 $H = H_{0} + H_{I}$. 考虑系统体积为 $V = L^{3}$, 每个方向的系统尺寸为 $L$. 采用箱归一化, 所以 $\vec{k}$ 是离散的, $\begin{aligned}\vec{k} = \frac{2\pi}{L}(n_{x},n_{y},n_{z})\end{aligned}$, $n_{x}$, $n_{y}$, $n_{z}$ 为整数. 采用二次量子化的语言, 可给出哈密顿量在动量空间的形式. $H_{0}$ 为单体部分:}
   \begin{align*}
