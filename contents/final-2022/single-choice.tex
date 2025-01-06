@@ -1,0 +1,190 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+
+\section{单项选择}
+\begin{enumerate}
+  \item \textbf{让大量热化的自旋通过 Stern-Gerlach 装置SG $\hat{z}$,测得 $S^{z}_{+}$ 的概率是?}
+
+  {\color{gray}{  大量热化自旋表示充分随机, 所以 $\begin{aligned}
+    P(S_{+}^{z}) = ||\chi_{+}^{z\dagger}\frac{1}{\sqrt{2}}(\chi_{+}^{z} + \chi_{-}^{z})||^{2} = \boxed{\frac{1}{2}}
+  \end{aligned}$}}
+
+  \item \textbf{Pauli 矩阵 $\sigma^{x}=\begin{pmatrix}
+    0 & 1\\
+    1 & 0
+  \end{pmatrix}$, $\sigma^{y}=\begin{pmatrix}
+    0 & -i\\
+    i & 0
+  \end{pmatrix}$, $\sigma^{z}=\begin{pmatrix}
+    1 & 0\\
+    0 & -1
+  \end{pmatrix}$, 那么 $\sigma^{x}\sigma^{z}$ 等于?}
+
+{\color{gray}{  $\begin{aligned}
+    \sigma^{x}\sigma^{z} = \begin{pmatrix}
+      0 & 1\\
+      1 & 0
+    \end{pmatrix}\begin{pmatrix}
+      1 & 0\\
+      0 & -1
+    \end{pmatrix} = \begin{pmatrix}
+      0 & -1\\
+      1 & 0
+    \end{pmatrix}
+  \end{aligned}$}}
+
+  \item \textbf{混态可以用混态的密度矩阵来描述. 假设系统处于态 $|\phi_{i}\rangle$ 的概率为 $p_{i}$, 注意 $\begin{aligned}
+    \sum_{i}p_{i} = 1
+  \end{aligned}$, 那么该系统的密度矩阵为 $\begin{aligned}
+    \rho = \sum_{i}|\phi_{i}\rangle p_{i}\langle\phi_{i}|
+  \end{aligned}$, 那么 $\text{Tr}[\rho]$ 应满足?}
+  
+{\color{gray}{  因为密度矩阵的迹表示系统的总概率, 而概率必须归一化, 即 $\begin{aligned}
+    \text{Tr}[\rho] = \sum_{i}p_{i} = \boxed{1}
+  \end{aligned}$}}
+  
+  \item \textbf{如果 $\rho$ 是混态的密度矩阵, 那么 $\text{Tr}[\rho^{2}]$ 应满足?}
+  
+{\color{gray}{  对任意密度矩阵总有$\begin{aligned}
+    \hat{\rho} = \sum_{\alpha}p_{\alpha}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|
+  \end{aligned}$. 那么$\begin{aligned}
+    \hat{\rho}^{2} = \sum_{\alpha}p_{\alpha}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|\sum_{\beta}p_{\beta}|\psi_{\beta}\rangle\langle\psi_{\beta}| = \sum_{\alpha}p_{\alpha}^{2}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|
+  \end{aligned}$. 对于纯态($p_{n}^{2} = p_{n}$) $\text{Tr}[\rho^{2}] = \text{Tr}[\rho] = 1$, 而混态($p_{n}^{2}\neq p_{n}$)则是 $\text{Tr}[\rho^{2}] \boxed{< 1}$. }}
+  
+  \item \textbf{考虑系统哈密顿量 $H$ 不显含时间, 时间演化算符为 $U(t,0) = e^{-iHt/\hbar}$. 在海森堡绘景中, 我们让算符承载时间演化, 海森堡绘景中的算符定义为 $A_{H}(t) = U^{\dagger}(t,0)AU(t,0)$, 其中 $A$ 是薛定谔绘景中的算符, 如果 $A$ 不显含时间, 那么 $\mathrm{d}A_{H}(t)/\mathrm{d}t$ 等于?}
+  
+{\color{gray}{  \begin{align*}
+    \frac{\mathrm{d}A_{H}(t)}{\mathrm{d}t} &= \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{iHt/\hbar}Ae^{-iHt/\hbar}\right) = \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{iHt/\hbar}\right)Ae^{-iHt/\hbar} + e^{iHt/\hbar}\frac{\mathrm{d}}{\mathrm{d}t}\left(Ae^{-iHt/\hbar}\right)\\
+    &= \frac{iH}{\hbar}e^{iHt/\hbar}Ae^{-iHt/\hbar} - e^{iHt/\hbar}A\frac{iH}{\hbar}e^{-iHt/\hbar} = \frac{i}{\hbar}\left(H e^{iHt/\hbar}Ae^{-iHt/\hbar} - e^{iHt/\hbar}Ae^{-iHt/\hbar}H\right)\\
+    &= \frac{i}{\hbar}\left[H, A_{H}(t)\right] = \boxed{\frac{1}{i\hbar}\left[A_{H}(t), H\right]}
+  \end{align*}}}
+  
+  \item \textbf{电磁场中电荷为 $q$ 的单粒子哈密顿量为 $\begin{aligned}
+    H = \frac{(\vec{p} - q\vec{A})^{2}}{2m} + q\phi
+  \end{aligned}$, 那么薛定谔方程 $\begin{aligned}
+    i\hbar\frac{\partial\psi}{\partial t} = H\psi
+  \end{aligned}$ 满足规范不变性: $\vec{A}\rightarrow \vec{A} - \nabla\Lambda$, $\begin{aligned}
+    \phi\rightarrow \phi + \frac{\partial\Lambda}{\partial t}
+  \end{aligned}$, $\psi\rightarrow$?}
+
+{\color{gray}{  推导极其麻烦, 建议直接背结论, 不要试图考场现推. 假设 $\begin{aligned}
+    \psi^{\prime} = \psi e^{if(\vec{r},t)}
+  \end{aligned}$ 是满足规范变换的, 其中 $f(\vec{r},t)$ 是待定函数. 连同其它的规范变换, 代入薛定谔方程得到 $f(\vec{r},t)$ 的微分方程:
+
+  \begin{align*}
+    i\hbar\frac{\partial}{\partial t}\left[\psi e^{if(\vec{r},t)}\right] &= \left[\frac{(-i\hbar\vec{\nabla} - q(\vec{A} - \vec{\nabla}\Lambda))^{2}}{2m} + q\left(\phi + \frac{\partial\Lambda}{\partial t}\right)\right]\left[\psi e^{if(\vec{r},t)}\right]\\
+    i\hbar\frac{\partial}{\partial t}\left[\psi e^{if(\vec{r},t)}\right] &= \left[i\hbar\frac{\partial\psi}{\partial t} -\hbar\psi \frac{\partial f}{\partial t}\right]e^{if(\vec{r},t)}\\
+    \vec{\nabla}\left(\psi e^{if(\vec{r},t)}\right) &= \left(\vec{\nabla}\psi + \psi i\vec{\nabla} f\right)e^{if(\vec{r},t)}\\
+    \left[-i\hbar\vec{\nabla} - q(\vec{A} - \vec{\nabla}\Lambda)\right][\psi e^{if(\vec{r},t)}] &= \left[-i\hbar\vec{\nabla}\psi + \hbar\psi\vec{\nabla}f - q(\vec{A} - \vec{\nabla}\Lambda)\psi\right]e^{if(\vec{r},t)}
+  \end{align*}
+  \begin{align*}
+    &\left[-i\hbar\vec{\nabla} - q(\vec{A} - \vec{\nabla}\Lambda)\right]^{2}[\psi e^{if(\vec{r},t)}] = \left[-i\hbar\vec{\nabla} - q(\vec{A} - \vec{\nabla}\Lambda)\right]\left\{\left[-i\hbar\vec{\nabla}\psi + \hbar\psi\vec{\nabla}f - q(\vec{A} - \vec{\nabla}\Lambda)\psi\right]e^{if(\vec{r},t)}\right\}\\
+    &= (-i\hbar)\left\{\left[
+      -i\hbar\nabla^{2}\psi + \hbar(\vec{\nabla}\psi)\cdot(\vec{\nabla}f) + \hbar\psi\nabla^{2}f- q(\vec{\nabla}\cdot\vec{A} - \nabla^{2}\Lambda)\psi - q(\vec{A}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}\psi) 
+      \right]e^{if(\vec{r},t)}\right.\\
+    &\left.+\left[-i\hbar\vec{\nabla}\psi + \hbar\psi\vec{\nabla}f - q(\vec{A}-\vec{\nabla}\Lambda)\psi\right]\cdot i(\vec{\nabla}f)e^{if(\vec{r},t)}\right\}\\
+    & - q(\vec{A} - \vec{\nabla}\Lambda)\cdot\left[-i\hbar\vec{\nabla}\psi + \hbar\psi\vec{\nabla}f - q(\vec{A} - \vec{\nabla}\Lambda)\psi\right]e^{if(\vec{r},t)}
+  \end{align*}
+
+  展开变换前的薛定谔方程:
+  \begin{align*}
+    i\hbar\frac{\partial\psi}{\partial t} &= \left[\frac{(-i\hbar\vec{\nabla} - q\vec{A})^{2}}{2m} + q\phi\right]\psi = -\frac{\hbar^{2}}{2m}\nabla^{2}\psi + \frac{i\hbar q}{2m}(\vec{\nabla}\cdot\vec{A})\psi +\frac{i\hbar q}{m}\vec{A}\cdot(\vec{\nabla}\psi) + \frac{q^{2}A^{2}}{2m}\psi + q\phi\psi\label{eq:6-1}\tag{①}
+  \end{align*}
+
+  展开变换后的薛定谔方程:
+  \begin{align*}
+    &\left[i\hbar\frac{\partial\psi}{\partial t} -\hbar\psi \frac{\partial f}{\partial t}\right]e^{if(\vec{r},t)} \\
+    &= e^{if(\vec{r},t)}\left[-\frac{\hbar^{2}}{2m}\nabla^{2}\psi - \frac{i\hbar^{2}}{2m}(\vec{\nabla}\psi)\cdot(\vec{\nabla}f) -\frac{i\hbar^{2}}{2m}\psi\nabla^{2}f + \frac{i\hbar q}{2m}(\vec{\nabla}\cdot\vec{A} - \nabla^{2}\Lambda)\psi + \frac{i\hbar q}{2m}(\vec{A}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}\psi)\right.\\
+     &+ \frac{-i\hbar^{2}}{2m}(\vec{\nabla}\psi)\cdot(\vec{\nabla}f) + \frac{\hbar^{2}}{2m}(\vec{\nabla}f)^{2}\psi - \frac{\hbar q}{2m}(\vec{A} - \vec{\nabla}\Lambda)\cdot(\vec{\nabla}f)\psi\\
+     &+ \frac{i\hbar q}{2m}(\vec{A}-\vec{\nabla}\Lambda)(\vec{\nabla}\psi) - \frac{q\hbar}{2m}(\vec{A}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}f)\psi + \frac{q^{2}}{2m}(\vec{A} - \vec{\nabla}\Lambda)^{2}\psi\\
+     &\left.+ q\left(\phi + \frac{\partial\Lambda}{\partial t}\right)\psi\right]\label{eq:6-2}\tag{②}
+  \end{align*}
+  $\eqref{eq:6-2} - \eqref{eq:6-1}\cdot e^{if(\vec{r},t)}$, 得到
+  \begin{align*}
+    &\left[\cancel{i\hbar\frac{\partial\psi}{\partial t}} -\hbar\psi \frac{\partial f}{\partial t}\right]e^{if(\vec{r},t)} \\
+    &= e^{if(\vec{r},t)}\left[
+      \cancel{-\frac{\hbar^{2}}{2m}\nabla^{2}\psi} - \frac{i\hbar^{2}}{2m}(\vec{\nabla}\psi)\cdot(\vec{\nabla}f) - \frac{i\hbar^{2}}{2m}\psi\nabla^{2}f + \frac{i\hbar q}{2m}(\cancel{\vec{\nabla}\cdot\vec{A}} - \nabla^{2}\Lambda)\psi + \frac{i\hbar q}{2m}(\cancel{\vec{A}}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}\psi)
+      \right.\\
+    &+ \frac{-i\hbar^{2}}{2m}(\vec{\nabla}\psi)\cdot(\vec{\nabla}f) + \frac{\hbar^{2}}{2m}(\vec{\nabla}f)^{2}\psi - \frac{\hbar q}{2m}(\vec{A} - \vec{\nabla}\Lambda)\cdot(\vec{\nabla}f)\psi\\
+    &+ \frac{i\hbar q}{2m}(\cancel{\vec{A}}-\vec{\nabla}\Lambda)(\vec{\nabla}\psi) - \frac{q\hbar}{2m}(\vec{A}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}f)\psi + \frac{q^{2}}{2m}\bigg(\cancel{A^{2}} + (\vec{\nabla}\Lambda)^{2} - 2\vec{A}\cdot(\vec{\nabla}\Lambda)\bigg)\psi\\
+    &\left.+ q\left(\cancel{\phi} + \frac{\partial\Lambda}{\partial t}\right)\psi\right]\\
+  \end{align*}
+  \begin{align*}
+    -\hbar\psi\frac{\partial f}{\partial t} = &-\frac{i\hbar^{2}}{m}(\vec{\nabla}\psi)\cdot(\vec{\nabla}f)  - \frac{i\hbar^{2}}{2m}\psi\nabla^{2}f - \frac{i\hbar q}{2m}\psi\nabla^{2}\Lambda - \frac{i\hbar q}{m}(\vec{\nabla}\Lambda)\cdot(\vec{\nabla}\psi) \\
+    & + \frac{\hbar^{2}}{2m}\psi(\nabla f)^{2} -\frac{\hbar q}{m}(\vec{A}-\vec{\nabla}\Lambda)\cdot(\vec{\nabla}f)\psi\\
+    &  + \frac{q^{2}}{2m}\left[(\vec{\nabla}\Lambda)^{2} - 2\vec{A}\cdot(\vec{\nabla}\Lambda)\right]\psi\\
+    &+ q\frac{\partial\Lambda}{\partial t}\psi
+  \end{align*}
+  重点观察含 $\vec{A}$ 的项, 由于需要对任意 $\vec{A}$ 都成立, 所以 $\vec{A}$ 的系数必须为 $0$, 即
+  \begin{align*}
+    \vec{A}\cdot\left(-\frac{\hbar q}{m}\vec{\nabla}f - \frac{q^{2}}{2m}2\vec{\nabla}\Lambda\right) = 0
+  \end{align*}
+  最简单的解法即 $\begin{aligned}
+    f = \frac{-q\Lambda}{\hbar}
+  \end{aligned}$, 所以规范变换后的波函数为 $\begin{aligned}
+    \psi^{\prime} = \boxed{\psi e^{-iq\Lambda/\hbar}}
+  \end{aligned}$. 需要关注一开始给出的 $\Lambda$ 的符号, 从而影响整体变换的正负.}}
+  
+  \item \textbf{角动量的对易关系为 $[J_{i}, J_{j}] = i\hbar\epsilon_{ijk}J_{k}$, 升降算符定义为 $J_{\pm} = J_{x}\pm iJ_{y}$, 那么 $[J_{+}, J_{-}] = $?}
+  
+{\color{gray}{  \begin{align*}
+    [J_{+},J_{-}] &= [J_{x} + iJ_{y}, J_{x} - iJ_{y}] \\
+    &= [J_{x}, J_{x}] - i[J_{x},J_{y}] + i[J_{y}, J_{x}] + [J_{y}, J_{y}] = -2i[J_{x},J_{y}] = -2i(i\hbar J_{z}) \\
+    &= \boxed{2\hbar J_{z}}
+  \end{align*}}}
+  
+  \item \textbf{二维谐振子的哈密顿量为 $H = \hbar\omega\left(a_{1}^{\dagger}a_{1} + a_{2}^{\dagger}a_{2} + 1\right)$ 其第一激发态的简并度为?}
+  
+{\color{gray}{  二维谐振子的哈密顿量用粒子数算符写作 $\begin{aligned}
+    \hat{H} = \hbar\omega\left(\hat{n}_{1} + \hat{n_{2}} + \frac{1}{2}\right)
+  \end{aligned}$, 所以第一激发态即 $n_{1} + n_{2} = 1$, 这代表了 $|01\rangle$ 和 $|10\rangle$ 两个正交态, 所以简并度为 $\boxed{2}$.}}
+  
+  \item \textbf{量子比特 $A$ 和 $B$ 构成双量子比特体系, 双量子比特态 $|\psi\rangle$ 中量子比特 $A$ 的纠缠熵定义为 $S(A) = -\text{Tr}[\rho_{A}\ln{\rho_{A}}]$, 其中 $\rho_{A}$ 是约化密度矩阵, 由密度矩阵求迹掉量子比特 $B$ 的自由度得到. 考虑自旋单态 $\begin{aligned}
+    |\psi\rangle = \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle\right)
+  \end{aligned}$, 计算可得量子比特 $A$ 的纠缠熵为?}
+
+{\color{gray}{  密度矩阵为
+  \begin{align*}
+    \rho &= |\psi\rangle\langle\psi| = 
+    \frac{1}{\sqrt{2}}
+      \left(|\uparrow\rangle_{A}\otimes|\downarrow\rangle_{B} - |\downarrow\rangle_{A}\otimes|\uparrow\rangle_{B}\right)
+    \frac{1}{\sqrt{2}}
+      \left(\langle\uparrow|_{A}\langle\downarrow|_{B} - \langle\downarrow|_{A}\langle\uparrow|_{B}\right)\\
+    & = 
+    \frac{1}{2}\left(
+      |\uparrow\rangle_{A}\langle\uparrow|_{A}\otimes|\downarrow\rangle_{B}\langle\downarrow|_{B} - |\uparrow\rangle_{A}\langle\downarrow|_{A}\otimes|\downarrow\rangle_{B}\langle\uparrow|_{B} - |\downarrow\rangle_{A}\langle\uparrow|_{A}\otimes|\uparrow\rangle_{B}\langle\downarrow|_{B} + |\downarrow\rangle_{A}\langle\downarrow|_{A}\otimes|\uparrow\rangle_{B}\langle\uparrow|_{B}
+    \right)\\
+  \end{align*}
+  接下来进行部分求迹, 从而得到所需的约化密度矩阵 $\rho_{A}$. 迹被定义为对角线元素之和, 所以我们通过矢量 $\mathbb{I}_{A}\otimes |\uparrow\rangle_{B}$ 和$\mathbb{I}_{A}\otimes |\downarrow\rangle_{B}$ 来提取对角元素. 具体方法是
+  \begin{align*}
+    (\mathbb{I}_{A}\otimes\langle \uparrow|_{B})\rho(\mathbb{I}_{A}\otimes |\uparrow\rangle_{B}) &= \frac{1}{2}|\downarrow\rangle_{A}\langle\downarrow|_{A},\\
+    (\mathbb{I}_{A}\otimes\langle \downarrow|_{B})\rho(\mathbb{I}_{A}\otimes |\downarrow\rangle_{B}) &= \frac{1}{2}|\uparrow\rangle_{A}\langle\uparrow|_{A},\\
+    \Rightarrow \rho_{A} &= \sum_{i}^{\uparrow,\downarrow} (\mathbb{I}_{A}\otimes\langle i|_{B})\rho (\mathbb{I}_{A}\otimes|i\rangle_{B}) = \frac{1}{2}\left(|\downarrow\rangle_{A}\langle\downarrow|_{A} + |\uparrow\rangle_{A}\langle\uparrow|_{A}\right) = \frac{1}{2}\begin{pmatrix}
+      1 & 0\\
+      0 & 1
+    \end{pmatrix}
+  \end{align*}
+  计算 $\rho_{A}$ 的纠缠熵:
+  \begin{align*}
+    S(A) &= 
+    -\text{Tr}[\rho_{A}\ln{\rho_{A}}] 
+    = -\sum_{i}^{\uparrow,\downarrow} 
+    (\langle i|_{A})\rho_{A}(|i\rangle_{A})
+    \ln{\left[(\langle i|_{A})\rho_{A}(|i\rangle_{A})\right]}\\
+    &= -\left(\frac{1}{2}\ln{\frac{1}{2}} + \frac{1}{2}\ln{\frac{1}{2}}\right) = \boxed{\ln{2} = 1\text{ bit}}
+  \end{align*}}}
+
+  \item \textbf{假设哈密顿量 $H$ 是厄密的, 其基态能量为 $E_{0}$, 给定某个态$\Psi$, 测得能量期望值为 $\begin{aligned}
+    E[\Psi] = \frac{\langle\Psi|H|\Psi\rangle}{\langle\Psi|\Psi\rangle}
+  \end{aligned}$, $E(\Psi)$ 和 $E_{0}$ 的关系为?}
+
+\color{gray}{{  任意态均可通过基矢展开, 形式为 $\begin{aligned}
+    |\Psi\rangle = \sum_{n}|n\rangle\langle n|\Psi\rangle
+  \end{aligned}$, 则 
+  \begin{align*}
+    E[\Psi] &= \left(\sum_{m}\langle \Psi|m\rangle \langle m|\right)\hat{H}\left(\sum_{n}|n\rangle\langle n|\Psi\rangle\right) = \sum_{m,n}\langle \Psi|m\rangle \langle m|\hat{H}|n\rangle\langle n|\Psi\rangle\\
+    &= \sum_{m,n}c^{*}_{m}E_{n}\delta_{mn}c_{n} = \sum_{n}|c_{n}|^{2}E_{n}\geq \sum_{n}|c_{n}|^{2}E_{0} = E_{0}
+  \end{align*}}}
+\end{enumerate}
+\end{document}

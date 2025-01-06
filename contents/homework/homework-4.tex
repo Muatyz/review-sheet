@@ -1,0 +1,199 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 4}
+\subsection{Mean-field Solutions for Extended Hubbard Model}
+\textbf{The Hamiltonian of the extended Hubbard model can be written as:
+\begin{align*}
+  \hat{H} = -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) + U\sum_{i}n_{i\uparrow}n_{i\downarrow} + V\sum_{\langle i,j\rangle}n_{i}n_{j}
+\end{align*}
+where:
+\begin{itemize}
+  \item $c_{i\sigma}^{\dagger}$ and $c_{i\sigma}$ are the fermionic creation and annihilation operators for an eletron with spin $\sigma$ at site $i$.
+  \item $n_{i\sigma} = c_{i\sigma}^{\dagger}c_{i\sigma}$ is the number operator for electrons with spin $\sigma$ at site $i$.
+  \item $\begin{aligned}
+    n_{i} = \sum_{\sigma}c_{i\sigma}^{\dagger}c_{i\sigma}
+  \end{aligned}$ is the number operator for total electrons at site $i$.
+  \item $U > 0$ is the strength of the on-site interaction between electrons.
+  \item $V > 0$ is the strength of the interaction between electrons at neighboring sites.
+  \item $t > 0$ is the hopping strength of the electrons.
+\end{itemize}
+We consider the case of half-filling for two lattice sites ($\langle N\rangle = \langle n_{1\uparrow} + n_{1\downarrow} + n_{2\uparrow} + n_{2\downarrow}\rangle$). In the mean-field approximation, calculate the ground state energy $E_{\text{MF}}$. Please consider initial mean-field values with following four cases.}
+
+{\color{gray}{In the mean-field approximation, the Hamiltonian can be written as
+
+\begin{align*}
+  \hat{H} &= -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) + U\sum_{i}n_{i\uparrow}n_{i\downarrow} + V\sum_{\langle i,j\rangle}n_{i}n_{j}\\
+  &= -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) + U\sum_{i}\big(n_{i\uparrow}\langle n_{i\downarrow}\rangle + n{i\downarrow}\langle n_{i\uparrow}\langle n_{i\uparrow}\rangle - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle\big) \\
+  &+ V\sum_{\langle i,j\rangle}\big(n_{i}\langle n_{j}\rangle + n_{j}\langle n_{i}\rangle - \langle n_{i}\rangle\langle n_{j}\rangle\big)\\
+  &= c^{\dagger}\begin{bmatrix}
+    U\langle n_{1\downarrow}\rangle + V\langle n_{2}\rangle &   & -t &  \\
+      & U\langle n_{1\uparrow}\rangle + V\langle n_{2}\rangle &  & -t\\
+    -t &   & U\langle n_{2\downarrow}\rangle + V\langle n_{1}\rangle &  \\
+      & -t &   & U\langle n_{2\uparrow}\rangle + V\langle n_{1}\rangle
+  \end{bmatrix}c
+\end{align*}}}
+
+\begin{enumerate}
+  \item \textbf{Case 1: Paramagnetic(PM). Initial mean-field value $\begin{aligned}
+    \langle n_{i\sigma}\rangle = \frac{1}{2}
+  \end{aligned}$.}
+  
+{\color{gray}{  For this case, the interactions are weak, so we expect that the hopping term is dominant. Thus we have
+  \begin{align*}
+    \langle n_{i\uparrow}\rangle = \langle n_{i\downarrow}\rangle = \frac{1}{2},\quad \text{for all } i.
+  \end{align*}
+  \begin{align*}
+    \begin{bmatrix}
+      U\frac{1}{2} + V &   & -t &  \\
+        & U\frac{1}{2} + V &  & -t\\
+      -t &   & U\frac{1}{2} + V &  \\
+        & -t &   & U\frac{1}{2} + V
+    \end{bmatrix} = UDU^{-1}
+  \end{align*}
+  Except for the different diagnoal elements, this matrix is very similar to the case in the lecture. We can get
+  \begin{align*}
+    U &= \frac{1}{\sqrt{2}}\begin{bmatrix}
+        & 1 &   & -1 \\
+     1  &   & -1 &  \\
+        & 1 &   & 1 \\
+     1  &   & 1 &  
+    \end{bmatrix}, \quad D = \begin{bmatrix}
+    -t + \frac{U}{2} + V  &  &   & \\
+     & -t + \frac{U}{2} + V &  &  \\
+      &  & t + \frac{U}{2} + V &  \\
+     &   &  & t + \frac{U}{2} + V
+  \end{bmatrix}\\
+  E_{\text{MF}} &= -2t + \frac{U}{2} + V
+  \end{align*}}}
+
+  \item \textbf{Case 2: Ferromagnetic(FM). Initial mean-field value $\langle n_{i\uparrow}\rangle = 1$ and $\langle n_{i\downarrow}\rangle = 0$.}
+  
+ {\color{gray}{ When $U$ is large, we expect no double occupancy. For this case, the mean-field values are chosen as
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle = \langle n_{2\uparrow}\rangle =1,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle= 0.
+  \end{align*}
+
+  \begin{align*}
+    \begin{bmatrix}
+       V &    & -t &   \\
+         & U + V&  & -t\\
+      -t &    &  V &   \\
+         & -t &    & U + V
+    \end{bmatrix} = \begin{bmatrix}
+        &    & -t &   \\
+        & U  &    & -t\\
+     -t &    &    &   \\
+        & -t &    & U 
+   \end{bmatrix} + V\mathbb{I} = UDU^{-1}
+  \end{align*}
+  The effect of V is still just shifting the energy, and we get
+  \begin{align*}
+    U = \frac{1}{\sqrt{2}}\begin{bmatrix}
+   1  &-1 &   &   \\
+      &   & 1 &-1 \\
+   1  & 1 &   &   \\
+      &   & 1 & 1 
+  \end{bmatrix},\quad D = \begin{bmatrix}
+    -t + V  &  &   & \\
+     & t + V &  &  \\
+      &  & -t + U + V &  \\
+     &   &  & t + U + V
+  \end{bmatrix}
+  \end{align*}
+  \begin{enumerate}
+    \item When $ -t + U + V < t + V\iff U < 2t$, 
+    \begin{align*}
+      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{13}^{*}V_{13} = \frac{1}{2}\\
+      \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
+    \end{align*}
+    which implies the system is still in PM phase and $\begin{aligned}
+      E_{\text{MF}} = -2t + \frac{U}{2} + V
+    \end{aligned}$.
+    \item When $U > 2t$, 
+    \begin{align*}
+      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{12}^{*}V_{12} = 1\\
+      \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = 1,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = 0
+    \end{align*}
+    Now the system is in FM phase and $E_{\text{FM}} = V$.
+  \end{enumerate}}}
+
+  \item \textbf{Case 3: Anti-ferromagnetic(AFM). Initial mean-field value $\langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle = 1 - \alpha$ and $\langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \alpha$.}
+  
+  {\color{gray}{Another choice when $U$ is large is to give
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle = 1 - \alpha,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \alpha.
+  \end{align*}
+ 
+  \begin{align*}
+    &\begin{bmatrix}
+      \alpha U + V &    & -t &   \\
+        & (1 - \alpha)U + V &  & -t\\
+     -t &    & (1 - \alpha)U + V &   \\
+        & -t &    & \alpha U + V
+   \end{bmatrix} \\
+   = &\begin{bmatrix}
+              &                 & -t              &   \\
+              & (1 - 2\alpha)U  &                 & -t\\
+   -t         &                 & (1 - 2\alpha)U  &   \\
+              & -t              &                 &  
+ \end{bmatrix} + (\alpha U + V)\mathbb{I} = UDU^{-1}
+  \end{align*}
+  The effect of $\bar{V} = \alpha U + V$ is still just shifting the energy. Similar to the contents in the lecture note, mark $\bar{U} = (1 - 2\alpha)U$ and shift each eigenenergy with $\bar{V}$, we get
+  \begin{align*}
+    E_{\text{MF}} &= \bar{U} - \sqrt{4t^{2} + \bar{U}^{2}} + 2\alpha U + 2V + 2\alpha(1-\alpha)U - V\\
+    &= (1 + 2\alpha - 2\alpha^{2})U - \sqrt{4t^{2} + \bar{U}^{2}} + V
+  \end{align*}
+  and the self-consistent equation is 
+  \begin{align*}
+    \alpha = \frac{4t^{2}}{4t^{2} + [\sqrt{4t^{2} + (1 - 2\alpha)U^{2}} + (1 - 2\alpha)U]^{2}}
+  \end{align*}
+  \begin{enumerate}
+    \item When $U\gg t$, we get $\alpha\approx 0$ and $\begin{aligned}
+      E_{\text{MF}}\approx -\frac{4t^{2}}{U} + V
+    \end{aligned}$. This corresponds to an AFM solution, which is lower than FM. 
+    \item When $U\ll t$, we get $\alpha\approx \frac{1}{2}$ and back to the PM solution.
+  \end{enumerate}}}
+  
+  \item \textbf{Case 4: Charge density wave(CDW). Initial mean-field value $\langle n_{1\uparrow}\rangle = \langle n_{1\downarrow}\rangle = 1 - \alpha$ and $\langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \alpha$.}
+  
+{\color{gray}{  When $V$ is much stronger, we expect a double occupancy will occur. Thus the mean-field values are chosen as
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle = \langle n_{1\downarrow}\rangle = 1 - \alpha,\quad \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \alpha.
+  \end{align*}
+  
+  \begin{align*}
+    \begin{bmatrix}
+      (1-\alpha)U+2\alpha V &    & -t &   \\
+                            & (1 - \alpha)U + 2\alpha V &  & -t\\
+     -t                     &    & \alpha U + 2(1-\alpha)V &   \\
+                            & -t &    & \alpha U + 2(1-\alpha)V
+   \end{bmatrix} = UDU^{-1}
+  \end{align*}
+  The result is a little complicated and one can solve the matrix by Mathematica easily. Note $\beta = (1-2\alpha)(U-2V)$ and $\gamma = 2t$, we have
+  \begin{align*}
+    D = \frac{1}{2}\left((U+2V)\mathbb{I} + \sqrt{\beta^{2} + \gamma^{2}}\begin{bmatrix}
+        -1 &  &   & \\
+       & -1 &  &  \\
+        &  & 1 &  \\
+       &   &  &  1
+    \end{bmatrix}\right)
+  \end{align*}
+  The self-consistent equation is 
+  \begin{align*}
+    1 - \alpha = \frac{2\beta^{2} + \gamma^{2} - 2\beta\sqrt{\beta^{2} + \gamma^{2}}}{2\beta^{2} +2\gamma^{2} - 2\beta\sqrt{\beta^{2} + \gamma^{2}}}
+  \end{align*}
+
+  \begin{enumerate}
+    \item When $\beta^{2}\gg\gamma^{2}\iff V\gg \frac{U}{2}\text{ and }V\gg t$, we have
+    \begin{align*}
+      \alpha&\approx 0, \quad \langle n_{1\sigma}\rangle = 1,\quad \langle n_{2\sigma}\rangle = 0;\\
+      H_{\text{MF}} &\approx U.
+    \end{align*}
+
+    \item When $\beta^{2}\ll\gamma^{2}\iff V\ll t\text{ and }U\ll t$, we have $\begin{aligned}
+      \langle n_{i\sigma}\rangle = \frac{1}{2}
+    \end{aligned}$ which corresponds to the PM solution.
+  \end{enumerate}}}
+\end{enumerate}
+\end{document}

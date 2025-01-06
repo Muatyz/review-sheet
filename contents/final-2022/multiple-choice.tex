@@ -1,0 +1,102 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{多项选择}
+\begin{enumerate}
+  \item \textbf{与总角动量算符的平方 $\vec{J}^{2}$ 对易的算符在 $(J_{x}, J_{y}, J_{z}, J_{+}, J_{-})$ 中有?}
+  
+{\color{gray}{  已知角动量的基本对易关系 $[J_{i}, J_{j}] = i\hbar\epsilon_{ijk}J_{k}$, 那么
+  \begin{align*}
+    [J^{2},J_{l}] &= [\sum_{i}^{3}J_{i}^{2},J_{l}] = \sum_{i}^{3}[J_{i}^{2},J_{l}] = \sum_{i}^{3}\left(J_{i}[J_{i},J_{l}] + [J_{i},J_{l}]J_{i}\right)\\
+    &= \sum_{i}^{3}\left(J_{i} i\hbar\epsilon_{ilk}J_{k} + i\hbar\epsilon_{ilk}J_{k} J_{i}\right)\\
+    &= i\hbar\sum_{i}^{3}(\epsilon_{ilk}J_{i}J_{k} - \epsilon_{kli}J_{k}J_{i}) = 0.
+  \end{align*}
+  其中利用了 $\epsilon_{ijk}$ 的反对称性质以及 $k\iff i$ 的地位等价. 而 $J_{\pm} = J_{x}\pm iJ_{y}$ 是 $\{J_{l}\}$ 的线性组合, 根据对易关系的线性性质可知 $[J^{2},J_{\pm}] = 0$, 所以待选项均为正确答案.}}
+  
+  \item \textbf{在原子单位制下 $\hbar = c = 1$, 和能量同单位的量在 (距离, 动量, 时间, 质量, 角动量) 中有?}
+  
+{\color{gray}{  能量单位为 J=kg$\cdot$m$^{2}$/s$^{2}$, 距离单位为 m, 动量单位为 kg$\cdot$m/s, 时间单位为 s, 质量单位为 kg, 角动量单位为 kg$\cdot$m$^{2}$/s. 现在要求 kg$\cdot$m$^{2}/$s=$m/s$=1, 即寻找如何通过除以 $\hbar(\text{kg}\cdot \text{m}^{2}/\text{s}),c(\text{m}/\text{s})$ 来进行量纲变换
+  \begin{enumerate}
+    \item $\boxed{\text{距离}}$. $\begin{aligned}
+      \frac{\text{kg}\cdot\text{m}^{2}/\text{s}^{2}}{\text{kg}\cdot \text{m}^{2}/\text{s}} = \frac{1}{\text{s}}
+    \end{aligned}$, 是时间的倒数, 因此和能量同单位. 
+    \item $\boxed{\text{动量}}$. $E = pc$
+    \item 时间. $\begin{aligned}
+      E = \hbar\omega = \hbar\frac{1}{\tau}
+    \end{aligned}$, 所以时间和能量单位互为倒数.
+    \item $\boxed{\text{质量}}$. $E = mc^{2}$.
+    \item 角动量. 角动量的量纲正好是 kg$\cdot$m$^{2}$/s, 即无量纲数, 而能量无法通过除以 $\hbar$ 或 $c$ 来变成角动量的量纲, 所以角动量和能量不同单位.
+  \end{enumerate}}}
+  
+  \item \textbf{宇称算符 $\mathbb{P}$ 连续作用两次为恒等变换, 这说明宇称算符 $\mathbb{P}$ 的本征值在 $(0,1,-1,i,-i)$ 中有?}
+  
+{\color{gray}{  不妨设 $\mathbb{P}\psi = \lambda\psi$, 那么 $\mathbb{P}^{2}\psi = \lambda^{2}\psi = \psi$, 所以 $\lambda^{2} = 1$, 即 $\lambda = \pm 1$. 所以宇称算符的本征值为 $\boxed{1,-1}$.}}
+  
+  \item \textbf{如果算符 $A$ 满足 $A^{2} = A$, 那么算符 $A$ 的本征值有 $(0,1,-1,i,-i)$ 中有?}
+  
+{\color{gray}{  不妨设 $A\psi = \lambda\psi$, 那么 $A^{2}\psi = A(\lambda\psi) = \lambda^{2}\psi$, $\lambda^{2} = \lambda$, 即 $\lambda = 0,1$. 所以算符 $A$ 的本征值为 $\boxed{0,1}$.}}
+  
+  \item \textbf{玻色子产生和湮灭算符满足对易关系 $\bigg[b^{\dagger}_{\alpha}, b^{\dagger}_{\beta}\bigg] = [b_{\alpha},b_{\beta}] = 0$, $\bigg[b_{\alpha}, b_{\beta}^{\dagger}\bigg] = \delta_{\alpha\beta}$, 那么和总粒子数算符 $\begin{aligned}
+    N = \sum_{\alpha}b^{\dagger}_{\alpha}b_{\alpha}
+  \end{aligned}$ 对易的算符在 $(b_{\alpha}, b_{\alpha}^{\dagger}b_{\alpha}, b_{\alpha}^{\dagger}b_{\beta}, b_{\alpha}^{\dagger}b_{\beta}b_{\mu}, b_{\alpha}^{\dagger}b_{\beta}b_{\mu}^{\dagger}b_{\nu})$ 中有?}
+  
+{\color{gray}{  已知 $\begin{aligned}
+    [N,A] = \sum_{i}\left[b_{i}^{\dagger}b_{i},A\right] = 
+    \sum_{i}\left\{
+      b_{i}^{\dagger}[b_{i},A] 
+      + \left[b_{i}^{\dagger},A\right]b_{i}\right\}
+  \end{aligned}$, 代入以上各算符 $A$ 判断是否对易.
+  \begin{enumerate}
+    \item $\begin{aligned}
+      [N,b_{\alpha}] = \sum_{i}\left\{
+        b_{i}^{\dagger}[b_{i},b_{\alpha}]
+        + \left[b_{i}^{\dagger},b_{\alpha}\right]b_{i}\right\} = \sum_{i}\left\{0 + (-\delta_{i\alpha})b_{\alpha}\right\} = -b_{\alpha}
+    \end{aligned}$
+    \item \begin{align*}
+      \boxed{[N,b_{\alpha}^{\dagger}b_{\alpha}]} &= \sum_{i}\left[b_{i}^{\dagger}b_{i},b_{\alpha}^{\dagger}b_{\alpha}\right] = \sum_{i}\left\{
+      b_{i}^{\dagger}[b_{i},b_{\alpha}^{\dagger}b_{\alpha}] 
+      + \left[b_{i}^{\dagger},b_{\alpha}^{\dagger}b_{\alpha}\right]b_{i}\right\} \\
+      &= \sum_{i}\left\{
+        b_{i}^{\dagger}\left(
+          b_{\alpha}^{\dagger}[b_{i},b_{\alpha}] 
+          + \left[b_{i},b_{\alpha}^{\dagger}\right]b_{\alpha}
+          \right)
+        + \left(
+          b_{\alpha}^{\dagger}[b_{i}^{\dagger},b_{\alpha}] + [b_{i}^{\dagger},b_{\alpha}^{\dagger}]b_{\alpha}
+        \right)b_{i}
+        \right\}\\
+        &= \sum_{i}\left\{
+          b_{i}^{\dagger}(b_{\alpha}^{\dagger}\cdot 0 + \delta_{i\alpha}b_{\alpha}) + (b_{\alpha}^{\dagger}(-\delta_{i\alpha}) + 0\cdot b_{\alpha})b_{i}
+        \right\}\\
+        &=\sum_{i}\delta_{i\alpha}(b_{i}^{\dagger}b_{\alpha} - b_{\alpha}^{\dagger}b_{i}) = 0
+    \end{align*}
+    \item 
+    \begin{align*}
+      \boxed{[N,b_{\alpha}^{\dagger}b_{\beta}]} &= \sum_{i}\left[b_{i}^{\dagger}b_{i},b_{\alpha}^{\dagger}b_{\beta}\right] = 
+    \sum_{i}\left\{
+      b_{i}^{\dagger}[b_{i},b_{\alpha}^{\dagger}b_{\beta}] 
+      + \left[b_{i}^{\dagger},b_{\alpha}^{\dagger}b_{\beta}\right]b_{i}\right\}\\
+      &= \sum_{i}\left\{
+        b_{i}^{\dagger}(
+          b_{\alpha}^{\dagger}[b_{i},b_{\beta}] + [b_{i},b_{\alpha}^{\dagger}]b_{\beta}
+        )+(
+          b_{\alpha}^{\dagger}[b_{i}^{\dagger},b_{\beta}] + [b_{i}^{\dagger},b_{\alpha}^{\dagger}]b_{\beta}
+        )b_{i}
+      \right\}\\
+      &= \sum_{i}\left\{
+        b_{i}^{\dagger}(b_{\alpha}^{\dagger}\cdot 0 + \delta_{i\alpha}b_{\beta}) + (b_{\alpha}^{\dagger}(-\delta_{i\beta}) + 0\cdot b_{\beta})b_{i}
+      \right\}\\
+      &= \sum_{i}\left(b_{i}^{\dagger}b_{\beta}\delta_{i\alpha} - b_{\alpha}^{\dagger}b_{i}\delta_{i\beta}\right) = 0.
+    \end{align*}
+    \item
+    \begin{align*}
+      [N,b_{\alpha}^{\dagger}b_{\beta}b_{\mu}] &= b_{\alpha}^{\dagger}b_{\beta}[N,b_{\mu}] + [N,b_{\alpha}^{\dagger}b_{\beta}]b_{\mu} = -b_{\alpha}^{\dagger}b_{\beta}b_{\mu}
+    \end{align*}
+    \item
+    \begin{align*}
+      \boxed{[N,b_{\alpha}^{\dagger}b_{\beta}b_{\mu}^{\dagger}b_{\nu}]} &= b_{\alpha}^{\dagger}b_{\beta}[N, b_{\mu}^{\dagger}b_{\nu}] + [N, b_{\alpha}^{\dagger}b_{\beta}]b_{\mu}^{\dagger}b_{\nu} = 0 + 0 = 0
+    \end{align*}
+  \end{enumerate}}}
+\end{enumerate}
+
+\end{document}

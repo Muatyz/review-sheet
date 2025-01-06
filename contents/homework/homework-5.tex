@@ -1,0 +1,72 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 5}
+\subsection{Quantum Rotor Model}
+\textbf{The angular coordinate of a quatum rotor is $\theta\in [0,2\pi)$, note that $\theta \pm 2\pi$ and $\theta$ are equivalent. The eigenstate of the operator $\hat{\theta}$ is represented by $|\theta\rangle$, and $\theta\pm 2\pi\rangle$ represents the same state as $|\theta\rangle$. Define the rotation operator for the quantum rotator as $\hat{R}(\alpha)$,
+\begin{align*}
+  \hat{R}(\alpha) = \int_{0}^{2\pi}\mathrm{d}\theta|\theta - \alpha\rangle\langle\theta|
+\end{align*}
+Thus $\hat{R}(\alpha)|\theta\rangle = |\theta-\alpha\rangle$, and $\hat{R}(2\pi)$ is the identity operator.}
+
+\textbf{The rotation operator $\hat{R}(\alpha)$ is a unitary operator, its generator is the Hermitian operator $\hat{N}$, which is related to the angular momentum operator of the quantum rotator $\hat{L}$ by $\hat{L} = \hbar\hat{N}$, so $\hat{R}(\alpha) = e^{i\hat{N}\alpha}$, and in the $\hat{\theta}$ representation, we have $\hat{N} = -i\frac{\partial}{\partial\theta}$.}
+
+\textbf{Consider a specific quantum rotor model, its Hamiltonian is 
+\begin{align*}
+  \hat{H} = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2} - g\cos{2\hat{\theta}}
+\end{align*}
+where $g\cos{2\hat{\theta}}$ is a small external potential, which can be treated as a perturbation. Assuming $|N\rangle$ is the eigenstate of the operator $\hat{N}$ with eigenvalue $N$, i.e., $\hat{N}|N\rangle = N|N\rangle$. It can be calculated that $|N\rangle$ is expanded in terms of $|\theta\rangle$ as 
+\begin{align*}
+  |N\rangle = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle
+\end{align*}}
+\begin{enumerate}
+  \item \textbf{Use the fact that $\hat{R}(2\pi)$ is the identity operator to prove that $N$ must be an integer.}
+  
+{\color{gray}{  Since $\hat{R}(2\pi) = \mathbb{I}$, so we have $|\theta - 2\pi\rangle = |\theta\rangle$. For eigenstate $|N\rangle$ of operator $\hat{N}$, we have
+  \begin{align*}    
+    \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta-2\pi\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\\
+    \iff \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle\\
+    \iff e^{iN\theta}  &= e^{iN(\theta - 2\pi)} = e^{iN\theta}e^{-i2\pi N}
+  \end{align*}
+  So $N$ should be an integer to keep the invariance of the shift of $\theta$ by $2\pi$.}}
+  
+  \item  \textbf{Consider the unperturbed Hamiltonian $\begin{aligned}
+    \hat{H}_{0} = \frac{1}{2}\left(\frac{1}{2}\hat{N} - \frac{1}{2}\right)^{2}
+  \end{aligned}$, prove that $|N\rangle$ is also an eigenstate of $\hat{H}_{0}$, and find its eigenenergy, demonstrating that each energy level is doubly degenerate.}
+{\color{gray}{  \begin{align*}
+    \hat{H}_{0}|N\rangle = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}|N\rangle = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}|N\rangle\Rightarrow E_{N}^{(0)} = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}\\
+    \Rightarrow N_{\pm} - \frac{1}{2} = \pm\sqrt{2E_{N}^{(0)}}\Rightarrow N_{\pm} = \frac{1}{2} \pm \sqrt{2E_{N}^{(0)}}
+  \end{align*}
+  which means for any $N$, there exists $N^{\prime} = 1 - N$ to make the energy level degenerate.}}
+
+  \item \textbf{Using the basis set $\{|N\rangle\}$, write down the representation matrix for the perturbation term $\hat{V} = -g\cos{2\hat{\theta}}$, and prove that the perturbation does not connect degenerate levels (i.e., if $|N\rangle$ and $|N^{\prime}\rangle$ are degenerate, then $\langle N|\hat{V}|N^{\prime}\rangle = 0$). Therefore, although the energy levels of $\hat{H}_{0}$ are degenerate, we can still use non-degenerate perturbation theory.}
+  
+{\color{gray}{  \begin{align*}
+    \cos{2\hat{\theta}} &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)\\
+    e^{i2\hat{\theta}}|N\rangle &= e^{i2\hat{\theta}}\left(\frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\right) = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}e^{i2\hat{\theta}}|\theta\rangle \\
+    &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{i(N+2)\theta}|\theta\rangle = |N+2\rangle\\
+    \Rightarrow \cos{2\hat{\theta}}|N\rangle &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)|N\rangle = \frac{1}{2}\left(|N+2\rangle + |N-2\rangle\right)\\
+    \Rightarrow \langle N|\hat{V}|N^{\prime}\rangle &= -g\langle N|\cos{2\hat{\theta}}|N^{\prime}\rangle = -\frac{g}{2}\left(\langle N|N^{\prime}+2\rangle + \langle N|N^{\prime}-2\rangle\right)\\
+    & = -\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N,N^{\prime}-2})
+  \end{align*}
+  As the discussion before, if $|N\rangle$ and $|N^{\prime}\rangle$ are degenerate, then $N + N^{\prime} = 1$, which means the delta note equals to $0$ when $N\in\mathbb{Z}$, so the perturbation does not connect degenerate levels.}}
+
+  \item  \textbf{Calculate the perturbation correction to each energy level $E_{N}$ up to second order in $g$, and prove that all degeneracies of the energy levels remain unlifted.}
+
+  {\color{gray}{  \begin{align*}
+    E_{N}^{(1)} &= \langle N|\hat{V}|N\rangle = -\frac{g}{2}\left(\langle N|N+2\rangle + \langle N|N-2\rangle\right) = 0\\
+    E_{N}^{(2)} &= \sum_{N^{\prime}\neq N}\frac{|\langle N|\hat{V}|N^{\prime}\rangle|^{2}}{E_{N}^{(0)} - E_{N^{\prime}}^{(0)}} = \sum_{N^{\prime}\neq N}\frac{\left(-\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N, N^{\prime}-2})\right)^{2}}{\frac{1}{2}\left(N - \frac{1}{2}\right)^{2} - \frac{1}{2}\left(N^{\prime} - \frac{1}{2}\right)^{2}}\\
+    &= \boxed{\frac{g^{2}}{(2N-3)(2N+1)}}
+  \end{align*}
+  So the corrected energy level is
+  \begin{align*}
+    E_{N} \approx \frac{1}{2}\left(N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{(2N-3)(2N+1)}
+  \end{align*}
+  Apply $N^{\prime} = 1 - N$ to check if the degeneracy is lifted, we have
+  \begin{align*}
+    E_{N^{\prime}} &= \frac{1}{2}\left(1 - N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{[2(1 - N)-3][2(1 - N)+1]}\\
+    &= \frac{1}{2}\left(N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{(2N+1)(2N-3)} = E_{N}
+  \end{align*}
+  so the degeneracy of the energy levels remains unlifted.}}
+\end{enumerate}
+\end{document}

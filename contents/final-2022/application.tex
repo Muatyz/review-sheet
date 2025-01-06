@@ -1,0 +1,357 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{应用题}
+\begin{enumerate}
+  \item \textbf{矩阵对角化和表象变换}
+  \begin{enumerate}
+    \item \textbf{对角化矩阵 $L$ 就是去找到幺正变换 $V$, 使得 $L = V\Lambda V^{\dagger}$, 其中 $\Lambda$ 是一个对角矩阵, 它的对角元是本征值. $V$ 是一个幺正矩阵, 它的列矢量是本征矢, 和 $\Lambda$ 中的本征值一一对应. 找到一个能对角化 Pauli 矩阵 $\sigma^{x} = \begin{pmatrix}
+      0 & 1\\
+      1 & 0
+    \end{pmatrix}$ 的幺正矩阵 $V$, 并找到 $\sigma^{x}$ 的本征值. }
+
+    {\color{gray}{通过求解其特征方程以得到 $\sigma^{x}_{(z)}$ 的本征值:
+    \begin{align*}
+      \text{det}(\sigma^{x}_{(z)}-\lambda I) = \text{det}\begin{pmatrix}
+        -\lambda & 1 \\
+        1 & -\lambda
+      \end{pmatrix} = \lambda^{2} - 1 = 0,
+    \end{align*}
+    解得 $\boxed{\lambda = \pm 1}$. 对于 $\lambda_{+} = 1$ 有: 
+    \begin{align*}
+      \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}
+      = 1\cdot\begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}\Rightarrow v_{1} = v_{2}.
+    \end{align*}
+    所以对应于 $\lambda_{+}$ 的本征矢是 $\begin{aligned}
+      |+\rangle^{x}_{(z)} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        1
+      \end{pmatrix}
+    \end{aligned}$. 对于 $\lambda_{-} = -1$ 有
+    \begin{align*}
+      \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}
+      = -1\cdot\begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}\Rightarrow v_{1} = -v_{2}.
+    \end{align*}
+    所以对应于 $\lambda_{-}$ 的本征矢是 $\begin{aligned}
+      |-\rangle^{x}_{(z)} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        -1
+      \end{pmatrix}
+    \end{aligned}$. 在求解过程中已经对这些本征矢进行了归一化, 所以可以得到幺正矩阵 $\begin{aligned}
+      V = [|+\rangle^{x}_{(z)},|-\rangle^{x}_{(z)}] = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix}
+    \end{aligned}$.
+    对角矩阵 $\Lambda$ 对角线上依次是本征值, 即
+    \begin{align*}
+      \Lambda = \text{diag}\{\lambda_{+},\lambda_{-}\} =\begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+      \end{pmatrix} = \sigma^{z}_{(z)}
+    \end{align*}
+    于是我们可以通过幺正矩阵 $V$ 来对 $\sigma^{x}_{(z)}$ 进行对角化: 
+    \begin{align*}
+      \sigma^{x}_{(z)} = V^{\dagger}\Lambda V = V^{\dagger}\sigma^{z}_{(z)} V
+    \end{align*}
+    我们注意到, 对角矩阵 $\Lambda$ 和 $\sigma^{z}_{(z)}$ 形式完全一致, 这意味着不同表象 $i$ 下, $\sigma^{i}_{(i)}$ 的形式都是 $\begin{aligned}
+      \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+      \end{pmatrix}
+    \end{aligned}$, 这就是我们通过 $V$ 来改变表象的依据: 
+    \begin{align*}
+      \sigma^{x}_{(z)} = V^{\dagger}\sigma^{z}_{(z)} V = V^{\dagger}\sigma^{x}_{(x)} V\Rightarrow \sigma^{x}_{(x)} = \left(V^{\dagger}\right)^{-1}\sigma^{x}_{(z)}(V)^{-1}
+    \end{align*}
+    我们标记 $\sigma^{x}_{(z)}$ 为 $\sigma^{x}$ 在 $\sigma^{z}$ 表象下的矩阵. 注意 $V = V^{\dagger} = V^{-1}$, 所以
+    \begin{align*}
+      \sigma^{x}_{(x)} = V\sigma^{x}_{(z)}V
+    \end{align*}}}
+
+    \item \textbf{自旋 $1/2$ 的自旋角动量算符 $\vec{S}$ 的三个分量为$S^{x}$, $S^{y}$, $S^{z}$. 如果采用 $S^{z}$ 表象, 它们的矩阵表示为 $\begin{aligned}
+      \vec{S} = \frac{\hbar}{2}\vec{\sigma}
+    \end{aligned}$, 其中 $\vec{\sigma}$ 的三个分量为 Pauli 矩阵 $\sigma^{x}$, $\sigma^{y}$, $\sigma^{z}$. 现在考采用 $S^{x}$ 表象, 请列出 $S^{x}$ 表象中你约定的基矢顺序, 并求出在该表象下算符 $\vec{S}$ 的三个分量的矩阵表示. }
+
+    {\color{gray}{在 $S^{z}$ 表象下有
+    \begin{align*}
+      S^{x}_{(z)} = \frac{\hbar}{2}\sigma^{x}_{(z)} = \frac{\hbar}{2}\begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix}
+    \end{align*}
+    从前文中可知, $\sigma^{x}_{(z)}$ 的本征矢为: 
+    \begin{align*}
+      |+\rangle_{x} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        1
+      \end{pmatrix},\quad |-\rangle_{x} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        -1
+      \end{pmatrix}.
+    \end{align*}
+    用以将 $S^{z}$ 表象转换为 $S^{x}$ 表象的幺正矩阵为
+    \begin{align*}
+      V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix}
+    \end{align*}
+    在 $S^{z}$ 表象中有
+    \begin{align*}
+      S^{x}_{(z)} = \frac{\hbar}{2}\sigma^{x} = \frac{\hbar}{2}\begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix},\quad
+      S^{y}_{(z)} = \frac{\hbar}{2}\sigma^{y} = \frac{\hbar}{2}\begin{pmatrix}
+        0 & -i \\
+        i & 0
+      \end{pmatrix},\quad
+      S^{z}_{(z)} = \frac{\hbar}{2}\sigma^{z} = \frac{\hbar}{2}\begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+      \end{pmatrix}.
+    \end{align*}
+    因此
+    \begin{align*}
+      S^{x}_{(x)} &= VS^{x}_{(z)}V = \frac{\hbar}{2}\begin{pmatrix}
+        1&0\\
+        0&-1
+      \end{pmatrix},\\ 
+      S^{y}_{(x)} &= VS^{y}_{(z)}V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix}\frac{\hbar}{2}\begin{pmatrix}
+        0 & -i \\
+        i & 0
+      \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}
+        0 & -i \\
+        i & 0
+      \end{pmatrix},\\
+      S^{z}_{(x)} &= VS^{z}_{(z)}V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix}\frac{\hbar}{2}\begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+      \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}
+        0 & 1\\
+        1 & 0
+      \end{pmatrix}.
+    \end{align*}
+    在 $S^{x}$ 表象中的基矢为 
+    \begin{align*}
+      |+\rangle_{(x)}^{x} = \begin{pmatrix}
+        1\\
+        0
+      \end{pmatrix},\quad |-\rangle_{(x)}^{x} = \begin{pmatrix}
+        0\\
+        1
+      \end{pmatrix}.
+    \end{align*}}}
+  \end{enumerate}
+
+  \item \textbf{谐振子问题}
+
+  \textbf{一维谐振子的哈密顿量为
+  \begin{align*}
+    H = \frac{p^{2}}{2m} + \frac{1}{2}m\omega^{2}x^{2}
+  \end{align*}
+  坐标算符 $x$ 和动量算符 $p$ 满足对易式 $[x,p] = i\hbar$. 对动量算符和坐标算符进行重新标度
+  \begin{align*}
+    p = P\sqrt{\hbar m\omega},\quad x = Q\sqrt{\frac{\hbar}{m\omega}}
+  \end{align*}
+  注意新的坐标算符 $Q$ 和动量算符 $P$ 是无量纲的, 哈密顿量重新写为
+  \begin{align*}
+    H = \frac{1}{2}\hbar\omega(P^{2} + Q^{2})
+  \end{align*}
+  引入玻色子产生和湮灭算符, $a^{\dagger}$ 和 $a$.
+  \begin{align*}
+    a = \frac{1}{\sqrt{2}}\left(Q + iP\right),\quad a^{\dagger} = \frac{1}{\sqrt{2}}\left(Q - iP\right)
+  \end{align*}}
+  \begin{enumerate}
+    \item \textbf{计算 $[Q,P]$, $[a,a^{\dagger}]$, $[a,a^{\dagger}a]$, $[a^{\dagger},a^{\dagger}a]$;}
+    
+{\color{gray}{    \begin{align*}
+      [Q,P] &= [\sqrt{\frac{m\omega}{\hbar}}x,\sqrt{\frac{1}{\hbar m\omega}}p] = \frac{1}{\hbar}[x,p] = \frac{1}{\hbar} i\hbar = \boxed{i},\\
+      [a,a^{\dagger}] &= \left[\frac{1}{\sqrt{2}}(Q + iP),\frac{1}{\sqrt{2}}(Q - iP)\right] \\
+      &= \frac{1}{2}[Q + iP, Q - iP]= \frac{1}{2}\left([Q,Q] - i[Q, P] + i[P,Q] + [P,P]\right)\\
+      &= \frac{1}{2}[0 - i\cdot i + i\cdot (-i) + 0] = \boxed{1},\\
+      [a,a] &= \left[\frac{1}{\sqrt{2}}(Q + iP),\frac{1}{\sqrt{2}}(Q + iP)\right]\\
+      &= \frac{1}{2}[Q + iP, Q + iP] = \frac{1}{2}\left([Q,Q] + i[Q,P] + i[P,Q] + [P,P]\right)\\
+      &= \frac{1}{2}[0 + i\cdot i + i\cdot (-i) + 0] = 0,\\
+      [a^{\dagger},a^{\dagger}] &= \left[\frac{1}{\sqrt{2}}(Q - iP),\frac{1}{\sqrt{2}}(Q - iP)\right]\\
+      &= \frac{1}{2}[Q - iP, Q-iP] = \frac{1}{2}([Q,Q]-i[Q,P]-i[P,Q] + [P,P])\\
+      &= \frac{1}{2}(0 - i\cdot i - i\cdot(-i) + 0) = 0,\\
+      [a,a^{\dagger}a] &= a^{\dagger}[a,a] + [a,a^{\dagger}]a = a^{\dagger}\cdot 0 + 1\cdot a = \boxed{a},\\
+      [a^{\dagger},a^{\dagger}a] &= a^{\dagger}[a^{\dagger},a] + [a^{\dagger},a^{\dagger}]a = a^{\dagger}\cdot (-1) + 0\cdot a = \boxed{-a^{\dagger}}.
+    \end{align*}}}
+    \item \textbf{将哈密顿量 $H$ 用 $a$ 和 $a^{\dagger}$ 表示. 并求出全部能级;}
+    
+{\color{gray}{    \begin{align*}
+      a &= \frac{1}{\sqrt{2}}\left(Q + iP\right),\quad a^{\dagger} = \frac{1}{\sqrt{2}}\left(Q - iP\right)\\
+      \Rightarrow Q &= \frac{1}{\sqrt{2}}(a + a^{\dagger}),\quad P = \frac{1}{\sqrt{2}i}(a - a^{\dagger})\\
+      \Rightarrow H &= \frac{1}{2}\hbar\omega(P^{2} + Q^{2}) = \frac{1}{2}\hbar\omega\left\{\left[\frac{1}{\sqrt{2}i}(a - a^{\dagger})\right]^{2} + \left[\frac{1}{\sqrt{2}}(a + a^{\dagger})\right]^{2}\right\}\\
+      &= \frac{1}{2}\hbar\omega\left\{
+        -\frac{1}{2}\left(aa - aa^{\dagger} - a^{\dagger}a + a^{\dagger}a^{\dagger}\right) + 
+        \frac{1}{2}\left(aa + aa^{\dagger} + a^{\dagger}a + a^{\dagger}a^{\dagger}\right)
+      \right\}\\
+      &= \frac{1}{2}\hbar\omega\left(a^{\dagger}a + aa^{\dagger}\right)
+    \end{align*}
+    当然, 也可以利用 $\begin{aligned}
+      [a,a^{\dagger}] =1\iff aa^{\dagger} = a^{\dagger}a + 1
+    \end{aligned}$ 将 $H$ 变换为熟知的粒子数表象形式:
+    \begin{align*}
+      \boxed{H = \hbar\omega\left(a^{\dagger}a + \frac{1}{2}\right)}
+    \end{align*}
+    所以 $\begin{aligned}
+      \boxed{E_{n} = \hbar\omega\left(n + \frac{1}{2}\right),\quad n = 0,1,2,\cdots}
+    \end{aligned}$}}
+
+    \item \textbf{在能量表象中, 计算 $a$ 和 $a^{\dagger}$ 的矩阵元.}
+    
+{\color{gray}{    能量表象的本征矢满足 $H|n\rangle = E_{n}|n\rangle$, 则矩阵元为
+    \begin{align*}
+      a|n\rangle &= \sqrt{n}|n-1\rangle,\quad a^{\dagger}|n\rangle = \sqrt{n+1}|n+1\rangle\\
+      \Rightarrow \langle m|a|n\rangle &= \boxed{\sqrt{n}\delta_{m,n-1}},\quad \langle m|a^{\dagger}|n\rangle = \boxed{\sqrt{n+1}\delta_{m,n+1}}
+    \end{align*}}}
+  \end{enumerate}
+
+  \item \textbf{角动量耦合}
+  
+\textbf{  两个大小相等, 属于不同自由度的角动量 $\vec{J}_{1}$ 和 $\vec{J}_{2}$ 耦合成总角动量 $\vec{J} = \vec{J}_{1} + \vec{J}_{2}$, 设 $\vec{J}_{1}^{2} = \vec{J}_{2}^{2} = j(j+1)\hbar^{2}$, $J^{2} = J(J+1)\hbar^{2}$, $J = 2j, 2j-1, \cdots, 1, 0$. 在总角动量量子数 $J = 0$ 的状态下, 求 $J_{1,z}$ 和 $J_{2,z}$ 的可能取值及相应概率.}
+
+  \item \textbf{自旋-1 模型}
+  
+\textbf{  考虑自旋-1 体系, 自旋算符为 $\vec{S}$, 考虑 $(\vec{S}^{2},S^{z})$ 表象, 基矢顺序为 $|1,1\rangle$, $|1,0\rangle$, $|1,-1\rangle$, 简记为 $|+1\rangle$, $|0\rangle$, $|-1\rangle$. 设 $\hbar = 1$. }
+  \begin{enumerate}
+    \item \textbf{写出 $S^{x}$ 和 $S^{z}$ 的矩阵表示.}
+    \item \textbf{考虑哈密顿量 $H(\lambda) = H_{0} + \lambda V$, 其中 $H_{0} = (S^{z})^{2}$, $V = S^{x} + S^{z}$. 考虑为 $\lambda V$ 微扰, 利用微扰论计算微扰后的各能级和各能态, 其中能级微扰准确到二阶, 能态微扰准确到一阶. }
+  \end{enumerate}
+
+  \item \textbf{均匀电子气}
+  
+
+\textbf{考虑三维相互作用均匀电子气, 哈密顿量为 $H = H_{0} + H_{I}$. 考虑系统体积为 $V = L^{3}$, 每个方向的系统尺寸为 $L$. 采用箱归一化, 所以 $\vec{k}$ 是离散的, $\begin{aligned}\vec{k} = \frac{2\pi}{L}(n_{x},n_{y},n_{z})\end{aligned}$, $n_{x}$, $n_{y}$, $n_{z}$ 为整数. 采用二次量子化的语言, 可给出哈密顿量在动量空间的形式. $H_{0}$ 为单体部分:}
+  \begin{align*}
+    H_{0} = \sum_{\vec{k}\sigma}\varepsilon_{\vec{k}}c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}\sigma}
+  \end{align*}
+\textbf{其中 $\begin{aligned}\varepsilon_{\vec{k}} = \frac{\hbar^{2}\vec{k}^{2}}{2m}\end{aligned}$ 是自由电子的色散关系. 用 $\varepsilon_{F}$ 表示费米能, $k_{F}$ 表示费米波矢的大小.}
+
+  \textbf{$H_{I}$ 为两体相互作用部分,
+  \begin{align*}
+    H_{I} = \frac{1}{2V}\sum_{\vec{k}_{1},\vec{k}_{2},\vec{q}}\sum_{\sigma\sigma^{\prime}}v(q)c_{\vec{k}_{1}+\vec{q},\sigma}^{\dagger}c_{\vec{k}_{2}-\vec{q},\sigma^{\prime}}^{\dagger}c_{\vec{k}_{2}\sigma^{\prime}}c_{\vec{k}_{1}\sigma}
+  \end{align*}
+  $v(q)$ 是相互作用 $v(x)$ 的傅里叶变换形式, $q = |\vec{q}|$, $x = |\vec{x}|$,
+  \begin{align*}
+    v(q) = \frac{1}{V}v(x)e^{-i\vec{q}\cdot\vec{x}}\mathrm{d}^{3}\vec{x}
+  \end{align*}
+  这里我们考虑短程势, 也就是说 $v(q=0)$ 不发散.}
+
+  \textbf{自由电子气零温下处于电子填充到费米能 $\varepsilon_{F}$ 的费米海态(Fermi sea state), 简记为 FS, 利用费米子产生算符作用到真空态上可以表示 FS 态为
+  \begin{align*}
+    |\text{FS}\rangle = \prod_{k < k_{F},\sigma}c_{\vec{k}\sigma}^{\dagger}|0\rangle
+  \end{align*}}
+  \begin{enumerate}
+    \item \textbf{考虑零温下的自由电子气, 计算总粒子数 $N$ 和粒子数密度 $n$, 计算总能量 $E^{(0)}$ 并把总能量密度 $E^{(0)}/V$ 表示成粒子数密度 $n$ 的函数. }
+    
+    \item \textbf{计算能量的一阶修正 $E^{(1)} = \langle\text{FS}|H_{I}|\text{FS}\rangle$.}
+    
+    \item \textbf{利用 Hatree Fock 平均场近似, 并假设平均场参数是自旋对角的, 并且保持了自旋对称性, 以及平移对称性, 因此我们期待 $\left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}^{\prime}\sigma^{\prime}}\right\rangle = \left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}\sigma}\right\rangle\delta_{\vec{k},\vec{k}^{\prime}}\delta_{\sigma,\sigma^{\prime}}$, 以及 $\left\langle c_{\vec{k}\uparrow}^{\dagger}c_{\vec{k}\uparrow}\right\rangle = \left\langle c_{\vec{k}\downarrow}^{\dagger}c_{\vec{k}\downarrow}\right\rangle$. 计算系统总能量, 并与 $E^{(0)} + E^{(1)}$ 比较大小.}
+  \end{enumerate}
+
+  \item \textbf{量子转子模型}
+  
+  \textbf{量子转子的角度坐标 $\theta\in[0,2\pi)$, 注意 $\theta\pm 2\pi$ 和 $\theta$ 是等价的. 用 $|\theta\rangle$ 表现 $\hat{\theta}$ 算符的本征态, $|\theta\pm 2\pi\rangle$ 和 $|\theta\rangle$ 是相同的态. 定义量子转子的转动算符为 $\hat{R}(\alpha)$, 
+  \begin{align*}
+    \hat{R}(\alpha) = \int_{0}^{2\pi}\mathrm{d}\theta |\theta - \alpha\rangle\langle\theta|
+  \end{align*}
+  所以 $\hat{R}(\alpha)|\theta\rangle = |\theta - \alpha\rangle$, 并且 $\hat{R}(2\pi)$ 是单位算符.}
+
+  \textbf{转动算符 $\hat{R}S(\alpha)$ 是一个幺正算符, 它的产生子为厄米算符 $\hat{N}$, 与量子转子的角动量算符 $\hat{L}$ 的关系为 $\hat{L} = \hbar\hat{N}$, 所以 $\hat{R}(\alpha) = e^{i\hat{N}\alpha}$, 在 $\hat{\theta}$ 表象下可求得 $\hat{N} = -i\frac{\partial}{\partial\theta}$. }
+
+  \textbf{考虑一个特定的量子转子模型, 它的哈密顿量为
+  \begin{align*}
+    H = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2} - g\cos{\left(2\hat{\theta}\right)}
+  \end{align*}
+  其中 $g\cos{\left(2\hat{\theta}\right)}$ 是一个小的外势, 可以当成微扰处理. 假设 $|N\rangle$ 是算符 $\hat{N}$ 的本征态, 本征值为 $N$, 即 $\hat{N}|N\rangle = N|N\rangle$. 可计算出 $|N\rangle$ 用 $|\theta\rangle$ 展开为
+  \begin{align*}
+    |N\rangle = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}e^{iN\theta}|\theta\rangle
+  \end{align*}}
+  \begin{enumerate}
+    \item \textbf{利用 $\hat{R}(2\pi)$ 是单位算符证明 $N$ 必须是整数.}
+    
+    {\color{gray}{因为 $\hat{R}(2\pi) = \mathbb{I}$, 所以有 $|\theta - 2\pi\rangle = |\theta\rangle$. 对于算符 $\hat{N}$ 的本征态 $|N\rangle$ 有
+  \begin{align*}    
+    \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta-2\pi\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\\
+    \iff \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle\\
+    \iff e^{iN\theta}  &= e^{iN(\theta - 2\pi)} = e^{iN\theta}e^{-i2\pi N}
+  \end{align*}
+  因此为了保持 $\theta$ 转动 $2\pi$ 后的不变性, $N$ 应当是整数.}}
+    
+    \item \textbf{考虑无微扰时的哈密顿量 $H_{0} = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}$, 证明 $|N\rangle$ 也是 $H_{0}$ 的本征态, 并求出本征能量, 证明每个能级都是两重简并的. }
+    
+    {\color{gray}{  \begin{align*}
+      \hat{H}_{0}|N\rangle = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}|N\rangle = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}|N\rangle\Rightarrow E_{N}^{(0)} = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}\\
+      \Rightarrow N_{\pm} - \frac{1}{2} = \pm\sqrt{2E_{N}^{(0)}}\Rightarrow N_{\pm} = \frac{1}{2} \pm \sqrt{2E_{N}^{(0)}}
+    \end{align*}
+    这意味着对于任意整数 $N$, 都对应存在着 $N^{\prime} = 1 - N$ 使得能级简并.}}
+    
+    \item \textbf{采用 $\{|N\rangle\}$ 作为基组, 写出微扰项 $V = -g\cos{\left(2\hat{\theta}\right)}$ 的表示矩阵, 并证明微扰不会连接简并的能级(即如果 $|N\rangle$ 和 $|N^{\prime}\rangle$ 简并, 那么 $\langle N|V|N^{\prime}\rangle$). 因此尽管 $H_{0}$ 的能级是简并的, 我们仍然可以使用非简并微扰论.}
+    
+    {\color{gray}{  \begin{align*}
+      \cos{2\hat{\theta}} &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)\\
+      e^{i2\hat{\theta}}|N\rangle &= e^{i2\hat{\theta}}\left(\frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\right) = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}e^{i2\hat{\theta}}|\theta\rangle \\
+      &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{i(N+2)\theta}|\theta\rangle = |N+2\rangle\\
+      \Rightarrow \cos{2\hat{\theta}}|N\rangle &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)|N\rangle = \frac{1}{2}\left(|N+2\rangle + |N-2\rangle\right)\\
+      \Rightarrow \langle N|\hat{V}|N^{\prime}\rangle &= -g\langle N|\cos{2\hat{\theta}}|N^{\prime}\rangle = -\frac{g}{2}\left(\langle N|N^{\prime}+2\rangle + \langle N|N^{\prime}-2\rangle\right)\\
+      & = -\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N,N^{\prime}-2})
+    \end{align*}
+    和前文一致, 如果 $|N\rangle$ 和 $|N^{\prime}\rangle$ 简并, 那么 $N + N^{\prime} = 1$ 使得只要 $N\in\mathbb{Z}$, 那么$\delta\neq 0$. 所以仍然可以使用非简并微扰论.}}
+    
+    \item \textbf{计算每个能级 $E_{N}$ 的微扰修正到 $g$ 的二阶, 并证明此时所有的能级简并仍然没有被解除.}
+    
+    {\color{gray}{  \begin{align*}
+      E_{N}^{(1)} &= \langle N|\hat{V}|N\rangle = -\frac{g}{2}\left(\langle N|N+2\rangle + \langle N|N-2\rangle\right) = 0\\
+      E_{N}^{(2)} &= \sum_{N^{\prime}\neq N}\frac{|\langle N|\hat{V}|N^{\prime}\rangle|^{2}}{E_{N}^{(0)} - E_{N^{\prime}}^{(0)}} = \sum_{N^{\prime}\neq N}\frac{\left(-\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N, N^{\prime}-2})\right)^{2}}{\frac{1}{2}\left(N - \frac{1}{2}\right)^{2} - \frac{1}{2}\left(N^{\prime} - \frac{1}{2}\right)^{2}}\\
+      &= \boxed{\frac{g^{2}}{(2N-3)(2N+1)}}
+    \end{align*}
+    微扰修正后的能级为
+    \begin{align*}
+      E_{N} \approx \frac{1}{2}\left(N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{(2N-3)(2N+1)}
+    \end{align*}
+    代入 $N^{\prime} = 1 - N$ 以检查能级简并性:
+    \begin{align*}
+      E_{N^{\prime}} &= \frac{1}{2}\left(1 - N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{[2(1 - N)-3][2(1 - N)+1]}\\
+      &= \frac{1}{2}\left(N - \frac{1}{2}\right)^{2} + \frac{g^{2}}{(2N+1)(2N-3)} = E_{N}
+    \end{align*}
+    所以简并度未变化.}}
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,196 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 3}
+\subsection{Schwinger boson representation}
+\textbf{A two-dimensional quantum harmonic oscillator contains two decoupled free bosons, whose annihilation operators can be represented as $a$ and $b$ respectively. $\begin{aligned}
+  a = \frac{1}{\sqrt{2}}(x + ip_{x})
+\end{aligned}$, $\begin{aligned}
+  b = \frac{1}{\sqrt{2}}(y + ip_{y})
+\end{aligned}$. They satisfy the commutation relations $[a, a^{\dagger}] = [b, b^{\dagger}] = 1$ and $[a, b] = [a, b^{\dagger}] = 0$. This system has U(2) symmetry, which includes an SU(2) subgroup. Let's explore how to construct the SU(2) representation using bosonic operators. Define $\begin{aligned}
+  S^{x}=\frac{1}{2}(a^{\dagger}b + b^{\dagger}a)
+\end{aligned}$, $\begin{aligned}
+  S^{z} = \frac{1}{2}(a^{\dagger}a - b^{\dagger}b)
+\end{aligned}$.}
+\begin{enumerate}
+  \item \textbf{Express $S^{y}$ in terms of $a$ and $b$. [Hint: Make $\vec{S}\times\vec{S} = i\vec{S}$]}
+
+{\color{gray}{To satisfy the commutation relation $\vec{S}\times\vec{S} = i\vec{S}$, we have
+\begin{align*}
+  [S^{x},S^{y}] = iS^{z},\quad [S^{y},S^{z}] = iS^{x},\quad [S^{z},S^{x}] = iS^{y}
+\end{align*}
+So we have
+\begin{align*}
+  S^{y} &= \frac{1}{i}[S^{z},S^{x}] = \frac{1}{i}\left[\frac{1}{2}\left(a^{\dagger}a - b^{\dagger}b\right), \frac{1}{2}\left(a^{\dagger}b + b^{\dagger}a\right)\right]\\
+  &= \frac{1}{4i}[a^{\dagger}a - b^{\dagger}b, a^{\dagger}b + b^{\dagger}a]
+\end{align*}
+We have commutation formula that
+\begin{align*}
+  [\hat{A},\hat{B}+\hat{C}] &= [\hat{A},\hat{B}] + [\hat{A},\hat{C}]\\
+  [\hat{A}+\hat{B},\hat{C}] &= [\hat{A},\hat{C}] + [\hat{B},\hat{C}]\\
+  [\hat{A},\hat{B}\hat{C}] &= \hat{B}[\hat{A},\hat{C}] + [\hat{A},\hat{B}]\hat{C}\\
+  [\hat{A}\hat{B},\hat{C}] &= \hat{A}[\hat{B},\hat{C}] + [\hat{A},\hat{C}]\hat{B}\\
+  \Rightarrow [\hat{A}\hat{B},\hat{C}\hat{D}] &= \hat{A}\hat{C}[\hat{B},\hat{D}] + \hat{A}[\hat{B},\hat{C}]\hat{D} + \hat{C}[\hat{A},\hat{D}]\hat{B} + [\hat{A},\hat{C}]\hat{D}\hat{B}
+\end{align*}
+So we have
+\begin{align*}
+  S^{y} &= \frac{1}{4i}\left[a^{\dagger}a, a^{\dagger}b\right] + \frac{1}{4i}\left[a^{\dagger}a, b^{\dagger}a\right] - \frac{1}{4i}\left[b^{\dagger}b, a^{\dagger}b\right] - \frac{1}{4i}\left[b^{\dagger}b, b^{\dagger}a\right]\\
+  \left[a^{\dagger}a, a^{\dagger}b\right] &= \cancel{a^{\dagger}a^{\dagger}[a,b]} + a^{\dagger}[a,a^{\dagger}]b + \cancel{a^{\dagger}[a^{\dagger},b]a} + \cancel{[a^{\dagger},a^{\dagger}]ba} = a^{\dagger}b\\
+  \left[a^{\dagger}a, b^{\dagger}a\right] &= \cancel{a^{\dagger}b^{\dagger}[a,a]} + \cancel{a^{\dagger}[a,b^{\dagger}]a} + b^{\dagger}[a^{\dagger},a]a + \cancel{[a^{\dagger},b^{\dagger}]aa} = -b^{\dagger}a\\
+  \left[b^{\dagger}b, a^{\dagger}b\right] &= \cancel{b^{\dagger}a^{\dagger}[b,b]} + \cancel{b^{\dagger}[b,a^{\dagger}]b} + a^{\dagger}[b^{\dagger},b]b + \cancel{[b^{\dagger},a^{\dagger}]bb} = -a^{\dagger}b\\
+  \left[b^{\dagger}b, b^{\dagger}a\right] &= \cancel{b^{\dagger}b^{\dagger}[b,a]} + b^{\dagger}[b,b^{\dagger}]a + \cancel{b^{\dagger}[b^{\dagger},a]b} + \cancel{[b^{\dagger},b^{\dagger}]ab} = b^{\dagger}a\\
+  \Rightarrow S^{y} &= \frac{1}{4i}\left(a^{\dagger}b - b^{\dagger}a + a^{\dagger}b - b^{\dagger}a\right) = \boxed{\frac{1}{2i}\left(a^{\dagger}b - b^{\dagger}a\right)}
+\end{align*}}}
+
+  \item \textbf{Prove that $S^{y}$ is actually related to the angular momentum operator of the harmonic oscillator $L = xp_{y} - yp_{x}$, namely $\begin{aligned}
+    S^{y} = \frac{L}{2}
+  \end{aligned}$.}
+  
+{\color{gray}{  Define 
+  \begin{align*}
+    x &= \frac{a + a^{\dagger}}{\sqrt{2}},\quad p_{x} = \frac{i(a^{\dagger} - a)}{\sqrt{2}}\\
+    y &= \frac{b + b^{\dagger}}{\sqrt{2}},\quad p_{y} = \frac{i(b^{\dagger} - b)}{\sqrt{2}}
+  \end{align*}
+  So the angular momentum operator is
+  \begin{align*}
+    L &= \left(\frac{a + a^{\dagger}}{\sqrt{2}}\right)\left(\frac{i(b^{\dagger} - b)}{\sqrt{2}}\right) - \left(\frac{b + b^{\dagger}}{\sqrt{2}}\right)\left(\frac{i(a^{\dagger} - a)}{\sqrt{2}}\right)\\
+    &= \frac{i}{2}\left[\left(a + a^{\dagger}\right)\left(b^{\dagger} - b\right) - \left(b + b^{\dagger}\right)\left(a^{\dagger} - a\right)\right]\\
+    &= \frac{i}{2}\left(ab^{\dagger} - \cancel{ab} + \cancel{a^{\dagger}b^{\dagger}} - a^{\dagger}b - ba^{\dagger} + \cancel{ba} - \cancel{b^{\dagger}a^{\dagger}} + b^{\dagger}a\right)
+  \end{align*}
+  Because $[a,b] = [a,b^{\dagger}] = 0$, we have $ab^{\dagger} = b^{\dagger}a$ and $a^{\dagger}b = b a^{\dagger}$, so
+  \begin{align*}
+    L &= \frac{i}{2} \left(ab^{\dagger} - a^{\dagger}b - a^{\dagger}b + ab^{\dagger}\right) = i(ab^{\dagger}-a^{\dagger}b)
+  \end{align*}
+  While $\begin{aligned}
+    S^{y} = \frac{1}{2i}(a^{\dagger}b - ab^{\dagger})= \frac{i}{2}(ab^{\dagger} - a^{\dagger}b)
+  \end{aligned}$, so $\begin{aligned}
+    S^{y} = \frac{L}{2}
+  \end{aligned}$. }}$\square$
+  
+  \item \textbf{Define the following set of states, where $s = 0, 1/2, 1, \cdots$, and $m = -s, -s+1,\cdots, s-1, s$
+  (they are called the Schwinger boson representation),
+  \begin{align*}
+    |s,m\rangle = \frac{(a^{\dagger})^{s+m}}{\sqrt{(s+m)!}}\frac{(b^{\dagger})^{s-m}}{\sqrt{(s-m)!}}|\Omega\rangle
+  \end{align*}
+  where $|\Omega\rangle$ is the state annihilated by $a$ and $b$, i.e., $a|\Omega\rangle = b|\Omega\rangle = 0$. Prove that the state $|s, m\rangle$ is indeed a simultaneous eigenstate of $\vec{S}^{2} = (S^{x})^{2} + (S^{y})^{2} + (S^{z})^{2}$ and $S^{z}$ , with eigenvalues $s(s + 1)$ and $m$ respectively. [Hint: Use the particle number basis.]}
+
+  {\color{gray}{We have known that
+  \begin{align*}
+    S^{z} &= \frac{1}{2}\left(a^{\dagger}a - b^{\dagger}b\right)\\
+    \vec{S}^{2} &= (S^{x})^{2} + (S^{y})^{2} + (S^{z})^{2}
+  \end{align*}
+  where $a^{\dagger}a$ counts the number of particles in the $a$ mode, and $b^{\dagger}b$ counts the number of particles in the $b$ mode. So we have
+  \begin{align*}
+    a^{\dagger}a|s,m\rangle = (s + m)|s,m\rangle,\quad b^{\dagger}b|s,m\rangle = (s - m)|s,m\rangle\\
+    \Rightarrow S^{z}|s,m\rangle = \frac{1}{2}\left((s + m) - (s - m)\right)|s,m\rangle = \boxed{m|s,m\rangle}
+  \end{align*}
+  So $|s,m\rangle$ is an eigenstate of $S^{z}$ with eigenvalue $m$.
+
+  Define ladder operators $S^{\pm} = S^{x} \pm iS^{y}$:
+  \begin{align*}
+    S^{+} &= a^{\dagger}b, \quad S^{-} = b^{\dagger}a\\
+    \Rightarrow S^{2} &= S^{z}S^{z} + \frac{1}{2}\left(S^{+}S^{-} + S^{-}S^{+}\right)
+  \end{align*}
+  So we have
+  \begin{align*}
+    S^{+}|s,m\rangle &= a^{\dagger}b|s,m\rangle = \sqrt{(s+m+1)(s-m)}|s,m+1\rangle\\
+    S^{-}|s,m\rangle &= b^{\dagger}a|s,m\rangle = \sqrt{(s+m)(s-m+1)}|s,m-1\rangle\\
+    \Rightarrow S^{+}S^{-}|s,m\rangle &= S^{+}\sqrt{(s+m)(s-m+1)}|s,m-1\rangle = (s+m)(s-m+1)|s,m\rangle\\
+    S^{-}S^{+}|s,m\rangle &= S^{-}\sqrt{(s+m+1)(s-m)}|s,m+1\rangle = (s+m+1)(s-m)|s,m\rangle\\
+    S^{z}S^{z}|s,m\rangle &= m^{2}|s,m\rangle
+  \end{align*}
+  Combine the above results, and we have
+  \begin{align*}
+    S^{2}|s,m\rangle &= S^{z}S^{z}|s,m\rangle + \frac{1}{2}\left(S^{+}S^{-} + S^{-}S^{+}\right)|s,m\rangle\\
+    &= m^{2}|s,m\rangle + \frac{1}{2}\left((s+m)(s-m+1) + (s+m+1)(s-m)\right)|s,m\rangle\\
+    &= \boxed{s(s+1)|s,m\rangle}
+  \end{align*}}}
+  $\square$
+\end{enumerate}
+
+\subsection{1D tight-binding model}
+\textbf{The Hamiltonian of a periodic tight-binding chain of length $L$ is given by the following expression:%长度为 $L$ 的周期性紧密结合链的哈密顿方程由以下表达式给出：
+\begin{align*}
+  H_{\text{chain}} = -t\sum_{n = 1}^{L}\left(\hat{a}_{n}^{\dagger}\hat{a}_{n+1} + \hat{a}_{n+1}^{\dagger}\hat{a}\right)
+\end{align*}
+where $t$ is the hopping matrix element between adjacent sites $n$ and $n + 1$, $\hat{a}_{n}^{\dagger}$ creates a fermion at site $n$, and the set of operators $\{a_{n}^{\dagger}, a_{n}; n = 1,\cdots, L\}$ satisfies the standard anticommutation relations: %其中 $t$ 是相邻位点 $n$ 和 $n + 1$ 之间的跳跃矩阵元素，$\hat{a}_{n}^{\dagger}$ 在位点 $n$ 创建费米子，算子集 $\{a_{n}^{\dagger}, a_{n}; n = 1,\cdots, L\}$ 满足标准的反对易关系
+\begin{align*}
+  \{a_{n},a_{n^{\prime}}^{\dagger}\} = \delta_{nn^{\prime}},\quad \{a_{n},a_{n^{\prime}}\} = 0,\quad \{a_{n}^{\dagger},a_{n^{\prime}}^{\dagger}\} = 0
+\end{align*}
+We assume periodic boundary conditions, i.e., we consider $a_{L+n}^{\dagger} = a_{n}^{\dagger}$.%我们假设周期性边界条件，即考虑 $a_{L+n}^{\dagger} = a_{n}^{\dagger}$。
+The purpose of this problem is to prove that this Hamiltonian can be diagonalized by a linear transformation of the discrete Fourier transform form:%这个问题的目的是证明，通过离散傅里叶变换形式的线性变换，可以将这个哈密顿对角化：
+\begin{align*}
+  b^{\dagger}_{k} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L}e^{ikn}a_{n}^{\dagger}
+\end{align*}}
+
+\begin{enumerate}
+  \item \textbf{Let's require that $b^{\dagger}_{k}$ remains invariant under any shift of the summation index $n\rightarrow n + n^{\prime}$ ("translation invariance"). Prove that this implies that the index $k$ is quantized and determine the set of allowed $k$ values. How many independent $b^{\dagger}_{k}$ operators are there?} 
+  
+  {\color{gray}{Apply a shift of the summation index $n\rightarrow n + n^{\prime}$, and
+  \begin{align*}
+    b^{\dagger}_{k} &= \frac{1}{\sqrt{L}}\sum_{n = 1}^{L} e^{ik(n + n^{\prime})}a_{n}^{\dagger} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L} e^{ikn}e^{ikn^{\prime}}a_{n}^{\dagger}\\
+  \end{align*}
+  Since $b^{\prime}_{k}$ remain invariant, so $e^{ikn^{\prime}} = 1$ for any shift $n^{\prime}\in\mathbb{Z}$, which means
+  \begin{align*}
+    k = \frac{2\pi}{L} m,\quad m\in\{0,1,2,\cdots,L-1\}
+  \end{align*}
+  So there are $\boxed{L}$ independent $b^{\dagger}_{k}$ operators.}}
+  
+  \item \textbf{Verify that the set of $b_{k}$ and $b^{\dagger}_{k}$ operators also satisfies the above standard anticommutation relations. That is:
+  \begin{align*}
+    \{b_{k},b_{k^{\prime}}^{\dagger}\} = \delta_{kk^{\prime}},\quad \{b_{k},b_{k^{\prime}}\} = 0,\quad \{b_{k}^{\dagger},b_{k^{\prime}}^{\dagger}\} = 0
+  \end{align*}
+  Hint: Use the identity $\begin{aligned}
+    \sum_{m=1}^{L} e^{i\frac{2\pi}{L}m}= 0
+  \end{aligned}$.}
+
+{\color{gray}{  We have
+  \begin{align*}
+    b^{\dagger}_{k} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L}e^{ikn}a_{n}^{\dagger},\quad b_{k} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L}e^{-ikn}a_{n}
+  \end{align*}
+  So 
+  \begin{align*}
+    \{b_{k},b^{\dagger}_{k^{\prime}}\} &= \frac{1}{L}\sum_{n,n^{\prime}} e^{-ikn}e^{ik^{\prime}n^{\prime}}\{a_{n},a_{n^{\prime}}^{\dagger}\} = \frac{1}{L}\sum_{n,n^{\prime}} e^{-ikn}e^{ik^{\prime}n^{\prime}}\delta_{nn^{\prime}}\\
+    &= \frac{1}{L}\sum_{n=1}^{L} e^{-ikn}e^{ik^{\prime}n} = \frac{1}{L}\sum_{n =1}^{L} e^{i(k^{\prime} - k)n} = \boxed{\delta_{kk^{\prime}}}\\
+    \{b_{k},b_{k^{\prime}}\} &= \frac{1}{L}\sum_{n,n^{\prime}} e^{-ikn}e^{-ik^{\prime}n^{\prime}}\{a_{n},a_{n^{\prime}}\} = \boxed{0}\\
+    \{b_{k}^{\dagger},b_{k^{\prime}}^{\dagger}\} &= \frac{1}{L}\sum_{n,n^{\prime}} e^{ikn}e^{ik^{\prime}n^{\prime}}\{a_{n}^{\dagger},a_{n^{\prime}}^{\dagger}\} = \boxed{0}
+  \end{align*}}}
+
+  \item \textbf{Prove that the inverse transformation of the above has the form:
+  \begin{align*}
+    a_{n}^{\dagger} = \frac{1}{\sqrt{L}}\sum_{k}e^{-ikn}b_{k}^{\dagger}
+  \end{align*}
+  where the sum is over the set of allowed $k$ values determined in (a).}
+
+{\color{gray}{  We have the definition
+  \begin{align*}
+    b^{\dagger}_{k} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L}e^{ikn}a_{n}^{\dagger}
+  \end{align*}
+  So 
+  \begin{align*}
+    \frac{1}{\sqrt{L}}\sum_{k}e^{-ikn}b_{k}^{\dagger} &= \frac{1}{\sqrt{L}}\sum_{k}e^{-ikn}\left(\frac{1}{\sqrt{L}}\sum_{n^{\prime}}e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger}\right)\\
+    &= \frac{1}{L}\sum_{n^{\prime}}\sum_{k}e^{ik(n^{\prime}-n)}a_{n^{\prime}}^{\dagger} = \sum_{n^{\prime}}\left(\frac{1}{L}\sum_{k}e^{ik(n^{\prime}-n)}\right)a_{n^{\prime}}^{\dagger}\\
+    &= \sum_{n^{\prime}}(\delta_{nn^{\prime}})a_{n^{\prime}}^{\dagger} = a_{n}^{\dagger}.\quad \square
+  \end{align*}}}
+
+  \item \textbf{Show that $b^{\dagger}_{k}$ is indeed a creation operator of a single-particle eigenstate of $H_{\text{chain}}$ by proving that its commutator with the Hamiltonian has the form $[H_{\text{chain}}, b^{\dagger}_{k}] = \varepsilon_{k}b^{\dagger}_{k}$. Give the explicit expression for the corresponding eigenvalue $\varepsilon_{k}$.}
+  
+{\color{gray}{  We have known that
+  \begin{align*}
+    H_{\text{chain}} &= -t\sum_{n = 1}^{L}\left(\hat{a}_{n}^{\dagger}\hat{a}_{n+1} + \hat{a}_{n+1}^{\dagger}\hat{a}\right),\quad \hat{a}_{L+1} = \hat{a}_{1}\\
+    b^{\dagger}_{k} &= \frac{1}{\sqrt{L}}\sum_{n = 1}^{L}e^{ikn}a_{n}^{\dagger}
+  \end{align*}
+  So the commutator
+  \begin{align*}
+    [H_{\text{chain}},b^{\dagger}_{k}] &= -t\sum_{n = 1}^{L}\left(\left[a_{n}^{\dagger}a_{n+1},b^{\dagger}_{k}\right] + \left[a_{n+1}^{\dagger}a_{n},b^{\dagger}_{k}\right]\right)\\
+    \left[a_{n}^{\dagger}a_{n+1},b^{\dagger}_{k}\right] &= a_{n}^{\dagger}\left[a_{n+1},b_{k}^{\dagger}\right] = a_{n}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m = 1}^{L}e^{ikm}\left[a_{n+1},a_{m}^{\dagger}\right]\\
+    &= a_{n}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m=1}^{L}e^{ikm}\delta_{n+1,m} = a_{n}^{\dagger}\frac{1}{\sqrt{L}}e^{ik(n+1)}\\
+    \left[a_{n+1}^{\dagger}a_{n},b^{\dagger}_{k}\right] &= a_{n+1}^{\dagger}\left[a_{n},b_{k}^{\dagger}\right] = a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m = 1}^{L}e^{ikm}\left[a_{n},a_{m}^{\dagger}\right]\\
+    &= a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m=1}^{L}e^{ikm}\delta_{n,m} = a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}e^{ikn}\\
+    \Rightarrow [H_{\text{chain}},b^{\dagger}_{k}] &= -t\sum_{n = 1}^{L}\left(a_{n}^{\dagger}\frac{1}{\sqrt{L}}e^{ik(n+1)} + a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}e^{ikn}\right)\\
+    &= -t\left(e^{ik}\frac{1}{\sqrt{L}}\sum_{n=1}^{L}e^{ikn}a_{n}^{\dagger} + e^{-ik}\frac{1}{\sqrt{L}}\sum_{n=1}^{L}e^{ik(n+1)}a_{n+1}^{\dagger}\right)\\
+    &= -t\left(e^{ik}b^{\dagger}_{k} + e^{-ik}b^{\dagger}_{k}\right) = \boxed{-2t\cos{k}}b^{\dagger}_{k}
+  \end{align*}
+So the corresponding eigenvalue $\varepsilon_{k} = -2t\cos{k}$.}}
+\end{enumerate}
+\end{document}

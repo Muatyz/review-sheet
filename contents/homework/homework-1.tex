@@ -1,0 +1,249 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 1}
+\subsection{Hermitian operators}
+
+\begin{enumerate}
+  \item  \textbf{Prove theorem 1: If $A$ is Hermitian operator, then all its eigenvalues are real numbers, and the eigenvectors corresponding to different eigenvalues are orthogonal.}
+{\color{gray}{  \begin{enumerate}
+    \item Since $A$ is Hermitian, we have $A^{\dagger} = A$. Let $\lambda$ be an eigenvalue of $A$ and $v$ the corresponding eigenvector, so
+    \begin{align*}
+      A v = \lambda v.
+    \end{align*}
+    Consider the inner product
+    \begin{align*}
+      \langle v, Av\rangle &= \langle v,\lambda v\rangle = \lambda \langle v, v\rangle = \lambda||v||^{2}.\\
+      \langle Av,v\rangle &= \langle \lambda v, v\rangle = \lambda^{*} \langle v, v\rangle = \lambda^{*}||v||^{2}.
+    \end{align*}
+    So we have $\lambda||v||^{2} = \lambda^{*}||v||^{2}$, which implies $\lambda = \lambda^{*}$, so $\lambda$ is real(since $||v||^{2}$ is not zero, as $v\neq 0$).
+
+    \item Let $\lambda_{1}$ and $\lambda_{2}$ be two different eigenvalues of $A$, and $v_{1}$ and $v_{2}$ the corresponding eigenvectors, so we have
+    \begin{align*}
+      A v_{1} = \lambda_{1} v_{1},\quad A v_{2} = \lambda_{2} v_{2}.
+    \end{align*}
+    Consider the inner product
+    \begin{align*}
+      \langle v_{1}, Av_{2}\rangle = \langle v_{1}, \lambda_{2} v_{2}\rangle = \lambda_{2}\langle v_{1}, v_{2}\rangle,\\
+      \langle Av_{1}, v_{2}\rangle = \langle \lambda_{1} v_{1}, v_{2}\rangle = \lambda_{1}\langle v_{1}, v_{2}\rangle.
+    \end{align*}
+    Since $A$ is Hermitian, we have $\langle v_{1}, Av_{2}\rangle = \langle Av_{1}, v_{2}\rangle$, so we have $(\lambda_{1}-\lambda_{2})\langle v_{1}, v_{2}\rangle = 0$, which implies $\langle v_{1}, v_{2}\rangle = 0$(since $\lambda_{1}\neq \lambda_{2}$).$\square$
+  \end{enumerate}}}
+  \item \textbf{Prove theorem 2: If $A$ is Hermitian operator, then it can be always diagonalized by unitary transformation.}
+  
+  {\color{gray}{Let $\{\lambda_{1}, \lambda_{2},\cdots, \lambda_{n}\}$ be the eigenvalues of $A$, and $\{v_{1}, v_{2},\cdots,v_{n}\}$ the corresponding eigenvectors. 
+  
+  By theorem 1, we have $\langle v_{1}, v_{2}\rangle = \delta_{ij}$. 
+
+  We define the unitary matrix as $U = [v_{1}, v_{2},\cdots,v_{n}]$, so we have $U^{\dagger}U = \mathbb{I}$. Now we compute $U^{\dagger}AU$. Since $Av_{i}=\lambda_{i}v_{i}$, we have
+  \begin{align*}
+    U^{\dagger}AU &= \begin{pmatrix}
+      v_{1}^{\dagger} \\
+      v_{2}^{\dagger} \\
+      \vdots \\
+      v_{n}^{\dagger}
+    \end{pmatrix}A\begin{pmatrix}
+      v_{1} & v_{2} & \cdots & v_{n}
+    \end{pmatrix} = \begin{pmatrix}
+      v_{1}^{\dagger}Av_{1} & v_{1}^{\dagger}Av_{2} & \cdots & v_{1}^{\dagger}Av_{n} \\
+      v_{2}^{\dagger}Av_{1} & v_{2}^{\dagger}Av_{2} & \cdots & v_{2}^{\dagger}Av_{n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      v_{n}^{\dagger}Av_{1} & v_{n}^{\dagger}Av_{2} & \cdots & v_{n}^{\dagger}Av_{n}
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+      \lambda_{1} & 0 & \cdots & 0 \\
+      0 & \lambda_{2} & \cdots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \cdots & \lambda_{n}
+    \end{pmatrix} = \Lambda.\square
+  \end{align*}}}
+  \item  \textbf{Prove theorem 3: Two diagonalizable operators $A$ and $B$ can be simultaneously diagonalized if, and only if, $[A,B]=0$.}
+  {\color{gray}{\begin{enumerate}
+    \item Let's say 
+    \begin{align*}
+      A|v\rangle = \lambda|v\rangle, \quad B|v\rangle = \mu|v\rangle.
+    \end{align*}
+    where $|v\rangle$ is the eigenvector of $A$ and $B$, $\lambda$ and $\mu$ are the corresponding eigenvalues.
+
+    So 
+    \begin{align*}
+      [A,B]|v\rangle = (AB-BA)|v\rangle = (AB|v\rangle - BA|v\rangle) = (\lambda\mu - \mu\lambda)|v\rangle = 0.
+    \end{align*}
+    for all $|v\rangle$, which means $[A,B]=0$.
+    \item Let's say $[A,B]=0$. And we have 
+    \begin{align*}
+      A|v\rangle &= \lambda|v\rangle,\\
+      AB|v\rangle &= BA|v\rangle = B\lambda|v\rangle = \lambda \left(B|v\rangle\right),
+    \end{align*}
+    which means $B|v\rangle$ is also the eigenvector of $A$ with eigenvalue $\lambda$. And apply the same method to all $|v\rangle$ of $A$, we can find a common set of eigenvectors of $A$ and $B$ within the degenerate subspace. $\square$
+  \end{enumerate}}}
+\end{enumerate}
+
+\subsection{Matrix diagonalization and unitary transformation}
+\begin{enumerate}
+  \item  \textbf{Diagonalizing a matrix $L$ corresponds to finding a unitary transformation $V$ such that $L=V\Lambda V^{\dagger}$, where $\Lambda$ is a diagonal matrix whose diagonal elements are eigenvalues, $V$ is an unitary matrix whose column vectors are the corresponding eigenstates. Find a unitary matrix $V$ that can diagonalize the Pauli matrix $\sigma^{x}_{(z)} = \begin{pmatrix}
+    0 & 1 \\
+    1 & 0\end{pmatrix}$, and find the eigenvalues of $\sigma^{x}_{(z)}$.}
+
+    {\color{gray}{Find the eigenvalues of $\sigma^{x}_{(z)}$ by solving the characteristic equation
+    \begin{align*}
+      \text{det}(\sigma^{x}_{(z)}-\lambda I) = \text{det}\begin{pmatrix}
+        -\lambda & 1 \\
+        1 & -\lambda
+      \end{pmatrix} = \lambda^{2} - 1 = 0,
+    \end{align*}
+    So we have $\boxed{\lambda = \pm 1}$. For $\lambda_{+} = 1$, we have 
+    \begin{align*}
+      \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}
+      = 1\cdot\begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}\Rightarrow v_{1} = v_{2}.
+    \end{align*}
+    So the eigenvector corresponding to $\lambda_{+}$ is $\begin{aligned}
+      |+\rangle^{x}_{(z)} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        1
+      \end{pmatrix}
+    \end{aligned}$. For $\lambda_{-} = -1$, we have
+    \begin{align*}
+      \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}
+      = -1\cdot\begin{pmatrix}
+        v_{1}\\
+        v_{2}
+      \end{pmatrix}\Rightarrow v_{1} = -v_{2}.
+    \end{align*}
+    So the eigenvector corresponding to $\lambda_{-}$ is $\begin{aligned}
+      |-\rangle^{x}_{(z)} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1\\
+        -1
+      \end{pmatrix}
+    \end{aligned}$. The eigenvectors have been normalized, so the unitary matrix $V$ is $\begin{aligned}
+      [|+\rangle^{x}_{(z)},|-\rangle^{x}_{(z)}] = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+      \end{pmatrix}
+    \end{aligned}$.
+    The diagonal matrix $\Lambda$ contains the eigenvalues on the diagonal, which means
+    \begin{align*}
+      \Lambda = \text{diag}\{\lambda_{+},\lambda_{-}\} =\begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+      \end{pmatrix} = \sigma^{z}_{(z)}
+    \end{align*}
+    Thus we diagonalized the Pauli matrix $\sigma^{x}_{(z)}$ by the unitary transformation $V$:
+    \begin{align*}
+      \sigma^{x}_{(z)} = V^{\dagger}\Lambda V = V^{\dagger}\sigma^{z}_{(z)} V
+    \end{align*}
+    We notice that the diagnosed matrix $\Lambda$ is just the Pauli matrix $\sigma^{z}_{(z)}$, which means we can transform the representation of the Pauli matrix $\sigma^{z}$ to the $\sigma^{x}$ representation by the unitary transformation $V$:
+    \begin{align*}
+      \sigma^{x}_{(z)} = V^{\dagger}\sigma^{z}_{(z)} V = V^{\dagger}\sigma^{x}_{(x)} V\Rightarrow \sigma^{x}_{(x)} = \left(V^{\dagger}\right)^{-1}\sigma^{x}_{(z)}(V)^{-1}
+    \end{align*}
+    $\sigma^{x}_{(z)}$ is the matrix of $\sigma^{x}$ in the $\sigma^{z}$ representation. Noticed that $V = V^{\dagger} = V^{-1}$, so
+    \begin{align*}
+      \sigma^{x}_{(x)} = V\sigma^{x}_{(z)}V
+    \end{align*}}}
+  \item  \textbf{The three components of the spin angular momentum operator $\vec{S}$ for spin-$1/2$ are $S^{x}$, $S^{y}$, and $S^{z}$. If we use the $S^{z}$ representation, their matrix representations are given by $\begin{aligned}
+    \vec{S} = \frac{\hbar}{2}\vec{\sigma}
+  \end{aligned}$, where the three components of $\vec{\sigma}$ are the Pauli matrices $\sigma^{x}$, $\sigma^{y}$, and $\sigma^{z}$.}
+  
+  \textbf{Now consider using the $S^{x}$ representation. Please list the order of basis vectors you have chosen in the $S^{x}$ representation, and calculate the matrix representations of the three components of the operator $\vec{S}$ in this representation.}
+
+  {\color{gray}{Within $S^{z}$ representation, we have
+  \begin{align*}
+    S^{x}_{(z)} = \frac{\hbar}{2}\sigma^{x}_{(z)} = \frac{\hbar}{2}\begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}
+  \end{align*}
+  From the previous question, we have found the eigenvalues and corresponding eigenvectors:
+  \begin{align*}
+    |+\rangle_{x} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1\\
+      1
+    \end{pmatrix},\quad |-\rangle_{x} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1\\
+      -1
+    \end{pmatrix}.
+  \end{align*}
+  The matrix $V$ that transforms the $S^{z}$ representation to the $S^{x}$ representation is 
+  \begin{align*}
+    V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 1 \\
+      1 & -1
+    \end{pmatrix}
+  \end{align*}
+  In the $S^{z}$ representation, we have
+  \begin{align*}
+    S^{x}_{(z)} = \frac{\hbar}{2}\sigma^{x} = \frac{\hbar}{2}\begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix},\quad
+    S^{y}_{(z)} = \frac{\hbar}{2}\sigma^{y} = \frac{\hbar}{2}\begin{pmatrix}
+      0 & -i \\
+      i & 0
+    \end{pmatrix},\quad
+    S^{z}_{(z)} = \frac{\hbar}{2}\sigma^{z} = \frac{\hbar}{2}\begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}.
+  \end{align*}
+  So
+  \begin{align*}
+    S^{x}_{(x)} &= VS^{x}_{(z)}V = \frac{\hbar}{2}\begin{pmatrix}
+      1&0\\
+      0&-1
+    \end{pmatrix},\\ 
+    S^{y}_{(x)} &= VS^{y}_{(z)}V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 1 \\
+      1 & -1
+    \end{pmatrix}\frac{\hbar}{2}\begin{pmatrix}
+      0 & -i \\
+      i & 0
+    \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 1 \\
+      1 & -1
+    \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}
+      0 & -i \\
+      i & 0
+    \end{pmatrix},\\
+    S^{z}_{(x)} &= VS^{z}_{(z)}V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 1 \\
+      1 & -1
+    \end{pmatrix}\frac{\hbar}{2}\begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 1 \\
+      1 & -1
+    \end{pmatrix} = \frac{\hbar}{2}\begin{pmatrix}
+      0 & 1\\
+      1 & 0
+    \end{pmatrix}.
+  \end{align*}
+  So the basis vectors in the $S^{x}$ representation are 
+  \begin{align*}
+    |+\rangle_{(x)}^{x} = \begin{pmatrix}
+      1\\
+      0
+    \end{pmatrix},\quad |-\rangle_{(x)}^{x} = \begin{pmatrix}
+      0\\
+      1
+    \end{pmatrix}.
+  \end{align*}}}
+\end{enumerate}
+\end{document}
