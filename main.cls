@@ -42,3 +42,5 @@
 \usepackage{fancyhdr} %设置页眉、页脚
 \usepackage{hyperref}
 \usepackage{ulem}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}

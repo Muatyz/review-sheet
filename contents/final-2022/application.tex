@@ -427,7 +427,7 @@
   \end{align*}
   $v(q)$ 是相互作用 $v(x)$ 的傅里叶变换形式, $q = |\vec{q}|$, $x = |\vec{x}|$,
   \begin{align*}
-    v(q) = \frac{1}{V}v(x)e^{-i\vec{q}\cdot\vec{x}}\mathrm{d}^{3}\vec{x}
+    v(q) = \frac{1}{V}\int v(x)e^{-i\vec{q}\cdot\vec{x}}\mathrm{d}^{3}\vec{x}
   \end{align*}
   这里我们考虑短程势, 也就是说 $v(q=0)$ 不发散.}
 
@@ -436,9 +436,71 @@
     |\text{FS}\rangle = \prod_{k < k_{F},\sigma}c_{\vec{k}\sigma}^{\dagger}|0\rangle
   \end{align*}}
   \begin{enumerate}
-    \item \textbf{考虑零温下的自由电子气, 计算总粒子数 $N$ 和粒子数密度 $n$, 计算总能量 $E^{(0)}$ 并把总能量密度 $E^{(0)}/V$ 表示成粒子数密度 $n$ 的函数. }
+    \item \textbf{考虑零温下的自由电子气, 计算总粒子数 $N$ 和粒子数密度 $n$, 计算总能量 $E^{(0)}$ 并把总能量密度 $E^{(0)}/V$ 表示成粒子数密度 $n$ 的函数. }\label{final-2022-5}
+    
+{\color{gray}{    使用分离变量法, 求解自由电子气的薛定谔方程 $\begin{aligned}
+      \frac{\hbar^{2}\hat{k}^{2}}{2m}\psi = E\psi
+    \end{aligned}$. 于是能量本征值为 $\begin{aligned}
+      \frac{\hbar^{2}k^{2}}{2m} = \sum_{i}\frac{\hbar^{2}k_{i}^{2}}{2m}
+    \end{aligned}$. 其中 $\begin{aligned}
+      k_{i} = \frac{\sqrt{2mE_{i}}}{\hbar}
+    \end{aligned}$. 由于使用了箱归一化, 即有边界条件 $\begin{aligned}
+      k_{i}l_{i} = n_{i}\pi(n_{i}\in\mathbb{N}^{*})
+    \end{aligned}$, 代入即得
+    \begin{align*}
+      E = \frac{\hbar^{2}}{2m}\left[\sum_{i}^{3}\left(\frac{\pi}{l_{i}}\right)^{2}n_{i}^{2}\right] = \frac{\hbar^{2}\pi^{2}}{2m}\left(\sum_{i}^{3}\frac{n_{i}^{2}}{l_{i}^{2}}\right)
+    \end{align*}
+    每个波矢 $\begin{aligned}
+      \vec{k} = \left(\frac{\pi}{l_{x}}n_{x},\frac{\pi}{l_{y}}n_{y},\frac{\pi}{l_{z}}n_{z}\right)
+    \end{aligned}$ 都是在 $\vec{k}$ 空间中的一个格点, 这种格点所占据的 $\vec{k}$ 空间体积为 
+    
+    $\begin{aligned}
+      \prod_{i}^{3}\frac{\pi}{l_{i}} = \frac{\pi^{3}}{l_{x}l_{y}l_{z}} = \frac{\pi^{3}}{V}
+    \end{aligned}$, 其中 $V$ 代表了物质在 $\vec{x}$ 空间的体积(实体积). 电子是全同费米子, 每个格点上(每个状态)能且只能容纳两个电子. 而费米-狄拉克分布为$\begin{aligned}
+      f(\epsilon) = \frac{1}{1 + e^{\beta(\epsilon - \mu)}}
+    \end{aligned}$. 绝对零度($\beta\rightarrow\infty$)下, 电子可占据的最高能级即为费米能级 $\begin{aligned}
+      \lim_{\beta\rightarrow\infty}\mu=\varepsilon_{F}
+    \end{aligned}$, 对应波矢 $|k|\leq k_{F}$. 由于前面讨论 $k_{i}\in\mathbb{N}^{*}$, 因此 $k\leq k_{F}$ 在 $\vec{k}$ 空间中会形成 $\begin{aligned}
+      \frac{1}{8}
+    \end{aligned}$ 球体. 由于题解要求, 我们略去讨论各原子贡献的自由电子数目, 而是直接使用总粒子(电子)数 $N$: 
+    \begin{align*}
+      \frac{1}{8}\left(\frac{4}{3}\pi k_{F}^{3}\right) = \frac{N}{2}\left(\frac{\pi^{3}}{V}\right)
+    \end{align*}
+    其中 $N$ 除以 $2$ 是因为泡利不相容原理. 具体到题目中, 有 $l_{i}=L,\forall i$, 于是进一步化简得到
+    \begin{align*}
+      \boxed{N = \frac{k_{F}^{3}V}{3\pi^{2}}},\quad \frac{N}{V} = \boxed{n = \frac{k_{F}^{3}}{3\pi^{2}}}
+    \end{align*}
+    接下来计算总能量. 由于 $N$ 充分大, 使得电子的态能遍布整个 $\begin{aligned}
+      \frac{1}{8}
+    \end{aligned}$ 费米球, 于是求和化为积分形式, 即有
+    %%%%
+    $\begin{aligned}
+      E_{\text{tot}} = \sum_{i}^{k\leq k_{F}}\frac{\hbar^{2}k^{2}}{2m}\Rightarrow \int_{0}^{k_{F}}\frac{\hbar^{2}k^{2}}{2m}f(k)\mathrm{d}k
+    \end{aligned}$, 其中 $f(k)$ 是态密度, 表示在同一能量 $\begin{aligned}
+      \frac{\hbar^{2}k^{2}}{2m}
+    \end{aligned}$ 上的电子数目, 所以这就要求我们对电子态密度进行计算. 对于半径为 $k$, 厚度为 $\mathrm{d}k$ 的 $\begin{aligned}
+      \frac{1}{8}
+    \end{aligned}$ 球壳, 在这个球壳上电子的能量都是相同的. 而这个球壳的体积为 $\begin{aligned}
+      \frac{1}{8} (4\pi k^{2}\mathrm{d}k)
+    \end{aligned}$, 又已知每个格点体积为 $\begin{aligned}
+      \frac{\pi^{3}}{V}
+    \end{aligned}$, 因此球壳中电子数目为
+    \begin{align*}
+      \text{格点数}\times 2 = \frac{\frac{1}{8} (4\pi k^{2}\mathrm{d}k)}{\frac{\pi^{3}}{V}}\times 2 = \frac{ k^{2}V}{\pi^{2}}\mathrm{d}k = f(k)\mathrm{d}k
+    \end{align*}
+    因此总能量为
+    \begin{align*}
+      E^{(0)} = \int_{0}^{k_{F}}\frac{\hbar^{2}k^{2}}{2m}\frac{k^{2}V}{\pi^{2}}\mathrm{d}k = \frac{\hbar^{2}V}{2m\pi^{2}}\int_{0}^{k_{F}}k^{4}\mathrm{d}k = \frac{\hbar^{2}V}{2m\pi^{2}}\frac{k_{F}^{5}}{5} = \boxed{\frac{\hbar^{2}Vk_{F}^{5}}{10m\pi^{2}}}
+    \end{align*}
+    反解粒子数密度表达式得到 $k_{F}(n)$, 代入 $E^{(0)}$ 计算总能量密度:
+    \begin{align*}
+      k_{F} &= (3\pi^{2}n)^{\frac{1}{3}}\\
+      \frac{E^{(0)}}{V} &= \frac{\hbar^{2}k_{F}^{5}}{10m\pi^{2}} = \frac{\hbar^{2}}{10m\pi^{2}}\cdot (3\pi^{2}n)^{\frac{5}{3}}=\boxed{\frac{(3n)^{\frac{5}{3}}\hbar^{2}\pi^{\frac{4}{3}}}{10m}}
+    \end{align*}}}
     
     \item \textbf{计算能量的一阶修正 $E^{(1)} = \langle\text{FS}|H_{I}|\text{FS}\rangle$.}
+    
+
     
     \item \textbf{利用 Hatree Fock 平均场近似, 并假设平均场参数是自旋对角的, 并且保持了自旋对称性, 以及平移对称性, 因此我们期待 $\left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}^{\prime}\sigma^{\prime}}\right\rangle = \left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}\sigma}\right\rangle\delta_{\vec{k},\vec{k}^{\prime}}\delta_{\sigma,\sigma^{\prime}}$, 以及 $\left\langle c_{\vec{k}\uparrow}^{\dagger}c_{\vec{k}\uparrow}\right\rangle = \left\langle c_{\vec{k}\downarrow}^{\dagger}c_{\vec{k}\downarrow}\right\rangle$. 计算系统总能量, 并与 $E^{(0)} + E^{(1)}$ 比较大小.}
   \end{enumerate}

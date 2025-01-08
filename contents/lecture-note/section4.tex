@@ -1,0 +1,758 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{全同粒子}
+\subsection{置换对称性}
+
+考虑两粒子体系, 一个粒子用 $|k^{\prime}\rangle$ 描述. 两粒子体系所处的态为 $|k^{\prime}\rangle_{1}\otimes |k^{\prime\prime}\rangle_{2}$ 描述. 若 $k^{\prime}\neq k^{\prime\prime}$, 则 $|k^{\prime}\rangle_{1}\otimes |k^{\prime\prime}\rangle_{2}\neq |k^{\prime\prime}\rangle_{1}\otimes |k^{\prime}\rangle_{2}$. 约定总是以编号顺序直积各态, 便可省去下标与直积符号. 线性组合 $c_{1}|k^{\prime}\rangle|k^{\prime\prime}\rangle + c_{2}|k^{\prime\prime}\rangle|k^{\prime}\rangle$ 会给出等价的本征值.
+
+引入置换算符 $P_{12}$, 作用为 $P_{12}|k^{\prime}\rangle|k^{\prime\prime}\rangle = |k^{\prime\prime}\rangle|k^{\prime}\rangle$, 显然有 $P_{12} = P_{21}$ 与 $P_{12}^{2} = \mathbb{I}$. 所以 $P_{12}$ 本征值为 $\pm 1$. 
+
+写出全同两粒子体系的哈密顿量. 坐标 $x_{i}$ 和动量 $p_{i}$ 等量对于 $i=1,2$ 对称, 如
+\begin{align*}
+  H = \sum_{i}^{2}\frac{\vec{p}_{i}^{2}}{2m} + V_{\text{pair}}(|\vec{x}_{1} - \vec{x}_{2}|) + \sum_{i}^{2}V_{\text{ext}}(\vec{x}_{i})
+\end{align*}
+通过构造 $P_{12}HP_{12} = H$ 证明 $[P_{12},H]=0$. 则 $P_{12}$ 的本征态为 $\begin{aligned}
+  |k^{\prime}k^{\prime\prime}\rangle_{\pm} = \frac{1}{\sqrt{2}}(|k^{\prime}\rangle|k^{\prime\prime}\rangle\pm|k^{\prime\prime}\rangle|k^{\prime}\rangle)
+\end{aligned}$, 即要么完全对称, 要么完全反对称. 推广到 $N$ 个全同粒子, 引入置换算符 $P_{ij}$, 作用是
+\begin{align*}
+  P_{ij}|k^{\prime}\rangle_{1}|k^{\prime\prime}\rangle_{2}\cdots|k^{(i)}\rangle_{i}|k^{(i+1)}\rangle_{i+1}\cdots|k^{(j)}\rangle_{j}\cdots = |k^{\prime}\rangle_{1}|k^{\prime\prime}\rangle_{2}\cdots|k^{(j)}\rangle_{i}|k^{(i+1)}\rangle_{i+1}\cdots|k^{(i)}\rangle_{j}\cdots
+\end{align*}
+完全对称态满足玻色-爱因斯坦统计, 完全反对称态满足费米-狄拉克统计.
+
+\subsection{两电子系统}
+
+电子具有自旋, 因此系统波函数除了空间波函数, 还有旋量. 通过对 $\begin{aligned}
+  \left|\frac{1}{2},\frac{1}{2}\right\rangle\left|\frac{1}{2},\frac{1}{2}\right\rangle = |\uparrow\uparrow\rangle
+\end{aligned}$ 使用 $S^{-} = S^{-}_{(1)} + S^{-}_{(2)}$ 可以得到三重态和单态:
+\begin{align*}
+  \psi(\vec{x}_{1},\vec{x}_{2};s,m)&=\phi(\vec{x}_{1},\vec{x}_{2})|s,m\rangle\\
+  |1,1\rangle &= |\uparrow\uparrow\rangle,\\
+  |1,0\rangle &= \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle),\\
+  |1,-1\rangle &= |\downarrow\downarrow\rangle,\\
+  |0,0\rangle &= \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)
+\end{align*}
+因为空间波函数和旋量直乘, 而费米-狄拉克要求总函数反对称, 若旋量对称, 对应空间波函数反对称, 反之亦然. 观察可知, 三重态对称, 而单态反对称.
+
+\subsection{多电子系统}
+\subsubsection{多电子系统的哈密顿量}
+
+对于大量电子和原子核构成的系统, 其哈密顿量一般为
+\begin{align*}
+  H = &-\sum_{i}\frac{\hbar^{2}}{2m_{e}}\nabla_{i}^{2} + \sum_{i,I}\frac{1}{4\pi\epsilon_0}\frac{Z_{I}e^{2}}{|\vec{r}_{i}-\vec{R}_{I}|} + \frac{1}{2}\sum_{i\neq j}\frac{1}{4\pi\epsilon_0}\frac{e^{2}}{|\vec{r}_{i} - \vec{r}_{j}|}\\
+  &{\color{gray}{- \sum\frac{\hbar^{2}}{2M_{I}}\nabla_{I}^{2} + \frac{1}{2}\sum_{I\neq J}\frac{1}{4\pi\epsilon_0}\frac{Z_{I}Z_{J}e^{2}}{|\vec{R}_{I} - \vec{R}_{J}|}}}
+\end{align*}
+电子使用小写, 原子核使用大写. 采用波恩-奥本海默近似/绝热近似, 即因原子核质量远大于电子质量, 而近似忽略原子核的动能项, 且视原子核相对静止, 从而认为原子核之间的互能为常数. 采用 Hartree 原子单位制, 多电子哈密顿量可简化为
+\begin{align*}
+  H &= T + V_{ne} + V_{ee}\\
+    &= \sum_{i}\left(-\frac{1}{2}\nabla_{i}^{2}\right) + \sum_{i}v\left(\vec{r}_{i}\right) + \sum_{i < j}\frac{1}{r_{ij}} \\
+    v\left(\vec{r}_{i}\right) &= -\sum_{I}\frac{Z_{I}}{r_{iI}}
+\end{align*}
+\subsubsection{变分原理}
+\begin{align*}
+  \psi &= \sum_{i}c_{i}\psi_{i},\\
+  E &= \frac{\begin{aligned}
+    \sum_{i}||c_{i}||^{2}E_{i}
+  \end{aligned}}{\begin{aligned}
+    \sum_{i}||c_{i}||^{2}
+  \end{aligned}}\geq \frac{\begin{aligned}
+    \sum_{i}||c_{i}||^{2}E_{0}
+  \end{aligned}}{\begin{aligned}
+    \sum_{i}||c_{i}||^{2}
+  \end{aligned}} = E_{0}, \quad E = E_{0}\iff \psi = \psi_{0}\\
+  \delta\big[\langle\psi|H|\psi\rangle - E(\langle\psi|\psi\rangle-1)\big] &= 0,\quad \delta(\langle\psi|): \langle\delta\psi|H-E|\psi\rangle = 0
+\end{align*}
+\subsubsection{Hatree-Fock 近似}
+设系统波函数可由 Slater 行列式近似, 即 $\begin{aligned}
+  \Psi = \frac{1}{\sqrt{N!}}\text{det}[\psi_{q(1)}\psi_{q(2)}\cdots\psi_{q(N)}]
+\end{aligned}$, $\psi_{q}(\vec{x})$ 表示单个电子的波函数(空间直乘自旋), $q$ 标记所有量子数. Hartree-Fock 近似认为, 使得 $E$ 最小化的波函数仍然维持行列式形式, 只是需要通过变分法确定各量子数 $q$. 通过这样的方法求得的 $E_{0}$ 被标记为
+\begin{align*}
+  E_{\text{HF}} &= \langle\Psi_{\text{HF}}|H|\Psi_{\text{HF}}\rangle = \sum_{i}H_{i} + \frac{1}{2}\sum_{i,j}(J_{ij} - K_{ij})\\
+  H_{i} &= \int\psi_{i}^{*}(\vec{x})\left[-\frac{1}{2}\nabla^{2}+v(\vec{x})\right]\psi_{i}(\vec{x})\mathrm{d}\vec{x}\\
+  J_{ij} &= \iint
+  \psi_{i}^{*}(\vec{x}_{1})
+  \psi_{j}^{*}(\vec{x}_{2})
+  \frac{1}{r_{12}}
+  \psi_{i}(\vec{x}_{1})
+  \psi_{j}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2},\quad \text{Coulomb integrals}\\
+  K_{ij} &= \iint
+  \psi_{i}^{*}(\vec{x}_{1})
+  \psi_{j}^{*}(\vec{x}_{2})
+  \frac{1}{r_{12}}
+  \psi_{j}(\vec{x}_{1})
+  \psi_{i}(\vec{x}_{2})
+  \mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2},\quad\text{exchange integrals}
+\end{align*}
+
+省去分母是因为 Slater 行列式的系数已经确保波函数可以归一化. 
+
+\begin{align*}
+  &\left\langle \Psi_{\text{HF}}\left|\frac{1}{r_{ij}}\right|\Psi_{\text{HF}}\right\rangle\\
+=& \int\frac{1}{N!}\sum_{PP^{\prime}}\eta_{P}\eta_{P^{\prime}}\bigg(\psi_{P(1)}^{*}(\vec{x}_{1})\cdots\psi_{P(N)}^{*}(\vec{x}_{N})\bigg)\frac{1}{r_{ij}}\bigg(\psi_{P(1)}(\vec{x}_{1})\cdots\psi_{P(N)}(\vec{x}_{N})\bigg)\mathrm{d}\vec{x}^{N}\\
+=& \int\frac{1}{N!}\sum_{PP^{\prime}}\eta_{P}\eta_{P^{\prime}}\prod_{k\neq i,j}\delta_{P(k),P^{\prime}(k)}\psi_{P(i)}^{*}(\vec{x}_{i})\psi_{P(j)}^{*}(\vec{x}_{j})\frac{1}{r_{12}}\psi_{P(i)}(\vec{x}_{i})\psi_{P(j)}(\vec{x}_{j})\mathrm{d}\vec{x}_{i}\mathrm{d}\vec{x}_{j}\\
+=& \int\frac{1}{N!}\sum_{PP^{\prime}}\eta_{P}\eta_{P^{\prime}}\left(\delta_{P^{\prime},P} + \delta_{P^{\prime},PP_{ij}}\right)\psi_{P(i)}^{*}(\vec{x}_{1})\psi_{P(j)}^{*}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{P^{\prime}(i)}\psi_{P^{\prime}(j)}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}\\
+=& \int\frac{1}{N!}\sum_{P}\psi_{P(i)}^{*}(\vec{x}_{1})\psi_{P(j)}^{*}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{P(i)}(\vec{x}_{1})\psi_{P(j)}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2} \\
+&- \int\frac{1}{N!}\sum_{P}\psi_{P(i)}(\vec{x}_{1})^{*}\psi_{P(j)}^{*}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{P(j)}(\vec{x}_{1})\psi_{P(i)}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}\\
+=& \int\frac{1}{N(N-1)}\sum_{i\neq j}\psi_{i}^{*}(\vec{x}_{1})\psi_{j}^{*}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{i}(\vec{x}_{1})\psi_{j}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}\\
+&- \int\frac{1}{N(N-1)}\sum_{i\neq j}\psi_{i}^{*}(\vec{x}_{1})\psi_{j}^{*}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{j}(\vec{x}_{1})\psi_{i}(\vec{x}_{2})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}
+\end{align*}
+
+系数 $\frac{1}{N(N-1)}$ 可以通过对 $i,j$ 求和消去. 对 $E_{\text{HF}}$ 求 $\delta\psi_{i}^{*}$ 变分, 且使用 $\begin{aligned}
+  \int\psi_{i}^{*}(\vec{x})\psi_{j}(\vec{x})\mathrm{d}\vec{x} = \delta_{ij}
+\end{aligned}$ 正交条件, 得到 Hatree-Fock 微分方程:
+
+\begin{align*}
+  \left[-\frac{1}{2}\nabla^{2} + v + \hat{j}-\hat{k}\right]\psi_{i}(\vec{x}) &= \sum_{j}\varepsilon_{ij}\psi_{j}(\vec{x})\\
+  \Rightarrow \int\psi_{i}^{*}(\vec{x})\left[-\frac{1}{2}\nabla^{2} + v + \hat{j}-\hat{k}\right]\psi_{i}(\vec{x})\mathrm{d}\vec{x} &= \int\psi_{i}^{*}(\vec{x})\sum_{j}\varepsilon_{ij}\psi_{j}(\vec{x})\mathrm{d}\vec{x} = \varepsilon_{ii}\equiv \varepsilon_{i}\\
+  \hat{j}(\vec{x}_{1})f(\vec{x}_{1}) &= \sum_{k = 1}^{N}\int\psi_{k}^{*}(\vec{x}_{2})\psi_{k}(\vec{x}_{2})\frac{1}{r_{12}}f(\vec{x}_{1})\mathrm{d}\vec{x}_{2}\\
+  \hat{k}(\vec{x}_{1})f(\vec{x}_{1}) &= \sum_{k = 1}^{N}\int\psi_{k}^{*}(\vec{x}_{2})f(\vec{x}_{2})\frac{1}{r_{12}}\psi_{k}(\vec{x}_{1})\mathrm{d}\vec{x}_{2}
+\end{align*}
+
+将轨道能量 $\varepsilon_{i}$ 对 $i$ 求和, 与 $E_{\text{HF}}$ 比较可知
+
+\begin{align*}
+  E_{\text{HF}} &= \sum_{i=1}^{N}\varepsilon_{i} - V_{ee}\\
+  V_{ee} &= \int\Psi_{\text{HF}}^{*}(\vec{x}^{N})\left(\sum_{i < j}\frac{1}{r_{ij}}\right)\Psi_{\text{HF}}(\vec{x}^{N})\mathrm{d}\vec{x}^{N} = \frac{1}{2}\sum_{i,j=1}^{N}(J_{ij}-K_{ij})
+\end{align*}
+\subsubsection{均匀电子气}
+无相互作用的电子气哈密顿量为 $\begin{aligned}
+  H_{0} = \sum_{i}\left(-\frac{1}{2}\nabla_{i}^{2}\right)
+\end{aligned}$, 因为 $[p_{i},H_{0}] = [p_{i},p_{j}] = 0$, 所以具有共同本征态. 动量本征态在 $\vec{x}$ 表象下是平面波 $\begin{aligned}
+  \psi_{\vec{k}}(\vec{r}) = \frac{1}{\sqrt{V}}e^{i\vec{k}\cdot\vec{r}}
+\end{aligned}$, 使用 Slater 行列式将 $N$ 电子气体波函数写为 $\begin{aligned}
+  \Psi_{0} = \frac{1}{\sqrt{N!}}\text{det}[\psi_{\vec{k}_{j},s_{j}}(\vec{x}_{i})]
+\end{aligned}$, 其中 $\psi_{\vec{k},s} = \psi_{\vec{k}}\chi(s)$. 系统能量为 $\begin{aligned}
+  E = \sum_{i}\frac{|k_{i}|^{2}}{2}
+\end{aligned}$. 求解能量和粒子数密度可参见 \ref{final-2022-5}, 此处略过.
+
+接下来考虑加入电子相互作用的修正. 首先是 Coulomb 能:
+\begin{align*}
+  E_{\text{Coulomb}} &= \frac{1}{2}\sum_{i,j}\iint
+  \psi_{\vec{k}_{i}}^{*}(\vec{x}_{1})\psi_{\vec{k}_{j}}^{*}(\vec{x}_{2})
+  \frac{1}{r_{12}}
+  \psi_{\vec{k}_{i}}(\vec{x}_{1})\psi_{\vec{k}_{j}}(\vec{x}_{2})
+  \mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}
+\end{align*}
+
+这部分积分会产生发散. 一般是通过引入正电荷背景以进行抵消. 而 eXchange 能对于修正更具有意义, 它是
+
+\begin{align*}
+  E_{\text{eXchange}} = -\frac{1}{2}\sum_{i,j}\iint
+  \psi_{\vec{k}_{i}}^{*}(\vec{x}_{1})\psi_{\vec{k}_{j}}^{*}(\vec{x}_{2})
+  \frac{\delta_{s_{i},s_{j}}}{r_{12}}
+  \psi_{\vec{k}_{j}}(\vec{x}_{1})\psi_{\vec{k}_{i}}(\vec{x}_{2})
+  \mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}
+\end{align*}
+
+为了便于计算, 将势能写作动量空间的形式. 由于傅里叶变化形式众说纷纭, 所以约定
+
+\begin{align*}\left\{\begin{aligned}
+  F(\vec{k}) &= \int f(\vec{x})e^{-i\vec{k}\cdot\vec{x}}\mathrm{d}\vec{x}\\
+  f(\vec{x}) &= \left(\frac{1}{2\pi}\right)^{3}\int F(\vec{k})e^{i\vec{k}\cdot \vec{x}}\mathrm{d}\vec{q}
+\end{aligned}
+  \right.
+\end{align*}
+
+于是汤川势有
+
+\begin{align*}
+  \mathcal{F}\left[\frac{e^{-ar}}{r}\right] &= \int\frac{e^{-ar}}{r} e^{-i\vec{q}\cdot\vec{r}}\mathrm{d}\vec{r} = \frac{4\pi}{q^{2} + a^{2}}
+\end{align*}
+
+库伦势是汤川势 $a=0$ 的特例: $\begin{aligned}
+  \int\frac{1}{r}e^{-i\vec{q}\cdot\vec{r}}\mathrm{d}\vec{r} = \frac{4\pi}{q^{2}}
+\end{aligned}$, 所以其逆变换为
+
+\begin{align*}
+  \frac{1}{r_{12}} = \left(\frac{1}{2\pi}\right)^{3}\int\frac{4\pi}{q^{2}}e^{i\vec{q}\cdot(\vec{x}_{1}-\vec{x}_{2})}\mathrm{d}\vec{q}
+\end{align*}
+
+将其代入于 $E_{\text{eXchange}}$ 中, 且使用普朗克尔定理 $\begin{aligned}
+  \int\mathrm{d}^{3}\vec{x}e^{i\vec{k}\cdot\vec{x}} = (2\pi)^{3}\delta^{(3)}(\vec{k},\vec{0})
+\end{aligned}$:
+
+\begin{align*}
+  E_{\text{eXchange}} 
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\iint
+  \frac{1}{\sqrt{V}}e^{-i\vec{k}_{i}\cdot\vec{x}_{1}}
+  \frac{1}{\sqrt{V}}e^{-i\vec{k}_{j}\cdot\vec{x}_{2}}
+  \left[
+    \left(\frac{1}{2\pi}\right)^{3}\frac{4\pi}{q^{2}}e^{i\vec{q}\cdot(\vec{x}_{1}-\vec{x}_{2})}\mathrm{d}\vec{q}
+    \right]
+  \frac{1}{\sqrt{V}}e^{ i\vec{k}_{j}\cdot\vec{x}_{1}}
+  \frac{1}{\sqrt{V}}e^{ i\vec{k}_{i}\cdot\vec{x}_{2}}
+  \mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}\\
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\int\left[
+    \frac{1}{V^{2}}
+    \left(\int
+      e^{-i\vec{k}_{i}\cdot\vec{x}_{1}}
+      e^{i\vec{q}\cdot\vec{x}_{1}}
+      e^{i\vec{k}_{j}\cdot\vec{x}_{1}}
+    \mathrm{d}\vec{x}_{1}\right)
+    \left(\int
+      e^{-i\vec{k}_{j}\cdot\vec{x}_{2}}
+      e^{-i\vec{q}\cdot\vec{x}_{2}}
+      e^{i\vec{k}_{i}\cdot\vec{x}_{2}}
+    \mathrm{d}\vec{x}_{2}\right)
+  \right]\frac{4\pi}{q^{2}}\frac{\mathrm{d}\vec{q}}{(2\pi)^{3}}\\
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\int\left[
+    \frac{1}{V^{2}}
+    \left(\iint
+      e^{ i(\vec{k}_{i} - \vec{k}_{j})\cdot(\vec{x}_{1}-\vec{x}_{2})}
+      e^{-i\vec{q}\cdot(\vec{x}_{1}-\vec{x}_{2})}
+      \mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}
+    \right)
+  \right]\frac{4\pi}{q^{2}}\frac{\mathrm{d}\vec{q}}{(2\pi)^{3}}\\
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\int\left[
+    \frac{1}{V^{2}}
+    \left(\iint
+      e^{ i(\vec{k}_{i} - \vec{k}_{j})\cdot\vec{r}}
+      e^{-i\vec{q}\cdot\vec{r}}
+     \mathrm{d}\vec{r}\mathrm{d}\vec{x}_{1}
+    \right)
+  \right]\frac{4\pi}{q^{2}}\frac{\mathrm{d}\vec{q}}{(2\pi)^{3}}\\
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\int\left[
+  \frac{1}{V^{2}}
+    (2\pi)^{(3)}\delta^{(3)}(\vec{k}_{i}-\vec{k}_{j},\vec{q})\cdot V
+  \right]\frac{4\pi}{q^{2}}\frac{\mathrm{d}\vec{q}}{(2\pi)^{3}}\\
+  &= -\frac{\delta_{s_{i},s_{j}}}{2}\sum_{i,j}\left[
+    \frac{1}{V}
+    \right]\frac{4\pi}{|\vec{k}_{i}-k_{j}|^{2}}\\
+    &= -\frac{1}{2V}\sum_{i,j}\frac{4\pi\delta_{s_{i},s_{j}}}{|\vec{k}_{i}-\vec{k}_{j}|^{2}}
+\end{align*}
+
+每个波矢 $\vec{k}$ 可提供两个自旋态, 所以将其移出 $\vec{k}_{i}$, 从而只对波矢求和:
+
+\begin{align*}
+  E_{\text{eXchange}} &= -\frac{1}{V}\sum_{\vec{k}_{m},\vec{k}_{n}}\frac{4\pi}{|\vec{k}_{m}-\vec{k}_{n}|^{2}}\\
+  &= -4\pi\sum_{\vec{k}_{m}}\int_{k_{n}\leq k_{F}}\frac{\mathrm{d}\vec{k}_{n}}{(2\pi)^{3}}\frac{1}{|\vec{k}_{m}-\vec{k}_{n}|^{2}}\\
+  &= -4\pi\sum_{\vec{k}_{m}}\frac{k_{F}\begin{aligned}
+    F\left(\frac{k_{m}}{k_{F}}\right)
+  \end{aligned}}{2\pi^{2}}
+\end{align*}
+
+其中 $\begin{aligned}
+  F(x) = \frac{1}{2} + \frac{1 - x^{2}}{4x}\ln{\left|\frac{1 + x}{1 - x}\right|}
+\end{aligned}$. 进一步使用技巧 $\begin{aligned}
+  \sum_{\vec{k}_{m}} = \frac{V}{(2\pi)^{3}}\int\mathrm{d}\vec{k}_{m}
+\end{aligned}$, 且使用结论 $\begin{aligned}
+  k_{F} = \left(3\pi^{2}n\right)^{1/3}
+\end{aligned}$, 即有
+
+\begin{align*}
+  E_{\text{eXchange}} = \boxed{-\frac{k_{F}^{4}V}{4\pi^{3}}} = -\frac{3}{4}\left(\frac{3}{\pi}\right)^{\begin{aligned}
+    \frac{1}{3}
+  \end{aligned}}n^{\frac{4}{3}}V
+\end{align*}
+ 
+\subsection{二次量子化}
+\subsubsection{一次量子化和二次量子化}
+
+\begin{align*}
+  E = \frac{p^{2}}{2m} + V(\vec{x},t) \Rightarrow \hat{H} = \frac{1}{2m}\hat{p}^{2} + \hat{V} \Rightarrow \hat{H} = \sum_{i,j}\hat{a}_{i}^{\dagger}\hat{a}_{j}
+\end{align*}
+
+一次量子化引入算符和波函数, 二次量子化引入场算符. 
+\paragraph{一次量子化态}
+
+一般性地, 设单粒子的 Hilbert 空间维度为 $D$, 且基矢为 $\left\{|\psi\rangle\right\},\psi = \psi_{1},\psi_{2},\cdots \psi_{D}$. 那么 $N$ 粒子体系的 Hilbert 空间维度将是 $D^{N}$, 基矢为各粒子基矢的直积 $|[\psi]\rangle = |\psi\rangle_{(1)}\otimes |\psi\rangle_{(2)}\otimes\cdots\otimes|\psi\rangle_{(N)}$, $|\psi\rangle_{(j)} = |\psi_{1}\rangle,|\psi_{2}\rangle,\cdots,|\psi_{D}\rangle$
+
+\begin{enumerate}
+  \item 一次量子化中的一般态: $\begin{aligned}
+    |\Psi\rangle = \sum_{[\psi]}C[\psi]|[\psi]\rangle
+  \end{aligned}$, $C[\psi]$ 是多体波函数的系数. 
+  \item 全同玻色子: $\begin{aligned}
+    \mathcal{S}|[\psi] = \sum_{P\in S_{N}}\prod_{i=1}^{N}|\psi\rangle_{{P(i)}}
+  \end{aligned}$
+  \item 全同费米子: $\begin{aligned}
+    \mathcal{A}|[\psi]\rangle = \sum_{P\in S_{N}}\eta_{P}\prod_{i=1}^{N}|\psi\rangle_{P(i)}
+  \end{aligned}$
+\end{enumerate}
+
+通过组合数计算可知, 全同玻色/费米子在总 Hilbert 空间中占据极少, 所以使用一次量子化的表述总是不方便的. 而二次量子化使用的 Fock 空间将自动考虑粒子全同性, 即在 Fock 空间中任意态都是满足粒子全同性的.
+
+\paragraph{二次量子化态}
+
+二次量子化的观点是占据数表象, 即定义单个粒子态 $|\psi_{\alpha}\rangle$ 占据数为 $n_{\alpha}$, 那么 $N$ 粒子态波函数可以写为 Fock 态: $\begin{aligned}
+  |[n]\rangle = |n_{1},n_{2},\cdots,n_{\alpha},\cdots,n_{D}\rangle
+\end{aligned}$. 玻色子可以有任意多个粒子占据同一态, 即 $n_{\alpha}\in\mathbb{N}$; 费米子至多有一个, 即 $n_{\alpha}=0,1$. 由于粒子数守恒, 有 $\begin{aligned}
+  \sum_{\alpha}n_{\alpha} = N
+\end{aligned}$. 使用上述定义的 Fock 态作为基矢, 张成的空间即为 Fock 空间. 如果使用 $\mathcal{F}$ 表示 Fock 空间, 那么 \begin{align*}
+  \mathcal{F} &= \mathcal{F}^{0}\oplus \mathcal{F}^{1}\oplus\mathcal{F}^{2}\oplus\cdots\\
+  \mathcal{F}^{N_{j}} &= \text{span}\left\{\big|n_{1},n_{2},\cdots,n_{D}\big\rangle|\sum_{i=1}^{D}n_{i} = N_{j}\right\}
+\end{align*}
+二次量子化下的多体态函数是 Fock 态的线性组合 $\begin{aligned}
+  |\Psi\rangle = \sum_{[n]}C[n]|[n]\rangle
+\end{aligned}$, 每个 Fock 态都有其一次量子化表示.
+
+\paragraph{Fock 态的表示}
+引入下标 $B$ 表示玻色统计, $F$ 表示费米统计. 占据数均为 $0$ ($n_{i}=0,\forall i$) 的 Fock 态被称为真空态 $|0\rangle = |\cdots,0\cdots\rangle$, 所以 $|0\rangle_{B}=|0\rangle_{F}$. 仅有一个占据数 $n_{\psi}\neq 0$ 的 Fock 态被称为单模(single-mode) Fock 态. 
+\begin{align*}
+  |n_{\psi}\rangle &= |\cdots,0,n_{\psi},0,\cdots\rangle\\
+  |1_{\psi}\rangle_{B} &= |1_{\psi}\rangle_{F} = |\psi\rangle\\
+  |n_{\psi}\rangle_{B} &= \prod_{i=1}^{n_{\psi}}|\psi\rangle\equiv |\psi\rangle^{\otimes n_{\psi}}
+\end{align*}
+
+对于多模(multi-mode) Fock 态, 则涉及多个粒子态(比如 $|\psi_{i}\rangle$, $|\psi_{j}\rangle$). 在一次量子化中已经学习过如何根据交换对称/反对称构造其波函数:
+
+\begin{align*}
+  |1_{\psi_{i}},1_{\psi_{j}}\rangle_{B} &= \frac{1}{\sqrt{2}}(|\psi_{i}\rangle\otimes|\psi_{j}\rangle + |\psi_{j}\rangle\otimes|\psi_{i}\rangle)\\
+  |1_{\psi_{i}},1_{\psi_{j}}\rangle_{F} &= \frac{1}{\sqrt{2}}(|\psi_{i}\rangle\otimes|\psi_{j}\rangle - |\psi_{j}\rangle\otimes|\psi_{i}\rangle)\\
+  |2_{\psi_{i}},1_{\psi_{j}}\rangle_{B} &= \frac{1}{\sqrt{3}}(|\psi_{i}\rangle\otimes|\psi_{i}\rangle\otimes|\psi_{j}\rangle + |\psi_{i}\rangle\otimes|\psi_{j}\rangle\otimes|\psi_{i}\rangle + |\psi_{j}\rangle\otimes|\psi_{i}\rangle\otimes|\psi_{i}\rangle)\\
+  |1_{\psi_{i}},1_{\psi_{j}},1_{\psi_{k}}\rangle &= \frac{1}{\sqrt{6}}(
+    |\psi_{i}\rangle\otimes|\psi_{j}\rangle\otimes|\psi_{k}\rangle + |\psi_{j}\rangle\otimes |\psi_{k}\rangle\otimes |\psi_{i}\rangle + |\psi_{k}\rangle \otimes |\psi_{i}\rangle \otimes |\psi_{j}\rangle\\
+  & - |\psi_{k}\rangle\otimes |\psi_{j}\rangle\otimes |\psi_{i}\rangle - |\psi_{j}\rangle\otimes |\psi_{i}\rangle\otimes |\psi_{k}\rangle - |\psi_{i}\rangle\otimes |\psi_{k}\rangle\otimes |\psi_{j}\rangle)
+\end{align*}
+
+\begin{enumerate}
+  \item 玻色子:
+  \begin{align*}
+    |[n]\rangle_{B} = \left(
+      \frac{1}{N!\begin{aligned}\prod_{\psi}n_{\psi}!
+    \end{aligned}}
+    \right)^{\frac{1}{2}}
+    \mathcal{S}\underset{\psi}{\otimes}|\psi\rangle^{\otimes n_{\psi}}
+  \end{align*}
+  \item 费米子:
+  \begin{align*}
+    |[n]\rangle_{F} = \left(\frac{1}{N!}\right)^{\frac{1}{2}} \mathcal{A}\underset{\psi}{\otimes}|\psi\rangle^{\otimes n_{\psi}}
+  \end{align*}
+\end{enumerate}
+
+\subsection{产生湮灭算符}
+\subsection{态的产生和湮灭}
+下面介绍如何引入产生/湮灭算符, 即在量子多体系统中产生/湮灭一个粒子. 准备单粒子态 $|\psi_{i}\rangle$, $|\psi_{j}\rangle$; 单位张量 $|0\rangle = \mathbb{I}$, 一次量子化的态函数 $|\Psi\rangle$, $|\Phi\rangle$. 定义添加(Add)算符 $\hat{A}_{\pm}$ 和删除(Delete)算符 $\hat{D}_{\pm}$, 下标 $\pm$ 表示添加/删除后的态需要对称化/反对称化. 比如, $|\psi_{i}\rangle\hat{A}_{+}|\Psi\rangle$ 表示在已有的态函数 $|\Psi\rangle$ 中添加一个粒子且该粒子态为 $|\psi_{i}\rangle$, 且要求增加后的态函数对称化. 可以总结出 $\hat{A}_{\pm}$ 和 $\hat{D}_{\pm}$ 将具有
+\begin{enumerate}
+  \item 线性性:$\begin{aligned}\left\{\begin{aligned}
+    |\psi_{i}\rangle\hat{A}_{\pm}(a|\Psi\rangle + b|\Phi\rangle) &= a|\psi_{i}\rangle\hat{A}_{\pm}|\Psi\rangle + b|\psi_{i}\rangle\hat{A}_{\pm}|\Phi\rangle\\
+    |\psi_{i}\rangle\hat{D}_{\pm}(a|\Psi\rangle + b|\Phi\rangle) &= a|\psi_{i}\rangle\hat{D}_{\pm}|\Psi\rangle + b|\psi_{i}\rangle\hat{D}_{\pm}|\Phi\rangle
+  \end{aligned}\right.
+  \end{aligned}$
+  \item 真空态: $\begin{aligned}
+    |\psi_{i}\rangle\hat{A}_{\pm}|0\rangle = |\psi_{i}\rangle, \quad |\psi_{i}\rangle\hat{D}_{\pm}|0\rangle = 0
+  \end{aligned}$
+  \item 直积展开: $\begin{aligned}\left\{\begin{aligned}
+    |\psi_{i}\rangle\hat{A}_{\pm}|\psi_{j}\rangle\otimes|\Psi\rangle &= |\psi_{i}\rangle\otimes|\psi_{j}\rangle\otimes|\Psi\rangle\pm |\psi_{j}\rangle\otimes (|\psi_{i}\rangle\hat{A}_{\pm}|\Psi\rangle) \\
+    |\psi_{i}\rangle\hat{D}_{\pm}|\psi_{j}\rangle\otimes|\Psi\rangle &= \langle\psi_{i}|\psi_{j}\rangle|\Psi\rangle\pm |\psi_{j}\rangle\otimes (|\psi_{i}\rangle\hat{D}_{\pm}|\Psi\rangle)
+  \end{aligned}\right.
+  \end{aligned}$
+\end{enumerate}
+\subsection{玻色子的产生湮灭算符}
+\begin{enumerate}
+  \item 玻色产生算符 $b_{\alpha}^{\dagger}$, 即在 $|\alpha\rangle$ 上添加一个玻色子, 占据数 $n_{\alpha}\rightarrow n_{\alpha} + 1$. 因为在 $N+1$ 个位置对称添加 $|\alpha\rangle$, 所以有
+  \begin{align*}
+    b_{\alpha}^{\dagger}|\Psi\rangle = \frac{1}{\sqrt{N+1}}|\alpha\rangle\hat{A}_{+}|\Psi\rangle
+  \end{align*}
+  \item 玻色湮灭算符 $b_{\alpha}$, 即在 $|\alpha\rangle$ 上移除一个玻色子, 占据数 $n_{\alpha}\rightarrow n_{\alpha} - 1$. 因为在 $N$ 个位置对称移除 $|\alpha\rangle$, 所以有
+  \begin{align*}
+    b_{\alpha}|\Psi\rangle = \frac{1}{\sqrt{N}}|\alpha\rangle\hat{D}_{-}|\Psi\rangle
+  \end{align*}
+\end{enumerate}
+玻色产生湮灭算符对 Fock 态的作用:
+\begin{enumerate}
+  \item 单模 Fock 态:
+  \begin{align*}
+    b_{\alpha}^{\dagger}|n_{\alpha}\rangle 
+    &= \frac{1}{\sqrt{n_{\alpha} + 1}}|\alpha\rangle\hat{A}_{+}|\alpha\rangle\otimes^{n_{\alpha}} 
+    = \frac{n_{\alpha} + 1}{\sqrt{n_{\alpha} + 1}}|\alpha\rangle\otimes^{(n_{\alpha} + 1)} 
+    = \sqrt{n_{\alpha} + 1}|n_{\alpha} + 1\rangle\\
+    b_{\alpha}|n_{\alpha}\rangle 
+    &= \frac{1}{\sqrt{n_{\alpha}}}|\alpha\rangle\hat{D}_{+}|\alpha\rangle\otimes^{n_{\alpha}} = \frac{n_{\alpha}}{\sqrt{n_{\alpha}}}|\alpha\rangle\otimes^{(n_{\alpha}-1)} = \sqrt{n_{\alpha}}|n_{\alpha}-1\rangle
+  \end{align*}
+  对于真空态即有 $b_{\alpha}^{\dagger}|0_{\alpha}\rangle = |1_{\alpha}\rangle$, $b_{\alpha}|0_{\alpha}\rangle = 0$. 
+  观察到玻色子的粒子数算符 $b_{\alpha}^{\dagger}b_{\alpha}|\alpha\rangle = n_{\alpha}|n_{\alpha}\rangle$
+  
+  单模 Fock 态可以用产生算符 $b_{\alpha}^{\dagger}$ 作用于真空态得到: $\begin{aligned}
+    |n_{\alpha}\rangle = \frac{1}{\sqrt{n_{\alpha}!}}\left(b_{\alpha}^{\dagger}\right)^{n_{\alpha}}|0_{\alpha}\rangle
+  \end{aligned}$
+  \item 一般 Fock 态: 
+  \begin{align*}
+    b_{\alpha}^{\dagger}|\cdots,n_{\beta},n_{\alpha},n_{\gamma},\cdots\rangle_{B} &= \sqrt{n_{\alpha} + 1}|\cdots,n_{\beta},n_{\alpha}+1,n_{\gamma},\cdots\rangle_{B}\\
+    b_{\alpha}|\cdots,n_{\beta},n_{\alpha},n_{\gamma},\cdots\rangle_{B} &= \sqrt{n_{\alpha}}|\cdots,n_{\beta},n_{\alpha}-1,n_{\gamma},\cdots\rangle_{B}
+  \end{align*}
+  上述定义可求得对易关系 $\left[b_{\alpha}^{\dagger},b_{\beta}^{\dagger}\right] = \left[b_{\alpha},b_{\beta}\right] = 0$, $\left[b_{\alpha},b_{\beta}^{\dagger}\right] = \delta_{\alpha\beta}$. 
+\end{enumerate}
+\subsection{费米子的产生湮灭算符}
+\begin{enumerate}
+  \item 费米产生算符 $c_{\alpha}^{\dagger}$, 在单粒子态 $|\alpha\rangle$ 上添加一个费米子, 占据数 $n_{\alpha}\rightarrow n_{\alpha} + 1$(因此 $n_{\alpha}=0$). 因为在 $N+1$ 个位置反对称添加 $|\alpha\rangle$, 所以有
+  \begin{align*}
+    c_{\alpha}^{\dagger}|\Psi\rangle = \frac{1}{\sqrt{N+1}}|\alpha\rangle\hat{A}_{-}|\Psi\rangle
+  \end{align*}
+  \item 费米湮灭算符 $c_{\alpha}$, 在单粒子态 $|\alpha\rangle$ 上移除一个费米子, 占据数 $n_{\alpha}\rightarrow n_{\alpha} - 1$(因此 $n_{\alpha}=1$). 因为在 $N$ 个位置反对称移除 $|\alpha\rangle$, 所以有
+  \begin{align*}
+    c_{\alpha}|\Psi\rangle = \frac{1}{\sqrt{N}}|\alpha\rangle\hat{D}_{-}|\Psi\rangle
+  \end{align*}
+\end{enumerate}
+玻色产生湮灭算符对 Fock 态的作用:
+\begin{enumerate}
+  \item 单模 Fock 态:
+  \begin{align*}
+    c_{\alpha}^{\dagger}|0_{\alpha}\rangle &= |\alpha\rangle\hat{A}_{-}\mathbb{I} = |\alpha\rangle = |1_{\alpha}\rangle\\
+    c_{\alpha}^{\dagger}|1_{\alpha}\rangle &= \frac{1}{\sqrt{2}}|\alpha\rangle\hat{A}_{-}|\alpha\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle\otimes|\alpha\rangle - |\alpha\rangle\otimes|\alpha\rangle) = 0\\
+    c_{\alpha}|0_{\alpha}\rangle & = 0\\
+    c_{\alpha}|1_{\alpha}\rangle &= |\alpha\rangle\hat{D}_{-}|\alpha\rangle = |0_{\alpha}\rangle
+  \end{align*}
+  总结为 $\begin{aligned}
+    c_{\alpha}^{\dagger}|n_{\alpha}\rangle = \sqrt{1-n_{\alpha}}|1-n_{\alpha}\rangle,\quad c_{\alpha}|n_{\alpha}\rangle = \sqrt{n_{\alpha}}|1 - n_{\alpha}\rangle
+  \end{aligned}$. 观察到费米子的粒子数算符 $c_{\alpha}^{\dagger}c_{\alpha}|n_{\alpha}\rangle = n_{\alpha}|n_{\alpha}\rangle$.
+
+  单模 Fock 态可以用产生算符 $c_{\alpha}^{\dagger}$ 作用于真空态得到: $\begin{aligned}
+    |n_{\alpha}\rangle = \left(c_{\alpha}^{\dagger}\right)^{n_{\alpha}}|0_{\alpha}\rangle
+  \end{aligned}$
+  \item 一般 Fock 态:
+  \begin{align*}
+    c_{\alpha}^{\dagger} |\cdots,n_{\beta},n_{\alpha},n_{\gamma},\cdots\rangle_{F} &= (-)^{\begin{aligned}
+      \sum_{\beta<\alpha}n_{\beta}
+    \end{aligned}}\sqrt{1-n_{\alpha}}|\cdots,n_{\beta},1-n_{\alpha},n_{\gamma},\cdots\rangle_{F}\\
+    c_{\alpha}|\cdots,n_{\beta},n_{\alpha},n_{\gamma},\cdots\rangle_{F} &= (-)^{\begin{aligned}
+      \sum_{\beta<\alpha}n_{\beta}
+    \end{aligned}}\sqrt{n_{\alpha}}|\cdots,n_{\beta},1-n_{\alpha},n_{\gamma},\cdots\rangle_{F}
+  \end{align*}
+  上述定义可求得反对易关系 $\left\{c_{\alpha}^{\dagger},c_{\beta}^{\dagger}\right\} = \left\{c_{\alpha},c_{\beta}\right\} = 0$, $\left\{c_{\alpha},c_{\beta}^{\dagger}\right\}=\delta_{\alpha\beta}$
+\end{enumerate}
+
+可以看出玻色子和费米子的(反)对易关系非常相似, 引入 $[a,b]_{-\zeta} = ab-\zeta ba$ 统一 $[a,b]$ 和 $\{a,b\}$:
+\begin{align*}
+  \left[a_{\alpha}^{\dagger},a_{\beta}^{\dagger}\right]_{-\zeta} = \left[a_{\alpha},a_{\beta}\right]_{-\zeta} = 0,\quad \left[a_{\alpha},a_{\beta}^{\dagger}\right]_{-\zeta} = \delta_{\alpha\beta},\quad\zeta = \left\{\begin{aligned}
+    1,\quad &\text{Boson}\\
+    -1,\quad &\text{Fermion}
+  \end{aligned}\right.
+\end{align*}
+\subsection{产生湮灭算符的表象变换规律}
+
+已知单位算符 $\begin{aligned}
+  \mathbb{I} = \sum_{\alpha}|\alpha\rangle\langle\alpha|
+\end{aligned}$, 基矢变换 $\begin{aligned}
+  |\widetilde{\alpha}\rangle = \sum_{\alpha}|\alpha\rangle\langle\alpha|\widetilde{\alpha}\rangle
+\end{aligned}$, 真空态涨落 $\begin{aligned}
+  |\alpha\rangle = a_{\alpha}^{\dagger}|0\rangle,\quad|\widetilde{\alpha}\rangle = a_{\widetilde{\alpha}}^{\dagger}|0\rangle
+\end{aligned}$, 得到产生湮灭算符的基矢变换规律
+\begin{align*}
+  a_{\widetilde{\alpha}}^{\dagger} = \sum_{\alpha}\langle\alpha|\widetilde{\alpha}\rangle a_{\alpha}^{\dagger},\quad a_{\widetilde{\alpha}} = \sum_{\alpha}\langle \widetilde{\alpha}|\alpha\rangle a_{\alpha}
+\end{align*}
+这对玻色子和费米子都成立. 比如计算坐标表象 $|x\rangle$ 下的产生湮灭算符, 此时它被称为场算符:
+\begin{align*}
+  \psi^{\dagger}(x) &= \sum_{\alpha}\langle\alpha | x\rangle a_{\alpha}^{\dagger} = \sum_{\alpha}\phi^{*}_{\alpha}(x)a_{\alpha}^{\dagger}\\
+  \psi(x) &= \sum_{\alpha}\langle x|\alpha\rangle a_{\alpha} = \sum_{\alpha}\phi_{\alpha}(x)a_{\alpha}
+\end{align*}
+存在逆变换
+\begin{align*}
+  a_{\alpha}^{\dagger} &= \int\langle x|\alpha\rangle\psi^{\dagger}(x)\mathrm{d}x = \int\phi_{\alpha}(x)\psi^{\dagger}(x)\mathrm{d}x,\\
+  a_{\alpha} &= \int \langle\alpha|x\rangle\psi(x)\mathrm{d}x = \int\phi^{*}_{\alpha}(x)\psi(x)\mathrm{d}x
+\end{align*}
+场算符的对易关系为
+\begin{align*}
+  \left[\psi^{\dagger}(x),\psi^{\dagger}(y)\right]_{-\zeta} = \left[\psi(x),\psi(y)\right]_{-\zeta} = 0,\quad \left[\psi(x),\psi^{\dagger}(y)\right]_{-\zeta} = \delta(x-y)
+\end{align*}
+如果考虑 $\alpha$ 为动量表象, 那么一维长 $L$ 空间有
+\begin{align*}
+  a_{k} = \int_{0}^{L}\mathrm{d}x\langle k|x\rangle\psi(x),\quad \psi(x) = \sum_{k}\langle x|k\rangle a_{k},\quad \langle k|x\rangle = \frac{1}{\sqrt{L}}e^{-ikx}
+\end{align*}
+\subsection{单体算符的表示}
+通过产生湮灭算符可能乘积的线性组合来构造任意算符. 对于 $N$ 粒子体系, 希尔伯特空间 $\mathcal{F}^{N}$ 中的单体算符 $\hat{U}$ 具有形式 $\begin{aligned}
+  \hat{U} = \sum_{i=1}^{N}\hat{U}_{i}
+\end{aligned}$, 比如动能算符 $\begin{aligned}
+  -\frac{1}{2}\nabla_{i}^{2}
+\end{aligned}$ 和势能算符 $\begin{aligned}
+  \hat{v}\left(\vec{x}_{i}\right)
+\end{aligned}$. 
+
+考虑 $\hat{U}$ 表象(即选择其本征矢 $|\lambda\rangle$ 为基矢, 此时 $\hat{U}_{i}$ 将自动对角化为对角矩阵 $\text{Diag}\left\{U_{\lambda}\right\}$), 即 $\begin{aligned}
+  \hat{U} = \sum_{i=1}^{N}\sum_{\lambda}U_{\lambda}|\lambda\rangle_{i}\langle\lambda|_{i}
+\end{aligned}$, 其中 $U_{\lambda} = \langle\lambda|U_{i}|\lambda\rangle$, 在占据数表象下的矩阵元将是
+
+\begin{align*}
+  \langle n_{1}^{\prime},n_{2}^{\prime},\cdots|\hat{U}|n_{1},n_{2},\cdots\rangle &= \sum_{\lambda}U_{\lambda}\langle n_{1}^{\prime},n_{2}^{\prime},\cdots|\left(\sum_{i=1}^{N}|\lambda\rangle\langle\lambda|\right)|n_{1},n_{2},\cdots\rangle\\
+  &= \sum_{\lambda}U_{\lambda}\langle n_{1}^{\prime},n_{2}^{\prime},\cdots|n_{\lambda}|n_{1},n_{2},\cdots\rangle\\
+  &= \langle n_{1}^{\prime},n_{2}^{\prime},\cdots|\sum_{\lambda}U_{\lambda}a_{\lambda}^{\dagger}a_{\lambda}|n_{1},n_{2},\cdots\rangle 
+\end{align*}
+因此 $\begin{aligned}
+  \hat{U} = \sum_{\lambda}U_{\lambda}a_{\lambda}^{\dagger}a_{\lambda} = \sum_{\lambda}\langle\lambda|\hat{U}_{i}|\lambda\rangle a_{\lambda}^{\dagger}a_{\lambda}
+\end{aligned}$. 使用表象变换 $\begin{aligned}
+  a_{\widetilde{\alpha}}^{\dagger} = \sum_{\alpha}\langle\alpha|\widetilde{\alpha}\rangle a_{\alpha}^{\dagger},\quad a_{\widetilde{\alpha}} = \sum_{\alpha}\langle \widetilde{\alpha}|\alpha\rangle a_{\alpha}
+\end{aligned}$:
+
+\begin{align*}
+  \hat{U} &= \sum_{\lambda}U_{\lambda}
+  \left(\sum_{\mu}\langle\mu|\lambda\rangle a_{\mu}^{\dagger}\right)
+  \left(\sum_{\nu}\langle\lambda|\nu\rangle a_{\nu}\right)\\
+  &= \sum_{\mu\nu}\langle \mu|
+  \left(\sum_{\lambda}|\lambda\rangle U_{\lambda}\langle\lambda|\right)
+  |\nu\rangle a_{\mu}^{\dagger}a_{\nu}\\
+  &= \sum_{\mu\nu}\langle\mu|\hat{U}_{i}|\nu\rangle a_{\mu}^{\dagger}a_{\nu}
+\end{align*}
+几个单体算符的例子:
+\begin{enumerate}
+  \item $\vec{x}$ 表象下的粒子数密度: $\begin{aligned}
+    \hat{n}(\vec{x}) = \psi^{\dagger}(\vec{x})\psi(\vec{x})
+  \end{aligned}$
+  \item $\vec{x}$ 和 $\vec{k}$ 表象下的总粒子数: $\begin{aligned}
+    \hat{N} = \int\psi^{\dagger}(\vec{x})\psi(\vec{x})\mathrm{d}\vec{x} = \sum_{\vec{k}}a_{\vec{k}}^{\dagger}a_{\vec{k}}
+  \end{aligned}$
+  \item $\vec{x}$ 和 $\vec{k}$ 表象下的动能算符: $\begin{aligned}
+    \hat{T} = -\frac{1}{2}\int\psi^{\dagger}(\vec{x})\left(-\frac{1}{2}\nabla^{2}\right)\psi(\vec{x})\mathrm{d}\vec{x} = \sum_{\vec{k}}\frac{k^{2}}{2}a_{\vec{k}}^{\dagger}a_{\vec{k}}
+  \end{aligned}$
+  \item $\vec{x}$ 和 $\vec{k}$ 表象下的势能算符: $\begin{aligned}
+    \hat{V} = \int\psi^{\dagger}(\vec{x})v(\vec{x})\psi(\vec{x})\mathrm{d}\vec{x} = \sum_{\vec{k},\vec{q}}v(\vec{q})a_{\vec{k} + \vec{q}}^{\dagger}a_{\vec{k}}
+  \end{aligned}$, 其中 
+  \begin{align*}
+    v(\vec{x}) = \sum_{\vec{q}}v(\vec{q})e^{i\vec{q}\cdot\vec{x}}
+    v(\vec{q}) = \frac{1}{V}\int v(\vec{x})e^{-i\vec{q}\cdot\vec{x}}\mathrm{d}\vec{x}
+  \end{align*}
+\end{enumerate}
+
+\subsection{两体及以上多体算符的表示}
+考虑一般性的两体算符, 在其对角表象下
+\begin{align*}
+  \hat{\mathcal{O}} = \frac{1}{2}\sum_{i\neq j}\hat{\mathcal{O}}_{i,j} = \frac{1}{2}\sum_{i\neq j}\sum_{\alpha,\beta}\mathcal{O}_{\alpha\beta}|\alpha\rangle_{i}|\beta\rangle_{j}\langle\alpha|_{i}\langle\beta|_{j},\quad \mathcal{O}_{\alpha\beta} = \langle\alpha\beta|\hat{\mathcal{O}}_{i,j}|\alpha\beta\rangle
+\end{align*}
+
+那么该两体算符在占据数表象下的矩阵元为
+
+\begin{align*}
+  \langle n_{1}^{\prime}, n_{2}^{\prime},\cdots|\hat{O}|n_{1},n_{2},\cdots\rangle &= \frac{1}{2}\sum_{\alpha,\beta}\mathcal{O}_{\alpha\beta}\langle n_{1}^{\prime}, n_{2}^{\prime},\cdots|\sum_{i\neq j}(|\alpha\rangle_{i}|\beta\rangle_{j}\langle\alpha|_{i}\langle\beta|_{j})|n_{1},n_{2},\cdots\rangle\\
+&= \frac{1}{2}\sum_{\alpha,\beta}\mathcal{O}_{\alpha\beta}\langle n_{1}^{\prime}, n_{2}^{\prime},\cdots|\hat{N}_{\alpha\beta}|n_{1},n_{2},\cdots\rangle\\
+&= \langle n_{1}^{\prime}, n_{2}^{\prime},\cdots|\frac{1}{2}\sum_{\alpha,\beta}\mathcal{O}_{\alpha\beta}\hat{N}_{\alpha\beta}|n_{1},n_{2},\cdots\rangle
+\end{align*}
+
+其中 $\begin{aligned}
+  \sum_{i\neq j}(|\alpha\rangle_{i}|\beta\rangle_{j}\langle\alpha|_{i}\langle\beta|_{j})|n_{1},n_{2},\cdots\rangle &= \hat{N}_{\alpha\beta}|n_{1},n_{2},\cdots\rangle = \left(\hat{n}_{\alpha}\hat{n}_{\beta} - \delta_{\alpha\beta}\hat{n}_{\alpha}\right)|n_{1},n_{2},\cdots\rangle\\
+  &= a_{\alpha}^{\dagger}a_{\beta}^{\dagger}a_{\beta}a_{\alpha}|n_{1},n_{2},\cdots\rangle
+\end{aligned}$
+
+因此
+
+\begin{align*}
+  \hat{\mathcal{O}} = \frac{1}{2}\sum_{\alpha\beta}\mathcal{O}_{\alpha\beta}\hat{P}_{\alpha\beta} = \frac{1}{2}\sum_{\alpha\beta}\langle\alpha\beta|\mathcal{O}_{ij}|\alpha\beta\rangle a_{\alpha}^{\dagger}a_{\beta}^{\dagger}a_{\beta}a_{\alpha}
+\end{align*}
+
+使用表象变换, 得到一般表象下的两体算符
+
+\begin{align*}
+  \hat{\mathcal{O}} = \frac{1}{2}\sum_{\lambda\mu\nu\rho}\langle\lambda\mu|\mathcal{O}_{ij}|\nu\rho\rangle a_{\lambda}^{\dagger}a_{\mu}^{\dagger}a_{\nu}a_{\rho}
+\end{align*}
+
+推广至 $N$ 体算符, 有
+
+\begin{align*}
+  \hat{R} = \frac{1}{N!}\sum_{\lambda_{1}\cdots\lambda_{N}}\sum_{\mu_{1}\cdots\mu_{N}}\langle\lambda_{1}\cdots\lambda_{N}|R|\mu_{1}\cdots\mu_{N}\rangle a_{\lambda_{1}}^{\dagger}\cdots a_{\lambda_{N}}^{\dagger} a_{\mu_{N}}\cdots a_{\mu_{1}}
+\end{align*}
+
+$\vec{x}$ 表象下的库伦势是典型的两体算符:
+
+\begin{align*}
+  \hat{V}_{ee} &= \frac{1}{2}\sum_{\sigma\sigma^{\prime}}\iint\psi_{\sigma}^{\dagger}(\vec{x}_{1})\psi_{\sigma^{\prime}}^{\dagger}(\vec{x}_{2})\frac{1}{r_{12}}\psi_{\sigma^{\prime}}(\vec{x}_{2})\psi_{\sigma}(\vec{x}_{1})\mathrm{d}\vec{x}_{1}\mathrm{d}\vec{x}_{2}\\
+  V_{ee} &= \frac{1}{2V}\sum_{\vec{k}_{1},\vec{k}_{2},\vec{q}}\sum_{\sigma\sigma^{\prime}}\frac{4\pi^{2}}{q^{2}}c^{\dagger}_{\vec{k}_{1} + \vec{q},\sigma}c_{\vec{k}_{2}-\vec{q},\sigma^{\prime}}^{\dagger}c_{\vec{k}_{2},\sigma^{\prime}}c_{\vec{k}_{1},\sigma}
+\end{align*}
+
+\subsection{相互作用电子系统紧束缚模型的一般导出}
+\subsubsection{Bloch 表象和 Wannier 表象}
+\subsubsection{紧束缚模型}
+
+\subsection{运动方程}
+
+\subsection{理想气体}
+\subsection{巨正则系综}
+\subsection{理想费米气体}
+\subsection{理想玻色气体}
+
+\subsection{平均场近似}
+\subsubsection{稀薄玻色气体的 BEC}
+\subsubsection{Hartree-Fock 近似}
+将之前讨论的 Hatree-Fock 近似使用二次量子化体系重新表述:
+
+\begin{enumerate}
+  \item 单体算符: $\begin{aligned}
+    F = \sum_{\mu\nu}\langle\mu|f|\nu\rangle a_{\mu}^{\dagger}a_{\nu}
+  \end{aligned}$
+  \item 两体算符: $\begin{aligned}
+    V = \frac{1}{2}\sum_{\lambda\mu\nu\rho}\langle\lambda\mu|v|\nu\rho\rangle a_{\lambda}^{\dagger}a_{\mu}^{\dagger}a_{\rho}a_{\nu}
+  \end{aligned}$
+  \item HF 波函数: $\begin{aligned}
+    |\psi_{\text{HF}}\rangle = \prod_{\alpha=1}^{N}a_{\alpha}^{\dagger}|0\rangle
+  \end{aligned}$
+\end{enumerate}
+那么
+\begin{align*}
+  \langle\psi_{\text{HF}}|a_{\mu}^{\dagger}a_{\nu}|\psi_{\text{HF}}\rangle &= \delta_{\mu\nu}\\
+  \langle\psi_{\text{HF}}|a_{\lambda}^{\dagger}a_{\mu}^{\dagger}a_{\rho}a_{\nu}|\psi_{\text{HF}}\rangle &= \delta_{\lambda\nu}\delta_{\mu\rho} - \delta_{\lambda\rho}\delta_{\mu\nu}
+\end{align*}
+
+所以
+
+\begin{align*}
+  E_{\text{HF}} = \sum_{\mu}\langle\mu|f|\mu\rangle + \frac{1}{2}\sum_{\mu\nu}\left(\langle\mu\nu|b|\mu\nu\rangle - \langle\mu\nu|v|\nu\mu\rangle\right)
+\end{align*}
+
+更一般性地, 考虑包含单体或两体算符, 形式为
+$\begin{aligned}
+  H = A^{\dagger}B + C^{\dagger}D^{\dagger}EF
+\end{aligned}$
+的哈密顿量, 则 Hatree-Fock 的思想是将其平均为
+\begin{align*}
+  H_{\text{HF}} = A^{\dagger}B + \langle C^{\dagger}F\rangle D^{\dagger}E + \langle D^{\dagger}E\rangle C^{\dagger}F - \langle C^{\dagger}E\rangle D^{\dagger}F - \langle D^{\dagger}F\rangle C^{\dagger}E + \text{Const}
+\end{align*}
+接下来计算的步骤为
+\begin{enumerate}
+  \item 对角化 Hatree-Fock 平均场哈密顿量: $\begin{aligned}
+    H_{\text{HF}} = \sum_{\alpha}\varepsilon_{\alpha}a^{\dagger}a_{\alpha}
+  \end{aligned}$, 构造 Hatree-Fock 基态波函数 $\begin{aligned}
+    |\psi_{\text{HF}}\rangle = \prod_{\varepsilon_{\alpha}<0}a_{\alpha}^{\dagger}|0\rangle
+  \end{aligned}$
+  \item 计算平均场参数 $\begin{aligned}
+    \langle C^{\dagger}F\rangle, \langle D^{\dagger}E\rangle, \langle C^{\dagger}E\rangle, \langle D^{\dagger}F\rangle
+  \end{aligned}$, 重复以上计算直至收敛.
+  \item 或者计算基态能量 $\begin{aligned}
+    \langle\psi_{\text{HF}}|H|\psi_{\text{HF}}\rangle = \sum_{\varepsilon_{\alpha}<0}\varepsilon_{\alpha} - \langle C^{\dagger}F\rangle\langle D^{\dagger}E\rangle + \langle C^{\dagger}E\rangle\langle D^{\dagger}F\rangle
+  \end{aligned}$
+  \item 在平均场参数空间极小化基态能量
+\end{enumerate}
+\paragraph{Hubbard 模型的 Hartree-Fock 近似}
+
+Hubbard 模型哈密顿量为 
+
+\begin{align*}
+  H = -t\sum_{\langle i,j\rangle,\sigma}\left(c_{i,\sigma}^{\dagger}c_{j,\sigma} + \text{h.c.}\right) + U\sum_{i}\underbrace{c_{i\uparrow}^{\dagger}c_{i\uparrow}}_{n_{i\uparrow}}\underbrace{c_{i\downarrow}^{\dagger}c_{i\downarrow}}_{n_{i\downarrow}}
+\end{align*}
+
+在第二项中由于已经确定自旋表象, 所以可以互换 $c_{i\uparrow}$ 和 $c_{i\downarrow}^{\dagger}$ 位置从而形成粒子数算符. 那么考虑两格点模型, 且选定矩阵基矢为
+
+\begin{align*}
+  c = \begin{pmatrix}
+    c_{1\uparrow} \\
+    c_{1\downarrow} \\
+    c_{2\uparrow} \\
+    c_{2\downarrow}
+  \end{pmatrix}, \quad c^{\dagger} = \begin{pmatrix}
+    c_{1\uparrow}^{\dagger} & c_{1\downarrow}^{\dagger} & c_{2\uparrow}^{\dagger} & c_{2\downarrow}^{\dagger}
+  \end{pmatrix}
+\end{align*}
+
+于是 Hatree-Fock 近似下的哈密顿量可以改写为矩阵形式
+
+\begin{align*}
+  H_{\text{MF}} = \begin{pmatrix}
+    c_{1\uparrow}^{\dagger} & c_{1\downarrow}^{\dagger} & c_{2\uparrow}^{\dagger} & c_{2\downarrow}^{\dagger}
+  \end{pmatrix}\begin{pmatrix}
+    U\langle n_{1\downarrow}\rangle & -U\langle S_{1}^{-}\rangle & -t & \\
+    -U\langle S_{1}^{+}\rangle & U\langle n_{1\downarrow}\rangle & & -t\\
+    -t & & U\langle n_{2\downarrow}\rangle & -U\langle S_{2}^{-}\rangle \\
+     & -t & -U\langle S_{2}^{+}\rangle & U\langle n_{2\uparrow}\rangle
+  \end{pmatrix}\begin{pmatrix}
+    c_{1\uparrow} \\
+    c_{1\downarrow} \\
+    c_{2\uparrow} \\
+    c_{2\downarrow}
+  \end{pmatrix} + U\sum_{i}(\langle S_{i}^{+}\rangle\langle S_{i}^{-}\rangle - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle)
+\end{align*}
+
+禁用自旋翻转项 $c_{i\uparrow}^{\dagger}c_{i\downarrow}$ 与 $c_{i\downarrow}^{\dagger}c_{i\uparrow}$, 矩阵进一步简化为
+
+\begin{align*}
+  H_{\text{MF}} = c^{\dagger}\begin{pmatrix}
+    U\langle n_{1\downarrow}\rangle &  & -t & \\
+     & U\langle n_{1\uparrow}\rangle & & -t\\
+    -t & & U\langle n_{2\downarrow}\rangle &  \\
+     & -t &  & U\langle n_{2\uparrow}\rangle
+  \end{pmatrix}c-U\sum_{i}\langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle
+\end{align*}
+
+\begin{enumerate}
+  \item $\begin{aligned}
+    \langle n_{i\sigma}\rangle = \frac{1}{2}
+  \end{aligned}$ 作为初始值. 则矩阵变为
+  \begin{align*}
+    \begin{pmatrix}
+      U/2 &  & -t & \\
+       & U/2 & & -t\\
+      -t & & U/2 &  \\
+       & -t &  & U/2
+    \end{pmatrix} &= VDV^{-1},\\
+    V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        & 1 &    & -1\\
+      1 &   & -1 &   \\
+        & 1 &    &  1\\
+      1 &   & 1  &
+    \end{pmatrix},&\quad D = \begin{pmatrix}
+      -t + U/2 &  &  & \\
+       & -t + U/2 & & \\
+       & & t + U/2 &  \\
+       & & & t + U/2
+    \end{pmatrix}
+  \end{align*}
+  注意对角矩阵 $D$ 的对角线上能量本征值是升序排列的, 这是为了方便观察基态的能量出现在基矢的什么位置. 根据对角分解有 $H = c^{\dagger}VDV^{-1}c$, 合并 $V^{-1}c$ 为 $\gamma$, 即得到矩阵的新基矢为 $\gamma\equiv V^{-1}c$. 同样的, $c = V\gamma$, 或者写作求和约定 $\begin{aligned}
+    c_{\alpha} = \sum_{i}V_{\alpha i}\gamma_{i}
+  \end{aligned}$. 基态被定义为占据最低能量的态, 而根据对角矩阵可以发现最低能量是二重简并的, 是新基矢 $\gamma$ 的第 $1,2$ 分量给出的, 因此基态使用产生算符 $\times|0\rangle$ 写出的话将会是$\begin{aligned}
+    \prod_{\varepsilon_{i}<\varepsilon_{F}}\gamma_{i}^{\dagger}|0\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle
+  \end{aligned}$. 那么各粒子数平均值为 
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle 
+    &= \langle c_{1\uparrow}^{\dagger}c_{1\uparrow}\rangle
+     = \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+    &= \sum_{i,j}V_{1\uparrow, i}^{\dagger}V_{1\uparrow,j}\delta_{ij} 
+     = \sum_{i}V_{1\uparrow, i}^{\dagger}V_{1\uparrow,i} 
+     = V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,2}^{\dagger}V_{1\uparrow,2} \\
+    &= \frac{1}{2}
+  \end{align*}
+  同理计算得到 $\begin{aligned}
+    \langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
+  \end{aligned}$. 这是顺磁态, 能量为 
+  \begin{align*}
+    E_{\text{HF}} &= \sum_{\varepsilon_{\alpha}<0}\varepsilon_{\alpha}
+    - U\cdot \frac{1}{2}\frac{1}{2}\times 2 = \left(-t + \frac{U}{2}\right)\times 2 - \frac{U}{2}\\
+    &= -2t + \frac{U}{2}
+  \end{align*}
+
+  \item $\langle n_{1\uparrow}\rangle = \langle n_{2\uparrow}\rangle = 1$, $\langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = 0$ 作为初始值. 那么
+  \begin{align*}
+    \begin{pmatrix}
+       &  & -t & \\
+       & U & & -t\\
+      -t & &  &  \\
+       & -t &  & U
+    \end{pmatrix} &= VDV^{-1},\\
+    V = \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & -1 &   &  \\
+        &    & 1 & -1\\
+      1 &  1 &   &   \\
+        &    & 1 &  1
+    \end{pmatrix},&\quad D = \begin{pmatrix}
+      -t &  &  & \\
+       & t & & \\
+       & & -t+U &  \\
+       & & & t + U
+    \end{pmatrix}
+  \end{align*}
+  \begin{enumerate}
+    \item $-t+U < t$, 则能量最低态将由新矩阵基矢 $\gamma$ 的 $1,3$ 分量给出, 那么产生算符 $\times|0\rangle$ 将会是 $|\psi_{\text{HF}}\rangle = \gamma_{1}^{\dagger}\gamma_{3}^{\dagger}|0\rangle$, 粒子数平均值为
+    \begin{align*}
+      \langle n_{1\uparrow}\rangle &= \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+      &= V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,3}^{\dagger}V_{1\uparrow,3} \\
+      &= \frac{1}{2}\\
+      \langle n_{1\downarrow}\rangle &= \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
+    \end{align*}
+    因此仍处于顺磁态, 即 
+    \begin{align*}
+      E_{\text{MF}} &= \sum_{\varepsilon_{\alpha}}\epsilon_{\alpha} - U\sum_{i}\langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle = -t + (-t + U) + U\cdot\frac{1}{2}\times\frac{1}{2}\times 2 \\
+      &= -2t + \frac{U}{2}
+    \end{align*}
+
+    \item $-t+U > t$, 则能量最低态将由新矩阵基矢的 $1,2$ 分量给出, 那么产生算符 $\times|0\rangle$ 将会是 $|\psi_{\text{HF}}\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle$, 粒子数平均值为
+    \begin{align*}
+      \langle n_{1\uparrow}\rangle &= \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+      &= V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,2}^{\dagger}V_{1\uparrow,2} \\
+      &= 1\\
+      \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = 1,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = 0
+    \end{align*}
+    和初始的假设值一致(即"收敛"). 此时自旋方向相同, 得到铁磁态解. 平均场能量为 
+    \begin{align*}
+      E_{\text{MF}} = \sum_{\varepsilon_{\alpha}}\varepsilon_{\alpha} - U\sum_{i}\langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle = -t + t + U(0\cdot 1 + 0\cdot 1) = 0
+    \end{align*}
+
+    \item 
+
+  \end{enumerate}
+\end{enumerate}
+
+\paragraph{Hubbard 模型在动量空间的平均场}
+\end{document}
