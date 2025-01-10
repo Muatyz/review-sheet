@@ -24,7 +24,12 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
 
 \begin{align*}
   \hat{H} &= -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) + U\sum_{i}n_{i\uparrow}n_{i\downarrow} + V\sum_{\langle i,j\rangle}n_{i}n_{j}\\
-  &= -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) + U\sum_{i}\big(n_{i\uparrow}\langle n_{i\downarrow}\rangle + n{i\downarrow}\langle n_{i\uparrow}\langle n_{i\uparrow}\rangle - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle\big) \\
+  &= -t\sum_{\langle i,j\rangle, \sigma}\left(c_{i\sigma}^{\dagger}c_{j\sigma}+\text{h.c.}\right) 
+  + 
+  U\sum_{i}\big(
+    n_{i\uparrow}\langle n_{i\downarrow}\rangle 
+    + n_{i\downarrow}\langle  n_{i\uparrow}\rangle - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle
+    \big) \\
   &+ V\sum_{\langle i,j\rangle}\big(n_{i}\langle n_{j}\rangle + n_{j}\langle n_{i}\rangle - \langle n_{i}\rangle\langle n_{j}\rangle\big)\\
   &= c^{\dagger}\begin{bmatrix}
     U\langle n_{1\downarrow}\rangle + V\langle n_{2}\rangle &   & -t &  \\

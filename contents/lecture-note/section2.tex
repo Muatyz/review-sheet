@@ -2,5 +2,223 @@
 \graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
 \begin{document}
 \section{对称性}
+\subsection{群的定义}
+集合 $\mathcal{G}$ 包含元素 $g_{i}$, 使用乘法 $\cdot$ , 满足
+\begin{enumerate}
+    \item $\forall g_{1},g_{2}\in\mathcal{G},\quad g_{1}\cdot g_{2}\in\mathcal{G}$;
+    \item $(g_{1}\cdot g_{2})\cdot g_{3} = g_{1}\cdot(g_{2}\cdot g_{3})$;
+    \item $1\in\mathcal{G},\quad\text{s.t.}\quad 1\cdot g = g\cdot 1 = g$;
+    \item $\forall g\in\mathcal{G},\quad \exists g^{-1}\in\mathcal{G}\quad\text{s.t.}\quad g\cdot g^{-1} = g^{-1}\cdot g = 1$
+\end{enumerate}
+\subsection{群的表示举例}
 
+\subsection{连续对称性和守恒律}
+一个对称变换对应一个幺正算符 $U$. 若 $[U,H]=0$, 则 $H = U^{\dagger}HU$, $U$ 是 $H$ 的一个对称性. 若 $H|\psi_n\rangle = E_{n}|\psi_{n}\rangle$, 那么 $HU|\psi_{n}\rangle = E_{n}U|\psi_{n}\rangle$. 如果 $E_{n}$ 是 $m$ 重简并的, 那么会存在其简并子空间, 通过基矢 $\{|\psi_{n,m}\rangle\}$ 张成. 而 $U$ 相当于使 $|\psi_{n}\rangle$ 在这个子空间内转动, 如
+
+\begin{align*}
+    U|\psi_{n,i}\rangle &= \left(\sum_{k=1}^{m}|\psi_{n,k}\rangle\langle \psi_{n,k}|\right)U|\psi_{n,i}\rangle\\
+    &= \sum_{k=1}^{m}|\psi_{n,k}\rangle\bigg(\langle \psi_{n,k}|U|\psi_{n,i}\rangle\bigg)
+\end{align*}
+
+也就是说, 对于幺正变换 $U$, 在 $E_{n}$ 的简并子空间中, 可以使用矩阵来进行描述, 矩阵元是 $\begin{aligned}
+    \langle \psi_{n,k}|U|\psi_{n,i}\rangle
+\end{aligned}$, 
+观察发现共有 $n,k,i$ 三个指标, 所以矩阵可以用 $D^{(n)}(U)_{ki}$ 来表示. 存在关系 $\begin{aligned}
+    D^{(n)}(U_{2})D^{(n)}(U_{1}) = D^{(n)}(U_{2}U_{1})
+\end{aligned}$. 
+
+可以通过一系列无穷小对称变换累积构造出的对称变换是连续对称性, 反之是离散对称性.
+
+若物理量 $G=G^{\dagger}$ 守恒, 则 $\frac{\mathrm{d}G}{\mathrm{d}t} = \frac{1}{i\hbar}[G,H] = 0$, 即 $[G,H]=0$. 那么定义幺正算符 $U = e^{i\theta G/\hbar}$, 它将满足 
+\begin{align*}
+    U^{\dagger}HU &= \left(1 + \frac{i\theta}{\hbar}G\right)H\left(1 - \frac{i\theta}{\hbar}G\right)\\
+    &= H + \frac{i\theta}{\hbar}[G,H] = H
+\end{align*}
+
+$G$ 被称作该对称性的生成元. 
+\subsubsection{空间平移}
+对于 $x\rightarrow x + a$, 有平移算符 $\begin{aligned}
+    T(a) = e^{-ipa/\hbar}
+\end{aligned}$. 这是一个幺正算符, 具有性质
+\begin{enumerate}
+    \item $[T(a)]^{-1} = T(-a)$.
+    \item $T(a_{1})T(a_{2}) = T(a_{1}+a_{2})$.
+    \item $T^{\dagger}(a)xT(a) = x + a$, 用到公式 $e^{B}Ae^{-B} = A + [B,A] + \frac{1}{2!}[B,[B,A]] + \cdots$
+\end{enumerate}
+推广至 $d$ 维($x_{i}\rightarrow x_{i} + a_{i}$), 平移算符为
+\begin{align*}
+    T(\{ a_{i}\}) &= \prod_{i}T_{i}(a_{i}) = \prod_{i}e^{-ip_{i}a_{i}/\hbar}\\
+    [T_{i}(a_{i}), T_{j}(a_{j})] &= 0\iff [p_{i}, p_{j}] = 0
+\end{align*}
+
+\subsubsection{时间平移}
+时间平移表示能量守恒 $\begin{aligned}
+    \frac{\mathrm{d}H}{\mathrm{d}t} = 0
+\end{aligned}$, 对应幺正算符为 $\begin{aligned}
+    U(t) = e^{-iHt/\hbar}
+\end{aligned}$
+\subsubsection{转动}
+\paragraph{角动量是转动的生成元}
+对于 $d$ 维空间, 转动使得 $\begin{aligned}
+    \vec{x}_{i}\rightarrow \vec{x}_{i}^{\prime} = \sum_{j =1}^{d}R_{ij}\vec{x}_{j}
+\end{aligned}$. 转动操作具有保内积性质 $\begin{aligned}
+    \vec{x}\cdot \vec{y} = \vec{x}^{\prime}\cdot \vec{y}^{\prime}
+\end{aligned}$, 
+
+\begin{align*}
+    \sum_{i}x_{i}y_{i} &= \sum_{i}x_{i}^{\prime}y_{i}^{\prime} = \sum_{i}\left(\sum_{j}R_{ij}x_{j}\right)\left(\sum_{k}R_{ik}y_{k}\right) = \sum_{i}\sum_{j}\sum_{k}R_{ij}R_{ik}x_{j}y_{k}\\
+    &= \sum_{j}\sum_{k}\left(\sum_{i}  R_{ij}R_{ik}\right)x_{j}y_{k} \stackrel{?}{=} \sum_{j}\sum_{k}\delta_{kj}x_{j}y_{k} = \sum_{j}x_{j}y_{j}\\
+    \Rightarrow \sum_{i}  R_{ij}R_{ik} &= \sum_{i} R^{T}_{ji}R_{ik} = \delta_{kj}\rightarrow R^{T}R = \mathbb{I}
+\end{align*}
+而 $R$ 和 $R^{-1}$ 的行列式值相同, 所以 $\text{det}R = \pm 1$. 其中 $\text{det}R=1$ 表示的是正常转动, 组成 SO(d) (特殊正交)群.
+
+$R$ 对应一个幺正算符 $\mathcal{D}(R)$, 即 $\begin{aligned}
+    |\alpha_{R}\rangle = \mathcal{D}(R)|\alpha\rangle
+\end{aligned}$. 设矢量算符 $\vec{V}$, 那么
+
+\begin{align*}
+    \langle \beta_{R}|V_{i}|\alpha_{R}\rangle &= \langle \beta|\mathcal{D}^{\dagger}(R)V_{i}\mathcal{D}(R)|\alpha\rangle = R_{ij}\langle \beta|V_{j}|\alpha\rangle\\
+    &\Rightarrow \mathcal{D}^{\dagger}(R)V_{i}\mathcal{D}(R) = R_{ij}V_{j}
+\end{align*}
+
+使用无穷小转动 $R\approx \mathbb{I} - \omega + \mathcal{O}(\omega^{2})$, 而 $R^{T}R \approx (\mathbb{I} -\omega^{T})(\mathbb{I}-\omega) = \mathbb{I}$, 因此 $\omega^{T} = -\omega$, 这代表 $\omega$ 是一个反对称阵. 对应于 $\mathcal{D}(R)$, 进行展开
+\begin{align*}
+    \mathcal{D}(R) = 1 -\frac{i}{2\hbar}\sum_{i,j}\omega_{ij}J_{ij} + \mathcal{O}(\omega^{2})
+\end{align*}
+\paragraph{角动量代数}
+角动量对易关系 $\begin{aligned}
+    [J_{i},J_{j}] = i\hbar\epsilon_{ijk}J_{k},\quad [\vec{J}^{2},J_{i}] = 0
+\end{aligned}$. 
+由于 $\vec{J}^{2}$ 和 $J_{z}$ 有共同本征态, 各取一个参数 $j,m$ 标记, 即 $|j,m\rangle$. 
+\begin{align*}
+    \vec{J}^{2}|j,m\rangle = a|j,m\rangle,\quad J_{z}|j,m\rangle = b|j,m\rangle
+\end{align*}
+引入升降算符 $J_{\pm} = J_{x}\pm iJ_{y}$, 有对易关系 $\begin{aligned}
+    [J_{+},J_{-}] = 2\hbar J_{z},\quad [J_{z},J_{\pm}] = \pm\hbar J_{\pm},\quad [J^{2},J_{\pm}] = 0
+\end{aligned}$
+
+注意到, 升降算符会使 $J_{z}$ 的本征值升降 $\hbar$:
+\begin{align*}
+    J_{z}J_{\pm}|j,m\rangle = (J_{\pm}J_{z}\pm\hbar J_{\pm})|j,m\rangle = (b\pm\hbar)J_{\pm}|j,m\rangle
+\end{align*}
+
+\begin{align*}
+    \vec{J}^{2} = J_{x}^{2} + J_{y}^{2} + J_{z}^{2} = J_{z}^{2} + \frac{1}{2}\left(J_{+}J_{-} + J_{-}J_{+}\right) = J_{z}^{2} + \frac{1}{2}\left(J_{+}J_{+}^{\dagger} + J_{-}J_{-}^{\dagger}\right)
+\end{align*}
+
+这说明 $\begin{aligned}
+    \langle j,m|\vec{J}^{2}-\vec{J}_{z}^{2}|j,m\rangle = a - b^{2} \geq 0,\quad \forall |j,m\rangle
+\end{aligned}$, 
+因此存在一个最大值 $b_{\text{max}}$ 使得  $-b_{\text{max}}\leq b\leq b_{\text{max}}$. 那么升降算符不能无限地升降 $J_{z}$ 的本征值. 所以添加限制 $J_{\pm}|b\rangle=J_{\pm} |b_{\text{max}}\rangle = J_{\pm}|\frac{\text{max}}{\text{min}}\rangle =  0$. 
+
+\begin{align*}
+    J_{-}J_{+}|\text{max}\rangle &= (J_{x}-iJ_{y})(J_{x} + iJ_{y})|\text{max}\rangle = (\vec{J}^{2} - J_{z}^{2} - \hbar J_{z})|\text{max}\rangle = 0\\
+    a - b_{\text{max}}^{2} - \hbar b_{\text{max}} &= 0\rightarrow a = b_{\text{max}}(b_{\text{max}} + \hbar)\\
+    J_{+}J_{-}|\text{min}\rangle &= (J_{x}+iJ_{y})(J_{x} - iJ_{y})|\text{min}\rangle = (\vec{J}^{2} - J_{z}^{2} + \hbar J_{z})|\text{min}\rangle = 0\\
+    a - b_{\text{min}}^{2} + \hbar b_{\text{min}} &= 0\rightarrow a = b_{\text{min}}(b_{\text{min}} - \hbar),\quad b_{\text{min}} = -b_{\text{max}}
+\end{align*}
+假定从 $|\text{min}\rangle$ 到 $|\text{max}\rangle$ 需要 $n$ 次 $J_{+}$, 即有 $b_{\max} = -b_{\max} + n\hbar\iff b_{\text{max}} = \frac{n}{2}\hbar\equiv j\hbar$, 这就将前面选定的 $j,m$ 联系起来了:
+\begin{align*}
+    a &= j(j+1)\hbar^{2},\quad j\in\frac{1}{2}\mathbb{Z}\\
+    b &= m\hbar, \quad m = -j,-j+1,\cdots,j-1,j
+\end{align*}
+既然已选定基矢, 那么就可以计算矩阵元. 
+\begin{align*}
+    \langle j^{\prime},m^{\prime}|\vec{J}^{2}|j,m\rangle &= j(j+1)\hbar^{2}\delta_{jj^{\prime}}\delta_{mm^{\prime}}\\
+    \langle j^{\prime},m^{\prime}|J_{z}|j,m\rangle &= m\hbar\delta_{jj^{\prime}}\delta_{mm^{\prime}}\\
+    \langle j,m|J_{-}J_{+}|j,m\rangle &= \langle j,m|\vec{J}^{2} - J_{z}^{2} - \hbar J_{z}|j,m\rangle = [j(j+1) - m^{2} - m]\hbar^{2}\\
+    &= (J_{+}|j,m\rangle)^{\dagger}(J_{+}|j,m\rangle) = (c_{j,m}|j,m\rangle)^{\dagger}c_{j,m}|j,m\rangle = |c_{j,m}|^{2}\\
+    \Rightarrow c_{j,m} &= \sqrt{j(j+1)-m(m+1)}\hbar\\
+    \langle j,m|J_{+}J_{-}|j,m\rangle &= \langle j,m|\vec{J}^{2} - J_{z}^{2} + \hbar J_{z}|j,m\rangle = [j(j+1) - m^{2} + m]\hbar^{2}\\
+    &= (J_{-}|j,m\rangle)^{\dagger}(J_{-}|j,m\rangle) = (c_{j,m}^{\prime}|j,m\rangle)^{\dagger}c_{j,m}^{\prime}|j,m\rangle = |c_{j,m}^{\prime}|^{2}\\
+    \Rightarrow c_{j,m}^{\prime} &= \sqrt{j(j+1)-m(m-1)}\hbar\\
+    \langle j^{\prime},m^{\prime}|J_{\pm}|j,m\rangle &= \hbar\sqrt{j(j+1) - m(m\pm 1)}\delta_{j,j^{\prime}}\delta_{m,m^{\prime}\pm 1}
+\end{align*}
+既然升降算符已定, 那么就可反解出 $J_{x},J_{y}$. 一般需要先确定角动量量子数 $j$, 从而确定矩阵的大小. 比如 $\begin{aligned}
+    j = \frac{1}{2}
+\end{aligned}$ 时, 所得的各矩阵就是泡利矩阵; $j = 1$ 时, 则有
+\begin{align*}
+    J_{z} = \hbar\begin{pmatrix}
+            1 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & -1
+        \end{pmatrix},\quad J_{x} = \frac{J_{+} + J_{-}}{2} = \frac{\hbar}{\sqrt{2}}\begin{pmatrix}
+            0 & 1 & 0\\
+            1 & 0 & 1\\
+            0 & 1 & 0
+        \end{pmatrix},\quad J_{y} = \frac{J_{+} - J_{-}}{2i} = \frac{\hbar}{\sqrt{2}}\begin{pmatrix}
+            0 & -i & 0\\
+            i & 0 & -i\\
+            0 & i & 0
+        \end{pmatrix}
+\end{align*}
+
+\paragraph{SO(3), SU(2)}
+\paragraph{中心势场中的单粒子问题}
+\paragraph{角动量相加}
+若两个系统 $1$ 和 $2$ 分别有角动量 $j_{1}$ 和 $j_{2}$, 这个复合系统的 Hilbert 空间为 $\mathcal{H}_{1}\otimes \mathcal{H}_{2}$. 要确定复合系统的角动量, 就需要选定一个基矢, 常用方法是子系统基矢的直积; 对应地, 复合系统的算符也是子系统算符的直积, 即
+
+\begin{align*}
+    |j_{1},m_{2};j_{2},m_{2}\rangle &= |j_{1},m_{1}\rangle \otimes |j_{2},m_{2}\rangle\\
+    \vec{J} = \vec{J}_{1} + \vec{J}_{2} &\equiv \vec{J}_{1}\otimes \mathbb{I}_{2} + \mathbb{I}_{1}\otimes \vec{J}_{2}
+\end{align*}
+
+为了简便, 常常去除直积符号和单位算符, 而只是简单的相加. 不同子系统的角动量互不干涉, 所以 $[J_{1\alpha},J_{2\beta}] = 0$. 但是总角动量 $\vec{J}^{2}$ 并不单独与子系统角动量 $J_{\alpha,z}$对易, 所以基矢 $|j_{1},m_{1};j_{2},m_{2}\rangle$ 不是 $\vec{J}^{2}$ 的本征矢.
+
+由于 $\vec{J}_{2}$, $J_{z}$, $\vec{J}_{1}^{2}$, $ J_{2}^{2}$ 相互对易, 所以基矢为 $|j,m;j_{1},j_{2}\rangle$.比如熟悉的两电子系统 $\begin{aligned}
+    \frac{1}{2}\otimes\frac{1}{2}
+\end{aligned}$, 
+\begin{align*}
+    \left|\frac{1}{2},\frac{1}{2};\frac{1}{2},\frac{1}{2}\right\rangle &= |++\rangle;\quad
+    \left|\frac{1}{2},\frac{1}{2};\frac{1}{2},-\frac{1}{2}\right\rangle = |+-\rangle;\\
+    \left|\frac{1}{2},-\frac{1}{2};\frac{1}{2},\frac{1}{2}\right\rangle &= |-+\rangle;\quad
+    \left|\frac{1}{2},-\frac{1}{2};\frac{1}{2},-\frac{1}{2}\right\rangle = |--\rangle\\
+    \text{单态:}\quad|0,0\rangle &= \frac{1}{\sqrt{2}}\left(|+-\rangle - |-+\rangle\right)\\
+    \text{三重态:}\quad|1,1\rangle &= |++\rangle,\quad |1,0\rangle = \frac{1}{\sqrt{2}}\left(|+-\rangle + |-+\rangle\right),\quad |1,-1\rangle = |--\rangle
+\end{align*}
+这就涉及到基矢变换 $|j_{1},m_{1};j_{2},m_{2}\rangle\rightarrow |j,m;j_{1},j_{2}\rangle$:
+
+\begin{align*}
+    |j,m;j_{1},j_{2}\rangle &= \sum_{m_{1},m_{2}}|j_{1},m_{1};j_{2},m_{2}\rangle\stackrel{\text{CG 系数}}{{\color{red}{\langle j_{1},m_{1};j_{2},m_{2}|j,m;j_{1},j_{2}\rangle}}}\\
+    &=\sum_{m_{1},m_{2}}{\color{red}{C_{j_{1},j_{2},m_{1},m_{2}}^{j,m}}}|j_{1},m_{1};j_{2},m_{2}\rangle
+\end{align*}
+
+\begin{enumerate}
+    \item 磁量子数守恒. $J_{z} = J_{1,z} + J_{2,z}$.
+    \item $|j_{1}-j_{2}|\leq j\leq j_{1} + j_{2}$.
+    \item 若 $j_{1},j_{2}\in \mathbb{Z}$ 或 $\begin{aligned}
+        j_{1},j_{2}\in\frac{1}{2}\mathbb{Z}
+    \end{aligned}$, 则 $j\in\mathbb{Z}$. 不失一般性地, 若 $j_{1}\in\mathbb{Z}$, $\begin{aligned}
+        j_{2}\in\frac{1}{2}\mathbb{Z}
+    \end{aligned}$, 则 $j\in\frac{1}{2}\mathbb{Z}$.
+    \item 递推公式. 为了后续方便 $\langle i|j\rangle = \delta_{ij}$ 的计算, 在原求和公式的 $m_{1},m_{2}$ 添加上标 $^{\prime}$ 以示区别.
+    \begin{align*}
+&\langle j_{1},m_{1};j_{2},m_{2}|J_{\pm}|j,m;j_{1},j_{2}\rangle = \langle j_{1},m_{1};j_{2},m_{2}|(J_{1\pm} + J_{2\pm})\sum_{m_{1}^{\prime},m_{2}^{\prime}}C_{j_{1},j_{2},m_{1}^{\prime},m_{2}^{\prime}}^{j,m}|j_{1},m_{1}^{\prime};j_{2},m_{2}^{\prime}\rangle\\
+&\sqrt{j(j+1)-m(m\pm 1)}\langle j_{1},m_{1};j_{2},m_{2}|j,m\pm 1;j_{1},j_{2}\rangle\\
+&= \langle j_{1},m_{1};j_{2},m_{2}|\sum_{m_{1}^{\prime},m_{2}^{\prime}}\sqrt{j_{1}(j_{1}+1)-m_{1}^{\prime}(m_{1}^{\prime}\pm 1)}|j_{1},m_{1}^{\prime}\pm 1;j_{2},m_{2}^{\prime}\rangle C_{j_{1},j_{2},m_{1}^{\prime},m_{2}^{\prime}}^{j,m}\\
+&+\langle j_{1},m_{1};j_{2},m_{2}|\sum_{m_{1},m_{2}}\sqrt{j_{2}(j_{2}+1) - m_{2}^{\prime}(m_{2}^{\prime}\pm 1)}|j_{1},m_{1}^{\prime};j_{2},m_{2}^{\prime}\pm 1\rangle C_{j_{1},j_{2},m_{1}^{\prime},m_{2}^{\prime}}^{j,m}\\
+&\sqrt{j(j+1)-m(m\pm 1)}C_{j_{1},j_{2},m_{1},m_{2}}^{j,m\pm 1}\\
+&= \sum_{m_{1}^{\prime},m_{2}^{\prime}}\sqrt{j_{1}(j_{1}+1)-m_{1}^{\prime}(m_{1}^{\prime}\pm 1)}\delta_{m_{1},m_{1}^{\prime}\pm 1}\delta_{m_{2},m_{2}^{\prime}}C_{j_{1},j_{2},m_{1}^{\prime},m_{2}^{\prime}}^{j,m}\\
+&+ \sum_{m_{1}^{\prime},m_{2}^{\prime}}\sqrt{j_{2}(j_{2}+1)-m_{2}(m_{2}\pm 1)}\delta_{m_{1},m_{1}^{\prime}}\delta_{m_{2},m_{2}^{\prime}\pm 1}C_{j_{1},j_{2},m_{1}^{\prime},m_{2}^{\prime}}^{j,m}
+    \end{align*}
+通过求和消去 $\delta$ 函数, 第一项即 $m_{1}^{\prime} = m_{1}\mp 1$ 且 $m_{2}=m_{2}^{\prime}$, 第二项即 $m_{1} = m_{1}^{\prime}$ 且 $m_{2}^{\prime} = m_{2}\mp 1$. 化简得到
+
+\begin{align*}
+    &\sqrt{j(j+1)-m(m\pm 1)}C_{j_{1},j_{2},m_{1},m_{2}}^{j,m\pm 1} \\
+    &= \sqrt{j_{1}(j_{1}+1)-(m_{1}\mp 1)m_{1}}C_{j_{1},j_{2},m_{1}\mp 1,m_{2}}^{j,m} + \sqrt{j_{2}(j_{2}+1)-(m_{2}\mp 1)m_{2}}C_{j_{1},j_{2},m_{1},m_{2}\mp 1}^{j,m}
+\end{align*}
+\end{enumerate}
+
+
+\subsection{离散对称性}
+\subsubsection{宇称}
+\paragraph{波函数的宇称}
+\paragraph{动量本征态和角动量本征态的宇称}
+\paragraph{宇称选择定则}
+\subsubsection{时间反演}
+\paragraph{时间反演和自旋}
+\paragraph{无自旋粒子}
+\paragraph{时间反演对称不对应守恒律}
+\paragraph{半整数自旋体系的 Kramer 定理}
+\subsubsection{晶格平移}
 \end{document}

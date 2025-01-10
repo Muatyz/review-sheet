@@ -680,7 +680,9 @@ Hubbard 模型哈密顿量为
        & & & t + U/2
     \end{pmatrix}
   \end{align*}
-  注意对角矩阵 $D$ 的对角线上能量本征值是升序排列的, 这是为了方便观察基态的能量出现在基矢的什么位置. 根据对角分解有 $H = c^{\dagger}VDV^{-1}c$, 合并 $V^{-1}c$ 为 $\gamma$, 即得到矩阵的新基矢为 $\gamma\equiv V^{-1}c$. 同样的, $c = V\gamma$, 或者写作求和约定 $\begin{aligned}
+  注意对角矩阵 $D$ 的对角线上能量本征值是升序排列的, 这是为了方便观察基态的能量出现在基矢的什么位置. 如果追加半满条件, 即两个格点共有{\color{red}{两个}}电子, 后续通过产生算符作用于真空态得到基态波函数时就会使用{\color{red}{两个}}产生算符, 具体是什么产生算符需要看能量最低的两个本征值的位置.
+  
+  根据对角分解有 $H = c^{\dagger}VDV^{-1}c$, 合并 $V^{-1}c$ 为 $\gamma$, 即得到矩阵的新基矢为 $\gamma\equiv V^{-1}c$. 同样的, $c = V\gamma$, 或者写作求和约定 $\begin{aligned}
     c_{\alpha} = \sum_{i}V_{\alpha i}\gamma_{i}
   \end{aligned}$. 基态被定义为占据最低能量的态, 而根据对角矩阵可以发现最低能量是二重简并的, 是新基矢 $\gamma$ 的第 $1,2$ 分量给出的, 因此基态使用产生算符 $\times|0\rangle$ 写出的话将会是$\begin{aligned}
     \prod_{\varepsilon_{i}<\varepsilon_{F}}\gamma_{i}^{\dagger}|0\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle
@@ -688,10 +690,10 @@ Hubbard 模型哈密顿量为
   \begin{align*}
     \langle n_{1\uparrow}\rangle 
     &= \langle c_{1\uparrow}^{\dagger}c_{1\uparrow}\rangle
-     = \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
-    &= \sum_{i,j}V_{1\uparrow, i}^{\dagger}V_{1\uparrow,j}\delta_{ij} 
-     = \sum_{i}V_{1\uparrow, i}^{\dagger}V_{1\uparrow,i} 
-     = V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,2}^{\dagger}V_{1\uparrow,2} \\
+     = \sum_{i,j}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+    &= \sum_{i,j}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,j}\delta_{ij} 
+     = \sum_{i}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,i} 
+     = (V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,2})^{\dagger}V_{1\uparrow,2} \\
     &= \frac{1}{2}
   \end{align*}
   同理计算得到 $\begin{aligned}
@@ -726,8 +728,8 @@ Hubbard 模型哈密顿量为
   \begin{enumerate}
     \item $-t+U < t$, 则能量最低态将由新矩阵基矢 $\gamma$ 的 $1,3$ 分量给出, 那么产生算符 $\times|0\rangle$ 将会是 $|\psi_{\text{HF}}\rangle = \gamma_{1}^{\dagger}\gamma_{3}^{\dagger}|0\rangle$, 粒子数平均值为
     \begin{align*}
-      \langle n_{1\uparrow}\rangle &= \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
-      &= V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,3}^{\dagger}V_{1\uparrow,3} \\
+      \langle n_{1\uparrow}\rangle &= \sum_{i,j}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+      &= (V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,3})^{\dagger}V_{1\uparrow,3} \\
       &= \frac{1}{2}\\
       \langle n_{1\downarrow}\rangle &= \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
     \end{align*}
@@ -739,8 +741,9 @@ Hubbard 模型哈密顿量为
 
     \item $-t+U > t$, 则能量最低态将由新矩阵基矢的 $1,2$ 分量给出, 那么产生算符 $\times|0\rangle$ 将会是 $|\psi_{\text{HF}}\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle$, 粒子数平均值为
     \begin{align*}
-      \langle n_{1\uparrow}\rangle &= \sum_{i,j}V_{1\uparrow,i}^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
-      &= V_{1\uparrow,1}^{\dagger}V_{1\uparrow,1} + V_{1\uparrow,2}^{\dagger}V_{1\uparrow,2} \\
+      \langle n_{1\uparrow}\rangle &= 
+      \sum_{i,j}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+      &= (V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,2})^{\dagger}V_{1\uparrow,2} \\
       &= 1\\
       \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = 1,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = 0
     \end{align*}
@@ -748,11 +751,101 @@ Hubbard 模型哈密顿量为
     \begin{align*}
       E_{\text{MF}} = \sum_{\varepsilon_{\alpha}}\varepsilon_{\alpha} - U\sum_{i}\langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle = -t + t + U(0\cdot 1 + 0\cdot 1) = 0
     \end{align*}
-
-    \item 
-
   \end{enumerate}
+  
+  \item $\langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle = 1$, $\langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle =0$ 作为初始值. 那么
+  \begin{align*}
+    &\begin{pmatrix}
+        &  & -t & \\
+        & U & & -t\\
+        -t & & U &  \\
+        & -t &  & 
+    \end{pmatrix} = VDV^{-1},V = \\
+&\begin{pmatrix}\begin{aligned}
+ & \frac{U + \sqrt{4t^{2} + U^{2}}}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}+U)^{2}}} & & \frac{U -\sqrt{4t^{2} + U^{2}}}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}-U)^{2}}}\\
+ \frac{-U + \sqrt{4t^{2} + U^{2}}}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}-U)^{2}}} & &\frac{-U - \sqrt{4t^{2} + U^{2}}}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}+U)^{2}}}&\\
+ & \frac{2t}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}+U)^{2}}} & & \frac{2t}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}-U)^{2}}}\\
+ \frac{2t}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}-U)^{2}}} & & \frac{2t}{\sqrt{4t^{2} + (\sqrt{4t^{2} + U^{2}}+U)^{2}}} &
+\end{aligned}\end{pmatrix}\\
+D &= \frac{1}{2}\begin{pmatrix}
+  U - \sqrt{4t^{2} + U^{2}} &  & &\\
+  & U - \sqrt{4t^{2} + U^{2}} & & \\
+  && U + \sqrt{4t^{2} + U^{2}} & \\
+  && & U + \sqrt{4t^{2} + U^{2}}
+\end{pmatrix}
+  \end{align*}
+  能量最低态由新基矢的 $1,2$ 分量给出, 产生算符 $\times|0\rangle$ 将会是 $|\psi_{\text{HF}}\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle$, 粒子数平均值为
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle &= \langle c_{1\uparrow}^{\dagger}c_{1\uparrow}\rangle = \sum_{i,j}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle =(V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,2})^{\dagger}V_{1\uparrow,2} \\
+    &= \frac{(U + \sqrt{4t^{2} + U^{2}})^{2}}{4t^{2} + (\sqrt{4t^{2} + U^{2}} + U)^{2}}
+  \end{align*}
+  发现粒子数平均值并未收敛, 需要将粒子数平均值作为变量进行迭代计算.
+
+  \item $\langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle = 1- \alpha$, $\langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \alpha$ 作为初始值, 那么
+  \begin{align*}
+    \begin{pmatrix}
+      \alpha U&  & -t & \\
+      & (1-\alpha)U & & -t\\
+      -t & & (1-\alpha)U &  \\
+      & -t &  & \alpha U
+    \end{pmatrix} = \begin{pmatrix}
+       &  & -t & \\
+      & (1-2\alpha)U & & -t\\
+      -t & & (1-2\alpha)U &  \\
+      & -t &  & 
+    \end{pmatrix} + \alpha U\mathbb{I}= VDV^{-1}
+  \end{align*}
+  观察可知, 这种情况相当于将 $U$ 替换为 $\bar{U} = (1-2\alpha)U$, 能量本征值再统一加 $\alpha U$ 值. 能量最低态由新基矢的 $1,2$ 分量给出, 所以平均场能量为
+
+  \begin{align*}
+    E_{\text{MF}} &= \frac{1}{2}(\bar{U} - \sqrt{4t^{2} + \bar{U}^{2}} + 2\alpha U)\times 2 - U[\alpha(1-\alpha) + (1-\alpha)\alpha]\\
+    &= (1-2\alpha + 2\alpha^{2})U - \sqrt{4t^{2} + [(1-2\alpha)U]^{2}}
+  \end{align*}
+
+  收敛即代入 $\langle n_{i\sigma}\rangle$ 的值等于最后根据 $V$ 计算得到的 $\langle n_{i\sigma}\rangle$, 这被称作 self-consistent 方程. 比如取 $\langle n_{1\downarrow}\rangle$, 能量最低态由新基矢的 $1,2$ 分量给出, 那么
+
+  \begin{align*}
+    \begin{aligned}
+      \langle n_{2\uparrow}\rangle &= \langle c_{2\uparrow}^{\dagger}c_{2\uparrow}\rangle = \sum_{i,j}(V_{2\uparrow, i})^{\dagger}V_{2\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = (V_{2\uparrow, 1})^{\dagger}V_{2\uparrow,1} + (V_{2\uparrow, 2})^{\dagger}V_{2\uparrow,2}\\
+    &= 0\cdot 0 + \left(\frac{2t}{\sqrt{4t^{2} + (\bar{U} + \sqrt{4t^{2} + \bar{U}^{2}})^{2}}}\right)^{2}  \\
+    &= {\color{red}{\frac{4t^{2}}{4t^{2} + (\sqrt{4t^{2} + [(1-2\alpha)U]^{2}} + (1-2\alpha)U)^{2}} = \alpha}}
+    \end{aligned}
+  \end{align*}
+  取 $U\gg t$ 极限, 即有 $\alpha\rightarrow 0$, 
 \end{enumerate}
 
 \paragraph{Hubbard 模型在动量空间的平均场}
+考虑傅里叶变换 $\begin{aligned}
+  c_{i,\sigma} = \frac{1}{\sqrt{N}}\sum_{k}c_{k,\sigma}e^{i\vec{k}\cdot\vec{r}_{i}}
+\end{aligned}$, 那么单体算符部分有
+
+\begin{align*}
+  H_{0} &= - t\sum_{i,\delta}c_{i,\sigma}^{\dagger}c_{i+\delta,\sigma} - \mu\sum_{i,\sigma}n_{i,\sigma}\\
+  &= \sum_{\vec{k}}(\varepsilon_{\vec{k}} - \mu)c^{\dagger}_{\vec{k},\sigma}c_{\vec{k},\sigma}
+\end{align*}
+
+对于两体算符 $n_{i,\uparrow}n_{i,\downarrow}=c^{\dagger}_{i,\uparrow}c_{i,\uparrow}c^{\dagger}_{i,\downarrow}c_{i,\downarrow}$ 部分, 
+
+\begin{align*}
+  H_{U} &= U\sum_{\vec{k}_{1},\vec{k}_{2},\vec{k}_{3},\vec{k}_{4}}c_{\vec{k}_{1},\uparrow}^{\dagger}c_{\vec{k}_{2},\uparrow}c_{\vec{k}_{3},\downarrow}^{\dagger}c_{\vec{k}_{4},\downarrow}\frac{1}{N^{2}}\sum_{i}e^{-i[(\vec{k}_{1} - \vec{k}_{2}) - (\vec{k}_{4} - \vec{k}_{3})]\cdot\vec{r}_{i}}\\
+  &= U\sum_{\vec{k}_{1},\vec{k}_{2},\vec{k}_{3},\vec{k}_{4}}c_{\vec{k}_{1},\uparrow}^{\dagger}c_{\vec{k}_{2},\uparrow}c_{\vec{k}_{3},\downarrow}^{\dagger}c_{\vec{k}_{4},\downarrow}\frac{1}{N}\delta_{\vec{k}_{1}-\vec{k}_{2},\vec{k}_{4}-\vec{k}_{3}}\\
+  &= U\sum_{\vec{k}_{2},\vec{q}_{1},\vec{k}_{4},\vec{q}_{2}}c^{\dagger}_{\vec{k}_{2} + \vec{q}_{1},\uparrow}c_{\vec{k}_{2},\uparrow}c^{\dagger}_{\vec{k}_{4}+\vec{q}_{2},\downarrow}c_{\vec{k}_{4},\downarrow}\frac{1}{N}\delta_{\vec{q}_{1},-\vec{q}_{2}}\\
+  &= U\sum_{\vec{k}_{2},\vec{q}_{1},\vec{k}_{4}}c^{\dagger}_{\vec{k}_{2} + \vec{q}_{1},\uparrow}c_{\vec{k}_{2},\uparrow}c^{\dagger}_{\vec{k}_{4}-\vec{q}_{1},\downarrow}c_{\vec{k}_{4},\downarrow}\frac{1}{N}
+\end{align*}
+
+式子中的 $\delta_{\vec{q}_{1},-\vec{q}_{2}}$ 代表的是动量交换守恒. 引入属于动量空间中的 "粒子数算符" $\begin{aligned}
+  \rho_{\vec{q},\sigma} = \frac{1}{\sqrt{N}}\sum_{\vec{k}}c^{\dagger}_{\vec{k} + \vec{q},\sigma}c_{\vec{k},\sigma}
+\end{aligned}$, 即有
+
+\begin{align*}
+  H_{U} &= U\sum_{\vec{q}_{1}}\left(\frac{1}{\sqrt{N}}\sum_{\vec{k}_{2}} c^{\dagger}_{\vec{k}_{2} + \vec{q}_{1},\uparrow}c_{\vec{k}_{2},\uparrow}\right)\left(\frac{1}{\sqrt{N}}\sum_{\vec{k}_{4}} c^{\dagger}_{\vec{k}_{2} - \vec{q}_{1},\downarrow}c_{\vec{k}_{2},\downarrow}\right)\\
+  &= U\sum_{\vec{q}}\rho_{\vec{q},\uparrow}\rho_{-\vec{q},\downarrow}\\
+  &\approx U\sum_{\vec{q}}\langle \rho_{\vec{q},\uparrow}\rangle\rho_{-\vec{q},\downarrow} + \rho_{\vec{q},\uparrow}\langle\rho_{-\vec{q},\downarrow}\rangle - \langle\rho_{\vec{q},\uparrow}\rangle\langle\rho_{-\vec{q},\downarrow}\rangle
+\end{align*}
+
+最后一行应用了平均场近似. 综合以上讨论, 得到平均场哈密顿量
+
+\begin{align*}
+  H_{\text{MF}} = \sum_{\vec{k}}(\varepsilon_{\vec{k}} - \mu)c_{\vec{k},\sigma}^{\dagger}c_{\vec{k},\sigma} + U\sum_{\vec{q}}\langle \rho_{\vec{q},\uparrow}\rangle\rho_{-\vec{q},\downarrow} + \rho_{\vec{q},\uparrow}\langle\rho_{-\vec{q},\downarrow}\rangle - \langle\rho_{\vec{q},\uparrow}\rangle\langle\rho_{-\vec{q},\downarrow}\rangle
+\end{align*}
 \end{document}
