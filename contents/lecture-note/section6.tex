@@ -2,5 +2,69 @@
 \graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
 \begin{document}
 \section{量子计算基础}
+\subsection{量子纠缠}
+\subsubsection{双量子比特态}
+量子比特有两种状态 $|\uparrow\rangle = \begin{pmatrix}
+    1 \\ 0
+\end{pmatrix}$ 和 $|\downarrow\rangle = \begin{pmatrix}
+    0 \\ 1
+\end{pmatrix}$. 通过张量积规则 $\begin{aligned}
+    \begin{pmatrix}
+        a_{1} \\ a_{2}
+    \end{pmatrix}\otimes \begin{pmatrix}
+        b_{1} \\ b_{2}
+    \end{pmatrix} = \begin{pmatrix}
+        a_{1}\begin{pmatrix}
+            b_{1} \\ b_{2}
+        \end{pmatrix} \\ a_{2}\begin{pmatrix}
+            b_{1} \\ b_{2}
+        \end{pmatrix}
+    \end{pmatrix} = \begin{pmatrix}
+        a_{1}b_{1} \\ a_{1}b_{2} \\ a_{2}b_{1} \\ a_{2}b_{2}
+    \end{pmatrix}
+\end{aligned}$ 
+计算复合系统的基矢 $|\uparrow\uparrow\rangle$, 
+$|\uparrow\downarrow\rangle$, $|\downarrow\uparrow\rangle$, $|\downarrow\downarrow\rangle$. 所以双量子比特 Hilbert 空间中的态可以展开为基矢的线性组合:
+
+\begin{align*}
+    |\psi\rangle = \psi_{1}|\uparrow\uparrow\rangle + \psi_{2}|\uparrow\downarrow\rangle + \psi_{3}|\downarrow\uparrow\rangle + \psi_{4}|\downarrow\downarrow\rangle = \begin{pmatrix}
+        \psi_{1} \\ \psi_{2} \\ \psi_{3} \\ \psi_{4}
+    \end{pmatrix}
+\end{align*}
+
+\subsubsection{双量子比特算符}
+
+通过 Pauli 矩阵约定 $\begin{aligned}
+    \sigma_{0} = \begin{pmatrix}
+        1 & 0 \\ 0 & 1
+    \end{pmatrix}
+\end{aligned}$, $\sigma^{1,2,3}=\sigma^{x,y,z}$, 且其张量积积简写为 $\begin{aligned}
+    \sigma_{A}^{i}\otimes\sigma_{B}^{j}\equiv \sigma^{ij}
+\end{aligned}$, 矩阵张量积规则为
+
+\begin{align*}
+    \sigma^{32} = \begin{pmatrix}
+        1 & 0 \\ 0 & -1
+    \end{pmatrix}\otimes \sigma^{2} = \begin{pmatrix}
+1\sigma^{2} & 0\sigma^{2} \\ 0\sigma^{2} & -1\sigma^{2}
+    \end{pmatrix} = \begin{pmatrix}
+        & -i & & \\
+        i &  &  & \\
+        &  &  & i \\
+        &  & -i &
+    \end{pmatrix}
+\end{align*}
+
+这相当于是在给定算符的 "基". 即观测量矩阵都可以展开为这些矩阵张量积的线性组合. 谈论单量子比特的观测量时, 相当于默认另一个量子比特算符为 $\mathbb{I} = \sigma^{0}$, 使得算符基为 $(\sigma^{10},\sigma^{20},\sigma^{30})$ 和 $(\sigma^{01},\sigma^{02},\sigma^{03})$.
+
+\subsubsection{双量子比特模型}
+
+\subsubsection{自旋单态}
+
+\subsubsection{纠缠熵}
+
+\subsubsection{互信息}
+
+\subsubsection{EPR 佯谬和 Bell 不等式}
 
 \end{document}

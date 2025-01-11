@@ -246,7 +246,32 @@
   
 \textbf{两个大小相等, 属于不同自由度的角动量 $\vec{J}_{1}$ 和 $\vec{J}_{2}$ 耦合成总角动量 $\vec{J} = \vec{J}_{1} + \vec{J}_{2}$, 设 $\vec{J}_{1}^{2} = \vec{J}_{2}^{2} = j(j+1)\hbar^{2}$, $J^{2} = J(J+1)\hbar^{2}$, $J = 2j, 2j-1, \cdots, 1, 0$. 在总角动量量子数 $J = 0$ 的状态下, 求 $J_{1,z}$ 和 $J_{2,z}$ 的可能取值及相应概率.}
 
+{\color{gray}{根据 $J = 0$, 而 $-|J|\leq M\leq |J|$, 夹逼定理得到 $M= 0$. 而磁量子数守恒, 所以 $J_{1,z} + J_{2,z} = J_{z} = 0$. 已知 C-G 系数可以用于将 $|J,M;j_{1},j_{2}\rangle$ 以基矢 $|j_{1},m_{1};j_{2},m_{2}\rangle$ 展开, 代入上述讨论结果有
 
+\begin{align*}
+  |0,0;j,j\rangle = \sum_{m_,-m}^{-j\leq m\leq j}C_{j,j,m,-m}^{0,0}|j,m;j,-m\rangle
+\end{align*}
+
+概率即为 $P(m_{1}=m,m_{2}=-m) = |C_{j,j,m,-m}^{0,0}|^{2}$. 那么问题就来到如何计算这个特殊的 C-G 系数. 根据 C-G 系数的递推定义, 可以得到其解析表达式
+
+\begin{align*}
+  &\langle j_{1},m_{1};j_{2},m_{2}|J,M;j_{1},j_{2}\rangle \\
+  &=\sqrt{\frac{(2J+1)(J+j_{1}-j_{2})!(J-j_{1}+j_{2})!(j_{1}+j_{2}-J)!}{(j_{1}+j_{2}+J+1)!}}\\
+  &\times \sqrt{(J+M)!(J-M)!(j_{1}+m_{1})!(j_{1}-m_{1})!(j_{2}+m_{2})!(j_{2}-m_{2})!}\\
+  &\times \sum_{k_{\text{min}}}^{k_{\text{max}}}\frac{(-1)^{k}}{k!(j_{1}+j_{2}-J-k)!(j_{1}-m_{1}-k)!(j_{2}+m_{2}-k)!(J-M-k)!}\\
+  &\times \frac{1}{(J-j_{2}+m_{1}+k)!(J-j_{1}-m_{2}+k)!}\\
+  k_{\text{min}} &= \text{max}\{0,j_{2}-m_{1}-J,j_{1}+m_{2}-J\},\quad
+  k_{\text{max}} = \text{min}\{j_{1}+j_{2}-J, j_{1}-m_{1},j_{2}+m_{2}\}
+\end{align*}
+
+所以代入 $j_{1}=j_{2}=j$, $m_{1}=-m_{2}=m$, 即有 $\begin{aligned}
+  C_{j,m,j,-m}^{0,0} = \frac{(-1)^{j-m}}{\sqrt{2j+1}}
+\end{aligned}$, 显然因为平方消去了可能存在的负号, 使得 
+$|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以得到
+
+\begin{align*}
+  \boxed{P(m_{1}=m,m_{2}=-m) = \frac{1}{2j+1}}
+\end{align*}}}
 
   \item \textbf{自旋-1 模型}
   

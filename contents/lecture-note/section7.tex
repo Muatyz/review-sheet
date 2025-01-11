@@ -3,4 +3,262 @@
 \begin{document}
 \section{相对论量子力学}
 
+\subsection{洛伦兹协变性}
+\subsubsection{单位制约定}
+原子单位制: $\hbar(\text{kg}\cdot \text{m}^{2}/\text{s}^{2}) = c(\text{m}/\text{s}) = 1$.
+\begin{enumerate}
+    \item $c=1$: 速度 $v$ 无量纲; 时间 $t$ 和距离 $x$ 同量纲; 质量 $m$, 动量 $p$, 能量 $E$ 同量纲.
+    \item $\hbar = 1$: 时间 $t$ 和距离 $x$ 乘积后与能量 $E$ 同量纲.
+\end{enumerate}
+
+\subsubsection{协变逆变记号}
+来源于相对论. 
+$\begin{aligned}\begin{cases}
+    \text{逆变:} a^{\mu} &= (a^{0},+\vec{a})\\
+    \text{协变:} a_{\mu} &= (a^{0},-\vec{a})
+\end{cases}
+\end{aligned}$. 其中 $a_{\mu} = \eta_{\mu\nu}a^{\nu}$. $\begin{aligned}
+    \eta_{\mu\nu} = \begin{pmatrix}
+        +1 & 0  & 0  & 0\\
+        0  & -1 & 0  & 0\\
+        0  & 0  & -1 & 0\\
+        0  & 0  & 0  & -1
+    \end{pmatrix}
+\end{aligned}$
+    
+4-矢量的内积: $a^{\mu}b_{\mu} = a^{0}b^{0} - \vec{a}\cdot\vec{b}$. 
+
+时空 4-矢量 $x^{\mu} = (t,\vec{x})$, 逆变 4-梯度: $\begin{aligned}
+    \frac{\partial}{\partial x_{\mu}} \equiv \partial^{\mu} = \left(\frac{\partial}{\partial t},-\nabla\right)
+\end{aligned}$, 协变 4-梯度: $\begin{aligned}
+    \frac{\partial}{\partial x^{\mu}} \equiv \partial_{\mu} = \left(\frac{\partial}{\partial t},\nabla\right)
+\end{aligned}$
+\subsubsection{洛伦兹群}
+
+若 $\Lambda^{\mu}_{\nu}$ 令 $x^{\mu} = \Lambda^{\mu}_{\nu}x_{\nu}$, 使得 $x^{\mu}x_{\mu} = x^{\nu}x_{nu}$, 则该变换属于 Lorentz 变换. 
+
+\subsection{Klein-Gordon 方程}
+\subsubsection{Klein-Gordon 方程的推导}
+
+相对论的能动关系: $E^{2} = p^{2} + m^{2}$. 对其使用一次量子化 $\begin{aligned}
+    p\rightarrow \hat{p} = -i\nabla,\quad E\rightarrow \hat{H} = i\frac{\partial }{\partial t}
+\end{aligned}$, 得到 Klein-Gordon 方程: 
+
+\begin{align*}
+    \left(\frac{\partial^{2}}{\partial t^{2}} - \nabla^{2} + m^{2}\right)\psi &= 0\\
+    \Rightarrow \left(\partial_{\mu}\partial^{\mu} + m^{2}\right)\psi &= 0
+\end{align*}
+
+平面波解 $\begin{aligned}
+    \psi(\vec{x},t) &= Ae^{i\vec{p}\cdot\vec{x}}e^{-iEt} = Ae^{-i(Et-\vec{p}\cdot\vec{x})}\stackrel{p^{\mu}=(E,\vec{p}),x_{\mu}=(t,-\vec{x})}{\Longrightarrow} Ae^{-ip^{\mu}x_{\mu}}
+\end{aligned}$, 它意味着 $\begin{aligned}
+    E = \pm\sqrt{\vec{p}^{2}+ m^{2}}
+\end{aligned}$. 
+
+常规理解 K-G 方程会带来负能量, 负概率等难以解释的问题. 解决方法是引入自然存在正负的电荷 $q$. K-G 方程用于描述自旋为 $0$ 的粒子. 
+
+K-G 具有 Lorentz 协变性, 因此完美适用电磁作用. 那么推广至 $\begin{aligned}\begin{cases}
+    E &\rightarrow E - q\phi\\
+    \vec{p} &\rightarrow \vec{p} - q\vec{A}
+\end{cases}
+\end{aligned}$, 
+$p_{\mu}\rightarrow A_{\mu} = (\phi,-\vec{A})$, K-G 方程形式维持:
+
+\begin{align*}
+    &\left[D_{\mu}D^{\mu} + m^{2}\right]\psi = 0,\quad \text{协变微分: }D_{\mu} = \partial_{\mu} + iqA_{\mu}\\
+    &D_{\mu}D^{\mu} = D_{t}^{2} - \vec{D}^{2},\quad \left\{\begin{aligned}
+        D_{t} &= \partial_{t} + iq\phi\\
+        \vec{D} &= \vec{\nabla} - iq\vec{A}
+    \end{aligned}\right.
+\end{align*}
+
+为了求解二阶方程, 使用共轭展开引入两个新函数降阶:
+
+\begin{align*}
+    \phi(\vec{x},t) &= \frac{1}{2}\left[\psi(\vec{x},t) + \frac{i}{m}D_{t}\psi(\vec{x},t)\right]\\
+    \chi(\vec{x},t) &= \frac{1}{2}\left[\psi(\vec{x},t) - \frac{i}{m}D_{t}\psi(\vec{x},t)\right]
+\end{align*}
+
+满足
+
+\begin{align*}
+    iD_{t}\phi &= -\frac{1}{2m}\vec{D}^{2}(\phi + \chi) + m\phi\\
+    iD_{t}\chi &= +\frac{1}{2m}\vec{D}^{2}(\phi + \chi) - m\phi \\
+    \Rightarrow iD_{t}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix} &= -\frac{1}{2m}\vec{D}^{2}\begin{bmatrix}
+        +\phi + \chi\\
+        -\phi - \chi
+    \end{bmatrix} + m\begin{bmatrix}
+        +\phi\\
+        -\phi
+    \end{bmatrix}\\
+    &= -\frac{1}{2m}\vec{D}^{2}\begin{bmatrix}
+        1 & 1\\
+        -1 & -1\\
+    \end{bmatrix}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix} + m\begin{bmatrix}
+        1 & 0\\
+        0 & -1
+    \end{bmatrix}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix}
+\end{align*}
+
+使用 Pauli 矩阵合成公式中出现的以若干 $1$ 和 $-1$ 为元素的矩阵, 即 $\begin{aligned}
+    \begin{bmatrix}
+        1 & 1\\
+        -1 & -1\\
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 0\\
+        0 & -1
+    \end{bmatrix} + \begin{bmatrix}
+        0 & 1\\
+        -1 & 0
+    \end{bmatrix} = \sigma^{z} + i\sigma^{y}
+\end{aligned}$, 以及 $\begin{aligned}
+    \begin{bmatrix}
+        1 & 0\\
+        0 & -1
+    \end{bmatrix} = \sigma^{z}
+\end{aligned}$, 所以最后 K-G 方程化为
+
+\begin{align*}
+    iD_{t}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix} = -\frac{1}{2m}\vec{D}^{2}\begin{bmatrix}
+        \sigma^{z} + i\sigma^{y}
+    \end{bmatrix}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix} + m\begin{bmatrix}
+        \sigma^{z}
+    \end{bmatrix}\begin{bmatrix}
+        \phi\\
+        \chi
+    \end{bmatrix}
+\end{align*}
+
+4-矢量概率流 $\begin{aligned}
+    j^{\mu} = \frac{i}{2m}\bigg[\psi^{*}D^{\mu}\psi - \psi(D^{\mu}\psi)^{*}\bigg]
+\end{aligned}$, 
+概率密度 $\begin{aligned}
+    \rho = j^{0} = \frac{i}{2m}\bigg[\psi^{*}D_{t}\psi - (D_{t}\psi)^{*}\psi\bigg] = \phi^{*}\phi - \chi^{*}\chi
+\end{aligned}$, 其中 $\phi$ 为正粒子波函数, $\chi$ 为反粒子波函数.
+
+\subsection{Dirac 方程}
+K-G 是 $\partial_{t}^{2}$ 的, Dirac 为了化为传统的 $\partial_{t}^{1}$, 推广 Pauli 矩阵为 $4\times 4$ 的 $\gamma$ 矩阵, 使得$\nabla$ 为一阶. Dirac 方程描述自旋 $\begin{aligned}
+    \frac{1}{2}
+\end{aligned}$, $g=2$ 的粒子.
+\subsubsection{自由粒子的 Dirac 方程}
+
+$K\rightarrow K^{\prime}$, 则 $\begin{aligned}\left\{\begin{aligned}
+    t^{\prime} &= +t\cosh{\zeta} - z\sinh{\zeta}\\
+    x^{\prime} &= x\\
+    y^{\prime} &= y\\
+    z^{\prime} &= -t\sinh{\zeta} + z\cosh{\zeta}
+\end{aligned}\right.,\quad \tanh{\zeta}=v
+\end{aligned}$, 其中有 $\begin{aligned}
+    \frac{p_{z}}{m} = v_{z}\gamma = -\sinh{\zeta}(*)
+\end{aligned}$. 
+
+存在两种方法 $\Omega_{\pm}$ 使得 (*) 成立, 定义 Weyl 旋量来体现着这种区别:
+\begin{align*}
+    \chi_{\pm}(p_{z}) &= e^{\mp\frac{1}{2}\zeta\sigma_{z}}\xi\\
+    \Rightarrow \chi_{-}(p_{z}) &= e^{\zeta\sigma_{z}}\chi_{+}(p_{z})\tag{**}\label{eq:chi}
+\end{align*}
+
+由于 $\begin{aligned}
+    me^{\zeta\sigma_{z}} = m(\cosh{\zeta} + \sigma_{z}\sinh{\zeta}) = E - \sigma_{z}p_{z}
+\end{aligned}$, 所以 \ref{eq:chi} 展开为
+
+\begin{align*}
+    \left\{\begin{aligned}
+        (E - \sigma_{z}p_{z})\chi_{+}(p_{z}) &= m\chi_{-}(p_{z})\\
+        (E + \sigma_{z}p_{z})\chi_{-}(p_{z}) &= m\chi_{+}(p_{z})
+    \end{aligned}\right.\Rightarrow \left\{\begin{aligned}
+        (E - \vec{\sigma}\cdot\vec{p})\chi_{+}(\vec{p}) &= m\chi_{-}(\vec{p})\\
+        (E + \vec{\sigma}\cdot\vec{p})\chi_{-}(\vec{p}) &= m\chi_{+}(\vec{p})
+    \end{aligned}\right.
+\end{align*}
+\begin{enumerate}
+    \item $0$ 质量粒子. 此时 $\chi_{\pm}$ 去耦合, 即 $\begin{aligned}
+        \left(E \mp \vec{\sigma}\cdot\vec{p}\right)\chi_{\pm} = 0
+    \end{aligned}$. 根据能动关系, $m=0$ 时 $E = |\vec{p}|$, 所以同除 $|\vec{p}|$ 进行归一化: 
+    \begin{align*}
+        &\left(1 \mp \hat{\vec{p}}\cdot \vec{\sigma}\right)\chi_{\pm}(\vec{p}) = 0,\quad \hat{\vec{p}} = \frac{\vec{p}}{|\vec{p}|},\quad \text{螺旋度算符: }\frac{1}{2}\hat{\vec{p}}\cdot \vec{\sigma}\\
+        &\Rightarrow \frac{1}{2}\hat{\vec{p}}\cdot \vec{\sigma}\chi_{\pm}(\vec{p}) = \pm\frac{1}{2}\chi_{\pm}(\vec{p})
+    \end{align*}
+    \item 一次量子化 $\vec{p}\rightarrow -i\nabla$, $E = i\partial_{t}$, 得到坐标表象的 Dirac 方程:
+    \begin{align*}
+        &\left(\partial_{t} \pm\vec{\sigma}\cdot\vec{\nabla}\right)\varphi_{\pm}(\vec{r},t) + im\varphi_{\mp}(\vec{r},t) = 0\\
+        &\varphi_{\pm}(\vec{r},t) = \int\mathrm{d}^{3}\vec{p} e^{-iEt}e^{i\vec{p}\cdot\vec{r}}\chi_{\pm}(\vec{p}),\quad E = \sqrt{p^{2} + m^{2}}
+    \end{align*}
+
+    \item Dirac 方程的协变性. Dirac 旋量定义为 $\begin{aligned}
+        \psi = \begin{pmatrix}
+            \varphi_{+}\\
+            \varphi_{-}
+        \end{pmatrix} = \begin{pmatrix}
+            \varphi_{+1}\\
+            \varphi_{+2}\\
+            \varphi_{-1}\\
+            \varphi_{-2}
+        \end{pmatrix} \equiv \begin{pmatrix}
+            \psi_{1}\\
+            \psi_{2}\\
+            \psi_{3}\\
+            \psi_{4}
+        \end{pmatrix}
+    \end{aligned}$. 现在引入 $\gamma$ 矩阵以进行后续讨论, 它被定义为
+    \begin{align*}
+        \gamma^{i} = \begin{pmatrix}
+            0 & \sigma^{i}\\
+            -\sigma^{i} & 0
+        \end{pmatrix} \equiv -\gamma_{i},\quad \gamma^{0} = \begin{pmatrix}
+            I & 0\\
+            0 & -I
+        \end{pmatrix}.
+    \end{align*}
+    定义 $\Sigma^{i} = \sigma^{3i},\quad i=\{1,2,3\}$, 则 Dirac 旋量满足的方程为
+    \begin{align*}
+        \left(\frac{\partial}{\partial t} - \Sigma^{i}\frac{\partial}{\partial x^{i}}\cdot\vec{\nabla} + im\gamma^{0}\right)\psi = 0
+    \end{align*}
+    利用协变 4-梯度 $\begin{aligned}
+        \frac{\partial}{\partial x^{\mu}}\equiv \partial_{\mu} = (\partial_{t},\nabla)
+    \end{aligned}$ 和逆变 4-梯度 $\begin{aligned}
+        \frac{\partial}{\partial x_{\mu}}\equiv\partial^{\mu} = (\partial_{t},-\nabla)
+    \end{aligned}$, 将 Dirac 化为协变形式
+    \begin{align*}
+        \left(i\gamma^{\mu}\partial_{\mu} - m\right)\psi = 0
+    \end{align*}
+    \begin{enumerate}
+        \item Dirac 方程与 Klein-Gordon 方程. 通过左乘 $(-i\gamma^{\mu}\partial_{mu}-m)$, 将方程化为 $(\partial^{\mu}\partial_{\mu} + m^{2})\psi = 0$. 代入平面波解, 即有
+        \begin{align*}
+            &\gamma^{\mu}p_{\mu} - m = 0\Rightarrow E = \gamma^{0}\vec{\gamma}\cdot\vec{p} + \gamma^{0}m\\
+            &\Rightarrow \hat{H} = \vec{\alpha}\cdot \vec{p} + \beta m,\quad \alpha_{i}\equiv \gamma^{0}\gamma^{i}, \quad \beta\equiv \gamma^{0}
+        \end{align*}
+        \item 电磁场. 引入 $\begin{aligned}
+            \left\{\begin{aligned}
+                p_{\mu}&\rightarrow p_{\mu} - qA_{\mu}\\
+                i\partial_{\mu}&\rightarrow i\partial_{\mu}-qA_{\mu}\\
+                D_{\mu}&\equiv \partial_{\mu} + iqA_{\mu}
+            \end{aligned}\right.
+        \end{aligned}$, 有电磁场中的 Dirac 方程为
+        \begin{align*}
+            (i\gamma^{\mu}D_{\mu}-m)\psi = 0
+        \end{align*}
+        通过约定 $\begin{aligned}
+            (P_{0},\vec{P})\equiv i\partial^{\mu} - qA^{\mu} = (i\partial_{t}-q\phi,-i\nabla-q\vec{A})
+        \end{aligned}$ 分离时空导数, 得到 Weyl 旋量形式的 Dirac 方程:
+        \begin{align*}
+            (P^{0}\mp\vec{P}\cdot\vec{\sigma})\varphi_{\pm} = m\varphi_{\mp}
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}
 \end{document}
