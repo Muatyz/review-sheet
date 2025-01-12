@@ -3,4 +3,240 @@
 \begin{document}
 \section{单体问题的代数解法}
 
+\subsection{类氢原子}
+\subsubsection{量级分析}
+\begin{align*}
+    H = \frac{\vec{p}^{2}}{2\mu} - \frac{Ze^{2}}{4\pi\epsilon_{0}r},\quad \mu = \frac{m_{e}M}{m_{e}+M}
+\end{align*}
+使用不确定性原理临界 $\Delta x\Delta p\sim\hbar$ 可知
+\begin{align*}
+    H(\Delta r)&\sim\frac{\hbar^{2}}{2\mu(\Delta r)^{2}} - \frac{Ze^{2}}{4\pi\epsilon_{0}\Delta r}\\
+    \Rightarrow r&\sim \frac{4\pi\epsilon_{0}\hbar^{2}}{Ze^{2}\mu} \equiv \frac{1}{Z}\frac{m_{e}}{\mu}a_{0}\\
+    E_{0}&\sim -\frac{1}{2}\frac{\mu}{\hbar^{2}}\left(\frac{Ze^{2}}{4\pi\epsilon_{0}}\right)^{2} \equiv -Z^{2}\frac{\mu}{m_{e}}\text{Ry},\quad \text{Ry} = \frac{1}{2}\frac{e^{2}}{4\pi\epsilon_{0}a_{0}}
+\end{align*}
+\subsubsection{径向波函数}
+\begin{align*}
+    \nabla^{2}&=\frac{1}{r^{2}}\frac{\partial}{\partial r}\left(r^{2}\frac{\partial}{\partial r}\right) + \frac{1}{r^{2}\sin{\theta}}\frac{\partial}{\partial\theta}\left(\sin{\theta}\frac{\partial}{\partial\theta}\right) + \frac{1}{r^{2}\sin^{2}{\theta}}\left(\frac{\partial^{2}}{\partial\phi^{2}}\right),\quad\psi(r,\theta,\phi) = R(r)Y(\theta,\phi)\\
+    &\Rightarrow \left\{\begin{aligned}
+        \frac{1}{R}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^{2}\frac{\mathrm{d}R}{\mathrm{d}r}\right) - \frac{2mr^{2}}{\hbar^{2}}\left[\frac{1}{4\pi\epsilon_{0}}\frac{1}{r} - E\right] &= l(l+1)\\
+        \frac{1}{Y}\left\{\frac{1}{\sin{\theta}}\frac{\partial}{\partial\theta}\left(\sin{\theta}\frac{\partial Y}{\partial\theta}\right) + \frac{1}{\sin^{2}{\theta}}\frac{\partial^{2}Y}{\partial\phi^{2}}\right\}&=-l(l+1)
+    \end{aligned}\right.
+\end{align*}
+令 $\begin{aligned}
+    \kappa\equiv \frac{\sqrt{-2m_{e}E}}{\hbar}
+\end{aligned}$, $\rho\equiv \kappa r$, 径向波函数化为
+\begin{align*}
+    \frac{\mathrm{d}^{2}u}{\mathrm{d}\rho^{2}} &= \left[1 - \frac{\rho_{0}}{\rho} + \frac{l(l+1)}{\rho^{2}}\right]u.\quad \rho_{0} \equiv \frac{m_{e}e^{2}}{2m_{e}\varepsilon_{0}\hbar^{2}\kappa}\\
+    \lim_{\rho\rightarrow\infty}u&\sim Ae^{-\rho},\quad \lim_{\rho\rightarrow 0}u\sim C\rho^{l+1}\Rightarrow u(\rho) = \rho^{l+1}e^{-\rho}v(\rho)\\
+    \Rightarrow& \rho\frac{\mathrm{d}^{2}v}{\mathrm{d}\rho^{2}} + 2(l+1-\rho)\frac{\mathrm{d}v}{\mathrm{d}\rho} + \bigg[\rho_{0} - 2(l+1)\bigg]v = 0
+\end{align*}
+设 $\begin{aligned}
+    v(\rho) = \sum_{j=0}^{\infty}c_{j}\rho_{j}
+\end{aligned}$, 代入得到递推关系
+\begin{align*}
+    \begin{aligned}
+        c_{j+1} = \frac{2(j+l+1)-\rho_{0}}{(j+1)\bigg[j+2(l+1)\bigg]}c_{j}
+    \end{aligned}
+\end{align*}
+
+\subsection{简谐振子}
+\subsubsection{一维谐振子}
+\paragraph{哈密顿量}
+\begin{align*}
+    H &= \frac{p^{2}}{2m} + \frac{1}{2}m\omega^{2}x^{2},\quad\omega = \sqrt{\frac{k}{m}}\\
+    \text{无量纲化:}\quad p &= P\sqrt{\hbar m\omega},\quad x= Q\sqrt{\frac{\hbar}{m\omega}}\\
+    \Rightarrow H &= \frac{1}{2}\hbar\omega(P^{2} + Q^{2}),\quad [P,Q] = i
+\end{align*}
+\paragraph{玻色子概念}
+$\begin{aligned}
+    E_{n} = \hbar\omega\left(n+\frac{1}{2}\right),\quad n = 0,1,2,\cdots
+\end{aligned}$. 每个单位能量 $\hbar\omega$ 对应的是玻色子的激发. 产生: 
+$a^{\dagger}:|0\rangle\rightarrow |1\rangle\rightarrow |2\rangle\rightarrow \cdots$, 湮灭: $a:\cdots\rightarrow |2\rangle\rightarrow |1\rangle\rightarrow |0\rangle$.
+\paragraph{产生湮灭算符}
+\begin{align*}
+    a &= \frac{1}{\sqrt{2}}(Q+iP)\\
+    a^{\dagger} &= \frac{1}{\sqrt{2}}(Q-iP)\\
+    [a,a^{\dagger}] = 1 &\Leftrightarrow aa^{\dagger} = a^{\dagger}a + 1
+\end{align*}
+\paragraph{玻色子占据数表象}
+\begin{align*}
+    a|n\rangle &= \sqrt{n}|n-1\rangle\\
+    a^{\dagger}|n\rangle &= \sqrt{n+1}|n+1\rangle\\
+    a^{\dagger}a|n\rangle &= n|n\rangle,\quad aa^{\dagger}|n\rangle = (n+1)|n\rangle
+\end{align*}
+\paragraph{Fock 空间的构造}
+定义粒子数算符 $\hat{n} = a^{\dagger}a$, 本征态为 $|n\rangle$, 本征值 $\lambda_{n} = n$. 
+\paragraph{矩阵表示}
+选定矩阵基矢为 $\begin{aligned}
+    |0\rangle = \begin{pmatrix}
+        1\\0\\0\\\vdots
+    \end{pmatrix},\quad |1\rangle = \begin{pmatrix}
+        0\\1\\0\\\vdots
+    \end{pmatrix},\quad |2\rangle = \begin{pmatrix}
+        0\\0\\1\\\vdots
+    \end{pmatrix},\quad\cdots
+\end{aligned}$, 即可计算产生湮灭算符的矩阵表示:
+\begin{align*}
+    a_{mn} &= \langle m|a|n\rangle = \sqrt{n}\langle m|n-1\rangle = \sqrt{n}\delta_{m,n-1}\\
+    a^{\dagger}_{mn} &= \langle m|a^{\dagger}|n\rangle = \sqrt{n+1}\langle m|n+1\rangle = \sqrt{n+1}\delta_{m,n+1}\\
+    a &= \begin{pmatrix}
+        0&\sqrt{1}& & &\cdots\\
+         &0&\sqrt{2}& &\cdots\\
+         & &0&\sqrt{3}&\cdots\\
+         & & & 0&\ddots\\
+        \vdots&\vdots&\vdots&\vdots&\ddots
+    \end{pmatrix},\quad a^{\dagger} = \begin{pmatrix}
+        0& & & &\cdots\\
+        \sqrt{1}&0& & &\cdots\\
+         &\sqrt{2}&0& &\cdots\\
+         & &\sqrt{3}&0&\cdots\\
+        \vdots&\vdots&\vdots&\vdots&\ddots
+    \end{pmatrix}\\
+    Q &= \frac{a + a^{\dagger}}{\sqrt{2}} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        0&\sqrt{1}& & &\cdots\\
+        \sqrt{1}&0&\sqrt{2}& &\cdots\\
+         &\sqrt{2}&0&\sqrt{3}&\cdots\\
+         & &\sqrt{3}&0&\cdots\\
+        \vdots&\vdots&\vdots&\vdots&\ddots
+    \end{pmatrix},\quad P = \frac{a - a^{\dagger}}{\sqrt{2}i} = \frac{1}{\sqrt{2}i}\begin{pmatrix}
+        0&+\sqrt{1}& & &\cdots\\
+        -\sqrt{1}&0&+\sqrt{2}& &\cdots\\
+         &-\sqrt{2}&0&+\sqrt{3}&\cdots\\
+         & &-\sqrt{3}&0&\cdots\\
+        \vdots&\vdots&\vdots&\vdots&\ddots
+    \end{pmatrix}
+\end{align*}
+\paragraph{能谱}
+\begin{align*}
+    H &= \hbar\left(a^{\dagger}a + \frac{1}{2}\right)\rightarrow E_{n} = \hbar\omega\left(n+\frac{1}{2}\right)\\
+    |n\rangle &= \frac{1}{\sqrt{n!}}\left[a^{\dagger}\right]^{n}|0\rangle,\quad \hat{n}|n\rangle = a^{\dagger}a|n\rangle = \frac{1}{\sqrt{n!}}a^{\dagger}a\left[a^{\dagger}\right]^{n}|0\rangle\\
+    a\left[a^{\dagger}\right]^{n} &= aa^{\dagger}\left[a^{\dagger}\right]^{n-1} = (a^{\dagger}a + 1)\left[a^{\dagger}\right]^{n-1} = a^{\dagger}a\left[a^{\dagger}\right]^{n-1} + [a^{\dagger}]^{n-1}\\
+    a^{\dagger}a\left[a^{\dagger}\right]^{n-1} &= a^{\dagger}aa^{\dagger}\left[a^{\dagger}\right]^{n-2} = a^{\dagger}\left(a^{\dagger}a + 1\right)\left[a^{\dagger}\right]^{n-2} = \left[a^{\dagger}\right]^{2}a\left[a^{\dagger}\right]^{n-2} + \left[a^{\dagger}\right]^{n-1}\\
+    \Rightarrow \hat{n}|n\rangle &= \frac{1}{\sqrt{n!}}a^{\dagger}\left\{\cancel{\left[a^{\dagger}\right]^{n}a} + n\left[a^{\dagger}\right]^{n-1}\right\}|0\rangle = \frac{n}{\sqrt{n!}}\left[a^{\dagger}\right]^{n}|0\rangle = n|n\rangle
+\end{align*}
+\paragraph{波函数}
+根据 $a|0\rangle = 0$, 且应用 $\begin{aligned}
+    P = -i\frac{\partial}{\partial Q}
+\end{aligned}$, 基态 $|0\rangle$ 满足 $\begin{aligned}
+    \left(Q + \frac{\partial}{\partial Q}\right)\psi_{0}(Q) = 0
+\end{aligned}$. 所以 $\begin{aligned}
+    \psi_{0}(Q) = \frac{1}{\pi^{\frac{1}{4}}}e^{-\frac{1}{2}Q^{2}}
+\end{aligned}$. 通过 $a^{\dagger}$ 产生激发态, 如第一激发态 $|1\rangle = a^{\dagger}|0\rangle$:
+\begin{align*}
+    \psi_{1}(Q) &= \frac{1}{\sqrt{2}}\left(Q - \frac{\partial}{\partial Q}\right)\psi_{0}(Q) = \frac{1}{\pi^{\frac{1}{4}}}\sqrt{2}Q e^{-\frac{1}{2}Q^{2}}\\
+    \psi_{n}(Q) &= \frac{1}{\pi^{\frac{1}{4}}\sqrt{2^{n}n!}}H_{n}(Q)e^{-\frac{1}{2}Q^{2}}\\
+    \bar{\psi}_{n}(P) &= \frac{1}{\pi^{\frac{1}{4}}\sqrt{2^{n}n!}}H_{n}(P)e^{-\frac{1}{2}P^{2}}
+\end{align*}
+\paragraph{不确定性关系}
+\begin{align*}
+    \Delta Q\delta P \geq \frac{1}{2}\bigg| [Q,P] \bigg|^{2} = \frac{1}{2}
+\end{align*}
+使用 Fock 态 $|n\rangle$ 检验. $\Delta Q$ 和 $\Delta P$ 即标准差, 有
+\begin{align*}
+    Q &= \frac{a + a^{\dagger}}{\sqrt{2}},\quad P = \frac{a - a^{\dagger}}{\sqrt{2}i}\\
+    \langle n|Q|n\rangle &= 0,\quad \langle n|Q^{2}|n\rangle = \frac{1}{2}\langle n|(a + a^{\dagger})^{2}|n\rangle = n + \frac{1}{2}\\
+    \rightarrow \Delta Q &= \sqrt{\langle n|q^{2}|n\rangle - (\langle n|Q|n\rangle)^{2}} = \sqrt{n + \frac{1}{2}}\\
+    \langle n|P|n\rangle &= 0,\quad \langle n|P^{2}|n\rangle = -\frac{1}{2}\langle n|(a - a^{\dagger})^{2}|n\rangle =  - n - \frac{1}{2}\\
+    \rightarrow \Delta P &= \sqrt{\langle n|P^{2}|n\rangle - (\langle n|P|n\rangle)^{2}} = \sqrt{n + \frac{1}{2}}\\
+    \Rightarrow \Delta Q\Delta P &= \sqrt{n + \frac{1}{2}}\sqrt{n + \frac{1}{2}} = n + \frac{1}{2}\geq \frac{1}{2}
+\end{align*}
+\subsubsection{相干态}
+\paragraph{定义}
+相干态是湮灭算符 $a$ 的本征态, 也是使得不确定性最小的态. 
+\begin{align*}
+    a|\alpha\rangle &= \alpha|\alpha\rangle,\quad \alpha\in\mathbb{C},\quad \langle\alpha_{1}|\alpha_{2}\rangle \neq \delta(\alpha_{1}-\alpha_{2})\\
+    \langle\alpha|Q|\alpha\rangle &= \langle\alpha|\frac{a + a^{\dagger}}{\sqrt{2}}|\alpha\rangle = \frac{\alpha^{*} + \alpha}{\sqrt{2}} = \sqrt{2}\text{Re}(\alpha)\\
+    \langle\alpha|Q^{2}|\alpha\rangle &= \langle\alpha|\frac{[a^{\dagger}]^{2} + aa^{\dagger} + a^{\dagger}a + a^{2}}{2}|\alpha\rangle = \frac{\alpha^{2} + 2\alpha^{*}\alpha + [\alpha^{*}]^{2} + 1}{2} = \frac{(\alpha^{*} + \alpha)}{2} + \frac{1}{2} = 2[\text{Re}\alpha]^{2} + \frac{1}{2}\\
+    \Rightarrow\Delta Q &= \sqrt{\langle\alpha|x^{2}|\alpha\rangle - (\langle\alpha|x|\alpha\rangle)^{2}} = \frac{1}{\sqrt{2}}\\
+    \langle\alpha|P|\alpha\rangle &= \langle\alpha|\frac{a - a^{\dagger}}{\sqrt{2}i}|\alpha\rangle = \frac{\alpha^{*} - \alpha}{\sqrt{2}i} = \sqrt{2}\text{Im}(\alpha)\\
+    \langle\alpha|P^{2}|\alpha\rangle &= \langle\alpha|\frac{[a^{\dagger}]^{2} - aa^{\dagger} - a^{\dagger}a + a^{2}}{2}|\alpha\rangle = \frac{\alpha^{2} - 2\alpha^{*}\alpha + [\alpha^{*}]^{2} + 1}{2} = \frac{(\alpha^{*} - \alpha)}{2} + \frac{1}{2} = 2[\text{Im}\alpha]^{2} + \frac{1}{2}\\
+    \Rightarrow\Delta P &= \sqrt{\langle\alpha|P^{2}|\alpha\rangle - (\langle\alpha|P|\alpha\rangle)^{2}} = \frac{1}{\sqrt{2}}\\
+    \Delta Q\Delta P &= \frac{1}{2}
+\end{align*}
+\paragraph{Fock 态表象}
+以 Fock 态为基矢展开相干态 $\begin{aligned}
+    |\alpha\rangle = e^{-\frac{1}{2}|\alpha|^{2}}\sum_{n=0}^{\infty}\frac{\alpha^{n}}{\sqrt{n!}}|n\rangle
+\end{aligned}$. 它的含义是, 遍历所有可能的 $|n\rangle$, 并使用对应的 $n$ 个湮灭算符将其降阶至基态 $|0\rangle$. 
+\begin{enumerate}
+    \item $|0\rangle$ 也是相干态, 相当于 $\alpha=0$.
+    \item 相干态 $|\alpha=n\rangle$ 和粒子数表象的 $|n\rangle$ 不同.
+    \item 在相干态 $|\alpha\rangle$ 中测得 $n$ 个玻色子的概率为 $\begin{aligned}
+        p_{\alpha}(n) = |\langle n|\alpha\rangle|^{2} = \frac{|\alpha|^{2n}}{n!}e^{-|\alpha|^{2}}\equiv \frac{\lambda^{2}}{n!}e^{-\lambda}
+    \end{aligned}$, 也就是说这是一个 Poisson 分布. 这也是 $\begin{aligned}
+        \langle n\rangle_{\alpha} = \langle\alpha|\hat{n}|\alpha\rangle = |\alpha|^{2}
+    \end{aligned}$ 的例证.
+\end{enumerate}
+\paragraph{时间演化}
+\begin{align*}
+        U(t) &= e^{-iHt/\hbar} = e^{-i\omega\left(\hat{n} + \frac{1}{2}\right)t} = e^{\begin{aligned}
+            -\frac{i\omega t}{2}
+        \end{aligned}}e^{-i\omega t\hat{n}}\\
+        U(t)|\alpha\rangle &= e^{\begin{aligned}
+            -\frac{i\omega t}{2}
+        \end{aligned}}e^{-i\omega t\hat{n}}e^{\begin{aligned}
+            -\frac{1}{2}|\alpha|^{2}
+        \end{aligned}}\sum_{n=0}^{\infty}\frac{\alpha^{n}}{\sqrt{n!}}|n\rangle 
+        = e^{\begin{aligned}-\frac{i\omega t}{2}\end{aligned}}
+          e^{\begin{aligned}-\frac{1}{2}|\alpha|^{2}
+        \end{aligned}}
+          \sum_{n=0}^{\infty}\frac{\alpha^{n}}{\sqrt{n!}}e^{-i\omega t n}|n\rangle\\
+          &= e^{\begin{aligned}-\frac{i\omega t}{2}\end{aligned}}
+          e^{\begin{aligned}-\frac{1}{2}|\alpha e^{-i\omega t}|^{2}
+        \end{aligned}}
+          \sum_{n=0}^{\infty}\frac{(\alpha e^{-i\omega t})^{n}}{\sqrt{n!}}|n\rangle
+          = |\alpha e^{-i\omega t}\rangle\\
+          \Rightarrow \alpha(t) &= \alpha(0)e^{-i\omega t}
+\end{align*}
+\paragraph{U(1)对称性}
+\paragraph{坐标表象}
+\paragraph{BCH 公式}
+\paragraph{位移公式}
+\paragraph{超完备性}
+\begin{align*}
+    \langle\beta|\alpha\rangle = e^{-\frac{1}{2}(|\alpha|^{2} + |\beta|^{2}) + \alpha\beta^{*}}\rightarrow P(|\alpha\rangle->|\beta\rangle) = |\langle\beta|\alpha\rangle|^{2} = e^{-|\alpha-\beta|^{2}}
+\end{align*}
+\begin{enumerate}
+    \item 非正交性: $\langle\beta|\alpha\rangle\neq\delta_{\alpha\beta}$. 
+    \item 完备性关系: 
+\begin{align*}
+        \frac{1}{\pi}\int_{\mathbb{C}}\mathrm{d}\alpha|\alpha\rangle\langle\alpha| &= 
+        \frac{1}{\pi}\sum_{m=0}^{\infty}\sum_{n=0}^{\infty}\frac{1}{\sqrt{m!n!}}
+        \int_{\mathbb{C}}\mathrm{d}\alpha e^{-|\alpha|^{2}}\alpha^{m}[\alpha^{*}]^{n}
+        |m\rangle\langle n|\\
+        \alpha = re^{i\varphi}:\quad &= 
+        \frac{1}{\pi}\sum_{m=0}^{\infty}\sum_{n=0}^{\infty}\frac{1}{\sqrt{m!n!}}
+        \int_{0}^{\infty}r\mathrm{d}re^{-r^{2}}r^{m+n}\int_{0}^{2\pi}\mathrm{d}\varphi e^{i(m-n)\varphi}
+        |m\rangle\langle n|\\
+        &= \frac{1}{\pi}\sum_{m=0}^{\infty}\sum_{n=0}^{\infty}\frac{1}{\sqrt{m!n!}}
+        2\pi\delta_{mn}\int_{0}^{\infty}r\mathrm{d}r e^{-r^{2}} r^{m+n}
+        |m\rangle\langle n|\\
+    s = r^{2}:\quad &= \frac{1}{\pi}\sum_{n=0}^{\infty}\frac{1}{n!}\pi
+        \int_{0}^{\infty}\mathrm{d}s e^{-s} s^{n}|n\rangle\langle n|\\
+        &= \frac{1}{\pi}\sum_{n=0}^{\infty}\frac{1}{\cancel{n!}}\pi\cancel{\Gamma(n+1)}|n\rangle\langle n|\\
+        &= \sum_{n=0}^{\infty}|n\rangle\langle n| = \mathbb{I}
+\end{align*}
+\item 超完备性(任何相干态都可以用其它相干态展开):
+\begin{align*}
+    |\alpha\rangle = \frac{1}{\pi}\int_{\mathbb{C}}\mathrm{d}\beta |\beta\rangle\langle\beta|\alpha\rangle = \frac{1}{\pi}\int_{\mathbb{C}}\mathrm{d}\beta |\beta\rangle e^{-\frac{1}{2}(|\alpha|^{2} + |\beta|^{2})+\alpha\beta^{*}}
+\end{align*}
+\end{enumerate}
+\subsubsection{三维谐振子}
+\paragraph{哈密顿量}
+\begin{align*}
+    H &= \frac{\hbar\omega}{2}\left(\vec{P}^{2} + \vec{Q}^{2}\right), \quad [Q_{i},P_{j}] = i\delta_{ij},\quad [Q_{i},Q_{j}] = [P_{i},P_{j}] = 0\\
+    \vec{a} &= \frac{1}{\sqrt{2}}(\vec{Q} + i\vec{P}),\quad \vec{a}^{\dagger} = \frac{1}{\sqrt{2}}(\vec{Q} - i\vec{P}),\quad [a_{i},a_{j}^{\dagger}] = \delta_{ij},\quad [a_{i},a_{j}] = [a_{i}^{\dagger},a_{j}^{\dagger}] = 0\\
+    H &= \hbar\omega\left(\vec{a}^{\dagger}\cdot\vec{a} + \frac{3}{2}\right) = \hbar\omega\left(a^{\dagger}_{1}a_{1} + a^{\dagger}_{2}a_{2} + a^{\dagger}_{3}a_{3} + \frac{3}{2}\right)
+\end{align*}
+\paragraph{能级和简并}
+\begin{align*}
+    E &= \hbar\omega\left(n_{1} + n_{2} + n_{3} + \frac{3}{2}\right) = \hbar\omega\left(N+\frac{3}{2}\right)\\
+    D &= \sum_{n_{1},n_{2},n_{3}}\delta_{N,n_{1}+n_{2},n_{3}} = \frac{1}{2}(N+1)(N+2)
+\end{align*}
+\paragraph{角动量算符}
+\begin{align*}
+    \vec{L} = \vec{x}\times\vec{p}\iff L_{i} = \epsilon_{ijk}x_{j}p_{k}\iff L_{i} = -i\epsilon_{ijk}a_{j}^{\dagger}a_{k}
+\end{align*}
+\paragraph{Fock 态表象}
+\paragraph{角动量表象}
+
 \end{document}

@@ -3,4 +3,68 @@
 \begin{document}
 \section{量子动力学}
 
+\subsection{时间演化和薛定谔方程}
+含时薛定谔方程 $\begin{aligned}
+    i\hbar\frac{\partial}{\partial t}|\psi(t)\rangle = H|\psi(t)\rangle
+\end{aligned}$, 则态的时间演化为 $\begin{aligned}
+    |\psi(t^{\prime})\rangle = U(t^{\prime},t)|\psi(t)\rangle,\quad U(t^{\prime},t)=\tau\text{exp}\left(-\frac{i}{\hbar}\int_{t}^{t^{\prime}}H(t^{\prime\prime})\mathrm{d}t^{\prime\prime}\right)
+\end{aligned}$
+\begin{enumerate}
+    \item 概率守恒: $\langle\psi(t^{\prime})|\psi(t^{\prime})\rangle = \langle\psi(t)|U^{\dagger}(t^{\prime},t)U(t^{\prime},t)|\psi(t)\rangle = 1\iff U^{\dagger}(t^{\prime},t)U(t^{\prime},t) = \mathbb{I}$.
+    \item 可拼接: $U(t_{i},t_{k}) = U(t_{i},t_{j})U(t_{j},t_{k}),\quad t_{k} < t_{j} < t_{i}$
+    \item $U(t,t)=\mathbb{I}$.
+\end{enumerate}
+无穷小时间演化算符 $U(t+\mathrm{d}t,t)$ 展开: $\begin{aligned}
+    U(t+\mathrm{d}t,t) = \mathbb{I} - \frac{i}{\hbar}H\mathrm{d}t + \mathcal{O}[(\mathrm{d}t)^{2}]
+\end{aligned}$, 若 $U^{\dagger}U = \mathbb{I}$, 则
+\begin{align*}
+    U^{\dagger}U &= \left(\mathbb{I} + \frac{i}{\hbar}H^{\dagger}\mathrm{d}t + \cdots\right)\left(\mathbb{I} - \frac{i}{\hbar}H\mathrm{d}t + \cdots\right) = \mathbb{I} + \frac{i}{\hbar}(H^{\dagger} - H)\mathrm{d}t + \cdots = \mathbb{I}\\
+    \Rightarrow H^{\dagger} &= H\\
+    |\psi(t+\mathrm{d}t)\rangle &= \left\{\mathbb{I} - \frac{i}{\hbar}H\mathrm{d}t + \mathcal{O}[(\mathrm{d}t)^{2}]\right\}|\psi(t)\rangle \\
+    \Rightarrow i\hbar\frac{\mathrm{d}}{\mathrm{d}t}|\psi(t)\rangle &= H|\psi(t)\rangle\Rightarrow i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U(t,t_{0}) = HU(t,t_{0})
+\end{align*}
+\subsection{经典力学时间演化}
+重温分析力学:
+\begin{align*}
+    \text{哈密顿方程:}\quad\frac{\mathrm{d}q}{\mathrm{d}t} &= \frac{\partial H}{\partial p},\quad \frac{\mathrm{d} p}{\mathrm{d}t} = -\frac{\partial H}{\partial q}.\\
+    \text{牛顿方程导出:}\quad H(q,p) &= \frac{p^{2}}{2m} + V(q),\quad \dot{q} = \frac{p}{m},\quad \dot{p} = -\nabla_{q}V.\\
+    \text{时间演化:}\quad\frac{\mathrm{d}A}{\mathrm{d}t} &= \frac{\partial A}{\partial t} + \frac{\partial A}{\partial q}\dot{q} + \frac{\partial A}{\partial p}\dot{p}\\
+    &= \frac{\partial A}{\partial t} + \frac{\partial A}{\partial q}\frac{\partial H}{\partial p} - \frac{\partial A}{\partial p}\frac{\partial p}{\partial q} = \frac{\partial A}{\partial t} + \{A,H\}
+\end{align*}
+\subsection{海森堡绘景}
+薛定谔 $\begin{aligned}
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t}|\psi(t)\rangle = H|\psi(t)\rangle
+\end{aligned}$, 若 $\begin{aligned}
+    \frac{\partial H}{\partial t} = 0
+\end{aligned}$, 则 $\begin{aligned}
+    U(t,0) = e^{-iHt/\hbar}
+\end{aligned}$. 
+
+任意 $A$ 在 $t$ 时刻矩阵元为 $\begin{aligned}
+    \langle\psi^{\prime}(t)|A|\psi(t)\rangle = \langle\psi^{\prime}(0)|U^{\dagger}(t,0)AU(t,0)|\psi(0)\rangle
+\end{aligned}$. 取含时部分 $\begin{aligned}
+    A_{H}(t) = U^{\dagger}(t,0)A_{H}(0)U(t,0)
+\end{aligned}$, 而使态不随时间演化. 
+得到与分析力学中类似于泊松括号的关系:
+\begin{align*}
+    \frac{\mathrm{d}A_{H}(t)}{\mathrm{d}t} = \frac{1}{i\hbar}\bigg[A_{H}(t),H\bigg]
+\end{align*}
+\subsection{相互作用绘景}
+特攻 $H(t) = H_{0} + V(t)$. 其中 $\partial_{t}H_{0}=0$. 将 $H_{0}$ 的 $U_{0}(t)$ 和 $H(t)$ 的 $U(t)$ 分离开. 
+\begin{align*}
+    |\psi_{I}(t)\rangle &= U_{0}^{-1}(t)|\psi_{S}(t)\rangle,\quad U_{0}(t) = e^{-iH_{0}t/\hbar}\\
+    |\psi_{H}(t)\rangle &= U^{-1}(t)|\psi_{S}(t)\rangle,\quad U(t) = e^{-iHt/\hbar}
+\end{align*}
+\subsection{密度矩阵的时间演化}
+
+\subsection{电磁场中的带电粒子}
+\subsubsection{常势场}
+\subsubsection{电磁场}
+\subsubsection{A-B 效应}
+\subsubsection{匀磁场中的运动}
+\subsubsection{霍尔效应}
+\paragraph{经典霍尔效应}
+\paragraph{Drude 模型}
+\paragraph{整数量子霍尔效应}
+\paragraph{霍尔电阻平台}
 \end{document}
