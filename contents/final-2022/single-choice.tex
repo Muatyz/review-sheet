@@ -165,13 +165,13 @@
       0 & 1
     \end{pmatrix}
   \end{align*}
-  计算 $\rho_{A}$ 的纠缠熵:
+  由于 $\rho_{A}$ 已经是对角阵, 所以对角线上元素即为特征值 $\lambda_{A,i}$. 计算 $\rho_{A}$ 的纠缠熵:
   \begin{align*}
     S(A) &= 
     -\text{Tr}[\rho_{A}\ln{\rho_{A}}] 
     = -\sum_{i}^{\uparrow,\downarrow} 
-    (\langle i|_{A})\rho_{A}(|i\rangle_{A})
-    \ln{\left[(\langle i|_{A})\rho_{A}(|i\rangle_{A})\right]}\\
+    \lambda_{A,i}
+    \ln{\lambda_{A,i}}\\
     &= -\left(\frac{1}{2}\ln{\frac{1}{2}} + \frac{1}{2}\ln{\frac{1}{2}}\right) = \boxed{\ln{2} = 1\text{ bit}}
   \end{align*}}}
 

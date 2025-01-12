@@ -59,11 +59,123 @@ $|\uparrow\downarrow\rangle$, $|\downarrow\uparrow\rangle$, $|\downarrow\downarr
 
 \subsubsection{双量子比特模型}
 
+双量子比特 Heisenberg 模型哈密顿量为 $\begin{aligned}
+    H = \frac{J}{4}\vec{\sigma}_{A}\cdot\vec{\sigma}_{B}
+\end{aligned}$, 将其写作矩阵形式:
+\begin{align*}
+    H = \frac{J}{4}(\sigma^{11}+\sigma^{22}+\sigma^{33}) = \frac{J}{4} \begin{pmatrix}
+        1 &  & & \\
+         & -1 & 2 & \\
+         & 2 & -1 & \\
+            &  &  & 1
+    \end{pmatrix}
+\end{align*}
+
+将其对角化以计算本征值, 并找到本征值对应的本征态, 结果为
+\begin{align*}
+    E_{s} &= -\frac{3}{4}J,\quad |s\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle),\quad \text{自旋单态}\\
+    E_{t} &= \frac{J}{4},\quad \left\{\begin{aligned}
+        |t_{1}\rangle &= \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)\\
+        |t_{2}\rangle &= \frac{1}{\sqrt{2}}(|\uparrow\uparrow\rangle + |\downarrow\downarrow\rangle)\\
+        |t_{3}\rangle &= \frac{1}{\sqrt{2}}(|\uparrow\uparrow\rangle - |\downarrow\downarrow\rangle)
+    \end{aligned}\right.,\quad \text{自旋三重态}
+\end{align*}
+
 \subsubsection{自旋单态}
 
+\begin{align*}
+    |s\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle) = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        0 \\ 1 \\ -1 \\ 0
+    \end{pmatrix},\vec{\sigma}_{A} = (\sigma^{10},\sigma^{20},\sigma^{30}) = \left(\begin{pmatrix}
+         &  & 1 &  \\  &  &  & 1\\ 1 &  &  &  \\  & 1 &  & 
+    \end{pmatrix}, \begin{pmatrix}
+         &  & -i &  \\  &  &  & -i\\ i &  &  &  \\  & i &  & 
+    \end{pmatrix}, \begin{pmatrix}
+        1 &  &  &  \\  & 1 &  & \\  &  & -1 &  \\  &  &  & -1
+    \end{pmatrix}
+    \right)
+\end{align*}
+
 \subsubsection{纠缠熵}
+双量子比特态 $|\psi\rangle$ 中量子比特 $A$ 的纠缠熵: $\begin{aligned}
+    S(A) = -\text{Tr}[\rho_{A}\ln{\rho_{A}}]
+\end{aligned}$. 其中约化密度矩阵 $\begin{aligned}
+    \rho_{A} = \text{Tr}_{B}|\psi\rangle\langle\psi|
+\end{aligned}$
+
+更广义的 Renyi 纠缠熵 $\begin{aligned}
+    S^{(n)}(A) = \frac{1}{1-n}\ln{\text{Tr}\rho_{A}^{n}}
+\end{aligned}$. 
+
+接下来介绍如何部分求迹. 
+
+\begin{enumerate}
+    \item 自旋单态 $\begin{aligned}
+        |\psi\rangle = |s\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)
+    \end{aligned}$. 其总密度矩阵为
+    \begin{align*}
+        \rho &= |s\rangle\langle s| = \frac{1}{2}\begin{pmatrix}
+            0 \\ 1 \\ -1 \\ 0
+        \end{pmatrix}\begin{pmatrix}
+            0 & 1 & -1 & 0
+        \end{pmatrix} = \frac{1}{2}\begin{pmatrix}
+             & & & \\
+                & 1 & -1 & \\
+                & -1 & 1 & \\
+                & & &
+        \end{pmatrix}\\
+        \rho_{A} &= \text{Tr}_{B}\rho = \frac{1}{2}\begin{pmatrix}
+            \text{Tr}\begin{pmatrix}
+                & \\ & 1
+            \end{pmatrix} & \text{Tr}\begin{pmatrix}
+                & \\ -1 &
+            \end{pmatrix} \\ \text{Tr}\begin{pmatrix}
+                 & -1 \\ & 
+            \end{pmatrix} & \text{Tr}\begin{pmatrix}
+                1 & \\ &
+            \end{pmatrix}
+        \end{pmatrix} = \frac{1}{2}\begin{pmatrix}
+            1 & 0 \\ 0 & 1
+        \end{pmatrix},\quad \lambda_{A}^{1} = \frac{1}{2}, \quad \lambda_{A}^{2} = \frac{1}{2}\\
+        S(A) &= -\text{Tr}\rho_{A}\ln{\rho_{A}} = - \sum_{i}\lambda_{A}^{i}\ln{\lambda_{A}^{i}} = -\left(\frac{1}{2}\ln{\frac{1}{2}} + \frac{1}{2}\ln{\frac{1}{2}}\right) = \ln{2}
+    \end{align*}
+    \item 乘积态 $\begin{aligned}
+        |\psi\rangle = \frac{1}{2}(|\uparrow\uparrow\rangle + |\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle + |\downarrow\downarrow\rangle)
+    \end{aligned}$. 总密度矩阵为
+    \begin{align*}
+        \rho &= |\psi\rangle\langle\psi| = \frac{1}{4}\begin{pmatrix}
+            1 \\ 1 \\ 1 \\ 1
+        \end{pmatrix}\begin{pmatrix}
+            1 & 1 & 1 & 1
+        \end{pmatrix} = \frac{1}{4}\begin{pmatrix}
+            1 & 1 & 1 & 1\\ 1 & 1 & 1 & 1\\ 1 & 1 & 1 & 1\\ 1 & 1 & 1 & 1
+        \end{pmatrix}\\
+        \rho_{A} &= \text{Tr}_{B}\rho = \frac{1}{4}\begin{pmatrix}
+            \text{Tr}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix} &  \text{Tr}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix}\\
+            \text{Tr}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix} &  \text{Tr}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix}
+        \end{pmatrix} = \frac{1}{4}\begin{pmatrix}
+            2 & 2 \\ 2 & 2
+        \end{pmatrix} = \frac{1}{2}\begin{pmatrix}
+            1 & 1 \\ 1 & 1
+        \end{pmatrix},\quad \lambda_{A}^{1} = 0,\quad \lambda_{A}^{2} = 1\\
+        S(A) &= -\text{Tr}\rho_{A}\ln{\rho_{A}} = -\sum_{i}\lambda_{A}^{i}\ln{\lambda_{A}^{i}} = - (0\ln{0} + 1\ln{1}) = 0.
+    \end{align*}
+\end{enumerate}
 
 \subsubsection{互信息}
+双量子比特体系, A 和 B 之间的互信息为
+
+\begin{align*}
+    I(A:B) = S(A) + S(B) - S(A\cup B)
+\end{align*}
 
 \subsubsection{EPR 佯谬和 Bell 不等式}
 
