@@ -2,5 +2,334 @@
 \graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
 \begin{document}
 \section{微扰论}
+\subsection{不含时微扰}
+\subsubsection{微扰论的一般想法}
+\begin{enumerate}
+    \item 不含时微扰: 给定 $H_{0}$ 的 $E_{n}$ 和 $|\psi_{n}\rangle$, 计算 $H = H_{0} + \lambda V(\lambda\ll 1)$ 的能谱. 
+    \item 含时微扰: 给定裸传播子 $U_{0}(t) = \text{exp}[-iH_{0}t]$, 计算传播子 $\begin{aligned}
+        U(t) = \tau\text{exp}\left[-i\int_{0}^{t}\mathrm{d}t^{\prime}H(t^{\prime})\right]
+    \end{aligned}$, 其中 $H(t) = H_{0} + \lambda V(t)$.
+\end{enumerate}
+\subsubsection{非简并微扰论}
+\begin{align*}
+    H(\lambda) &= H_{0} + \lambda V\\
+    \quad H(0) &= H_{0},\quad \frac{\partial H(0)}{\partial\lambda} = V,\quad \frac{\partial^{2}H(0)}{\partial\lambda^{2}} = \frac{\partial^{3}H}{\partial\lambda^{3}} = \cdots = 0\\
+    H(\lambda)|n(\lambda)\rangle &= E_{n}(\lambda)|n(\lambda)\rangle,\quad |n(\lambda)\rangle = \sum_{l}\psi_{nl}(\lambda)|l\rangle
+\end{align*}
+\paragraph{HF 定理}
+\begin{align*}
+    &\frac{\partial}{\partial\lambda}(H|n\rangle) = \frac{\partial}{\partial\lambda}(E_{n}|n\rangle)\Rightarrow \frac{\partial H}{\partial\lambda}|n\rangle + H\frac{\partial|n\rangle}{\partial\lambda} = \frac{\partial E_{n}}{\partial\lambda}|n\rangle + E_{n}\frac{\partial|n\rangle}{\partial\lambda}\\
+    &\text{左乘}\langle m|:\quad\langle m|\frac{\partial H}{\partial\lambda}|n\rangle + \langle m|H\frac{\partial|n\rangle }{\partial\lambda} = \langle m|\frac{\partial E_{n}}{\partial\lambda}|n\rangle + \langle m|E_{n}\frac{\partial |n\rangle}{\partial\lambda}\\
+    &V_{mn} + \langle m|E_{m}\frac{\partial|n\rangle }{\partial\lambda} = \frac{\partial E_{n}}{\partial\lambda}\delta_{mn} + \langle m|E_{n}\frac{\partial|n\rangle}{\partial\lambda}\\
+    &V_{mn} = \frac{\partial E_{n}}{\partial\lambda}\delta_{mn} + (E_{n}-E_{m})\langle m|\frac{\partial|n\rangle}{\partial\lambda} \\
+    &\left\{\begin{aligned}
+        m&=n:\quad\frac{\partial E_{n}}{\partial\lambda} = V_{nn}\\
+        m&\neq n:\quad V_{mn} = (E_{n}-E_{m})\langle m|\frac{\partial |n\rangle}{\partial\lambda}\Rightarrow \langle m|\frac{\partial|n\rangle}{\partial\lambda} = \frac{V_{mn}}{E_{n}-E_{m}},\quad \frac{\partial\langle n|}{\partial\lambda}|m\rangle = \frac{V_{nm}}{E_{n}-E_{m}}
+    \end{aligned}\right.
+\end{align*}
+\paragraph{能量的微扰修正}
+\begin{align*}
+    E_{n}(\lambda) &= \sum_{l}^{\infty}\frac{1}{l!}\frac{\partial^{l}E_{n}}{\partial\lambda^{l}}\lambda^{l} = E_{n} + \frac{\partial E_{n}}{\partial\lambda}\lambda + \frac{1}{2}\frac{\partial^{2}E_{n}}{\partial\lambda^{2}}\lambda^{2} + \cdots\\
+    \frac{\partial E_{n}}{\partial\lambda} &= V_{nn} = \langle n|\frac{\partial H}{\partial\lambda}|n\rangle = \langle n|V|n\rangle\\
+    \frac{\partial^{2}E_{n}}{\partial\lambda^{2}} &= \frac{\partial}{\partial\lambda}\langle n|\frac{\partial H}{\partial\lambda}|n\rangle 
+    = \frac{\partial\langle n|}{\partial\lambda}\frac{\partial H}{\partial\lambda}|n\rangle + \langle n|\frac{\partial^{2}H}{\partial\lambda^{2}}|n\rangle + \langle n|\frac{\partial H}{\partial\lambda}\frac{\partial|n\rangle}{\partial\lambda}\\
+    \frac{\partial^{2}H}{\partial\lambda^{2}}=0:\quad &= \sum_{m}\frac{\partial\langle n|}{\partial\lambda}|m\rangle\langle m|\frac{\partial H}{\partial\lambda}|n\rangle + \sum_{m}\langle n|\frac{\partial H}{\partial\lambda}|m\rangle\langle m|\frac{\partial|n\rangle}{\partial\lambda}\\
+    &= \sum_{m\neq n}\left[\frac{V_{nm}}{E_{n}-E_{m}}V_{mn} + V_{nm}\frac{V_{mn}}{E_{n}-E_{m}}\right] + V_{nn}\frac{\partial\langle n|n\rangle}{\partial\lambda}\\
+    &= 2\sum_{m\neq n}\frac{|V_{mn}|^{2}}{E_{n}-E_{m}}\\
+    \Rightarrow E_{n} &= E_{n} + V_{nn}\lambda + \sum_{m\neq n}\frac{|V_{mn}|^{2}}{E_{n}-E_{m}}\lambda^{2} + \cdots
+\end{align*}
+\paragraph{态的微扰修正}
+\begin{align*}
+    |n(\lambda)\rangle &= \sum_{k=0}^{\infty}\frac{1}{k!}\frac{\partial^{k}|n\rangle}{\partial\lambda^{k}}\lambda^{k} = |n\rangle + \frac{\partial|n\rangle}{\partial\lambda}\lambda + \frac{1}{2}\frac{\partial^{2}|n\rangle}{\partial\lambda^{2}}\lambda^{2} + \cdots\\
+    \frac{\partial|n\rangle}{\partial\lambda} &= \sum_{m\neq n}|m\rangle\langle m|\frac{\partial|n\rangle}{\partial\lambda} = \sum_{m\neq n}|m\rangle \frac{V_{mn}}{E_{n} - E_{m}}\\
+    \frac{\partial^{2}|n\rangle}{\partial\lambda^{2}} &= \frac{\partial}{\partial\lambda}\sum_{m\neq n}|m\rangle\frac{1}{E_{n}-E_{m}}\langle m|\frac{\partial H}{\partial\lambda}|n\rangle\\
+    &= \sum_{m\neq n}\left[
+        \frac{\partial|m\rangle}{\partial\lambda}\langle m|\frac{1}{E_{n}-E_{m}}\frac{\partial H}{\partial\lambda}|n\rangle 
+        + |m\rangle\frac{\partial\langle m|}{\partial\lambda}\frac{1}{E_{n}-E_{m}}\frac{\partial H}{\partial\lambda}|n\rangle\right.\\
+    &\left. - |m\rangle\langle m|\frac{\partial H}{\partial\lambda}|n\rangle\frac{1}{(E_{n}-E_{m})^{2}}\left(\frac{\partial E_{n}}{\partial\lambda} - \frac{\partial E_{m}}{\partial\lambda}\right) + |m\rangle\langle m|\frac{1}{E_{n}-E_{m}}\frac{\partial H}{\partial\lambda}\frac{\partial|n\rangle}{\partial\lambda}\right]\\
+    &= \sum_{m\neq n}\left[
+        \sum_{l\neq m}|l\rangle\frac{V_{lm}}{E_{m}-E_{l}}\frac{V_{mn}}{E_{n}-E_{m}} + \sum_{l\neq m}|m\rangle\frac{V_{ml}}{E_{m}-E_{l}}\frac{V_{ln}}{E_{n}-E_{m}}\right.\\
+    &\left.- |m\rangle\frac{V_{mn}}{(E_{n}-E_{m})}(V_{nn}-V_{mm}) + \sum_{l\neq n}\frac{V_{ml}}{E_{n}-E_{m}}\frac{V_{ln}}{E_{n}-E_{l}}\right]
+\end{align*}
+\paragraph{非简并微扰的物理图像}
+\subsubsection{简并微扰论}
+\paragraph{简并微扰论的一般思想}
+简并态张成的空间是简并子空间.
+\begin{enumerate}
+    \item 利用非简并微扰论将哈密顿量块对角化.
+    \item 分别处理每个对角块.
+    \begin{enumerate}
+        \item 对角块的对角元已经没有简并, 使用非简并微扰;
+        \item 对角块的对角元还有简并, 使用严格对角化.
+    \end{enumerate}
+\end{enumerate}
+\paragraph{HF 定理的推广}
+增加一个量子数 $\alpha$ 来区分同一能级 $E_{n}$ 的本征态, 如 $|n\alpha\rangle$. 那么本征方程化为 $\begin{aligned}
+    H_{0}|n\alpha\rangle = E_{n}|n\alpha\rangle
+\end{aligned}$, 本征态互相正交: $\begin{aligned}
+    \langle n^{\prime}\alpha^{\prime}|n\alpha\rangle = \delta_{nn^{\prime}}\delta_{\alpha\alpha^{\prime}}
+\end{aligned}$
+将微扰项 $V$ 通过新基矢展开: 
+\begin{align*}
+    V &= \sum_{n^{\prime}\alpha^{\prime},n\alpha}|n^{\prime}\alpha^{\prime}\rangle \langle n^{\prime}\alpha^{\prime}|V|n\alpha\rangle \langle n\alpha| = \sum_{n^{\prime}\alpha^{\prime},n\alpha}|n^{\prime}\alpha^{\prime}\rangle V_{n^{\prime}\alpha^{\prime},n\alpha}\langle n\alpha|\\
+    H(\lambda)|n\alpha(\lambda)\rangle &= \sum_{\alpha^{\prime}}|n\alpha^{\prime}(\lambda)\rangle\langle n\alpha^{\prime}(\lambda)|H(\lambda)|n\alpha(\lambda)\rangle = \sum_{\alpha^{\prime}}|n\alpha^{\prime}(\lambda)\rangle E_{n\alpha^{\prime},n\alpha}\\
+    &= \sum_{\alpha^{\prime}}|n\alpha^{\prime}(\lambda)\rangle E^{(n)}_{\alpha^{\prime},\alpha}(\lambda)\\
+    \Rightarrow \langle m\beta(\lambda)|H(\lambda) &= \sum_{\beta^{\prime}}\langle m\beta^{\prime}|E^{*}_{m\beta^{\prime},m\beta}(\lambda) 
+    = \sum_{\beta^{\prime}}\langle m\beta^{\prime}(\lambda)|[E^{(m)}_{\beta^{\prime},\beta}]^{*}(\lambda)
+    = \sum_{\beta^{\prime}}E^{(m)}_{\beta,\beta^{\prime}}(\lambda)\langle m\beta^{\prime}(\lambda)|
+\end{align*}
+$E^{(n)}_{\alpha^{\prime},\alpha}$ 是第 $n$ 个能级的简并子空间内哈密顿量的矩阵元. 左乘 $\begin{aligned}
+    \langle m\beta|\frac{\partial}{\partial\lambda}
+\end{aligned}$: 
+\begin{align*}
+    \langle m\beta|\frac{\partial}{\partial\lambda}\bigg[H(\lambda)|n\alpha(\lambda)\rangle\bigg] &= \langle m\beta|\frac{\partial}{\partial\lambda}\bigg[\sum_{\alpha^{\prime}}|n\alpha^{\prime}(\lambda)\rangle E^{(n)}_{\alpha^{\prime},\alpha}(\lambda)\bigg]\\
+    \langle m\beta|\frac{\partial H}{\partial\lambda}|n\alpha\rangle  + \langle m\beta|H\frac{\partial|n\alpha\rangle}{\partial\lambda} &= \langle m\beta|\sum_{\alpha^{\prime}}\bigg[\frac{\partial|n\alpha^{\prime}\rangle}{\partial\lambda}E_{\alpha^{\prime},\alpha}^{(n)} + |n\alpha^{\prime}\rangle\frac{\partial E_{\alpha^{\prime},\alpha}^{(n)}}{\partial\lambda}\bigg] \\
+    \langle m\beta|\frac{\partial H}{\partial\lambda}|n\alpha\rangle &= \sum_{\alpha^{\prime}}\frac{\partial E^{(n)}_{\alpha^{\prime},\alpha}}{\partial\lambda} \langle m\beta|n\alpha^{\prime}\rangle + \sum_{\alpha^{\prime}}\langle m\beta|\frac{\partial|n\alpha^{\prime}\rangle}{\partial\lambda}E^{(n)}_{\alpha^{\prime},\alpha} - \sum_{\beta^{\prime}}E^{(m)}_{\beta,\beta^{\prime}}\langle m\beta^{\prime}|\frac{\partial|n\alpha\rangle}{\partial\lambda}\\
+    &= \frac{\partial E^{(n)}_{\beta,\alpha}}{\partial\lambda}\delta_{mn} + (E^{(n)}-E^{(m)})\langle m\beta|\frac{\partial |n\alpha\rangle}{\partial\lambda}
+\end{align*}
+\begin{enumerate}
+    \item $m=n$. $\begin{aligned}
+        \text{1st:}\quad \frac{\partial E^{(n)}_{\alpha^{\prime},\alpha}}{\partial\lambda} = \langle n\alpha^{\prime}|\frac{\partial H}{\partial\lambda}|n\alpha\rangle = V_{n\alpha^{\prime},n\alpha}
+    \end{aligned}$
+    \item $m\neq n$. $\begin{aligned}
+        \text{2nd:}\quad\langle m\beta|\frac{\partial |n\alpha\rangle}{\partial\lambda} &= \frac{\langle m\beta|\frac{\partial H}{\partial\lambda}|n\alpha\rangle}{E^{(n)}-E^{(m)}} = \frac{V_{m\beta,n\alpha}}{E^{(n)}-E^{(m)}}\\
+        \frac{\partial\langle m\beta|}{\partial\lambda}|n\alpha\rangle &= \frac{\langle m\beta|\frac{\partial H}{\partial\lambda}}{E^{(m)}-E^{(n)}} = \frac{V_{m\beta,n\alpha}}{E^{(m)}-E^{(n)}}
+    \end{aligned}$
+\end{enumerate}
+约定 $\langle n\beta|\partial_{\lambda}n\alpha\rangle = \langle \partial_{\lambda}n\beta|n\alpha\rangle = 0$.
+\paragraph{有效哈密顿量}
+\begin{align*}
+    \frac{\partial}{\partial\lambda}E^{(n)}_{\alpha,\beta} &= V_{n\alpha,n\beta}\\
+    \frac{\partial^{2}}{\partial\lambda^{2}}E^{(n)}_{\alpha,\beta} &= 2\sum_{m\neq n}\sum_{\gamma}\frac{V_{n\alpha,m\gamma}V_{m\gamma,n\beta}}{E_{n}-E_{m}}\\
+    \frac{\partial}{\partial\lambda}|n\alpha\rangle &= \sum_{m\neq n}\sum_{\beta}|m\beta\rangle \frac{V_{m\beta,n\alpha}}{E_{n}-E_{m}}\\
+\end{align*}
+代入得到修正后的能量和波函数
+\begin{align*}
+    E^{(n)}_{\alpha\beta}(\lambda) &= E_{n}\delta_{\alpha\beta} + V_{n\alpha,n\beta}\lambda + \sum_{m\neq n}\sum_{\gamma}\frac{V_{n\alpha,m\gamma}V_{m\gamma,n\beta}}{E_{n}-E_{m}}\lambda^{2} + \cdots\\
+    |n\alpha(\lambda)\rangle &= |n\alpha\rangle + \sum_{m\neq n}\sum_{\beta}|m\beta\rangle\frac{V_{m\beta,n\alpha}}{E_{n}-E_{m}}\lambda + \cdots
+\end{align*}
+哈密顿量可写作各简并子空间哈密顿量的直和:
+\begin{align*}
+    H_{n}^{\text{eff}}(\lambda) &= \sum_{\alpha,\beta}|n\alpha(\lambda)\rangle E^{(n)}_{\alpha,\beta}(\lambda)\langle n\beta(\lambda)|\\
+    H(\lambda) &= \underset{n}{\oplus}H_{n}^{\text{eff}}(\lambda)
+\end{align*}
+\paragraph{简并微扰论的例子}
+\begin{enumerate}
+    \item 两格点 Hubbard 模型. 
+    
+    $\begin{aligned}
+        H = -t\sum_{\langle i,j\rangle,\sigma}c^{\dagger}_{i\sigma}c_{j\sigma} + \text{h.c.} + U\sum_{i}n_{i\uparrow}n_{i\downarrow}
+    \end{aligned}$. 粒子数 $\begin{aligned}
+        N = \sum_{i}n_{i}
+    \end{aligned}$ 守恒, 磁量子数 $\begin{aligned}
+        S^{z} = \sum_{i}s_{i}^{z} = \sum_{i}\frac{1}{2}(n_{i\uparrow}-n_{i\downarrow})
+    \end{aligned}$ 守恒. 考虑两格点 $N = 2$ 和 $S^{z}=0$ 的子空间, 基矢选定为占据数表象 $|n_{1\uparrow}n_{1\downarrow}n_{2\uparrow}n_{2\downarrow}\rangle$. 考虑 $S^{z}=0$ 的限制, 可能存在的态为 $|1100\rangle$, $|0011\rangle$, $|1001\rangle$, $|0110\rangle$. 将排斥项 $\begin{aligned}
+        U\sum_{i}n_{i\uparrow}n_{i\downarrow}
+    \end{aligned}$ 视为未微扰项 $H_{0}$, 跃迁项 $\begin{aligned}
+        -t\sum_{\langle i,j\rangle,\sigma}c^{\dagger}_{i\sigma}c_{j\sigma} + \text{h.c.}
+    \end{aligned}$ 视为微扰项 $V$. 得到矩阵元的方法是 $A_{mn} = \langle \psi_{m}|A|\psi_{n}\rangle$, 其中 $|\psi_{m}\rangle$ 为上述选定的基矢. 
+    \begin{align*}
+        H_{0} &= Un_{1\uparrow}n_{1\downarrow} + Un_{2\uparrow}n_{2\downarrow}
+        = \begin{pmatrix}
+            U & & & \\
+            & U & & \\
+            & & 0 & \\
+            & & & 0
+        \end{pmatrix}\\
+        V &= -tc_{1\uparrow}^{\dagger}c_{2\uparrow} - tc_{2\uparrow}^{\dagger}c_{1\uparrow} - tc_{1\downarrow}^{\dagger}c_{2\downarrow} - tc_{2\downarrow}^{\dagger}c_{1\downarrow} = \begin{pmatrix}
+            & & -t & t\\
+            & & -t & t\\
+            -t & -t & & \\
+            t & t & &
+        \end{pmatrix}
+    \end{align*}
+    首先计算 $H_{0}$ 的本征值和本征矢. 由矩阵可知其已经对角化, 对角线上元素为 $U$ 和 $0$. 
+    \begin{align*}
+        \begin{matrix}
+            n & \text{states} & E_{n}\\
+            0 & |1\uparrow1\downarrow\rangle = |1100\rangle = |\stackrel{n}{0},\stackrel{\alpha}{1}\rangle = |\psi_{1}\rangle, \quad|2\uparrow2\downarrow\rangle = |0011\rangle = |\stackrel{n}{0},\stackrel{\alpha}{2}\rangle = |\psi_{2}\rangle & U\\
+            1 & |1\uparrow2\downarrow\rangle = |1001\rangle = |\stackrel{n}{1},\stackrel{\alpha}{1}\rangle = |\psi_{3}\rangle, \quad|1\downarrow2\uparrow\rangle = |0110\rangle = |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle = |\psi_{4}\rangle & 0
+        \end{matrix}
+    \end{align*}
+    接下来按照简并微扰论的公式计算 $n=1$ 时波函数修正
+    \begin{align*}
+        |\stackrel{n}{1},\stackrel{\alpha}{1}\rangle^{\prime} &= 
+        |\stackrel{n}{1},\stackrel{\alpha}{1}\rangle 
+        + |\stackrel{m}{0},\stackrel{\beta}{1}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{1},\stackrel{n}{1}\stackrel{\alpha}{1}}}{E_{\stackrel{n}{1}}-E_{\stackrel{m}{0}}} 
+        + |\stackrel{m}{0},\stackrel{\beta}{2}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{2},\stackrel{n}{1}\stackrel{\alpha}{1}}}{E_{\stackrel{n}{1}}-E_{\stackrel{m}{0}}} + \cdots\\
+        &= |\stackrel{n}{1},\stackrel{\alpha}{1}\rangle 
+        + |\stackrel{m}{0},\stackrel{\beta}{1}\rangle\frac{t}{U}
+        + |\stackrel{m}{0},\stackrel{\beta}{2}\rangle\frac{t}{U} + \cdots\\
+        |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle^{\prime} &= 
+        |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle
+        + |\stackrel{m}{0},\stackrel{\beta}{1}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{1},\stackrel{n}{1}\stackrel{\alpha}{2}}}{E_{\stackrel{n}{1}}-E_{\stackrel{m}{0}}}
+        + |\stackrel{m}{0},\stackrel{\beta}{2}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{2},\stackrel{n}{1}\stackrel{\alpha}{2}}}{E_{\stackrel{n}{1}}-E_{\stackrel{m}{0}}} + \cdots\\
+        &= |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle
+        - |\stackrel{m}{0},\stackrel{\beta}{1}\rangle\frac{t}{U}
+        - |\stackrel{m}{0},\stackrel{\beta}{2}\rangle\frac{t}{U} + \cdots\\
+    \end{align*}
+    和有效哈密顿量(能量):
+    \begin{align*}
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{1},\stackrel{\beta}{1}} &= E^{(\stackrel{n}{1})} 
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{n}{1}\stackrel{\beta}{1}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{m}{0}\stackrel{\gamma}{1}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{1},\stackrel{n}{1}\stackrel{\beta}{1}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{m}{0}\stackrel{\gamma}{2}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{2},\stackrel{n}{1}\stackrel{\beta}{1}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        = -\frac{2t^{2}}{U}\\
+        E^{\stackrel{(n)}{1}}_{\stackrel{\alpha}{2},\stackrel{\beta}{2}} &= E^{(\stackrel{n}{1})}
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{n}{1}\stackrel{\beta}{2}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{m}{0}\stackrel{\gamma}{1}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{1},\stackrel{n}{1}\stackrel{\beta}{2}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{m}{0}\stackrel{\gamma}{2}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{2},\stackrel{n}{1}\stackrel{\beta}{2}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        = -\frac{2t^{2}}{U}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{1},\stackrel{\beta}{2}} &= 
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{n}{1}\stackrel{\beta}{2}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{m}{0}\stackrel{\gamma}{1}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{1},\stackrel{n}{1}\stackrel{\beta}{2}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{1},\stackrel{m}{0}\stackrel{\gamma}{2}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{2},\stackrel{n}{1}\stackrel{\beta}{2}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        = \frac{2t^{2}}{U}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{2},\stackrel{\beta}{1}} &= 
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{n}{1}\stackrel{\beta}{1}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{m}{0}\stackrel{\gamma}{1}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{1},\stackrel{n}{1}\stackrel{\beta}{1}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        + \frac{
+            V_{\stackrel{n}{1}\stackrel{\alpha}{2},\stackrel{m}{0}\stackrel{\gamma}{2}}
+            V_{\stackrel{m}{0}\stackrel{\gamma}{2},\stackrel{n}{1}\stackrel{\beta}{1}}}{E^{(\stackrel{n}{1})}-E^{(\stackrel{m}{0})}}
+        = \frac{2t^{2}}{U}
+    \end{align*}
+    在 $n=1$ 的简并子空间中, 选定 $|\stackrel{n}{1},\stackrel{\alpha}{1}\rangle^{\prime}$ 和 $|\stackrel{n}{1},\stackrel{\alpha}{2}\rangle^{\prime}$ 为基矢, 有效哈密顿量为
+    \begin{align*}
+        H_{\stackrel{n}{1}}^{\text{eff}} = \begin{pmatrix}
+            E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{1},\stackrel{\beta}{1}} & E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{1},\stackrel{\beta}{2}}\\
+            E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{2},\stackrel{\beta}{1}} & E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{2},\stackrel{\beta}{2}}
+        \end{pmatrix} = \begin{pmatrix}
+            -\frac{2t^{2}}{U} & \frac{2t^{2}}{U}\\
+            \frac{2t^{2}}{U} & -\frac{2t^{2}}{U}
+        \end{pmatrix}
+    \end{align*}
+    此时对角元相同, 所以无法直接应用非简并微扰, 所以对该子空间进行严格对角化, 本征能量为 $\begin{aligned}
+        \epsilon_{1} = 0,\quad\epsilon_{2} = -\frac{4t^{2}}{U}
+    \end{aligned}$, 对应的本征矢为
+    \begin{align*}
+        |\epsilon_{1}\rangle &= \frac{1}{\sqrt{2}}\left(|\stackrel{n}{1},\stackrel{\alpha}{1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle^{\prime}\right)\\
+        |\epsilon_{2}\rangle &= \frac{1}{\sqrt{2}}\left(|\stackrel{n}{1},\stackrel{\alpha}{1}\rangle^{\prime} - |\stackrel{n}{1},\stackrel{\alpha}{2}\rangle^{\prime}\right)
+    \end{align*}
+    \item 自旋-1 系统. 
+    
+    根据磁量子数选取基矢为 $|\stackrel{\alpha}{+1}\rangle$, $|\stackrel{\alpha}{0}\rangle$, $|\stackrel{\alpha}{-1}\rangle$. 考虑哈密顿量为 $\begin{aligned}
+        H = H_{0} + \lambda V = (S^{z})^{2} + \lambda (S^{x} + S_{z})
+    \end{aligned}$. 
+    \begin{align*}
+        S^{x} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+            0 & 1 & 0\\
+            1 & 0 & 1\\
+            0 & 1 & 0
+        \end{pmatrix},\quad S^{z} = \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & -1
+        \end{pmatrix}\Rightarrow H_{0} = \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 1
+        \end{pmatrix},\quad V = \lambda\begin{pmatrix}
+            1 & 1/\sqrt{2} & 0\\
+            1/\sqrt{2} & 0 & 1/\sqrt{2}\\
+            0 & 1/\sqrt{2} & -1
+        \end{pmatrix}
+    \end{align*}
+    首先计算 $H_{0}$ 的本征矢和本征值:
+    \begin{align*}
+        \begin{matrix}
+            n & \text{states} & E_{n}\\
+            1 & |\stackrel{n}{1}, \stackrel{\alpha}{+1}\rangle = |\psi_{1}\rangle,\quad |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle = |\psi_{3}\rangle & E_{1} = 1\\
+            0 & |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle = |\psi_{2}\rangle & E_{0} = 0\\
+        \end{matrix}
+    \end{align*}
+    计算波函数的修正:
+    \begin{align*}
+        |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle 
+        + |\stackrel{m}{0},\stackrel{\beta}{0}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{0},\stackrel{n}{0}\stackrel{\alpha}{\pm 1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda + \cdots\\
+        &= |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle + |\stackrel{m}{0},\stackrel{\beta}{0}\rangle\frac{1}{\sqrt{2}}\lambda + \cdots\\
+        |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle^{\prime} &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
+        + |\stackrel{m}{1},\stackrel{\beta}{+1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{+1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda
+        + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{-1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda + \cdots\\
+        &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
+         - (|\stackrel{m}{1},\stackrel{\beta}{+1}\rangle + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle)\frac{1}{\sqrt{2}}\lambda + \cdots
+    \end{align*}
+    可见在 $n=1$ 存在简并子空间. 选定 $|\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime}$ 和 $|\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle$ 作为基矢. 有效哈密顿量的矩阵元为
+    \begin{align*}
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{+1},\stackrel{\beta}{+1}} &= 
+        E^{(\stackrel{n}{1})} 
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{n}{1}\stackrel{\beta}{+1}}\lambda 
+        + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{+1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} = 1 + \lambda + \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{-1},\stackrel{\beta}{-1}} &= 
+        E^{(\stackrel{n}{1})}
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{n}{1}\stackrel{\beta}{-1}}\lambda
+        + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{-1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} = 1 - \lambda + \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{+1},\stackrel{\beta}{-1}} &=
+        V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{n}{1}\stackrel{\beta}{-1}}\lambda + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{-1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} =  \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{-1},\stackrel{\beta}{+1}} &=
+        V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{n}{1}\stackrel{\beta}{+1}}\lambda + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{+1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} =  \frac{\lambda^{2}}{2}
+    \end{align*}
+    有效哈密顿量为 $\begin{aligned}
+        H_{\stackrel{n}{1}}^{\text{eff}} = \begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2} & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix}
+    \end{aligned}$, 此时对角元已经不等, 说明简并已经解除. 那么在这个更小的子空间中, 进一步使用微扰, 即一阶修正后的能量和波函数视为原始哈密顿量和波函数:
+    \begin{align*}
+        H_{\stackrel{n}{1}}^{\text{eff}} &= \begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2} & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix} = \underbrace{\begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2}  & 0\\
+            0 & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix}}_{H_{0}^{\prime}} + \underbrace{\begin{pmatrix}
+            0 & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 0
+        \end{pmatrix}}_{V^{\prime}}\\
+        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle^{\prime}\frac{V^{\prime}_{\stackrel{\beta}{-1},\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{\beta}{-1}}} + \cdots
+        = |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle^{\prime}\frac{\lambda}{4} + \cdots\\
+        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle^{\prime}\frac{V^{\prime}_{\stackrel{\beta}{+1},\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{\beta}{+1}}} + \cdots
+        = |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle^{\prime}\frac{\lambda}{4} + \cdots
+    \end{align*}
+    代入 $|\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime}$ 即可得到进一步考虑了简并微扰的波函数, 注意要忽略 $\lambda^{2}$ 阶:
+    \begin{align*}
+        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle\frac{\lambda}{4}\\
+        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle\frac{\lambda}{4}
+    \end{align*}
+    能量修正:
+    \begin{align*}
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\alpha}{+1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\beta}{-1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}}} = 1 + \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})\\
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\alpha}{-1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\beta}{+1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}}} = 1 - \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})
+    \end{align*}
+\end{enumerate}
 
+\subsection{含时微扰}
+\subsubsection{含时微扰论}
+\paragraph{Dyson 级数}
+\paragraph{格林函数}
+\paragraph{费曼图}
+\subsubsection{能级跃迁}
+\paragraph{跃迁概率}
+\paragraph{Fermi 黄金规则}
+\paragraph{绝热过程}
+
+\subsection{绝热近似}
+
+\subsection{Berry 相位}
+\subsubsection{Berry 相位的基本性质}
+\subsubsection{单个自旋的 Berry 相位}
+\subsubsection{Bloch 能带的 Berry 相位}
 \end{document}

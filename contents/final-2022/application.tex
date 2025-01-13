@@ -321,121 +321,191 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
       \end{pmatrix}}
     \end{align*}}}
     \item \textbf{考虑哈密顿量 $H(\lambda) = H_{0} + \lambda V$, 其中 $H_{0} = (S^{z})^{2}$, $V = S^{x} + S^{z}$. 考虑为 $\lambda V$ 微扰, 利用微扰论计算微扰后的各能级和各能态, 其中能级微扰准确到二阶, 能态微扰准确到一阶.}
-{\color{gray}{\begin{align*}
-      H_{0}|s,m\rangle &= \left(S^{z}\right)^{2}|s,m\rangle = m^{2}|s,m\rangle\\
-      \Rightarrow E_{-1}^{(0)} & = 1,\quad E_{0} = 0,\quad E_{1} = 1
-    \end{align*}
-    注意到 $m^{2}$ 会带来 $m=\pm 1$ 的简并, 所以后续计算时会涉及简并态的微扰处理. 首先观察简并态, 简并态矢张成独立子空间, 于是求解这个子空间中 $V$ 的矩阵:
+{\color{gray}{
+  
+% \begin{align*}
+%       H_{0}|s,m\rangle &= \left(S^{z}\right)^{2}|s,m\rangle = m^{2}|s,m\rangle\\
+%       \Rightarrow E_{-1}^{(0)} & = 1,\quad E_{0} = 0,\quad E_{1} = 1
+%     \end{align*}
+%     注意到 $m^{2}$ 会带来 $m=\pm 1$ 的简并, 所以后续计算时会涉及简并态的微扰处理. 首先观察简并态, 简并态矢张成独立子空间, 于是求解这个子空间中 $V$ 的矩阵:
+%     \begin{align*}
+%       V_{\text{sub}} &= \begin{pmatrix}
+%         \langle 1,1|V|1,1\rangle & \langle 1,1|V|1,-1\rangle\\
+%         \langle 1,-1|V|1,1\rangle & \langle 1,-1|V|1,-1\rangle
+%       \end{pmatrix}\\
+%       \langle 1,1|V|1,1\rangle &= \begin{pmatrix}
+%         1 & 0 & 0
+%       \end{pmatrix}\begin{pmatrix}
+%         1 & \frac{1}{\sqrt{2}}& \\
+%         \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%           & \frac{1}{\sqrt{2}} & -1
+%        \end{pmatrix}\begin{pmatrix}
+%           1\\
+%           0\\
+%           0
+%        \end{pmatrix} = 1,\\
+%        \langle 1,1|V|1,-1\rangle &= \begin{pmatrix}
+%         1 & 0 & 0
+%       \end{pmatrix}\begin{pmatrix}
+%         1 & \frac{1}{\sqrt{2}}& \\
+%         \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%           & \frac{1}{\sqrt{2}} & -1
+%        \end{pmatrix}\begin{pmatrix}
+%           0\\
+%           0\\
+%           1
+%         \end{pmatrix} = 0,\\
+%         \langle 1,-1|V|1,1\rangle &= 0,\\
+%         \langle 1,-1|V|1,-1\rangle &= \begin{pmatrix}
+%           0 & 0 & 1
+%         \end{pmatrix}\begin{pmatrix}
+%           1 & \frac{1}{\sqrt{2}}& \\
+%           \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%             & \frac{1}{\sqrt{2}} & -1
+%          \end{pmatrix}\begin{pmatrix}
+%             0\\
+%             0\\
+%             1
+%          \end{pmatrix} = -1.\\
+%          \Rightarrow V_{\text{sub}} &= \begin{pmatrix}
+%           1 & 0\\
+%           0 & -1
+%          \end{pmatrix}
+%     \end{align*}
+%     注意到计算得到的子空间中 $V_{\text{sub}}$ 完成了对角化, 这说明沿用的 $|s,m\rangle$ 基矢已经是 "好量子态". 所以回归到非简并微扰论的方法. 一阶能量修正各为
+%     \begin{align*}
+%       E_{1}^{(1)} &= \langle 1,1|V|1,1\rangle = \begin{pmatrix}
+%         1 & 0 & 0
+%       \end{pmatrix}\begin{pmatrix}
+%         1 & \frac{1}{\sqrt{2}}& \\
+%         \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%           & \frac{1}{\sqrt{2}} & -1
+%        \end{pmatrix}\begin{pmatrix}
+%           1\\
+%           0\\
+%           0
+%        \end{pmatrix} = \boxed{1},\\
+%        E_{0}^{(1)} &= \langle 1,0|V|1,0\rangle = \begin{pmatrix}
+%         0 & 1 & 0
+%       \end{pmatrix}\begin{pmatrix}
+%         1 & \frac{1}{\sqrt{2}}& \\
+%         \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%           & \frac{1}{\sqrt{2}} & -1
+%        \end{pmatrix}\begin{pmatrix}
+%           0\\
+%           1\\
+%           0
+%        \end{pmatrix} = \boxed{0},\\
+%        E_{-1}^{(1)} &= \langle 1,-1|V|1,-1\rangle = \begin{pmatrix}
+%         0 & 0 & 1
+%       \end{pmatrix}\begin{pmatrix}
+%         1 & \frac{1}{\sqrt{2}}& \\
+%         \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
+%           & \frac{1}{\sqrt{2}} & -1
+%        \end{pmatrix}\begin{pmatrix}
+%           0\\
+%           0\\
+%           1
+%        \end{pmatrix} = \boxed{-1},\\
+%     \end{align*}
+%     二阶能量修正由公式 $\begin{aligned}
+%       E_{m}^{(n)} = \sum_{n\neq m}\frac{|\langle n|V|m\rangle|^{2}}{E_{m}^{(0)} - E_{n}^{(0)}}
+%     \end{aligned}$ 给出:
+%     \begin{align*}
+%       E_{1}^{(2)} &= \frac{|\langle 1,0|V|1,1\rangle|^{2}}{E_{1}^{(0)}-E_{0}^{0}} + \frac{|\langle 1,-1|V|1,1\rangle|^{2}}{E_{1}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{1 - 0} + \frac{0^{2}}{1 - 1} = \boxed{\frac{1}{2}},\\
+%       E_{0}^{(2)} &= \frac{|\langle 1,1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{1}^{(0)}} + \frac{|\langle 1,-1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{0-1} + \frac{0^{2}}{0 - 1} = \boxed{-\frac{1}{2}},\\
+%       E_{-1}^{(2)} &= \frac{|\langle 1,0|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{0}^{(0)}} + \frac{|\langle 1,1|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{1-0} + \frac{0^{2}}{1 - 1} = \boxed{\frac{1}{2}}
+%     \end{align*}
+%     可见, 只要在 $E_{i}^{(1)} - E_{j}^{(1)}=0$ 时分子也为 $0$, 我们就可以无视分母为 $0$ 的问题. 
+%     接下来是对态函数的微扰修正. 一阶修正由 $\begin{aligned}
+%       |m\rangle^{(1)} = \sum_{n\neq m}|n\rangle\frac{\langle n|V|m\rangle}{E_{m}^{(0)} - E_{n}^{(0)}}
+%     \end{aligned}$ 给出:
+%     \begin{align*}
+%       |1,1\rangle^{(1)} &= |1,0\rangle\frac{\langle 1,0|V|1,1\rangle}{E_{1}^{(0)} - E_{0}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,1\rangle}{E_{1}^{(0)} - E_{-1}^{(0)}} = |1,0\rangle\frac{1}{\sqrt{2}}\frac{1}{1 - 0} + |1,-1\rangle\cdot 0 \\
+%       &= \boxed{\frac{1}{\sqrt{2}}|1,0\rangle}\\
+%       |1,0\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,0\rangle}{E_{0}^{(0)} - E_{1}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,0\rangle}{E_{0}^{(0)} - E_{-1}^{(0)}} = |1,1\rangle \frac{1}{\sqrt{2}}\frac{1}{0-1} + |1,-1\rangle \frac{1}{\sqrt{2}}\cdot\frac{1}{0-1} \\
+%       &= \boxed{-\frac{1}{\sqrt{2}}(|1,1\rangle + |1,-1\rangle)}\\
+%       |1,-1\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,-1\rangle}{E_{-1}^{(0)}-E_{1}^{(0)}} + |1,0\rangle\frac{\langle 1,0|V|1,-1\rangle}{E_{-1}^{(0)}-E_{0}^{(0)}} = |1,1\rangle\cdot 0 + |1,0\rangle\frac{1}{\sqrt{2}}\cdot\frac{1}{1-0} \\
+%       &= \boxed{\frac{1}{\sqrt{2}}|1,0\rangle}
+%     \end{align*}
+%     总结:
+%     \begin{align*}
+%       E_{1} & = 1 + 1\lambda + \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
+%       E_{0} & = 0 + 0\lambda - \frac{1}{2}\lambda^{2} +  \mathit{o}(\lambda^{2})\\
+%       E_{-1} &= 1 - 1\lambda + \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
+%       |1,1\rangle &= |1,1\rangle + \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)\\
+%       |1,0\rangle &= |1,0\rangle - \frac{\lambda}{\sqrt{2}}(|1,1\rangle + |1,-1\rangle) + \mathit{o}(\lambda)\\
+%       |1,-1\rangle &= |1,-1\rangle + \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)
+%     \end{align*}
+%     对于这类可以使用矩阵形式讨论的问题, 还有一种笨办法, 就是直接严格对角化含 $\lambda$ 微扰的哈密顿量, 然后进行 Taylor 展开得到各级数. 但是在三阶矩阵下的计算已经非常复杂, 所以还是建议使用一般微扰论方法, 毕竟考试时是会给出公式的.
+    
+    首先计算 $H_{0}$ 的本征矢和本征值:
     \begin{align*}
-      V_{\text{sub}} &= \begin{pmatrix}
-        \langle 1,1|V|1,1\rangle & \langle 1,1|V|1,-1\rangle\\
-        \langle 1,-1|V|1,1\rangle & \langle 1,-1|V|1,-1\rangle
-      \end{pmatrix}\\
-      \langle 1,1|V|1,1\rangle &= \begin{pmatrix}
-        1 & 0 & 0
-      \end{pmatrix}\begin{pmatrix}
-        1 & \frac{1}{\sqrt{2}}& \\
-        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-          & \frac{1}{\sqrt{2}} & -1
-       \end{pmatrix}\begin{pmatrix}
-          1\\
-          0\\
-          0
-       \end{pmatrix} = 1,\\
-       \langle 1,1|V|1,-1\rangle &= \begin{pmatrix}
-        1 & 0 & 0
-      \end{pmatrix}\begin{pmatrix}
-        1 & \frac{1}{\sqrt{2}}& \\
-        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-          & \frac{1}{\sqrt{2}} & -1
-       \end{pmatrix}\begin{pmatrix}
-          0\\
-          0\\
-          1
-        \end{pmatrix} = 0,\\
-        \langle 1,-1|V|1,1\rangle &= 0,\\
-        \langle 1,-1|V|1,-1\rangle &= \begin{pmatrix}
-          0 & 0 & 1
-        \end{pmatrix}\begin{pmatrix}
-          1 & \frac{1}{\sqrt{2}}& \\
-          \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-            & \frac{1}{\sqrt{2}} & -1
-         \end{pmatrix}\begin{pmatrix}
-            0\\
-            0\\
-            1
-         \end{pmatrix} = -1.\\
-         \Rightarrow V_{\text{sub}} &= \begin{pmatrix}
-          1 & 0\\
-          0 & -1
-         \end{pmatrix}
+        \begin{matrix}
+            n & \text{states} & E_{n}\\
+            1 & |\stackrel{n}{1}, \stackrel{\alpha}{+1}\rangle = |\psi_{1}\rangle,\quad |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle = |\psi_{3}\rangle & E_{1} = 1\\
+            0 & |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle = |\psi_{2}\rangle & E_{0} = 0\\
+        \end{matrix}
     \end{align*}
-    注意到计算得到的子空间中 $V_{\text{sub}}$ 完成了对角化, 这说明沿用的 $|s,m\rangle$ 基矢已经是 "好量子态". 所以回归到非简并微扰论的方法. 一阶能量修正各为
+    计算波函数的修正:
     \begin{align*}
-      E_{1}^{(1)} &= \langle 1,1|V|1,1\rangle = \begin{pmatrix}
-        1 & 0 & 0
-      \end{pmatrix}\begin{pmatrix}
-        1 & \frac{1}{\sqrt{2}}& \\
-        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-          & \frac{1}{\sqrt{2}} & -1
-       \end{pmatrix}\begin{pmatrix}
-          1\\
-          0\\
-          0
-       \end{pmatrix} = \boxed{1},\\
-       E_{0}^{(1)} &= \langle 1,0|V|1,0\rangle = \begin{pmatrix}
-        0 & 1 & 0
-      \end{pmatrix}\begin{pmatrix}
-        1 & \frac{1}{\sqrt{2}}& \\
-        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-          & \frac{1}{\sqrt{2}} & -1
-       \end{pmatrix}\begin{pmatrix}
-          0\\
-          1\\
-          0
-       \end{pmatrix} = \boxed{0},\\
-       E_{-1}^{(1)} &= \langle 1,-1|V|1,-1\rangle = \begin{pmatrix}
-        0 & 0 & 1
-      \end{pmatrix}\begin{pmatrix}
-        1 & \frac{1}{\sqrt{2}}& \\
-        \frac{1}{\sqrt{2}} & 0  & \frac{1}{\sqrt{2}}\\
-          & \frac{1}{\sqrt{2}} & -1
-       \end{pmatrix}\begin{pmatrix}
-          0\\
-          0\\
-          1
-       \end{pmatrix} = \boxed{-1},\\
+        |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle 
+        + |\stackrel{m}{0},\stackrel{\beta}{0}\rangle\frac{V_{\stackrel{m}{0}\stackrel{\beta}{0},\stackrel{n}{0}\stackrel{\alpha}{\pm 1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda + \cdots\\
+        &= |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle + |\stackrel{m}{0},\stackrel{\beta}{0}\rangle\frac{1}{\sqrt{2}}\lambda + \cdots\\
+        |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle^{\prime} &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
+        + |\stackrel{m}{1},\stackrel{\beta}{+1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{+1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda
+        + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{-1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda + \cdots\\
+        &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
+         - (|\stackrel{m}{1},\stackrel{\beta}{+1}\rangle + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle)\frac{1}{\sqrt{2}}\lambda + \cdots
     \end{align*}
-    二阶能量修正由公式 $\begin{aligned}
-      E_{m}^{(n)} = \sum_{n\neq m}\frac{|\langle n|V|m\rangle|^{2}}{E_{m}^{(0)} - E_{n}^{(0)}}
-    \end{aligned}$ 给出:
+    可见在 $n=1$ 存在简并子空间. 选定 $|\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime}$ 和 $|\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle$ 作为基矢. 有效哈密顿量的矩阵元为
     \begin{align*}
-      E_{1}^{(2)} &= \frac{|\langle 1,0|V|1,1\rangle|^{2}}{E_{1}^{(0)}-E_{0}^{0}} + \frac{|\langle 1,-1|V|1,1\rangle|^{2}}{E_{1}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{1 - 0} + \frac{0^{2}}{1 - 1} = \boxed{\frac{1}{2}},\\
-      E_{0}^{(2)} &= \frac{|\langle 1,1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{1}^{(0)}} + \frac{|\langle 1,-1|V|1,0\rangle|^{2}}{E_{0}^{(0)} - E_{-1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{0-1} + \frac{0^{2}}{0 - (-1)} = \boxed{-\frac{1}{2}},\\
-      E_{-1}^{(2)} &= \frac{|\langle 1,0|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{0}^{(0)}} + \frac{|\langle 1,1|V|1,-1\rangle|^{2}}{E_{-1}^{(0)} - E_{1}^{(0)}} = \frac{\left(\frac{1}{\sqrt{2}}\right)^{2}}{-1-0} + \frac{0^{2}}{1 - 1} = \boxed{-\frac{1}{2}}
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{+1},\stackrel{\beta}{+1}} &= 
+        E^{(\stackrel{n}{1})} 
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{n}{1}\stackrel{\beta}{+1}}\lambda 
+        + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{+1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} = 1 + \lambda + \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{-1},\stackrel{\beta}{-1}} &= 
+        E^{(\stackrel{n}{1})}
+        + V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{n}{1}\stackrel{\beta}{-1}}\lambda
+        + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{-1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} = 1 - \lambda + \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{+1},\stackrel{\beta}{-1}} &=
+        V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{n}{1}\stackrel{\beta}{-1}}\lambda + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{+1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{-1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} =  \frac{\lambda^{2}}{2}\\
+        E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{-1},\stackrel{\beta}{+1}} &=
+        V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{n}{1}\stackrel{\beta}{+1}}\lambda + \frac{V_{\stackrel{n}{1}\stackrel{\alpha}{-1},\stackrel{m}{0}\stackrel{\gamma}{0}}V_{\stackrel{m}{0}\stackrel{\gamma}{0},\stackrel{n}{1}\stackrel{\beta}{+1}}}{E^{(\stackrel{n}{1})} - E^{(\stackrel{m}{0})}}\lambda^{2} =  \frac{\lambda^{2}}{2}
     \end{align*}
-    可见, 只要在 $E_{i}^{(1)} - E_{j}^{(1)}=0$ 时分子也为 $0$, 我们就可以无视分母为 $0$ 的问题. 
-    接下来是对态函数的微扰修正. 一阶修正由 $\begin{aligned}
-      |m\rangle^{(1)} = \sum_{n\neq m}|n\rangle\frac{\langle n|V|m\rangle}{E_{m}^{(0)} - E_{n}^{(0)}}
-    \end{aligned}$ 给出:
+    有效哈密顿量为 $\begin{aligned}
+        H_{\stackrel{n}{1}}^{\text{eff}} = \begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2} & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix}
+    \end{aligned}$, 此时对角元已经不等, 说明简并已经解除. 那么在这个更小的子空间中, 进一步使用微扰, 即一阶修正后的能量和波函数视为原始哈密顿量和波函数:
     \begin{align*}
-      |1,1\rangle^{(1)} &= |1,0\rangle\frac{\langle 1,0|V|1,1\rangle}{E_{1}^{(0)} - E_{0}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,1\rangle}{E_{1}^{(0)} - E_{-1}^{(0)}} = |1,0\rangle\frac{1}{\sqrt{2}}\frac{1}{1 - 0} + |1,-1\rangle\cdot 0 \\
-      &= \boxed{\frac{1}{\sqrt{2}}|1,0\rangle}\\
-      |1,0\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,0\rangle}{E_{0}^{(0)} - E_{1}^{(0)}} + |1,-1\rangle\frac{\langle 1,-1|V|1,0\rangle}{E_{0}^{(0)} - E_{-1}^{(0)}} = |1,1\rangle \frac{1}{\sqrt{2}}\frac{1}{0-1} + |1,-1\rangle \frac{1}{\sqrt{2}}\cdot\frac{1}{0-(-1)} \\
-      &= \boxed{\frac{1}{\sqrt{2}}(-|1,1\rangle + |1,-1\rangle)}\\
-      |1,-1\rangle^{(1)} &= |1,1\rangle\frac{\langle 1,1|V|1,-1\rangle}{E_{-1}^{(0)}-E_{1}^{(0)}} + |1,0\rangle\frac{\langle 1,0|V|1,-1\rangle}{E_{-1}^{(0)}-E_{0}^{(0)}} = |1,1\rangle\cdot 0 + |1,0\rangle\frac{1}{\sqrt{2}}\cdot\frac{1}{-1-0} \\
-      &= \boxed{-\frac{1}{\sqrt{2}}|1,0\rangle}
+        H_{\stackrel{n}{1}}^{\text{eff}} &= \begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2} & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix} = \underbrace{\begin{pmatrix}
+            1 + \lambda + \frac{\lambda^{2}}{2}  & 0\\
+            0 & 1 - \lambda + \frac{\lambda^{2}}{2}
+        \end{pmatrix}}_{H_{0}^{\prime}} + \underbrace{\begin{pmatrix}
+            0 & \frac{\lambda^{2}}{2}\\
+            \frac{\lambda^{2}}{2} & 0
+        \end{pmatrix}}_{V^{\prime}}\\
+        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle^{\prime}\frac{V^{\prime}_{\stackrel{\beta}{-1},\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{\beta}{-1}}} + \cdots
+        = |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle^{\prime}\frac{\lambda}{4} + \cdots\\
+        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime} + |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle^{\prime}\frac{V^{\prime}_{\stackrel{\beta}{+1},\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{\beta}{+1}}} + \cdots
+        = |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle^{\prime}\frac{\lambda}{4} + \cdots
     \end{align*}
-    总结:
+    代入 $|\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime}$ 即可得到进一步考虑了简并微扰的波函数, 注意要忽略 $\lambda^{2}$ 阶:
     \begin{align*}
-      E_{1} & = 1 + 1\lambda + \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
-      E_{0} & = 0 + 0\lambda - \frac{1}{2}\lambda^{2} +  \mathit{o}(\lambda^{2})\\
-      E_{-1} &= 1 - 1\lambda - \frac{1}{2}\lambda^{2} + \mathit{o}(\lambda^{2})\\
-      |1,1\rangle &= |1,1\rangle + \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)\\
-      |1,0\rangle &= |1,0\rangle + \frac{\lambda}{\sqrt{2}}(-|1,1\rangle + |1,-1\rangle) + \mathit{o}(\lambda)\\
-      |1,-1\rangle &= |1,-1\rangle - \frac{\lambda}{\sqrt{2}}|1,0\rangle + \mathit{o}(\lambda)
+        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle\frac{\lambda}{4}\\
+        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle\frac{\lambda}{4}
     \end{align*}
-    对于这类可以使用矩阵形式讨论的问题, 还有一种笨办法, 就是直接严格对角化含 $\lambda$ 微扰的哈密顿量, 然后进行 Taylor 展开得到各级数. 但是在三阶矩阵下的计算已经非常复杂, 所以还是建议使用一般微扰论方法, 毕竟考试时是会给出公式的.}}
+    能量修正:
+    \begin{align*}
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\alpha}{+1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\beta}{-1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}}} = 1 + \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})\\
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\alpha}{-1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\beta}{+1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}}} = 1 - \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})
+    \end{align*}
+    }}
   \end{enumerate}
 
   \item \textbf{均匀电子气}
