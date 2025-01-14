@@ -203,11 +203,11 @@
       &= \frac{1}{2}[Q + iP, Q - iP]= \frac{1}{2}\left([Q,Q] - i[Q, P] + i[P,Q] + [P,P]\right)\\
       &= \frac{1}{2}[0 - i\cdot i + i\cdot (-i) + 0] = \boxed{1},\\
       [a,a] &= \left[\frac{1}{\sqrt{2}}(Q + iP),\frac{1}{\sqrt{2}}(Q + iP)\right]\\
-      &= \frac{1}{2}[Q + iP, Q + iP] = \frac{1}{2}\left([Q,Q] + i[Q,P] + i[P,Q] + [P,P]\right)\\
-      &= \frac{1}{2}[0 + i\cdot i + i\cdot (-i) + 0] = 0,\\
+      &= \frac{1}{2}[Q + iP, Q + iP] = \frac{1}{2}\left([Q,Q] + i[Q,P] + i[P,Q] - [P,P]\right)\\
+      &= \frac{1}{2}[0 + i\cdot i + i\cdot (-i) - 0] = 0,\\
       [a^{\dagger},a^{\dagger}] &= \left[\frac{1}{\sqrt{2}}(Q - iP),\frac{1}{\sqrt{2}}(Q - iP)\right]\\
-      &= \frac{1}{2}[Q - iP, Q-iP] = \frac{1}{2}([Q,Q]-i[Q,P]-i[P,Q] + [P,P])\\
-      &= \frac{1}{2}(0 - i\cdot i - i\cdot(-i) + 0) = 0,\\
+      &= \frac{1}{2}[Q - iP, Q-iP] = \frac{1}{2}([Q,Q]-i[Q,P]-i[P,Q] - [P,P])\\
+      &= \frac{1}{2}(0 - i\cdot i - i\cdot(-i) - 0) = 0,\\
       [a,a^{\dagger}a] &= a^{\dagger}[a,a] + [a,a^{\dagger}]a = a^{\dagger}\cdot 0 + 1\cdot a = \boxed{a},\\
       [a^{\dagger},a^{\dagger}a] &= a^{\dagger}[a^{\dagger},a] + [a^{\dagger},a^{\dagger}]a = a^{\dagger}\cdot (-1) + 0\cdot a = \boxed{-a^{\dagger}}.
     \end{align*}}}
@@ -447,6 +447,12 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
             0 & |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle = |\psi_{2}\rangle & E_{0} = 0\\
         \end{matrix}
     \end{align*}
+    可见在 $n=1$ 存在简并子空间. 根据简并微扰论中的有效哈密顿量和波函数公式:
+    
+    \begin{align*}
+      E^{(n)}_{\alpha\beta}(\lambda) &= E_{n}\delta_{\alpha\beta} + V_{n\alpha,n\beta}\lambda + \sum_{m\neq n}\sum_{\gamma}\frac{V_{n\alpha,m\gamma}V_{m\gamma,n\beta}}{E_{n}-E_{m}}\lambda^{2} + \cdots\\
+      |n\alpha(\lambda)\rangle &= |n\alpha\rangle + \sum_{m\neq n}\sum_{\beta}|m\beta\rangle\frac{V_{m\beta,n\alpha}}{E_{n}-E_{m}}\lambda + \cdots
+  \end{align*}
     计算波函数的修正:
     \begin{align*}
         |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle 
@@ -455,10 +461,10 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
         |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle^{\prime} &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
         + |\stackrel{m}{1},\stackrel{\beta}{+1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{+1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda
         + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle\frac{V_{\stackrel{m}{1}\stackrel{\beta}{-1}, \stackrel{n}{0}\stackrel{\alpha}{0}}}{E^{\stackrel{n}{(0)}} - E^{\stackrel{m}{(1)}}}\lambda + \cdots\\
-        &= |\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
-         - (|\stackrel{m}{1},\stackrel{\beta}{+1}\rangle + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle)\frac{1}{\sqrt{2}}\lambda + \cdots
+        &= \boxed{|\stackrel{n}{0},\stackrel{\alpha}{0}\rangle
+         - (|\stackrel{m}{1},\stackrel{\beta}{+1}\rangle + |\stackrel{m}{1},\stackrel{\beta}{-1}\rangle)\frac{1}{\sqrt{2}}\lambda} + \cdots
     \end{align*}
-    可见在 $n=1$ 存在简并子空间. 选定 $|\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime}$ 和 $|\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle$ 作为基矢. 有效哈密顿量的矩阵元为
+    选定 $|\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime}$ 和 $|\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime}$ 作为基矢, 代入计算有效哈密顿量的矩阵元为
     \begin{align*}
         E^{(\stackrel{n}{1})}_{\stackrel{\alpha}{+1},\stackrel{\beta}{+1}} &= 
         E^{(\stackrel{n}{1})} 
@@ -497,13 +503,13 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     \end{align*}
     代入 $|\stackrel{n}{1},\stackrel{\alpha}{\pm 1}\rangle^{\prime}$ 即可得到进一步考虑了简并微扰的波函数, 注意要忽略 $\lambda^{2}$ 阶:
     \begin{align*}
-        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle\frac{\lambda}{4}\\
-        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle\frac{\lambda}{4}
+        |\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle^{\prime\prime} &= \boxed{|\stackrel{n}{1},\stackrel{\alpha}{+1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} + |\stackrel{n}{1},\stackrel{\beta}{-1}\rangle\frac{\lambda}{4}}\\
+        |\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle^{\prime\prime} &= \boxed{|\stackrel{n}{1},\stackrel{\alpha}{-1}\rangle + |\stackrel{n}{1},\stackrel{\beta}{0}\rangle\frac{\lambda}{\sqrt{2}} - |\stackrel{n}{1},\stackrel{\beta}{+1}\rangle\frac{\lambda}{4}}
     \end{align*}
     能量修正:
     \begin{align*}
-        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\alpha}{+1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\beta}{-1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}}} = 1 + \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})\\
-        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\alpha}{-1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\beta}{+1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}}} = 1 - \lambda + \frac{\lambda^{2}}{2} + \mathcal{O}(\lambda^{3})
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\alpha}{+1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}\stackrel{\beta}{-1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}\stackrel{\alpha}{+1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{+1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{-1}}} = \boxed{1 + \lambda + \frac{\lambda^{2}}{2}} + \mathcal{O}(\lambda^{3})\\
+        E^{\prime\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} &= E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} + V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\alpha}{-1}} + \frac{V^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}\stackrel{\beta}{+1}}V^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}\stackrel{\alpha}{-1}}}{E^{\prime}_{\stackrel{n}{1},\stackrel{\alpha}{-1}} - E^{\prime}_{\stackrel{n}{1},\stackrel{\beta}{+1}}} = \boxed{1 - \lambda + \frac{\lambda^{2}}{2}} + \mathcal{O}(\lambda^{3})
     \end{align*}
     }}
   \end{enumerate}
@@ -595,7 +601,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{计算能量的一阶修正 $E^{(1)} = \langle\text{FS}|H_{I}|\text{FS}\rangle$.}
     
-    题目中定义的傅里叶变换是非幺正的, 代入结论的时候需要注意系数. 
+    {\color{gray}{题目中定义的傅里叶变换是非幺正的, 代入结论的时候需要注意系数. 
 
     \begin{align*}
       v(\vec{q}) = \frac{1}{V}\int\frac{1}{|\vec{x}|}e^{i\vec{q}\cdot\vec{x}}\mathrm{d}\vec{x} = \frac{1}{V}\frac{4\pi}{q^{2}}
@@ -612,11 +618,11 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
       c^{\dagger}_{\vec{k}_{2}-\vec{q},\sigma^{\prime}}
       c_{\vec{k}_{2},\sigma^{\prime}}
       c_{\vec{k}_{1},\sigma}
-    \end{align*}
+    \end{align*}}}
     
     \item \textbf{利用 Hatree Fock 平均场近似, 并假设平均场参数是自旋对角的, 并且保持了自旋对称性, 以及平移对称性, 因此我们期待 $\left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}^{\prime}\sigma^{\prime}}\right\rangle = \left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}\sigma}\right\rangle\delta_{\vec{k},\vec{k}^{\prime}}\delta_{\sigma,\sigma^{\prime}}$, 以及 $\left\langle c_{\vec{k}\uparrow}^{\dagger}c_{\vec{k}\uparrow}\right\rangle = \left\langle c_{\vec{k}\downarrow}^{\dagger}c_{\vec{k}\downarrow}\right\rangle$. 计算系统总能量, 并与 $E^{(0)} + E^{(1)}$ 比较大小.}
     
-    代 $\begin{aligned}
+    {\color{gray}{代 $\begin{aligned}
       |\text{HF}\rangle = \prod_{k\leq k_{F},\sigma}c_{\vec{k},\sigma}^{\dagger}|0\rangle
     \end{aligned}$ 入能量一阶修正, 有
 
@@ -682,7 +688,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     \begin{align*}
       \langle\text{HF}|H_{I}|\text{HF}\rangle = -\frac{k_{F}^{3}V}{4\pi^{3}} &= -\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}n^{\frac{4}{3}}V\\
       \Rightarrow E &= \frac{(3n)^{\frac{5}{3}}\pi^{\frac{4}{3}}V}{10} - \frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}n^{\frac{4}{3}}V
-    \end{align*}
+    \end{align*}}}
   \end{enumerate}
 
   \item \textbf{量子转子模型}
@@ -693,7 +699,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
   \end{align*}
   所以 $\hat{R}(\alpha)|\theta\rangle = |\theta - \alpha\rangle$, 并且 $\hat{R}(2\pi)$ 是单位算符.}
 
-  \textbf{转动算符 $\hat{R}S(\alpha)$ 是一个幺正算符, 它的产生子为厄米算符 $\hat{N}$, 与量子转子的角动量算符 $\hat{L}$ 的关系为 $\hat{L} = \hbar\hat{N}$, 所以 $\hat{R}(\alpha) = e^{i\hat{N}\alpha}$, 在 $\hat{\theta}$ 表象下可求得 $\hat{N} = -i\frac{\partial}{\partial\theta}$. }
+  \textbf{转动算符 $\hat{R}(\alpha)$ 是一个幺正算符, 它的产生子为厄米算符 $\hat{N}$, 与量子转子的角动量算符 $\hat{L}$ 的关系为 $\hat{L} = \hbar\hat{N}$, 所以 $\hat{R}(\alpha) = e^{i\hat{N}\alpha}$, 在 $\hat{\theta}$ 表象下可求得 $\hat{N} = -i\frac{\partial}{\partial\theta}$. }
 
   \textbf{考虑一个特定的量子转子模型, 它的哈密顿量为
   \begin{align*}

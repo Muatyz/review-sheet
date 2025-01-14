@@ -31,32 +31,86 @@
   \end{enumerate}}}
   \item \textbf{Prove theorem 2: If $A$ is Hermitian operator, then it can be always diagonalized by unitary transformation.}
   
-  {\color{gray}{Let $\{\lambda_{1}, \lambda_{2},\cdots, \lambda_{n}\}$ be the eigenvalues of $A$, and $\{v_{1}, v_{2},\cdots,v_{n}\}$ the corresponding eigenvectors. 
+  {\color{gray}{
+    \begin{enumerate}
+      \item Non-degenerate. 
+      
+      Let $\{\lambda_{1}, \lambda_{2},\cdots, \lambda_{n}\}$ be the eigenvalues of $A$, and $\{v_{1}, v_{2},\cdots,v_{n}\}$ the corresponding eigenvectors. 
   
-  By theorem 1, we have $\langle v_{1}, v_{2}\rangle = \delta_{ij}$. 
-
-  We define the unitary matrix as $U = [v_{1}, v_{2},\cdots,v_{n}]$, so we have $U^{\dagger}U = \mathbb{I}$. Now we compute $U^{\dagger}AU$. Since $Av_{i}=\lambda_{i}v_{i}$, we have
-  \begin{align*}
-    U^{\dagger}AU &= \begin{pmatrix}
-      v_{1}^{\dagger} \\
-      v_{2}^{\dagger} \\
-      \vdots \\
-      v_{n}^{\dagger}
-    \end{pmatrix}A\begin{pmatrix}
-      v_{1} & v_{2} & \cdots & v_{n}
-    \end{pmatrix} = \begin{pmatrix}
-      v_{1}^{\dagger}Av_{1} & v_{1}^{\dagger}Av_{2} & \cdots & v_{1}^{\dagger}Av_{n} \\
-      v_{2}^{\dagger}Av_{1} & v_{2}^{\dagger}Av_{2} & \cdots & v_{2}^{\dagger}Av_{n} \\
-      \vdots & \vdots & \ddots & \vdots \\
-      v_{n}^{\dagger}Av_{1} & v_{n}^{\dagger}Av_{2} & \cdots & v_{n}^{\dagger}Av_{n}
-    \end{pmatrix} \\
-    &= \begin{pmatrix}
-      \lambda_{1} & 0 & \cdots & 0 \\
-      0 & \lambda_{2} & \cdots & 0 \\
-      \vdots & \vdots & \ddots & \vdots \\
-      0 & 0 & \cdots & \lambda_{n}
-    \end{pmatrix} = \Lambda.\square
-  \end{align*}}}
+      By theorem 1, we have $\langle v_{1}, v_{2}\rangle = \delta_{ij}$. 
+    
+      We define the unitary matrix as $U = [v_{1}, v_{2},\cdots,v_{n}]$, so we have $U^{\dagger}U = \mathbb{I}$. Now we compute $U^{\dagger}AU$. Since $Av_{i}=\lambda_{i}v_{i}$, we have
+      \begin{align*}
+        U^{\dagger}AU &= \begin{pmatrix}
+          v_{1}^{\dagger} \\
+          v_{2}^{\dagger} \\
+          \vdots \\
+          v_{n}^{\dagger}
+        \end{pmatrix}A\begin{pmatrix}
+          v_{1} & v_{2} & \cdots & v_{n}
+        \end{pmatrix} = \begin{pmatrix}
+          v_{1}^{\dagger}Av_{1} & v_{1}^{\dagger}Av_{2} & \cdots & v_{1}^{\dagger}Av_{n} \\
+          v_{2}^{\dagger}Av_{1} & v_{2}^{\dagger}Av_{2} & \cdots & v_{2}^{\dagger}Av_{n} \\
+          \vdots & \vdots & \ddots & \vdots \\
+          v_{n}^{\dagger}Av_{1} & v_{n}^{\dagger}Av_{2} & \cdots & v_{n}^{\dagger}Av_{n}
+        \end{pmatrix} \\
+        &= \begin{pmatrix}
+          \lambda_{1} & 0 & \cdots & 0 \\
+          0 & \lambda_{2} & \cdots & 0 \\
+          \vdots & \vdots & \ddots & \vdots \\
+          0 & 0 & \cdots & \lambda_{n}
+        \end{pmatrix} = \Lambda.
+      \end{align*}
+      \item 简并. 
+      
+      令 $m$ 重简并 $\lambda_{1}$ 的本征矢为 $\{v_{1}^{(1)},v_{1}^{(2)},\cdots,v_{1}^{(m)}\}$. 那么新的 $U$ 矩阵将为 $\begin{aligned}
+        U = \left[v_{1}^{(1)},v_{1}^{(2)},\cdots,v_{1}^{(m)},v_{m+1},\cdots,v_{n}\right]
+      \end{aligned}$. 那么计算
+      \begin{align*}
+        U^{\dagger}AU &= \begin{pmatrix}
+          v_{1}^{(1)\dagger} \\ v_{1}^{(2)\dagger} \\ \vdots \\ v_{1}^{(m)\dagger} \\ v_{m+1}^{\dagger} \\ \vdots \\ v_{n}^{\dagger}
+        \end{pmatrix}A\begin{pmatrix}
+          v_{1}^{(1)} & v_{1}^{(2)} & \cdots & v_{1}^{(m)} & v_{m+1} & \cdots & v_{n}
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+          v_{1}^{(1)\dagger} \\ v_{1}^{(2)\dagger} \\ \vdots \\ v_{1}^{(m)\dagger} \\ v_{m+1}^{\dagger} \\ \vdots \\ v_{n}^{\dagger}
+        \end{pmatrix}\begin{pmatrix}
+          \lambda_{1}v_{1}^{(1)} & \lambda_{1}v_{1}^{(2)} & \cdots & \lambda_{1}v_{1}^{(m)} & \lambda_{m+1}v_{m+1} & \cdots & \lambda_{n}v_{n} \\
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+          \lambda_{1} & v_{1}^{(1)\dagger}v_{1}^{(2)} & \cdots & v_{1}^{(1)\dagger}v_{1}^{(m)} & v_{1}^{(1)\dagger}v_{m+1} & \cdots & v_{1}^{(1)\dagger}v_{n} \\
+          v_{1}^{(2)\dagger}v_{1}^{(1)} & \lambda_{1} & \cdots & v_{1}^{(2)\dagger}v_{1}^{(m)} & v_{1}^{(2)\dagger}v_{m+1} & \cdots & v_{1}^{(2)\dagger}v_{n} \\
+          \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+          v_{1}^{(m)\dagger}v_{1}^{(1)} & v_{1}^{(m)\dagger}v_{1}^{(2)} & \cdots & \lambda_{1} & v_{1}^{(m)\dagger}v_{m+1} & \cdots & v_{1}^{(m)\dagger}v_{n} \\
+          v_{m+1}^{\dagger}v_{1}^{(1)} & v_{m+1}^{\dagger}v_{1}^{(2)} & \cdots & v_{m+1}^{\dagger}v_{1}^{(m)} & \lambda_{m+1} & \cdots & v_{m+1}^{\dagger}v_{n} \\
+          \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+          v_{n}^{\dagger}v_{1}^{(1)} & v_{n}^{\dagger}v_{1}^{(2)} & \cdots & v_{n}^{\dagger}v_{1}^{(m)} & v_{n}^{\dagger}v_{m+1} & \cdots & \lambda_{n}
+        \end{pmatrix}
+      \end{align*}
+      我们并不清楚 $\lambda_{1}$ 简并子空间内各基矢是否相互正交, 但是可确定的是 $v_{1}^{(j)\dagger}v_{k},\quad k>m$ 和 $v_{j}^{\dagger}v_{k},\quad j,k>m$ 是必定为 $0$ 的. 那么上述矩阵将化为
+      \begin{align*}
+        U^{\dagger}AU &= \begin{pmatrix}
+          \lambda_{1} & v_{1}^{(1)\dagger}v_{1}^{(2)} & \cdots & v_{1}^{(1)\dagger}v_{1}^{(m)} &  &  &  \\
+          v_{1}^{(2)\dagger}v_{1}^{(1)} & \lambda_{1} & \cdots & v_{1}^{(2)\dagger}v_{1}^{(m)} &  &  &  \\
+          \vdots & \vdots & \ddots & \vdots &  &  &  \\
+          v_{1}^{(m)\dagger}v_{1}^{(1)} & v_{1}^{(m)\dagger}v_{1}^{(2)} & \cdots & \lambda_{1} &  &  &  \\
+           &  &  &  & \lambda_{m+1} &  &  \\
+           &  &  &  &  & \ddots &  \\
+           &  &  &  &  &  & \lambda_{n}
+        \end{pmatrix}
+      \end{align*}
+      使用 Gram-Schmidt 正交化方法, 使得 $\{v_{1}^{(1)},v_{1}^{(2)},\cdots,v_{1}^{(m)}\}$ 化为正交归一的基矢 $\{\phi_{1},\phi_{2},\cdots,\phi_{m}\}$: 
+      \begin{align*}
+        v_{1}^{(1)\prime} &= v_{1}^{(1)},\quad \phi_{1} = \frac{v_{1}^{(1)\prime}}{||v_{1}^{(1)\prime}||},\\
+        v_{1}^{(2)\prime} &= v_{1}^{(2)} - \langle v_{1}^{(2)},\phi_{1}\rangle\phi_{1},\quad \phi_{2} = \frac{v_{1}^{(2)\prime}}{||v_{1}^{(2)\prime}||},\\
+        v_{1}^{(3)\prime} &= v_{1}^{(3)} - \langle v_{1}^{(3)},\phi_{1}\rangle\phi_{1} - \langle v_{1}^{(3)},\phi_{2}\rangle\phi_{2},\quad \phi_{3} = \frac{v_{1}^{(3)\prime}}{||v_{1}^{(3)\prime}||},\cdots
+      \end{align*}
+      以此类推, 我们可以得到 $\{\phi_{1},\phi_{2},\cdots,\phi_{m}\}$, 那么我们可以构造新的 $\begin{aligned}
+        U = \bigg[\phi_{1},\phi_{2},\cdots,\phi_{m},v_{m+1},\cdots,v_{n}\bigg]
+      \end{aligned}$, 并且存在关系 
+      $\phi_{i}^{\dagger}A\phi_{j}=\lambda_{1}\delta_{ij}$, 使得 $U^{\dagger}AU$ 为对角矩阵 $\Lambda$.$\square$
+    \end{enumerate}
+  }}
   \item  \textbf{Prove theorem 3: Two diagonalizable operators $A$ and $B$ can be simultaneously diagonalized if, and only if, $[A,B]=0$.}
   {\color{gray}{\begin{enumerate}
     \item Let's say 
@@ -70,12 +124,78 @@
       [A,B]|v\rangle = (AB-BA)|v\rangle = (AB|v\rangle - BA|v\rangle) = (\lambda\mu - \mu\lambda)|v\rangle = 0.
     \end{align*}
     for all $|v\rangle$, which means $[A,B]=0$.
-    \item Let's say $[A,B]=0$. And we have 
+    \item Let's say $[A,B]=0$.  
+    
     \begin{align*}
       A|v\rangle &= \lambda|v\rangle,\\
       AB|v\rangle &= BA|v\rangle = B\lambda|v\rangle = \lambda \left(B|v\rangle\right),
     \end{align*}
-    which means $B|v\rangle$ is also the eigenvector of $A$ with eigenvalue $\lambda$. And apply the same method to all $|v\rangle$ of $A$, we can find a common set of eigenvectors of $A$ and $B$ within the degenerate subspace. $\square$
+    \begin{enumerate}
+      \item 非简并. 那么 $B|v_{i}\rangle = \mu_{i}|v_{i}\rangle$. 
+      \item 简并. 假设 $A$ 的本征值 $\lambda_{1}$ 存在 $m$ 重简并, 对应的本征矢为 $\{|v_{1}^{(1)}\rangle, |v_{1}^{(2)}\rangle,\cdots, |v_{1}^{(m)}\rangle\}$. 设 $\begin{aligned}
+        B|v_{1}^{(i)}\rangle = \sum_{j}b_{ij}|v_{1}^{(j)}\rangle
+      \end{aligned}$. 而其余本征矢则维持非简并形式 $\begin{aligned}
+        B|v_{j}\rangle = \mu_{j}|v_{j}\rangle
+      \end{aligned}$. 令幺正矩阵 $\begin{aligned}
+        U = \bigg[|v_{1}^{(1)}\rangle, |v_{1}^{(2)}\rangle,\cdots, |v_{1}^{(m)}\rangle,|v_{m+1}\rangle,\cdots,|v_{n}\rangle\bigg]
+      \end{aligned}$ 尝试使 $B$ 对角化:
+      \begin{align*}
+        U^{\dagger}BU &= \begin{pmatrix}
+          \langle v_{1}^{(1)}| \\ \langle v_{1}^{(2)}| \\ \vdots \\ \langle v_{1}^{(m)}| \\ \langle v_{m+1}| \\ \vdots \\ \langle v_{n}|
+        \end{pmatrix}B\begin{pmatrix}
+          |v_{1}^{(1)}\rangle & |v_{1}^{(2)}\rangle & \cdots & |v_{1}^{(m)}\rangle & |v_{m+1}\rangle & \cdots & |v_{n}\rangle
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+          \langle v_{1}^{(1)}| \\ \langle v_{1}^{(2)}| \\ \vdots \\ \langle v_{1}^{(m)}| \\ \langle v_{m+1}| \\ \vdots \\ \langle v_{n}|
+        \end{pmatrix}\begin{pmatrix}
+          \sum_{j}b_{1j}|v_{1}^{(j)}\rangle & \sum_{j}b_{2j}|v_{1}^{(j)}\rangle & \cdots & \sum_{j}b_{mj}|v_{1}^{(j)}\rangle & \mu_{m+1}|v_{m+1}\rangle & \cdots & \mu_{n}|v_{n}\rangle
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+          b_{11} & b_{12} & \cdots & b_{1m} &  &  &  \\
+          b_{21} & b_{22} & \cdots & b_{2m} &  &  &  \\
+          \vdots & \vdots & \ddots & \vdots &  &  &  \\
+          b_{m1} & b_{m2} & \cdots & b_{mm} &  &  &  \\
+           &  &  &  & \mu_{m+1} &  &  \\
+           &  &  &  &  & \ddots &  \\
+           &  &  &  &  &  & \mu_{n}
+        \end{pmatrix} = \begin{pmatrix}
+          b & 0 \\ 0 & \Lambda_{\mu}
+        \end{pmatrix}
+      \end{align*}
+      所以问题就在于要使分块矩阵 $b = \begin{pmatrix}
+        b_{11} & b_{12} & \cdots & b_{1m} \\
+        b_{21} & b_{22} & \cdots & b_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        b_{m1} & b_{m2} & \cdots & b_{mm}
+      \end{pmatrix}$ 对角化. 构造 
+      $b = U^{\dagger}_{b}\Lambda_{b}U_{b}$, 于是
+      \begin{align*}
+        U^{\dagger}BU &= \begin{pmatrix}
+          U^{\dagger}_{b}\Lambda_{b}U_{b} &  \\
+           & \Lambda_{\mu} 
+        \end{pmatrix} = \begin{pmatrix}
+          U^{\dagger}_{b} &  \\
+           & \mathbb{I}
+        \end{pmatrix}\begin{pmatrix}
+          \Lambda_{b} &  \\
+           & \Lambda_{\mu}
+        \end{pmatrix}\begin{pmatrix}
+          U_{b} &  \\
+           & \mathbb{I}
+        \end{pmatrix}\\
+        \Rightarrow& \underbrace{\begin{pmatrix}
+          U^{\dagger}_{b} &  \\
+           & \mathbb{I}
+        \end{pmatrix}^{-1}U^{\dagger}}_{U^{\prime\dagger}}B\underbrace{U\begin{pmatrix}
+          U_{b} &  \\
+           & \mathbb{I}
+        \end{pmatrix}^{-1}}_{U^{\prime}} = \begin{pmatrix}
+          \Lambda_{b} &  \\
+           & \Lambda_{\mu}
+        \end{pmatrix} = \Lambda.
+      \end{align*}
+      于是通过构造 $U^{\prime}$ 和 $U^{\prime\dagger}$, 我们可以将 $B$ 对角化. $\square$
+    \end{enumerate}
   \end{enumerate}}}
 \end{enumerate}
 

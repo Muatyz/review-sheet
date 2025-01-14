@@ -55,6 +55,21 @@
     |\psi_{I}(t)\rangle &= U_{0}^{-1}(t)|\psi_{S}(t)\rangle,\quad U_{0}(t) = e^{-iH_{0}t/\hbar}\\
     |\psi_{H}(t)\rangle &= U^{-1}(t)|\psi_{S}(t)\rangle,\quad U(t) = e^{-iHt/\hbar}
 \end{align*}
+相互作用绘景中的态演化满足
+\begin{align*}
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t} |\psi_{I}(t)\rangle &= V_{I}(t)|\psi_{I}(t)\rangle\\
+    V_{I}(t) &= U_{0}^{-1}(t)V(t)U_{0}(t)\\
+    A_{I}(t) &= U_{0}^{-1}(t)AU_{0}(t)
+\end{align*}
+定义 $U(t):=U_{0}(t)U_{I}(t)$, 其中 $U_{I}(t)$ 对应的是 $V(t)$ 导致的时间演化. 那么
+\begin{align*}
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U(t) &= (H_{0}+V)U(t)\\
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U_{0}(t) &= H_{0}U_{0}(t)\\
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U(t) = i\hbar\frac{\mathrm{d}}{\mathrm{d}t}(U_{0}U_{I}) &= i\hbar\left[\frac{\mathrm{d}U_{0}}{\mathrm{d}t}U_{I} + U_{0}\frac{\mathrm{d}U_{I}}{\mathrm{d}t}\right]\\
+    &= H_{0}U_{0}U_{I} + i\hbar U_{0}\frac{\mathrm{d}U_{I}}{\mathrm{d}t} = H_{0}U + i\hbar U_{0}\frac{\mathrm{d}U_{I}}{\mathrm{d}t}\\
+    i\hbar\frac{\mathrm{d}U(t)}{\mathrm{d}t} &= H_{0}U + VU\\
+    \Rightarrow i\hbar U_{0}\frac{\mathrm{d}U_{I}}{\mathrm{d}t} &= VU = VU_{0}U_{I}\Rightarrow i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U_{I} = U_{0}^{-1}VU_{0}U_{I} = V_{I}U_{I}(t)
+\end{align*}
 \subsection{密度矩阵的时间演化}
 
 \subsection{电磁场中的带电粒子}

@@ -124,7 +124,18 @@
     f = \frac{-q\Lambda}{\hbar}
   \end{aligned}$, 所以规范变换后的波函数为 $\begin{aligned}
     \psi^{\prime} = \boxed{\psi e^{-iq\Lambda/\hbar}}
-  \end{aligned}$. 需要关注一开始给出的 $\Lambda$ 的符号, 从而影响整体变换的正负.}}
+  \end{aligned}$. 需要关注一开始给出的 $\Lambda$ 的符号, 从而影响整体变换的正负.
+  \begin{align*}
+    \left\{\begin{aligned}
+      \vec{A}\rightarrow& \vec{A} - \nabla\Lambda\\
+      \phi \rightarrow& \phi + \frac{\partial\Lambda}{\partial t}\\
+      \psi\rightarrow& \psi \text{exp}\left(-\frac{iq\Lambda}{\hbar}\right)
+    \end{aligned}\right.,\quad\left\{\begin{aligned}
+      \vec{A}\rightarrow &\vec{A} + \nabla\Lambda\\
+      \phi\rightarrow &\phi - \frac{\partial\Lambda}{\partial t}\\
+      \psi\rightarrow &\psi \text{exp}\left(+\frac{iq\Lambda}{\hbar}\right)
+    \end{aligned}\right.
+  \end{align*}}}
   
   \item \textbf{角动量的对易关系为 $[J_{i}, J_{j}] = i\hbar\epsilon_{ijk}J_{k}$, 升降算符定义为 $J_{\pm} = J_{x}\pm iJ_{y}$, 那么 $[J_{+}, J_{-}] = $?}
   

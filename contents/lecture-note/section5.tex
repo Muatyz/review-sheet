@@ -318,14 +318,62 @@ $E^{(n)}_{\alpha^{\prime},\alpha}$ 是第 $n$ 个能级的简并子空间内哈�
 
 \subsection{含时微扰}
 \subsubsection{含时微扰论}
+含时微扰论考虑的是时间演化算符 $U$ 的修正. 设 $\begin{aligned}
+    \frac{\partial H_{0}}{\partial t} = 0
+\end{aligned}$, 则
+\begin{align*}
+    H(t) &= H_{0} + V(t),\quad H_{0}|n\rangle = E_{n}|n\rangle\\
+    \Rightarrow V(t) &= \sum_{m,n}|m\rangle \langle m|V(t)|n\rangle\langle n| = \sum_{m,n}|m\rangle V_{mn}(t)\langle n|\\
+    |\psi(t)\rangle &= U(t)|\psi(0)\rangle 
+\end{align*}
+将时间演化算符拆分为 $H_{0}$ 和 $V(t)$ 带来的时间演化 
+\begin{align*}
+    U(t) &= U_{0}(t)U_{I}(t)\\
+    |\psi_{I}(t)\rangle &= U_{I}(t)|\psi_{I}(0)\rangle\\
+    V_{I}(t) &= U_{0}^{-1}(t)V(t)U_{0}(t) = \sum_{mn}|m\rangle V_{mn}(t) e^{i(E_{m}-E_{n})t}\langle n|\\
+    i\hbar\frac{\mathrm{d}}{\mathrm{d}t}U_{I}(t) &= V_{I}(t)U_{I}(t),\quad U_{I}(0) = \mathbb{I}\\
+    \Rightarrow |\psi_{I}(t)\rangle &= U_{I}(t)|\psi_{I}(0)\rangle, \quad U(t) = U_{0}(t)U_{I}(t)
+\end{align*}
 \paragraph{Dyson 级数}
 \paragraph{格林函数}
 \paragraph{费曼图}
 \subsubsection{能级跃迁}
 \paragraph{跃迁概率}
+系统在 $t_{0}$ 处于初态 $|i\rangle$, 在时刻 $t$ 演化为 $G(t,t_{0})|i\rangle$, 那么在 $t$ 发现系统末态为 $|f\rangle$ 的概率为
+\begin{align*}
+    P_{i\rightarrow f} = |\langle f|G(t,t_{0})|i\rangle|^{2}
+\end{align*}
+这种现象即为跃迁. 
+\begin{align*}
+    G(t,t_{0}) &\approx G_{0}(t,t_{0}) - i\int_{t_{0}}^{t}\mathrm{d}t_{1}G_{0}(t,t_{1})V(t_{1})G_{0}(t_{1},t_{0})\\
+    G_{0}(t,t^{\prime}) &= \sum_{n}|n\rangle e^{-iE_{n}(t-t^{\prime})}\langle n|\\
+    \langle f|G(t,t_{0})|i\rangle &\approx \langle f|G_{0}(t,t_{0})|i\rangle -i\int_{t_{0}}^{t}\mathrm{d}t_{1}\langle f|G_{0}(t,t_{1})V(t_{1})G_{0}(t_{1},t_{0})|i\rangle\\
+    &= e^{i(E_{f}t-E_{i}t_{0})}\left(\delta_{fi} - i\int_{t_{0}}^{t_{1}}\langle f|V(t_{1})|i\rangle e^{i(E_{f}-E_{i})t_{1}}\right)\\
+    \Rightarrow P(i\rightarrow f) &= \frac{1}{\hbar^{2}}\left|\int_{t_{0}}^{t}\mathrm{d}t_{1}\langle f|V(t_{1})|i\rangle e^{i\omega_{fi}t_{1}}\right|^{2},\quad \hbar\omega_{fi} = E_{f}-E_{i}
+\end{align*}
 \paragraph{Fermi 黄金规则}
+考虑系统初态 $|i\rangle$, 微扰为 $\begin{aligned}
+    V(t) = \left\{\begin{aligned}
+        Ve^{-i\omega t},\quad t > 0\\
+        0,\quad t < 0
+    \end{aligned}\right.
+\end{aligned}$. 那么跃迁概率为
+\begin{align*}
+    P_{i\rightarrow f}(t) &= \frac{1}{\hbar^{2}}\left|\int_{0}^{t}\mathrm{d}t_{1}\langle f|V|i\rangle e^{i(\omega_{fi}-\omega)t_{1}}\right|^{2} = \frac{1}{\hbar^{2}}|\langle f|V|i\rangle|^{2}\left(\frac{\sin{[(\omega_{fi}-\omega)t/2]}}{(\omega_{fi}-\omega)t/2}\right)^{2}\\
+    W_{i\rightarrow f} &= \lim_{t\rightarrow \infty}\frac{P_{i\rightarrow f}(t)}{t} = \frac{2\pi}{\hbar}|\langle f|V|i\rangle|^{2}\delta(\omega_{fi}-\omega)
+\end{align*}
+即长时极限下, 跃迁倾向于发生在与 $\omega$ 共振的能级, 即 $E_{f}-E_{i} = \hbar\omega$
 \paragraph{绝热过程}
-
+微扰缓慢施加, 具有形式 $\begin{aligned}
+    V(t) = \left\{\begin{aligned}
+        Ve^{t/\tau}, t < 0\\
+        0, t \geq 0
+    \end{aligned}\right.
+\end{aligned}$. 设 $t_{0}\rightarrow -\infty$ 的初态为 $|i\rangle$, 那么系统在 $t = 0$ 时末态为 $|f\rangle$ 的概率为
+\begin{align*}
+    P_{i\rightarrow f} &= \frac{1}{\hbar^{2}}\left|\int_{-\infty}^{0}\mathrm{d}t_{1}\langle f|V|i\rangle e^{t_{1}/\tau} e^{i\omega_{fi}t_{1}}\right|^{2} = \frac{|\langle f|V|i\rangle|^{2}}{(E_{f}-E_{i})^{2} + \hbar^{2}/\tau^{2}}\\
+    \lim_{\tau\rightarrow\infty}P_{i\rightarrow f} &= |\langle f|i(V)\rangle|^{2} = \frac{|V_{fi}|^{2}}{(E_{i}-E_{f})^{2}}
+\end{align*}
 \subsection{绝热近似}
 
 \subsection{Berry 相位}
