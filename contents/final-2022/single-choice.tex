@@ -6,7 +6,7 @@
 \begin{enumerate}
   \item \textbf{让大量热化的自旋通过 Stern-Gerlach 装置SG $\hat{z}$,测得 $S^{z}_{+}$ 的概率是?}
 
-  {\color{gray}{  大量热化自旋表示充分随机, 所以 $\begin{aligned}
+  {\color{white}{  大量热化自旋表示充分随机, 所以 $\begin{aligned}
     P(S_{+}^{z}) = ||\chi_{+}^{z\dagger}\frac{1}{\sqrt{2}}(\chi_{+}^{z} + \chi_{-}^{z})||^{2} = \boxed{\frac{1}{2}}
   \end{aligned}$}}
 
@@ -21,7 +21,7 @@
     0 & -1
   \end{pmatrix}$, 那么 $\sigma^{x}\sigma^{z}$ 等于?}
 
-{\color{gray}{  $\begin{aligned}
+{\color{white}{  $\begin{aligned}
     \sigma^{x}\sigma^{z} = \begin{pmatrix}
       0 & 1\\
       1 & 0
@@ -40,13 +40,13 @@
     \rho = \sum_{i}|\phi_{i}\rangle p_{i}\langle\phi_{i}|
   \end{aligned}$, 那么 $\text{Tr}[\rho]$ 应满足?}
   
-{\color{gray}{  因为密度矩阵的迹表示系统的总概率, 而概率必须归一化, 即 $\begin{aligned}
+{\color{white}{  因为密度矩阵的迹表示系统的总概率, 而概率必须归一化, 即 $\begin{aligned}
     \text{Tr}[\rho] = \sum_{i}p_{i} = \boxed{1}
   \end{aligned}$}}
   
   \item \textbf{如果 $\rho$ 是混态的密度矩阵, 那么 $\text{Tr}[\rho^{2}]$ 应满足?}
   
-{\color{gray}{  对任意密度矩阵总有$\begin{aligned}
+{\color{white}{  对任意密度矩阵总有$\begin{aligned}
     \hat{\rho} = \sum_{\alpha}p_{\alpha}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|
   \end{aligned}$. 那么$\begin{aligned}
     \hat{\rho}^{2} = \sum_{\alpha}p_{\alpha}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|\sum_{\beta}p_{\beta}|\psi_{\beta}\rangle\langle\psi_{\beta}| = \sum_{\alpha}p_{\alpha}^{2}|\psi_{\alpha}\rangle\langle\psi_{\alpha}|
@@ -54,7 +54,7 @@
   
   \item \textbf{考虑系统哈密顿量 $H$ 不显含时间, 时间演化算符为 $U(t,0) = e^{-iHt/\hbar}$. 在海森堡绘景中, 我们让算符承载时间演化, 海森堡绘景中的算符定义为 $A_{H}(t) = U^{\dagger}(t,0)AU(t,0)$, 其中 $A$ 是薛定谔绘景中的算符, 如果 $A$ 不显含时间, 那么 $\mathrm{d}A_{H}(t)/\mathrm{d}t$ 等于?}
   
-{\color{gray}{  \begin{align*}
+{\color{white}{  \begin{align*}
     \frac{\mathrm{d}A_{H}(t)}{\mathrm{d}t} &= \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{iHt/\hbar}Ae^{-iHt/\hbar}\right) = \frac{\mathrm{d}}{\mathrm{d}t}\left(e^{iHt/\hbar}\right)Ae^{-iHt/\hbar} + e^{iHt/\hbar}\frac{\mathrm{d}}{\mathrm{d}t}\left(Ae^{-iHt/\hbar}\right)\\
     &= \frac{iH}{\hbar}e^{iHt/\hbar}Ae^{-iHt/\hbar} - e^{iHt/\hbar}A\frac{iH}{\hbar}e^{-iHt/\hbar} = \frac{i}{\hbar}\left(H e^{iHt/\hbar}Ae^{-iHt/\hbar} - e^{iHt/\hbar}Ae^{-iHt/\hbar}H\right)\\
     &= \frac{i}{\hbar}\left[H, A_{H}(t)\right] = \boxed{\frac{1}{i\hbar}\left[A_{H}(t), H\right]}
@@ -68,7 +68,7 @@
     \phi\rightarrow \phi + \frac{\partial\Lambda}{\partial t}
   \end{aligned}$, $\psi\rightarrow$?}
 
-{\color{gray}{  推导极其麻烦, 建议直接背结论, 不要试图考场现推. 假设 $\begin{aligned}
+{\color{white}{  推导极其麻烦, 建议直接背结论, 不要试图考场现推. 假设 $\begin{aligned}
     \psi^{\prime} = \psi e^{if(\vec{r},t)}
   \end{aligned}$ 是满足规范变换的, 其中 $f(\vec{r},t)$ 是待定函数. 连同其它的规范变换, 代入薛定谔方程得到 $f(\vec{r},t)$ 的微分方程:
 
@@ -139,7 +139,7 @@
   
   \item \textbf{角动量的对易关系为 $[J_{i}, J_{j}] = i\hbar\epsilon_{ijk}J_{k}$, 升降算符定义为 $J_{\pm} = J_{x}\pm iJ_{y}$, 那么 $[J_{+}, J_{-}] = $?}
   
-{\color{gray}{  \begin{align*}
+{\color{white}{  \begin{align*}
     [J_{+},J_{-}] &= [J_{x} + iJ_{y}, J_{x} - iJ_{y}] \\
     &= [J_{x}, J_{x}] - i[J_{x},J_{y}] + i[J_{y}, J_{x}] + [J_{y}, J_{y}] = -2i[J_{x},J_{y}] = -2i(i\hbar J_{z}) \\
     &= \boxed{2\hbar J_{z}}
@@ -147,7 +147,7 @@
   
   \item \textbf{二维谐振子的哈密顿量为 $H = \hbar\omega\left(a_{1}^{\dagger}a_{1} + a_{2}^{\dagger}a_{2} + 1\right)$ 其第一激发态的简并度为?}
   
-{\color{gray}{  二维谐振子的哈密顿量用粒子数算符写作 $\begin{aligned}
+{\color{white}{  二维谐振子的哈密顿量用粒子数算符写作 $\begin{aligned}
     \hat{H} = \hbar\omega\left(\hat{n}_{1} + \hat{n_{2}} + \frac{1}{2}\right)
   \end{aligned}$, 所以第一激发态即 $n_{1} + n_{2} = 1$, 这代表了 $|01\rangle$ 和 $|10\rangle$ 两个正交态, 所以简并度为 $\boxed{2}$.}}
   
@@ -155,7 +155,7 @@
     |\psi\rangle = \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle\right)
   \end{aligned}$, 计算可得量子比特 $A$ 的纠缠熵为?}
 
-{\color{gray}{  密度矩阵为
+{\color{white}{  密度矩阵为
   \begin{align*}
     \rho &= |\psi\rangle\langle\psi| = 
     \frac{1}{\sqrt{2}}
@@ -190,7 +190,7 @@
     E[\Psi] = \frac{\langle\Psi|H|\Psi\rangle}{\langle\Psi|\Psi\rangle}
   \end{aligned}$, $E(\Psi)$ 和 $E_{0}$ 的关系为?}
 
-\color{gray}{{  任意态均可通过基矢展开, 形式为 $\begin{aligned}
+\color{white}{{  任意态均可通过基矢展开, 形式为 $\begin{aligned}
     |\Psi\rangle = \sum_{n}|n\rangle\langle n|\Psi\rangle
   \end{aligned}$, 则 
   \begin{align*}

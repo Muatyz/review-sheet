@@ -10,7 +10,7 @@
       1 & 0
     \end{pmatrix}$ 的幺正矩阵 $V$, 并找到 $\sigma^{x}$ 的本征值. }
 
-    {\color{gray}{通过求解其特征方程以得到 $\sigma^{x}_{(z)}$ 的本征值:
+    {\color{white}{通过求解其特征方程以得到 $\sigma^{x}_{(z)}$ 的本征值:
     \begin{align*}
       \text{det}(\sigma^{x}_{(z)}-\lambda I) = \text{det}\begin{pmatrix}
         -\lambda & 1 \\
@@ -92,7 +92,7 @@
       \vec{S} = \frac{\hbar}{2}\vec{\sigma}
     \end{aligned}$, 其中 $\vec{\sigma}$ 的三个分量为 Pauli 矩阵 $\sigma^{x}$, $\sigma^{y}$, $\sigma^{z}$. 现在考采用 $S^{x}$ 表象, 请列出 $S^{x}$ 表象中你约定的基矢顺序, 并求出在该表象下算符 $\vec{S}$ 的三个分量的矩阵表示. }
 
-    {\color{gray}{在 $S^{z}$ 表象下有
+    {\color{white}{在 $S^{z}$ 表象下有
     \begin{align*}
       S^{x}_{(z)} = \frac{\hbar}{2}\sigma^{x}_{(z)} = \frac{\hbar}{2}\begin{pmatrix}
         0 & 1 \\
@@ -197,7 +197,7 @@
   \begin{enumerate}
     \item \textbf{计算 $[Q,P]$, $[a,a^{\dagger}]$, $[a,a^{\dagger}a]$, $[a^{\dagger},a^{\dagger}a]$;}
     
-{\color{gray}{    \begin{align*}
+{\color{white}{    \begin{align*}
       [Q,P] &= [\sqrt{\frac{m\omega}{\hbar}}x,\sqrt{\frac{1}{\hbar m\omega}}p] = \frac{1}{\hbar}[x,p] = \frac{1}{\hbar} i\hbar = \boxed{i},\\
       [a,a^{\dagger}] &= \left[\frac{1}{\sqrt{2}}(Q + iP),\frac{1}{\sqrt{2}}(Q - iP)\right] \\
       &= \frac{1}{2}[Q + iP, Q - iP]= \frac{1}{2}\left([Q,Q] - i[Q, P] + i[P,Q] + [P,P]\right)\\
@@ -213,7 +213,7 @@
     \end{align*}}}
     \item \textbf{将哈密顿量 $H$ 用 $a$ 和 $a^{\dagger}$ 表示. 并求出全部能级;}
     
-{\color{gray}{    \begin{align*}
+{\color{white}{    \begin{align*}
       a &= \frac{1}{\sqrt{2}}\left(Q + iP\right),\quad a^{\dagger} = \frac{1}{\sqrt{2}}\left(Q - iP\right)\\
       \Rightarrow Q &= \frac{1}{\sqrt{2}}(a + a^{\dagger}),\quad P = \frac{1}{\sqrt{2}i}(a - a^{\dagger})\\
       \Rightarrow H &= \frac{1}{2}\hbar\omega(P^{2} + Q^{2}) = \frac{1}{2}\hbar\omega\left\{\left[\frac{1}{\sqrt{2}i}(a - a^{\dagger})\right]^{2} + \left[\frac{1}{\sqrt{2}}(a + a^{\dagger})\right]^{2}\right\}\\
@@ -235,7 +235,7 @@
 
     \item \textbf{在能量表象中, 计算 $a$ 和 $a^{\dagger}$ 的矩阵元.}
     
-{\color{gray}{    能量表象的本征矢满足 $H|n\rangle = E_{n}|n\rangle$, 则矩阵元为
+{\color{white}{    能量表象的本征矢满足 $H|n\rangle = E_{n}|n\rangle$, 则矩阵元为
     \begin{align*}
       a|n\rangle &= \sqrt{n}|n-1\rangle,\quad a^{\dagger}|n\rangle = \sqrt{n+1}|n+1\rangle\\
       \Rightarrow \langle m|a|n\rangle &= \boxed{\sqrt{n}\delta_{m,n-1}},\quad \langle m|a^{\dagger}|n\rangle = \boxed{\sqrt{n+1}\delta_{m,n+1}}
@@ -246,7 +246,7 @@
   
 \textbf{两个大小相等, 属于不同自由度的角动量 $\vec{J}_{1}$ 和 $\vec{J}_{2}$ 耦合成总角动量 $\vec{J} = \vec{J}_{1} + \vec{J}_{2}$, 设 $\vec{J}_{1}^{2} = \vec{J}_{2}^{2} = j(j+1)\hbar^{2}$, $J^{2} = J(J+1)\hbar^{2}$, $J = 2j, 2j-1, \cdots, 1, 0$. 在总角动量量子数 $J = 0$ 的状态下, 求 $J_{1,z}$ 和 $J_{2,z}$ 的可能取值及相应概率.}
 
-{\color{gray}{根据 $J = 0$, 而 $-|J|\leq M\leq |J|$, 夹逼定理得到 $M= 0$. 而磁量子数守恒, 所以 $J_{1,z} + J_{2,z} = J_{z} = 0$. 已知 C-G 系数可以用于将 $|J,M;j_{1},j_{2}\rangle$ 以基矢 $|j_{1},m_{1};j_{2},m_{2}\rangle$ 展开, 代入上述讨论结果有
+{\color{white}{根据 $J = 0$, 而 $-|J|\leq M\leq |J|$, 夹逼定理得到 $M= 0$. 而磁量子数守恒, 所以 $J_{1,z} + J_{2,z} = J_{z} = 0$. 已知 C-G 系数可以用于将 $|J,M;j_{1},j_{2}\rangle$ 以基矢 $|j_{1},m_{1};j_{2},m_{2}\rangle$ 展开, 代入上述讨论结果有
 
 \begin{align*}
   |0,0;j,j\rangle = \sum_{m_,-m}^{-j\leq m\leq j}C_{j,j,m,-m}^{0,0}|j,m;j,-m\rangle
@@ -279,7 +279,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
   \begin{enumerate}
     \item \textbf{写出 $S^{x}$ 和 $S^{z}$ 的矩阵表示.}
     
-{\color{gray}{由于是在 $(\vec{S}^{2},S^{z})$ 表象, 所以 $S^{z}$ 的矩阵一定是对角矩阵. 选定基矢为 $\{|s,m\rangle\}$, 即$|1,1\rangle=\begin{pmatrix}
+{\color{white}{由于是在 $(\vec{S}^{2},S^{z})$ 表象, 所以 $S^{z}$ 的矩阵一定是对角矩阵. 选定基矢为 $\{|s,m\rangle\}$, 即$|1,1\rangle=\begin{pmatrix}
       1\\
       0\\
       0
@@ -321,7 +321,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
       \end{pmatrix}}
     \end{align*}}}
     \item \textbf{考虑哈密顿量 $H(\lambda) = H_{0} + \lambda V$, 其中 $H_{0} = (S^{z})^{2}$, $V = S^{x} + S^{z}$. 考虑为 $\lambda V$ 微扰, 利用微扰论计算微扰后的各能级和各能态, 其中能级微扰准确到二阶, 能态微扰准确到一阶.}
-{\color{gray}{
+{\color{white}{
   
 % \begin{align*}
 %       H_{0}|s,m\rangle &= \left(S^{z}\right)^{2}|s,m\rangle = m^{2}|s,m\rangle\\
@@ -539,7 +539,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
   \begin{enumerate}
     \item \textbf{考虑零温下的自由电子气, 计算总粒子数 $N$ 和粒子数密度 $n$, 计算总能量 $E^{(0)}$ 并把总能量密度 $E^{(0)}/V$ 表示成粒子数密度 $n$ 的函数. }\label{final-2022-5}
     
-{\color{gray}{分离变量法求解薛定谔方程 $\begin{aligned}
+{\color{white}{分离变量法求解薛定谔方程 $\begin{aligned}
       \frac{\hbar^{2}\hat{k}^{2}}{2m}\psi = E\psi
     \end{aligned}$. 于是能量本征值为 $\begin{aligned}
       \frac{\hbar^{2}k^{2}}{2m} = \sum_{i}\frac{\hbar^{2}k_{i}^{2}}{2m}
@@ -601,7 +601,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{计算能量的一阶修正 $E^{(1)} = \langle\text{FS}|H_{I}|\text{FS}\rangle$.}
     
-    {\color{gray}{题目中定义的傅里叶变换是非幺正的, 代入结论的时候需要注意系数. 
+    {\color{white}{题目中定义的傅里叶变换是非幺正的, 代入结论的时候需要注意系数. 
 
     \begin{align*}
       v(\vec{q}) = \frac{1}{V}\int\frac{1}{|\vec{x}|}e^{i\vec{q}\cdot\vec{x}}\mathrm{d}\vec{x} = \frac{1}{V}\frac{4\pi}{q^{2}}
@@ -622,7 +622,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{利用 Hatree Fock 平均场近似, 并假设平均场参数是自旋对角的, 并且保持了自旋对称性, 以及平移对称性, 因此我们期待 $\left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}^{\prime}\sigma^{\prime}}\right\rangle = \left\langle c_{\vec{k}\sigma}^{\dagger}c_{\vec{k}\sigma}\right\rangle\delta_{\vec{k},\vec{k}^{\prime}}\delta_{\sigma,\sigma^{\prime}}$, 以及 $\left\langle c_{\vec{k}\uparrow}^{\dagger}c_{\vec{k}\uparrow}\right\rangle = \left\langle c_{\vec{k}\downarrow}^{\dagger}c_{\vec{k}\downarrow}\right\rangle$. 计算系统总能量, 并与 $E^{(0)} + E^{(1)}$ 比较大小.}
     
-    {\color{gray}{代 $\begin{aligned}
+    {\color{white}{代 $\begin{aligned}
       |\text{HF}\rangle = \prod_{k\leq k_{F},\sigma}c_{\vec{k},\sigma}^{\dagger}|0\rangle
     \end{aligned}$ 入能量一阶修正, 有
 
@@ -712,7 +712,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
   \begin{enumerate}
     \item \textbf{利用 $\hat{R}(2\pi)$ 是单位算符证明 $N$ 必须是整数.}
     
-    {\color{gray}{因为 $\hat{R}(2\pi) = \mathbb{I}$, 所以有 $|\theta - 2\pi\rangle = |\theta\rangle$. 对于算符 $\hat{N}$ 的本征态 $|N\rangle$ 有
+    {\color{white}{因为 $\hat{R}(2\pi) = \mathbb{I}$, 所以有 $|\theta - 2\pi\rangle = |\theta\rangle$. 对于算符 $\hat{N}$ 的本征态 $|N\rangle$ 有
   \begin{align*}    
     \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta-2\pi\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\\
     \iff \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle\\
@@ -722,7 +722,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{考虑无微扰时的哈密顿量 $H_{0} = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}$, 证明 $|N\rangle$ 也是 $H_{0}$ 的本征态, 并求出本征能量, 证明每个能级都是两重简并的. }
     
-    {\color{gray}{  \begin{align*}
+    {\color{white}{  \begin{align*}
       \hat{H}_{0}|N\rangle = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}|N\rangle = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}|N\rangle\Rightarrow E_{N}^{(0)} = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}\\
       \Rightarrow N_{\pm} - \frac{1}{2} = \pm\sqrt{2E_{N}^{(0)}}\Rightarrow N_{\pm} = \frac{1}{2} \pm \sqrt{2E_{N}^{(0)}}
     \end{align*}
@@ -730,7 +730,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{采用 $\{|N\rangle\}$ 作为基组, 写出微扰项 $V = -g\cos{\left(2\hat{\theta}\right)}$ 的表示矩阵, 并证明微扰不会连接简并的能级(即如果 $|N\rangle$ 和 $|N^{\prime}\rangle$ 简并, 那么 $\langle N|V|N^{\prime}\rangle$). 因此尽管 $H_{0}$ 的能级是简并的, 我们仍然可以使用非简并微扰论.}
     
-    {\color{gray}{  \begin{align*}
+    {\color{white}{  \begin{align*}
       \cos{2\hat{\theta}} &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)\\
       e^{i2\hat{\theta}}|N\rangle &= e^{i2\hat{\theta}}\left(\frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\right) = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}e^{i2\hat{\theta}}|\theta\rangle \\
       &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{i(N+2)\theta}|\theta\rangle = |N+2\rangle\\
@@ -742,7 +742,7 @@ $|j,m;j,-m\rangle,\quad\forall m\in \{-j,-j+1,\cdots,j-1,j\}$ 等概率, 所以�
     
     \item \textbf{计算每个能级 $E_{N}$ 的微扰修正到 $g$ 的二阶, 并证明此时所有的能级简并仍然没有被解除.}
     
-    {\color{gray}{  \begin{align*}
+    {\color{white}{  \begin{align*}
       E_{N}^{(1)} &= \langle N|\hat{V}|N\rangle = -\frac{g}{2}\left(\langle N|N+2\rangle + \langle N|N-2\rangle\right) = 0\\
       E_{N}^{(2)} &= \sum_{N^{\prime}\neq N}\frac{|\langle N|\hat{V}|N^{\prime}\rangle|^{2}}{E_{N}^{(0)} - E_{N^{\prime}}^{(0)}} = \sum_{N^{\prime}\neq N}\frac{\left(-\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N, N^{\prime}-2})\right)^{2}}{\frac{1}{2}\left(N - \frac{1}{2}\right)^{2} - \frac{1}{2}\left(N^{\prime} - \frac{1}{2}\right)^{2}}\\
       &= \boxed{\frac{g^{2}}{(2N-3)(2N+1)}}

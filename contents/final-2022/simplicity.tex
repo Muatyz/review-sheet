@@ -8,7 +8,7 @@
     H = \frac{\vec{p}^{2}}{2M} + V(r)
   \end{aligned}$. 轨道角动量 $\vec{L} = \vec{r}\times \vec{p}$, 那么 $[\vec{L},H] = ?$}
   
-{\color{gray}{  由于是中心势场, 不妨设 $V(r) = r^{n}$, 则
+{\color{white}{  由于是中心势场, 不妨设 $V(r) = r^{n}$, 则
   \begin{align*}
     [\vec{L},H] &= \left[\sum_{ijk}\epsilon_{ijk}\hat{x}_{i}x_{j}p_{k},\sum_{\alpha}^{3}\frac{p_{\alpha}^{2}}{2m}+r^{n}\right] = \frac{1}{2m}\sum_{ijk\alpha}\epsilon_{ijk}\hat{x}_{i}[x_{j}p_{k},p_{\alpha}^{2}] + \sum_{ijk}\epsilon_{ijk}\hat{x}_{i}[x_{j}p_{k},r^{n}]\\
     &= \frac{1}{2m}\sum_{ijk\alpha}\hat{x}_{i}\epsilon_{ijk}\left\{\cancel{x_{j}p_{\alpha}[p_{k},p_{\alpha}]} + \cancel{x_{j}[p_{k},p_{\alpha}]p_{\alpha}} + p_{\alpha}[x_{j},p_{\alpha}]p_{k} + [x_{j},p_{\alpha}]p_{\alpha}p_{k}\right\} + \sum_{ijk}\epsilon_{ijk}\hat{x}_{i}x_{j}[-i\hbar\frac{\partial}{\partial x_{k}},r^{n}]\\
@@ -30,7 +30,7 @@
   \end{align*}
   跃迁概率为?}
 
-{\color{gray}{  \begin{align*}
+{\color{white}{  \begin{align*}
     P_{i\rightarrow f}(t) &= \frac{1}{\hbar^{2}}\left|\left|\int_{0}^{t}\mathrm{d}t^{\prime}\langle f|Ve^{-\mathrm{i}\omega t^{\prime}}|i\rangle e^{\mathrm{i}\omega_{fi}t^{\prime}}\right|\right|^{2} 
     = \frac{1}{\hbar^{2}}\left|\left|\int_{0}^{t}\mathrm{d}t^{\prime}\langle f|V|i\rangle e^{-\mathrm{i}\omega t^{\prime}} e^{\mathrm{i}\omega_{fi}t^{\prime}}\right|\right|^{2}\\
     &=\frac{1}{\hbar^{2}}\left|\left|\int_{0}^{t}\mathrm{d}t^{\prime}\langle f|V|i\rangle  e^{\mathrm{i}(\omega_{fi}-\omega)t^{\prime}}\right|\right|^{2} = \frac{1}{\hbar^{2}}\left|\left|\int_{0}^{t}\mathrm{d}t^{\prime}\langle f|V|i\rangle  e^{\mathrm{i}\Delta\omega t^{\prime}}\right|\right|^{2}\\
@@ -38,7 +38,7 @@
     P_{i\rightarrow f}(t) &= \boxed{\frac{4\left|\langle f|V|i\rangle\right|^{2}}{\hbar^{2}(\Delta\omega)^{2}}\sin^{2}{\left(\frac{\Delta\omega t}{2}\right)}}
   \end{align*}}}
 
-\item *{\color{gray}{算符 $\begin{aligned}
+\item *{\color{white}{算符 $\begin{aligned}
     \Omega(t)\equiv U^{-1}(t)U_{0}(t)
   \end{aligned}$, 算符 $\begin{aligned}
     \Omega_{\pm}\equiv \lim_{t\rightarrow \mp\infty}\Omega(t)
@@ -66,7 +66,7 @@
     \hat{\vec{p}} = \frac{\vec{p}}{|\vec{p}|}
   \end{aligned}$, 那么可知 Weyl 旋量 $\chi_{\pm}$ 恰好是螺旋度算符的本征态, 本征值分别为?}
 
-{\color{gray}{当 $m=0$ 且 $|\vec{p}| = E$ 时, 原 Dirac 方程即为
+{\color{white}{当 $m=0$ 且 $|\vec{p}| = E$ 时, 原 Dirac 方程即为
   \begin{align*}
     (1 - \hat{\vec{p}}\cdot \vec{\sigma})\chi_{+}(\vec{p}) &= 0,\quad (1 + \hat{\vec{p}}\cdot \vec{\sigma})\chi_{-}(\vec{p}) = 0\\
     \Rightarrow (1 - 2\hat{h})\chi_{+}(\vec{p}) &= 0,\quad (1 + 2\hat{h})\chi_{-}(\vec{p}) = 0
@@ -75,7 +75,7 @@
     \boxed{\pm\frac{1}{2}}
   \end{aligned}$}}
 
-  \item \color{gray}{*一个可以制备 Bell 态的简单量子线路为
+  \item \color{white}{*一个可以制备 Bell 态的简单量子线路为
 
   \begin{tikzpicture}
 
@@ -87,7 +87,7 @@
     \draw[thick] (0.5,-0.25) rectangle (1.5,0.25); 
     \node at (1,0) {H};
     % 上线的黑圆点
-    \filldraw[gray] (4,0) circle (0.1);
+    \filldraw[white] (4,0) circle (0.1);
     % 下线的控制符号(十字)
     \draw[thick] (4,-1.5) circle (0.2); % 空心圆
     \draw[thick] (4,-1.7) -- (4,-1.4); % 垂直线
@@ -108,7 +108,7 @@
   \end{align*}
   将以上量子线路作用到 $|\uparrow\uparrow\rangle$ 上得到的态为?}
 
-{\color{gray}{  注意到
+{\color{white}{  注意到
 \begin{align*}
   A &= \frac{1}{4}(\mathbb{I} - \sigma_{1}^{z})\otimes (\mathbb{I} - \sigma_{2}^{x}) = \frac{1}{4}\begin{pmatrix}
     & \\

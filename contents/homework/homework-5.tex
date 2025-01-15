@@ -22,7 +22,7 @@ where $g\cos{2\hat{\theta}}$ is a small external potential, which can be treated
 \begin{enumerate}
   \item \textbf{Use the fact that $\hat{R}(2\pi)$ is the identity operator to prove that $N$ must be an integer.}
   
-{\color{gray}{  Since $\hat{R}(2\pi) = \mathbb{I}$, so we have $|\theta - 2\pi\rangle = |\theta\rangle$. For eigenstate $|N\rangle$ of operator $\hat{N}$, we have
+{\color{white}{  Since $\hat{R}(2\pi) = \mathbb{I}$, so we have $|\theta - 2\pi\rangle = |\theta\rangle$. For eigenstate $|N\rangle$ of operator $\hat{N}$, we have
   \begin{align*}    
     \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta-2\pi\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\\
     \iff \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN(\theta - 2\pi)}|\theta\rangle\\
@@ -33,7 +33,7 @@ where $g\cos{2\hat{\theta}}$ is a small external potential, which can be treated
   \item  \textbf{Consider the unperturbed Hamiltonian $\begin{aligned}
     \hat{H}_{0} = \frac{1}{2}\left(\frac{1}{2}\hat{N} - \frac{1}{2}\right)^{2}
   \end{aligned}$, prove that $|N\rangle$ is also an eigenstate of $\hat{H}_{0}$, and find its eigenenergy, demonstrating that each energy level is doubly degenerate.}
-{\color{gray}{  \begin{align*}
+{\color{white}{  \begin{align*}
     \hat{H}_{0}|N\rangle = \frac{1}{2}\left(\hat{N} - \frac{1}{2}\right)^{2}|N\rangle = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}|N\rangle\Rightarrow E_{N}^{(0)} = \frac{1}{2}\left(N - \frac{1}{2}\right)^{2}\\
     \Rightarrow N_{\pm} - \frac{1}{2} = \pm\sqrt{2E_{N}^{(0)}}\Rightarrow N_{\pm} = \frac{1}{2} \pm \sqrt{2E_{N}^{(0)}}
   \end{align*}
@@ -41,7 +41,7 @@ where $g\cos{2\hat{\theta}}$ is a small external potential, which can be treated
 
   \item \textbf{Using the basis set $\{|N\rangle\}$, write down the representation matrix for the perturbation term $\hat{V} = -g\cos{2\hat{\theta}}$, and prove that the perturbation does not connect degenerate levels (i.e., if $|N\rangle$ and $|N^{\prime}\rangle$ are degenerate, then $\langle N|\hat{V}|N^{\prime}\rangle = 0$). Therefore, although the energy levels of $\hat{H}_{0}$ are degenerate, we can still use non-degenerate perturbation theory.}
   
-{\color{gray}{  \begin{align*}
+{\color{white}{  \begin{align*}
     \cos{2\hat{\theta}} &= \frac{1}{2}\left(e^{i2\hat{\theta}} + e^{-i2\hat{\theta}}\right)\\
     e^{i2\hat{\theta}}|N\rangle &= e^{i2\hat{\theta}}\left(\frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}|\theta\rangle\right) = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{iN\theta}e^{i2\hat{\theta}}|\theta\rangle \\
     &= \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi}\mathrm{d}\theta e^{i(N+2)\theta}|\theta\rangle = |N+2\rangle\\
@@ -53,7 +53,7 @@ where $g\cos{2\hat{\theta}}$ is a small external potential, which can be treated
 
   \item  \textbf{Calculate the perturbation correction to each energy level $E_{N}$ up to second order in $g$, and prove that all degeneracies of the energy levels remain unlifted.}
 
-  {\color{gray}{  \begin{align*}
+  {\color{white}{  \begin{align*}
     E_{N}^{(1)} &= \langle N|\hat{V}|N\rangle = -\frac{g}{2}\left(\langle N|N+2\rangle + \langle N|N-2\rangle\right) = 0\\
     E_{N}^{(2)} &= \sum_{N^{\prime}\neq N}\frac{|\langle N|\hat{V}|N^{\prime}\rangle|^{2}}{E_{N}^{(0)} - E_{N^{\prime}}^{(0)}} = \sum_{N^{\prime}\neq N}\frac{\left(-\frac{g}{2}(\delta_{N,N^{\prime}+2} + \delta_{N, N^{\prime}-2})\right)^{2}}{\frac{1}{2}\left(N - \frac{1}{2}\right)^{2} - \frac{1}{2}\left(N^{\prime} - \frac{1}{2}\right)^{2}}\\
     &= \boxed{\frac{g^{2}}{(2N-3)(2N+1)}}
