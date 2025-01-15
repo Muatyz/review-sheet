@@ -28,15 +28,16 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
   + 
   U\sum_{i}\big(
     n_{i\uparrow}\langle n_{i\downarrow}\rangle 
-    + n_{i\downarrow}\langle  n_{i\uparrow}\rangle - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle
+    + \langle  n_{i\uparrow}\rangle n_{i\downarrow} 
+    - \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle
     \big) \\
-  &+ V\sum_{\langle i,j\rangle}\big(n_{i}\langle n_{j}\rangle + n_{j}\langle n_{i}\rangle - \langle n_{i}\rangle\langle n_{j}\rangle\big)\\
+  &+ V\sum_{\langle i,j\rangle}\big(n_{i}\langle n_{j}\rangle + \langle n_{i}\rangle n_{j} - \langle n_{i}\rangle\langle n_{j}\rangle\big)\\
   &= c^{\dagger}\begin{bmatrix}
     U\langle n_{1\downarrow}\rangle + V\langle n_{2}\rangle &   & -t &  \\
       & U\langle n_{1\uparrow}\rangle + V\langle n_{2}\rangle &  & -t\\
     -t &   & U\langle n_{2\downarrow}\rangle + V\langle n_{1}\rangle &  \\
       & -t &   & U\langle n_{2\uparrow}\rangle + V\langle n_{1}\rangle
-  \end{bmatrix}c
+  \end{bmatrix}c - U\sum_{i}\langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle - V\sum_{\langle i,j\rangle}\langle n_{i}\rangle\langle n_{j}\rangle
 \end{align*}}}
 
 \begin{enumerate}
@@ -54,11 +55,11 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
         & U\frac{1}{2} + V &  & -t\\
       -t &   & U\frac{1}{2} + V &  \\
         & -t &   & U\frac{1}{2} + V
-    \end{bmatrix} = UDU^{-1}
+    \end{bmatrix} = VDV^{-1}
   \end{align*}
-  Except for the different diagnoal elements, this matrix is very similar to the case in the lecture. We can get
+  注意对角矩阵 $D$ 的对角线上能量本征值是升序排列的, 这是为了方便观察基态的能量出现在基矢的什么位置. 如果追加半满条件, 即两个格点共有\textbf{两个}电子, 后续通过产生算符作用于真空态得到基态波函数时就会使用\textbf{两个}产生算符, 具体是什么产生算符需要看能量最低的两个本征值的位置.
   \begin{align*}
-    U &= \frac{1}{\sqrt{2}}\begin{bmatrix}
+    V &= \frac{1}{\sqrt{2}}\begin{bmatrix}
         & 1 &   & -1 \\
      1  &   & -1 &  \\
         & 1 &   & 1 \\
@@ -68,9 +69,32 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
      & -t + \frac{U}{2} + V &  &  \\
       &  & t + \frac{U}{2} + V &  \\
      &   &  & t + \frac{U}{2} + V
-  \end{bmatrix}\\
-  E_{\text{MF}} &= -2t + \frac{U}{2} + V
-  \end{align*}}}
+  \end{bmatrix}
+  \end{align*}
+  根据对角分解有 $H = c^{\dagger}VDV^{-1}c$, 合并 $V^{-1}c$ 为 $\gamma$, 即得到矩阵的新基矢为 $\gamma\equiv V^{-1}c$. 同样的, $c = V\gamma$, 或者写作求和约定 $\begin{aligned}
+    c_{\alpha} = \sum_{i}V_{\alpha i}\gamma_{i}
+  \end{aligned}$. 基态被定义为占据最低能量的态, 而根据对角矩阵可以发现最低能量是二重简并的, 是新基矢 $\gamma$ 的第 $1,2$ 分量 ($\gamma_{1},\gamma_{2}$) 给出的, 因此基态使用产生算符 $\times|0\rangle$ 写出的话将会是$\begin{aligned}
+    \prod_{\text{min }{\varepsilon_{i}}}^{2}\gamma_{i}^{\dagger}|0\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle
+  \end{aligned}$. 那么各粒子数平均值为 
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle 
+    &= \langle c_{1\uparrow}^{\dagger}c_{1\uparrow}\rangle
+     = \sum_{\text{min }\varepsilon_{i},\text{min }\varepsilon_{j}}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+    &= \sum_{\text{min }\varepsilon_{i},\text{min }\varepsilon_{j}}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,j}\delta_{ij} 
+     = \sum_{\text{min }\varepsilon_{i}}^{2}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,i} 
+     = (V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,2})^{\dagger}V_{1\uparrow,2} \\
+    &= 0\cdot 0 + \frac{1}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}} = \boxed{\frac{1}{2}}
+  \end{align*}
+  同理计算得到 $\begin{aligned}
+    \langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
+  \end{aligned}$. 输入值等于输出值, 迭代成功. 这是顺磁态, 能量为 
+  \begin{align*}
+    E_{\text{HF}} &= \sum_{\text{min }\varepsilon_{\alpha}}^{2}\varepsilon_{\alpha}
+    - U\cdot \frac{1}{2}\frac{1}{2}\times 2 -V\cdot \left(\frac{1}{2} + \frac{1}{2}\right)\times \left(\frac{1}{2} + \frac{1}{2}\right)
+    = \left(-t + \frac{U}{2} + V\right)\times 2 - \frac{U}{2} - V\\
+    &= -2t + \frac{U}{2} + V
+  \end{align*}
+  }}
 
   \item \textbf{Case 2: Ferromagnetic(FM). Initial mean-field value $\langle n_{i\uparrow}\rangle = 1$ and $\langle n_{i\downarrow}\rangle = 0$.}
   
@@ -90,11 +114,11 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
         & U  &    & -t\\
      -t &    &    &   \\
         & -t &    & U 
-   \end{bmatrix} + V\mathbb{I} = UDU^{-1}
+   \end{bmatrix} + V\mathbb{I} = VDV^{-1}
   \end{align*}
   The effect of V is still just shifting the energy, and we get
   \begin{align*}
-    U = \frac{1}{\sqrt{2}}\begin{bmatrix}
+    V = \frac{1}{\sqrt{2}}\begin{bmatrix}
    1  &-1 &   &   \\
       &   & 1 &-1 \\
    1  & 1 &   &   \\
@@ -106,10 +130,11 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
      &   &  & t + U + V
   \end{bmatrix}
   \end{align*}
+  要找到最低能量的两个态填入电子, 可确认的是 $-t+V<t+V$ 与 $-t+U+V<t+U+V$, 然而 $t+V\sim -t+U+V$ 的相对关系是尚不确定的, 因此需要分类讨论.
   \begin{enumerate}
     \item When $ -t + U + V < t + V\iff U < 2t$, 
     \begin{align*}
-      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{13}^{*}V_{13} = \frac{1}{2}\\
+      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{13}^{*}V_{13} =\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}} + 0\cdot 0 =  \frac{1}{2}\\
       \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
     \end{align*}
     which implies the system is still in PM phase and $\begin{aligned}
@@ -117,10 +142,10 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
     \end{aligned}$.
     \item When $U > 2t$, 
     \begin{align*}
-      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{12}^{*}V_{12} = 1\\
+      \langle n_{1\uparrow}\rangle &= \sum_{ij}V_{1i}^{*}V_{1j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle = V_{11}^{*}V_{11} + V_{12}^{*}V_{12} = \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}} + \left(-\frac{1}{\sqrt{2}}\right)\left(-\frac{1}{\sqrt{2}}\right) =  1\\
       \langle n_{1\uparrow}\rangle &= \langle n_{2\uparrow}\rangle = 1,\quad \langle n_{1\downarrow}\rangle = \langle n_{2\downarrow}\rangle = 0
     \end{align*}
-    Now the system is in FM phase and $E_{\text{FM}} = V$.
+    输出值等于输入值, 迭代成功. Now the system is in FM phase and $E_{\text{FM}} = V$.
   \end{enumerate}}}
 
   \item \textbf{Case 3: Anti-ferromagnetic(AFM). Initial mean-field value $\langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle = 1 - \alpha$ and $\langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \alpha$.}
@@ -144,14 +169,16 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
               & -t              &                 &  
  \end{bmatrix} + (\alpha U + V)\mathbb{I} = UDU^{-1}
   \end{align*}
-  The effect of $\bar{V} = \alpha U + V$ is still just shifting the energy. Similar to the contents in the lecture note, mark $\bar{U} = (1 - 2\alpha)U$ and shift each eigenenergy with $\bar{V}$, we get
+  The effect of $\bar{V} = \alpha U + V$ is still just shifting the energy. 这就和 $\langle n_{1\uparrow}\rangle = \langle n_{2\downarrow}\rangle =1$ 且 $\langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = 0$ 的情况相似,只是需要替换 $\bar{U} = (1 - 2\alpha)U$ 和 $\bar{V} = \alpha U + V$, we get
   \begin{align*}
     E_{\text{MF}} &= \bar{U} - \sqrt{4t^{2} + \bar{U}^{2}} + 2\alpha U + 2V - 2\alpha(1-\alpha)U - V\\
     &= (1 - 2\alpha + 2\alpha^{2})U - \sqrt{4t^{2} + \bar{U}^{2}} + V
   \end{align*}
-  and the self-consistent equation is 
+  输入值 $\alpha$ 等于输出值 $\langle n_{2\uparrow}\rangle$ 即达成收敛, 这个条件被称为自持方程(self-consistent equation). 能量最低态由 $\gamma$ 的第 $1,2$ 分量 ($\gamma_{1},\gamma_{2}$) 给出. 那么
   \begin{align*}
-    \alpha = \frac{4t^{2}}{4t^{2} + [\sqrt{4t^{2} + (1 - 2\alpha)U^{2}} + (1 - 2\alpha)U]^{2}}
+    \langle n_{2\uparrow}\rangle &= \langle c_{2\uparrow}^{\dagger}c_{2\uparrow}\rangle = \sum_{\text{min }\varepsilon_{i},\text{min }\varepsilon_{j}}(V_{2\uparrow,i})^{\dagger}V_{2\uparrow, j}\langle\gamma^{\dagger}_{i}\gamma_{j}\rangle = (V_{2\uparrow,1})^{\dagger}V_{2\uparrow,1} + (V_{2\uparrow,2})^{\dagger}V_{2\uparrow,2}\\
+    &= 0 \cdot 0 + \left(\frac{2t}{\sqrt{4t^{2} + (\sqrt{4t^{2} + \bar{U}^{2}} + \bar{U})^{2}}}\right)^{2}\\
+    \Rightarrow \alpha &= \frac{4t^{2}}{4t^{2} + [\sqrt{4t^{2} + (1 - 2\alpha)U^{2}} + (1 - 2\alpha)U]^{2}}
   \end{align*}
   \begin{enumerate}
     \item When $U\gg t$, we get $\alpha\approx 0$ and $\begin{aligned}
@@ -173,7 +200,7 @@ We consider the case of half-filling for two lattice sites ($\langle N\rangle = 
                             & (1 - \alpha)U + 2\alpha V &  & -t\\
      -t                     &    & \alpha U + 2(1-\alpha)V &   \\
                             & -t &    & \alpha U + 2(1-\alpha)V
-   \end{bmatrix} = UDU^{-1}
+   \end{bmatrix} = VDV^{-1}
   \end{align*}
   The result is a little complicated and one can solve the matrix by Mathematica easily. Note $\beta = (1-2\alpha)(U-2V)$ and $\gamma = 2t$, we have
   \begin{align*}

@@ -1,4 +1,22 @@
-\begin{align*}
-    E^{(n)}_{\alpha\beta}(\lambda) &= E_{n}\delta_{\alpha\beta} + V_{n\alpha,n\beta}\lambda + \sum_{m\neq n}\sum_{\gamma}\frac{V_{n\alpha,m\gamma}V_{m\gamma,n\beta}}{E_{n}-E_{m}}\lambda^{2} + \cdots\\
-    |n\alpha(\lambda)\rangle &= |n\alpha\rangle + \sum_{m\neq n}\sum_{\beta}|m\beta\rangle\frac{V_{m\beta,n\alpha}}{E_{n}-E_{m}}\lambda + \cdots
-\end{align*}
+根据对角分解有 $H = c^{\dagger}VDV^{-1}c$, 合并 $V^{-1}c$ 为 $\gamma$, 即得到矩阵的新基矢为 $\gamma\equiv V^{-1}c$. 同样的, $c = V\gamma$, 或者写作求和约定 $\begin{aligned}
+    c_{\alpha} = \sum_{i}V_{\alpha i}\gamma_{i}
+  \end{aligned}$. 基态被定义为占据最低能量的态, 而根据对角矩阵可以发现最低能量是二重简并的, 是新基矢 $\gamma$ 的第 $1,2$ 分量给出的, 因此基态使用产生算符 $\times|0\rangle$ 写出的话将会是$\begin{aligned}
+    \prod_{\varepsilon_{i}<\varepsilon_{F}}\gamma_{i}^{\dagger}|0\rangle = \gamma_{1}^{\dagger}\gamma_{2}^{\dagger}|0\rangle
+  \end{aligned}$. 那么各粒子数平均值为 
+  \begin{align*}
+    \langle n_{1\uparrow}\rangle 
+    &= \langle c_{1\uparrow}^{\dagger}c_{1\uparrow}\rangle
+     = \sum_{i,j}(V_{1\uparrow,i})^{\dagger}V_{1\uparrow,j}\langle\gamma_{i}^{\dagger}\gamma_{j}\rangle\\
+    &= \sum_{i,j}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,j}\delta_{ij} 
+     = \sum_{i}(V_{1\uparrow, i})^{\dagger}V_{1\uparrow,i} 
+     = (V_{1\uparrow,1})^{\dagger}V_{1\uparrow,1} + (V_{1\uparrow,2})^{\dagger}V_{1\uparrow,2} \\
+    &= \frac{1}{2}
+  \end{align*}
+  同理计算得到 $\begin{aligned}
+    \langle n_{1\downarrow}\rangle = \langle n_{2\uparrow}\rangle = \langle n_{2\downarrow}\rangle = \frac{1}{2}
+  \end{aligned}$. 这是顺磁态, 能量为 
+  \begin{align*}
+    E_{\text{HF}} &= \sum_{\varepsilon_{\alpha}<0}\varepsilon_{\alpha}
+    - U\cdot \frac{1}{2}\frac{1}{2}\times 2 = \left(-t + \frac{U}{2}\right)\times 2 - \frac{U}{2}\\
+    &= -2t + \frac{U}{2}
+  \end{align*}

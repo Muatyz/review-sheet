@@ -91,18 +91,34 @@ So we have
     S^{+} &= a^{\dagger}b, \quad S^{-} = b^{\dagger}a\\
     \Rightarrow S^{2} &= S^{z}S^{z} + \frac{1}{2}\left(S^{+}S^{-} + S^{-}S^{+}\right)
   \end{align*}
-  So we have
+  接下来证明 Schwinger boson 表象下定义的态 $|s,m\rangle$ 以及对应的升降算符 $S^{\pm}$ 仍然满足传统的波函数关系. 以 $S^{+} = a^{\dagger}b$ 为例:
   \begin{align*}
-    S^{+}|s,m\rangle &= a^{\dagger}b|s,m\rangle = \sqrt{(s+m+1)(s-m)}|s,m+1\rangle\\
-    S^{-}|s,m\rangle &= b^{\dagger}a|s,m\rangle = \sqrt{(s+m)(s-m+1)}|s,m-1\rangle\\
-    \Rightarrow S^{+}S^{-}|s,m\rangle &= S^{+}\sqrt{(s+m)(s-m+1)}|s,m-1\rangle = (s+m)(s-m+1)|s,m\rangle\\
-    S^{-}S^{+}|s,m\rangle &= S^{-}\sqrt{(s+m+1)(s-m)}|s,m+1\rangle = (s+m+1)(s-m)|s,m\rangle\\
+    S^{+}|s,m\rangle &= a^{\dagger}b
+    \frac{(a^{\dagger})^{s+m}}{\sqrt{(s+m)!}}
+    \frac{(b^{\dagger})^{s-m}}{\sqrt{(s-m)!}}
+    |\Omega\rangle \\
+    &= \frac{\sqrt{s+m+1}}{\sqrt{s-m}}
+    \frac{(a^{\dagger})^{s+m+1}}{\sqrt{(s+m+1)!}}
+    bb^{\dagger}
+    \frac{(b^{\dagger})^{s-m-1}}{\sqrt{(s-m-1)!}}
+    |\Omega\rangle \\
+    &= \frac{\sqrt{s+m+1}}{\sqrt{s-m}}(b^{\dagger}b + 1)|s,m+1\rangle\\
+    &= \frac{\sqrt{s+m+1}}{\sqrt{s-m}}(s-m-1 + 1)|s,m+1\rangle\\
+    &= \sqrt{s(s+1)-m(m+1)}|s,m+1\rangle
+  \end{align*}
+  说明该定义下的算符仍然满足传统的数值关系, $S^{-}$ 证明略. 则我们有
+  \begin{align*}
+    S^{+}|s,m\rangle &= a^{\dagger}b|s,m\rangle = \sqrt{s(s+1)-m(m+1)}|s,m+1\rangle\\
+    S^{-}|s,m\rangle &= b^{\dagger}a|s,m\rangle = \sqrt{s(s+1)-m(m-1)}|s,m-1\rangle\\
+    \Rightarrow 
+    S^{+}S^{-}|s,m\rangle &= S^{+}\sqrt{s(s+1)-m(m-1)}|s,m-1\rangle = \bigg[s(s+1)-m(m-1)\bigg]|s,m\rangle\\
+    S^{-}S^{+}|s,m\rangle &= S^{-}\sqrt{s(s+1)-m(m+1)}|s,m+1\rangle = \bigg[s(s+1)-m(m+1)\bigg]|s,m\rangle\\
     S^{z}S^{z}|s,m\rangle &= m^{2}|s,m\rangle
   \end{align*}
   Combine the above results, and we have
   \begin{align*}
     S^{2}|s,m\rangle &= S^{z}S^{z}|s,m\rangle + \frac{1}{2}\left(S^{+}S^{-} + S^{-}S^{+}\right)|s,m\rangle\\
-    &= m^{2}|s,m\rangle + \frac{1}{2}\left((s+m)(s-m+1) + (s+m+1)(s-m)\right)|s,m\rangle\\
+    &= m^{2}|s,m\rangle + \frac{1}{2}\bigg[s(s+1)-m(m-1) + s(s+1)-m(m+1)\bigg]|s,m\rangle\\
     &= \boxed{s(s+1)|s,m\rangle}
   \end{align*}}}
   $\square$
@@ -111,7 +127,7 @@ So we have
 \subsection{1D tight-binding model}
 \textbf{The Hamiltonian of a periodic tight-binding chain of length $L$ is given by the following expression:%长度为 $L$ 的周期性紧密结合链的哈密顿方程由以下表达式给出：
 \begin{align*}
-  H_{\text{chain}} = -t\sum_{n = 1}^{L}\left(\hat{a}_{n}^{\dagger}\hat{a}_{n+1} + \hat{a}_{n+1}^{\dagger}\hat{a}\right)
+  H_{\text{chain}} = -t\sum_{n = 1}^{L}\left(\hat{a}_{n}^{\dagger}\hat{a}_{n+1} + \hat{a}_{n+1}^{\dagger}\hat{a}_{n}\right)
 \end{align*}
 where $t$ is the hopping matrix element between adjacent sites $n$ and $n + 1$, $\hat{a}_{n}^{\dagger}$ creates a fermion at site $n$, and the set of operators $\{a_{n}^{\dagger}, a_{n}; n = 1,\cdots, L\}$ satisfies the standard anticommutation relations: %其中 $t$ 是相邻位点 $n$ 和 $n + 1$ 之间的跳跃矩阵元素，$\hat{a}_{n}^{\dagger}$ 在位点 $n$ 创建费米子，算子集 $\{a_{n}^{\dagger}, a_{n}; n = 1,\cdots, L\}$ 满足标准的反对易关系
 \begin{align*}
@@ -126,13 +142,14 @@ The purpose of this problem is to prove that this Hamiltonian can be diagonalize
 \begin{enumerate}
   \item \textbf{Let's require that $b^{\dagger}_{k}$ remains invariant under any shift of the summation index $n\rightarrow n + n^{\prime}$ ("translation invariance"). Prove that this implies that the index $k$ is quantized and determine the set of allowed $k$ values. How many independent $b^{\dagger}_{k}$ operators are there?} 
   
-  {\color{gray}{Apply a shift of the summation index $n\rightarrow n + n^{\prime}$, and
+  {\color{gray}{不妨令 $n\rightarrow n + 1$, 有
   \begin{align*}
-    b^{\dagger}_{k} &= \frac{1}{\sqrt{L}}\sum_{n = 1}^{L} e^{ik(n + n^{\prime})}a_{n}^{\dagger} = \frac{1}{\sqrt{L}}\sum_{n = 1}^{L} e^{ikn}e^{ikn^{\prime}}a_{n}^{\dagger}\\
-  \end{align*}
-  Since $b^{\prime}_{k}$ remain invariant, so $e^{ikn^{\prime}} = 1$ for any shift $n^{\prime}\in\mathbb{Z}$, which means
-  \begin{align*}
-    k = \frac{2\pi}{L} m,\quad m\in\{0,1,2,\cdots,L-1\}
+    b^{\dagger}_{k} &= \frac{1}{\sqrt{L}}\sum_{n = 1}^{L} e^{ik(n + 1)}a_{n + 1}^{\dagger} = \frac{1}{\sqrt{L}}\sum_{n^{\prime} = 2}^{L+1} e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger}\\
+    &= \frac{1}{\sqrt{L}}\left[\sum_{n^{\prime} = 2}^{L} e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger} + e^{ik(L+1)}a^{\dagger}_{L+1}\right]\\
+    &= \frac{1}{\sqrt{L}}\left[\sum_{n^{\prime} = 1}^{L} e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger} - e^{ik}a_{1}^{\dagger} + e^{ik(L+1)}a^{\dagger}_{L+1}\right]\\
+    \Rightarrow e^{ik}a_{1}^{\dagger} &= e^{ik(L+1)}a^{\dagger}_{L+1} = e^{ik(L+1)}a^{\dagger}_{1}\\
+    \Rightarrow e^{ikL} &= 1 = e^{i2\pi  m},\quad m\in\mathbb{Z}\\
+    \Rightarrow k &= \frac{2\pi}{L}m,\quad m\in\{0,1,2,\cdots,L-1\}
   \end{align*}
   So there are $\boxed{L}$ independent $b^{\dagger}_{k}$ operators.}}
   
@@ -183,14 +200,46 @@ The purpose of this problem is to prove that this Hamiltonian can be diagonalize
   So the commutator
   \begin{align*}
     [H_{\text{chain}},b^{\dagger}_{k}] &= -t\sum_{n = 1}^{L}\left(\left[a_{n}^{\dagger}a_{n+1},b^{\dagger}_{k}\right] + \left[a_{n+1}^{\dagger}a_{n},b^{\dagger}_{k}\right]\right)\\
-    \left[a_{n}^{\dagger}a_{n+1},b^{\dagger}_{k}\right] &= a_{n}^{\dagger}\left[a_{n+1},b_{k}^{\dagger}\right] = a_{n}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m = 1}^{L}e^{ikm}\left[a_{n+1},a_{m}^{\dagger}\right]\\
-    &= a_{n}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m=1}^{L}e^{ikm}\delta_{n+1,m} = a_{n}^{\dagger}\frac{1}{\sqrt{L}}e^{ik(n+1)}\\
-    \left[a_{n+1}^{\dagger}a_{n},b^{\dagger}_{k}\right] &= a_{n+1}^{\dagger}\left[a_{n},b_{k}^{\dagger}\right] = a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m = 1}^{L}e^{ikm}\left[a_{n},a_{m}^{\dagger}\right]\\
-    &= a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}\sum_{m=1}^{L}e^{ikm}\delta_{n,m} = a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}e^{ikn}\\
-    \Rightarrow [H_{\text{chain}},b^{\dagger}_{k}] &= -t\sum_{n = 1}^{L}\left(a_{n}^{\dagger}\frac{1}{\sqrt{L}}e^{ik(n+1)} + a_{n+1}^{\dagger}\frac{1}{\sqrt{L}}e^{ikn}\right)\\
-    &= -t\left(e^{ik}\frac{1}{\sqrt{L}}\sum_{n=1}^{L}e^{ikn}a_{n}^{\dagger} + e^{-ik}\frac{1}{\sqrt{L}}\sum_{n=1}^{L}e^{ik(n+1)}a_{n+1}^{\dagger}\right)\\
-    &= -t\left(e^{ik}b^{\dagger}_{k} + e^{-ik}b^{\dagger}_{k}\right) = \boxed{-2t\cos{k}}b^{\dagger}_{k}
+    &= -\frac{t}{L}\sum_{n=1}^{L}\sum_{n^{\prime}}^{L}\left(\left[
+      a_{n}^{\dagger}a_{n+1},e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger}\right] + \left[a_{n+1}^{\dagger}a_{n},e^{ikn^{\prime}}a_{n^{\prime}}^{\dagger}\right]\right)\\
+    &= -\frac{t}{L}\sum_{n=1}^{L}\sum_{n^{\prime}}^{L}e^{ikn^{\prime}}\left(
+      a_{n}^{\dagger}a_{n+1}a_{n^{\prime}}^{\dagger} 
+      - \underbrace{a_{n^{\prime}}^{\dagger}a_{n}^{\dagger}a_{n+1}}_{*} 
+      + a_{n+1}^{\dagger}a_{n}a_{n^{\prime}}^{\dagger} 
+      - \underbrace{a_{n^{\prime}}^{\dagger}a_{n+1}^{\dagger}a_{n}}_{*}
+      \right)
   \end{align*}
-So the corresponding eigenvalue $\varepsilon_{k} = -2t\cos{k}$.}}
+根据 $a,a^{\dagger}$ 的反对易关系, 交换相邻的升算符和降算符满足关系 $\begin{aligned}
+  \left\{\begin{aligned}
+    a^{\dagger}_{n^{\prime}}a_{n}^{\dagger} &= -a_{n}^{\dagger}a_{n^{\prime}}^{\dagger}\\
+    a_{n^{\prime}}a_{n} &= -a_{n}a_{n^{\prime}}\\
+  \end{aligned}\right.
+\end{aligned}$
+交换 * 项中的升算符, 从而使其变号:
+\begin{align*}
+  [H_{\text{chain}},b^{\dagger}_{k}] &= -\frac{t}{\sqrt{L}}\sum_{n=1}^{L}\sum_{n^{\prime}}^{L}e^{ikn^{\prime}}\left(
+    a_{n}^{\dagger}a_{n+1}a_{n^{\prime}}^{\dagger} 
+    + a_{n}^{\dagger}a_{n^{\prime}}^{\dagger}a_{n+1} 
+    + a_{n+1}^{\dagger}a_{n}a_{n^{\prime}}^{\dagger} 
+    + a_{n+1}^{\dagger}a_{n^{\prime}}^{\dagger}a_{n}
+    \right)\\
+    &= -\frac{t}{\sqrt{L}}\sum_{n=1}^{L}\sum_{n^{\prime}}^{L}e^{ikn^{\prime}}\left[
+      a_{n}^{\dagger} \underbrace{\left(a_{n+1}a_{n^{\prime}}^{\dagger} + a_{n^{\prime}}^{\dagger}a_{n+1}\right)}_{\{a_{n+1},a_{n^{\prime}}^{\dagger}\}}
+      + a_{n+1}^{\dagger} \underbrace{\left( a_{n}a_{n^{\prime}}^{\dagger} + a_{n^{\prime}}^{\dagger}a_{n} \right)}_{\{a_{n},a_{n^{\prime}}^{\dagger}\}}
+      \right]\\
+    &= -\frac{t}{\sqrt{L}}\sum_{n=1}^{L}\sum_{n^{\prime}}^{L}\left[
+      e^{ikn^{\prime}}a_{n}^{\dagger}\delta_{n+1,n^{\prime}}
+      + e^{ikn^{\prime}}a_{n+1}^{\dagger}\delta_{n,n^{\prime}}
+      \right]\\
+      &= -\frac{t}{\sqrt{L}}\sum_{n=1}^{L}\left[
+      e^{ik}e^{ikn}a^{\dagger}_{n} + e^{-ik}e^{ik(n+1)}a_{n+1}^{\dagger}
+      \right]\\
+      &= -t\left[
+        e^{ik}b^{\dagger}_{k} + e^{-ik}b^{\dagger}_{k}
+      \right]\\
+      \varepsilon_{k}b_{k}^{\dagger} &= -2t\cos{k}b_{k}^{\dagger}
+\end{align*}
+
+So the corresponding eigenvalue $\boxed{\varepsilon_{k} = -2t\cos{k}}$.}}
 \end{enumerate}
 \end{document}
