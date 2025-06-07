@@ -1,0 +1,156 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 7}
+
+\subsection{Stretched String}
+
+\textbf{A string of length $l$ is stretched, under a constant tension $F$, between two fixed points $A$ and $B$. Show that the mean square (fluctuational) displacement $y(x)$ at point $P$, distant $x$ from $A$, is given by
+  \begin{align*}
+    \overline{\{y(x)\}^{2}} = \frac{kT}{Fl}x(l-x)
+  \end{align*}
+  Further show that, for $x_{2}\geq x_{1}$,
+  \begin{align*}
+    \overline{y(x_{1})y(x_{2})} = \frac{kT}{Fl}x_{1}(l-x_{2}).
+  \end{align*}
+  [Hint : Calculate the energy, $\Phi$, associated with the fluctuation in question; the desired probability distribution is then given by $p\propto \text{exp}(-\Phi/kT)$, from which the required averages can be readily evaluated.]}
+
+  Boundary conditions: $\begin{aligned}
+    y(0) = y(l) = 0
+  \end{aligned}$. Energy of the fluactuation: $\begin{aligned}
+    \Phi[y(x)] = \frac{F}{2}\int_{0}^{l}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^{2}\mathrm{d}x.
+  \end{aligned}$
+
+  Therefore $\begin{aligned}
+    P[y(x)]\propto \text{exp }\left(-\frac{\Phi[y(x)]}{kT}\right) = \text{exp }\left[-\frac{F}{2kT}\int_{0}^{l}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^{2}\mathrm{d}x\right].
+  \end{aligned}$
+
+  Expand $y(x)$ in eigenmodes which satisfies the boundary conditions: $\begin{aligned}
+    y(x) = \sum_{n=1}^{\infty}a_{n}\sin{\left(\frac{n\pi x}{l}\right)}
+  \end{aligned}$, so the derivative becomes $\begin{aligned}
+    \frac{\mathrm{d}y}{\mathrm{d}x} = \sum_{n=1}^{\infty}a_{n}\frac{n\pi}{l}\cos{\left(\frac{n\pi x}{l}\right)}
+  \end{aligned}$. Substitute into the energy: $\begin{aligned}
+    \Phi = \frac{F}{2}\int_{0}^{l}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^{2}\mathrm{d}x = \frac{F}{2}\sum_{n=1}^{\infty}a_{n}^{2}\left(\frac{n\pi}{l}\right)^{2}\frac{l}{2} = \sum_{n=1}^{\infty}\frac{F\pi^{2}n^{2}}{4l}a_{n}^{2}
+  \end{aligned}$.
+
+  The probability distribution is $\begin{aligned}
+    p(\{\}) \propto \text{exp }\left[-\sum_{n=1}^{\infty}\frac{F\pi^{2}n^{2}}{4l}a_{n}^{2}\right]
+  \end{aligned}$, which is a product of independent Gaussian distribution for each $a_{n}$. And the variance of each $a_{n}$ can be extracted from the exponent term: $\begin{aligned}
+    \overline{a_{n}^{2}} = \frac{2kT}{Fl}\left(\frac{l}{n\pi}\right)^{2} = \frac{2kTl}{F\pi^{2}n^{2}}
+  \end{aligned}$.
+
+  Fourier expand $\begin{aligned}
+    \overline{y(x)^{2}} = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\overline{a_{n}a_{m}}\sin{\left(\frac{n\pi x}{l}\right)}\sin{\left(\frac{m\pi x}{l}\right)}
+  \end{aligned}$. Since $\overline{a_{n}a_{m}} = \overline{a_{n}^{2}}\delta_{nm}$, $\begin{aligned}
+    \overline{y(x)^{2}} = \frac{2kTl}{F\pi^{2}}\sum_{n=1}^{\infty}\frac{1}{n^{2}}\sin^{2}{\left(\frac{n\pi x}{l}\right)}
+  \end{aligned}$. 
+
+  Use the indentity $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{\cos{2n\theta}}{n^{2}} = \frac{\pi^{2}}{6} - \frac{\pi\theta}{2} + \frac{\theta^{2}}{2}
+  \end{aligned}$ and $\begin{aligned}
+    \sin^{2}{\theta} = \frac{1-\cos{(2\theta)}}{2}
+  \end{aligned}$, the summation term: 
+  
+  $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{1}{n^{2}}\sin{\left(\frac{n\pi x}{l}\right)} = \frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}} - \frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}}\cos{\left(\frac{2n\pi x}{l}\right)} = \frac{\pi^{2}}{12} - \frac{1}{2}\left(
+      \frac{\pi^{2}}{6} - \frac{\pi^{2}x}{2l} + \frac{\pi^{2}x^{2}}{2l^{2}}
+    \right) = \frac{\pi^{2}x}{2l} - \frac{\pi^{2}x^{2}}{2l^{2}} = \frac{\pi^{2}}{2l^{2}}x(l-x)
+  \end{aligned}$
+
+  Substitute it back into the expansion to get $\begin{aligned}
+    \overline{y(x)^{2}} = \frac{2kTl}{F\pi^{2}}\times \frac{\pi^{2}}{2l^{2}}x(l-x) = \boxed{\frac{kT}{Fl}x(l-x)}
+  \end{aligned}$
+
+  Similarly, $\begin{aligned}
+    \overline{y(x_{1})y(x_{2})} = \sum_{n=1}^{\infty}\overline{a_{n}^{2}}\sin{\left(\frac{n\pi x_{1}}{l}\right)}\sin{\left(\frac{n\pi x_{2}}{l}\right)} = \frac{2kTl}{F\pi^{2}}\sum_{n=1}^{\infty}\frac{1}{n^{2}}\sin{\left(\frac{n\pi x_{1}}{l}\right)}\sin{\left(\frac{n\pi x_{2}}{l}\right)}
+  \end{aligned}$.
+
+  Use the indentity $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{\cos{(n\theta)}}{n^{2}} = \frac{\pi^{2}}{6} - \frac{\pi\theta}{2} + \frac{\theta^{2}}{4}
+  \end{aligned}$ and $\begin{aligned}
+    \sin{A}\sin{B} = \frac{\cos{(A-B)}-\cos{(A+B)}}{2}
+  \end{aligned}$, the summation term:
+
+  $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{1}{n^{2}}\sin{\left(\frac{n\pi x_{1}}{l}\right)}\sin{\left(\frac{n\pi x_{2}}{l}\right)} = \frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}}\cos{\left[\frac{n\pi(x_{1}-x_{2})}{l}\right]} - \frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}}\cos{\left[\frac{n\pi(x_{1}+x_{2})}{l}\right]}
+  \end{aligned}$
+
+  So define $\begin{aligned}
+    \theta_{1} = \frac{\pi(x_{1}-x_{2})}{l},\quad\theta_{2} = \frac{\pi(x_{1}+x_{2})}{l}
+  \end{aligned}$, the summation term becomes 
+  
+  $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{\cos{(n\theta_{1})}}{n^{2}} = \frac{\pi^{2}}{6} - \frac{\pi|\theta_{1}|}{2} + \frac{\theta_{1}^{2}}{4},\quad \sum_{n=1}^{\infty}\frac{\cos{(n\theta_{2})}}{n^{2}} = \frac{\pi^{2}}{6} - \frac{\pi\theta_{2}}{2} + \frac{\theta_{2}^{2}}{4}
+  \end{aligned}$. Therefore
+
+  $\begin{aligned}
+    \sum_{n=1}^{\infty}\frac{1}{n^{2}}\sin{\left(\frac{n\pi x_{1}}{l}\right)}\sin{\left(\frac{n\pi x_{2}}{l}\right)} &= \frac{1}{2}\left[
+    \frac{\pi^{{2}}}{6} - \frac{\pi^{2}|x_{1}-x_{2}|}{2l} + \frac{\pi^{2}(x_{1}-x_{2})^{2}}{4l^{2}}
+    \right] - \frac{1}{2}\left[
+    \frac{\pi^{{2}}}{6} - \frac{\pi^{2}(x_{1}+x_{2})}{2l} + \frac{\pi^{2}(x_{1}+x_{2})^{2}}{4l^{2}}
+    \right]\\
+  &= \frac{\pi^{2}(x_{1}+x_{2}-|x_{1}-x_{2}|)}{4l} + \frac{\pi^{2}[(x_{1}-x_{2})^{2}-(x_{1}+x_{2})^{2}]}{8l^{2}} \stackrel{x_{2}\geq x_{1}}{=} \frac{\pi^{2} (2x_{1})}{4l} + \frac{\pi^{2}(-4x_{1}x_{2})}{8l^{2}}
+  \end{aligned}$
+
+  Substitute it back into the expansion to get $\begin{aligned}
+    \overline{y(x_{1})y(x_{2})} = \frac{2kTl}{F\pi^{2}}\times \left(
+      \frac{\pi^{2}x_{1}}{2l} - \frac{\pi^{2}x_{1}x_{2}}{2l^{2}}
+    \right) = \boxed{\frac{kT}{Fl}x_{1}(l-x_{2})}
+  \end{aligned}$
+
+\subsection{Derive the Onsager's Reciprocal Relations}
+
+\textbf{Derive for the Onsager's reciprocity relation. [Refer to Section 15.7 @ Pathria\& Beale]}
+  
+  Forces $X_{i}$ and the current $\dot{x}_{i}$: $\begin{aligned}
+    \dot{x}_{i} = \gamma_{ij}X_{j}
+  \end{aligned}$. 
+  
+  $\begin{aligned}
+    S(x_{i}) = 
+    S\left(\widetilde{x}_{i}\right) 
+    + \cancel{\left(\frac{\partial S}{\partial x_{i}}\right)_{x_{i}=\widetilde{x}_{i}}\left(x_{i} - \widetilde{x}_{i}\right)} 
+    + \frac{1}{2}\left(\frac{\partial^{2}S}{\partial x_{i}\partial x_{j}}\right)_{x_{i,j}=\widetilde{x}_{i,j}}\left(x_{i} - \widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right),\quad \left(\frac{\partial S}{\partial x_{i}}\right)_{x_{i}=\widetilde{x}_{i}} = 0
+  \end{aligned}$
+
+  $\begin{aligned}
+    \Delta S \equiv S(x_{i}) - S\left(\widetilde{x}_{i}\right) = -\frac{1}{2}\beta_{ij}\left(x_{i} - \widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right),\quad \beta_{ij} = -\left(\frac{\partial^{2}S}{\partial x_{i}\partial x_{j}}\right)_{x_{i,j}=\widetilde{x}_{i,j}} = \beta_{ji}
+  \end{aligned}$
+
+  The driving forces $X_{i}$ can be defined as the second law of thermodynamics: 
+  $\begin{aligned}
+    X_{i} = \left(\frac{\partial S}{\partial x_{i}}\right) = -\beta_{ij}\left(x_{j}-\widetilde{x}_{j}\right)
+  \end{aligned}$
+
+  $\begin{aligned}
+    \langle x_{i}X_{j}\rangle = \frac{\begin{aligned}
+      \int_{-\infty}^{+\infty}(x_{i}X_{j})\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
+    \end{aligned}}{\begin{aligned}
+      \int_{-\infty}^{+\infty}\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
+    \end{aligned}}
+  \end{aligned}$, where
+
+  $\begin{aligned}
+    \langle x_{i}\rangle = \frac{\begin{aligned}
+      \int_{-\infty}^{+\infty}x_{i}\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
+    \end{aligned}}{\begin{aligned}
+      \int_{-\infty}^{+\infty}\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
+    \end{aligned}} = \widetilde{x}_{i},\quad \frac{\partial\langle x_{i}\rangle}{\partial x_{j}} = 0\Rightarrow \langle x_{i}X_{j}\rangle = -k\delta_{ij}
+  \end{aligned}$. 
+
+  According to time reversal symmetry(in microscopic process), 
+  
+  $\begin{aligned}
+    \langle x_{i}(0)x_{j}(s)\rangle = \langle x_{i}(0)x_{j}(-s)\rangle,\quad \langle x_{i}(0)x_{j}(-s)\rangle = \langle x_{i}(s)x_{j}(0)\rangle\Rightarrow \langle x_{i}(0)x_{j}(s)\rangle = \langle x_{i}(s)x_{j}(0)\rangle
+  \end{aligned}$. 
+  
+  Let $s\rightarrow 0$ to get: $\begin{aligned}
+    \langle x_{i}(0)\dot{x}_{j}(0)\rangle = \langle \dot{x}_{i}(0)x_{j}(0)\rangle
+  \end{aligned}$. 
+  
+  Substitute the force-current relation, and get $\begin{aligned}
+    \langle x_{i}(0)\gamma_{jl}X_{l}(0)\rangle &= -k\gamma_{jl}\delta_{il} = -k\gamma_{ji}\\
+    \langle \gamma_{il}X_{l}(0)x_{j}(0)\rangle &= -k\gamma_{il}\delta_{jl} = -k\gamma_{ij}
+  \end{aligned}\Rightarrow \boxed{\gamma_{ij} = \gamma_{ji}}$.
+
+\end{document}

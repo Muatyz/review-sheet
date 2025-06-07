@@ -1,0 +1,25 @@
+\documentclass{main}
+% 宏包见于 main.cls
+
+\usepackage[left=0.5cm, right=0.5cm, top=2cm, bottom=2cm]{geometry} % 设置页边距
+\usepackage{subfiles}
+
+\pagestyle{plain}
+\lhead{}
+\chead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\fancyhead[RO]{高等统计力学复习  \quad 2025 Spring}
+
+\title{\textbf{ADVANCED STATISTICAL MECHANICS}}
+\date{\today}
+\author{\url{https://github.com/Muatyz/review-sheet}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\subfile{contents/lecture-note}
+\subfile{contents/homework}
+\includepdf[pages={1,2,3},angle=90]{contents/Theo_Cheatsheet.pdf} 
+\end{document}

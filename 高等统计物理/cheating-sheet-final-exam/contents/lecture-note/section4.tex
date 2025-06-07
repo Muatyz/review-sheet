@@ -1,0 +1,1051 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Non-equilibrium Statistical Physics}
+Fluctuations. 1. Equilibrium state: thermodynamic level/quantities $\begin{aligned}
+    (N,T,P)
+\end{aligned}$, 随机变量存在概率分布 $\rightarrow$ 涨落 $\begin{aligned}
+    N = N_{0} + \delta N
+\end{aligned}$; 2. Non-equilibrium state, thermodynamic level: 时空间不均匀, $\begin{aligned}
+    T(x,t),n(x,t)
+\end{aligned}$. 通过局域平衡假设分析. $\begin{aligned}
+    \frac{\partial n}{\partial x}\rightarrow \text{ flux}
+\end{aligned}$. Relaxation(弛豫); Transportation(输运). force-flux 关系. 
+
+\subsection{Analyze Fluctuations}
+
+[Example] Classical nucleation theory: 若 $\begin{aligned}
+    \mu_{\text{vapor}} > \mu_{\text{liquid}}
+\end{aligned}$, 则凝结发生. Local fluactuation of density $\rho$: grow/decay. 
+
+$\begin{aligned}
+    G = \stackrel{\uparrow}{-\alpha|\Delta \mu|{\color{red}{R^{3}}}} + \stackrel{\downarrow}{\beta\sigma\cdot {\color{red}{R^{2}}}}
+\end{aligned}$. 需要足够{\color{red}{大}}的凝结核. 
+
+\subsubsection{Static Thermodynamic Analysis}
+
+研究发生 $\begin{aligned}
+    \stackrel{\text{equilibrium}}{f_{0}}\rightarrow \stackrel{\text{fluactuated}}{f_{0} + \delta f}
+\end{aligned}$ 的概率. 
+
+令系统 1 和系统 2 状态分别为 $\begin{aligned}
+    (E_{1},V_{1}), (E_{2},V_{2})
+\end{aligned}$, 且满足 $\begin{aligned}
+    E_{1}\ll E_{2}, V_{1}\ll V_{2}; \left\{\begin{aligned}
+        E_{1} + E_{2} &= E\\
+        V_{1} + V_{2} &= V
+    \end{aligned}\right.
+\end{aligned}$. 
+
+设平衡态熵为 $S_{0}$, 涨落态熵为 $S_{f}$. 熵变 $\begin{aligned}
+    \Delta S = S_{f} - S_{0}
+\end{aligned}$. 处于涨落态的概率 $\begin{aligned}
+    P\propto e^{\Delta S/k_{B}}
+\end{aligned}$, 可近似 $\begin{aligned}
+    P_{2}\simeq P_{0},T_{2}\simeq T_{0}
+\end{aligned}$, 得
+
+$\begin{aligned}
+    \Delta S = \Delta S_{1} + \Delta S_{2} = \Delta S_{1} + \int_{0}^{f}\frac{\mathrm{d}E_{2} + P_{2}\mathrm{d}V_{2}}{T_{2}} 
+    \stackrel{\begin{cases}
+        \Delta E_{2} = -\Delta E_{1}\\
+        \Delta V_{2} = -\Delta V_{1}
+    \end{cases}}{\simeq} 
+    \Delta S_{1} - \frac{\Delta E_{1}+P_{0}\Delta V_{1}}{T_{0}}
+\end{aligned}$
+
+于是迁移概率为 $\begin{aligned}
+    P_{1}\propto \exp{\left(
+    -\frac{{\color{red}{\Delta E}} - T{\color{red}{\Delta S}} + p{\color{red}{\Delta V}}}{k_{B}T}
+\right)}
+\end{aligned}$. 因此涨落态可用 $\begin{aligned}
+    (\Delta E,\Delta S,\Delta V)
+\end{aligned}$ 描述. 将 $\Delta E$ 在平衡态附近展开: 
+
+$\begin{aligned}
+\Delta E(S,V) 
+= \stackrel{T}{\left(\frac{\partial E}{\partial S}\right)_{0}}\Delta S 
++ \stackrel{-p}{\left(\frac{\partial E}{\partial V}\right)_{0}}\Delta V 
++ \frac{1}{2}\left[
+    \left(\frac{\partial^{2}E}{\partial S^{2}}\right)_{0}(\Delta S)^{2} 
+    + 2\left(\frac{\partial^{2}E}{\partial S \partial V}\right)_{0}\Delta S \Delta V 
+    + \left(\frac{\partial^{2}E}{\partial V^{2}}\right)_{0}(\Delta V)^{2}\right] 
+    + \cdots
+\end{aligned}$
+
+将展开式代入分子: 
+$\begin{aligned}
+    \Delta E - T\Delta S + p\Delta V = \frac{1}{2}\left[\Delta\left(\frac{\partial E}{\partial S}\right)_{0}\Delta S + \Delta\left(\frac{\partial E}{\partial V}\right)_{0}\Delta V\right] = \frac{1}{2}\left[\Delta T\Delta S - \Delta p\Delta V\right]
+\end{aligned}$, 
+
+于是得到 $\begin{aligned}
+    P\propto \exp{\left(-\frac{\Delta T\Delta S-\Delta P\Delta V}{2k_{B}T}\right)}
+\end{aligned}$, 即三个 $\Delta$ 中只有两个独立. 类似的关系还有: 
+
+1. $\begin{aligned}
+    \Delta S = \left(\frac{\partial S}{\partial T}\right)_{V}\Delta T + \left(\frac{\partial S}{\partial V}\right)_{T}\Delta V = \frac{C_{v}}{T}\Delta T + \left(\frac{\partial S}{\partial V}\right)_{T}\Delta V;
+\end{aligned}$
+
+2. $\begin{aligned}
+    \Delta P = \left(\frac{\partial P}{\partial T}\right)_{V}\Delta T + \left(\frac{\partial P}{\partial V}\right)_{T}\Delta V = \left(\frac{\partial P}{\partial T}\right)_{V}\Delta T - \frac{1}{\kappa_{T}V}\Delta V
+\end{aligned}$, 其中等温压缩率 $\begin{aligned}
+    \kappa_{T} = -\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_{T}
+\end{aligned}$.
+
+使用 Maxwell Relation $\begin{aligned}
+    \left(\frac{\partial S}{\partial V}\right)_{T} = \left(\frac{\partial P}{\partial T}\right)_{V}
+\end{aligned}$, 迁移概率化为 $\begin{aligned}
+    P\propto \exp{\left[
+        -\frac{C_{v}}{2k_{B}T^{2}}(\Delta T)^{2} - \frac{1}{2k_{B}k_{T}TV}\left(\Delta V\right)^{2}
+    \right]}
+\end{aligned}$. 
+
+计算涨落: $\begin{aligned}
+    \langle (\Delta T)^{2}\rangle = \frac{\begin{aligned}
+        \int (\Delta T)^{2}P(\Delta T,\Delta V)\mathrm{d}(\Delta T)
+    \end{aligned}}{\begin{aligned}
+        \int P(\Delta T,\Delta V)\mathrm{d}(\Delta T)
+    \end{aligned}} = \frac{k_{B}T^{2}}{C_{v}}\propto \frac{1}{V},\quad \langle (\Delta V)^{2}\rangle = k_{B}Tk_{T}V\propto V
+\end{aligned}$
+
+定义相对涨落为 $\begin{aligned}
+    \frac{\sqrt{\langle(\Delta A)^{2}\rangle}}{\langle A\rangle}
+\end{aligned}$. $\begin{aligned}
+    (\Delta E)^{2} = \left[\left(\frac{\partial E}{\partial T}\right)_{VN}\Delta T + \left(\frac{\partial E}{\partial V}\right)_{TN}\Delta V\right]^{2}
+\end{aligned}$, 等式两边同取期望值 $\begin{aligned}
+    \langle\cdot\rangle
+\end{aligned}$, 忽略交叉项: 
+
+$\begin{aligned}
+    \left\langle (\Delta E)^{2}\right\rangle 
+    = \left\langle(C_{v}\Delta T)^{2}\right\rangle + \left\langle\left[\left(\frac{\partial E}{\partial V}\right)_{TN}\Delta V\right]^{2}\right\rangle + \stackrel{\text{cross terms}\rightarrow 0}{\cdots} 
+    = \stackrel{\text{canonical}}{C_{v}k_{B}T^{2}} + \stackrel{\text{fluctuation of particle numbers}}{k_{B}T\kappa_{T}V\left(\frac{\partial E}{\partial V}\right)^{2}_{TN}}.
+\end{aligned}$
+
+\vspace{0.3em}\hrule\vspace{0.3em}
+
+[Discussion] 令 internal energy per particle $\begin{aligned}
+    \widetilde{\varepsilon}
+\end{aligned}$ 与 volume per particle $v$. 
+
+$\begin{aligned}
+    k_{B}T\kappa_{T}V\left(\frac{\partial E}{\partial V}\right)^{2}_{TN} 
+    = k_{B}T\kappa_{T}Nv\left(\frac{\partial \widetilde{\varepsilon}}{\partial v}\right)^{2}_{T} 
+    = k_{B}T\kappa_{T}Nn^{3}\left(\frac{\partial \widetilde{\varepsilon}}{\partial n}\right)^{2}_{T}
+\end{aligned}$, 其中粒子数密度 $\begin{aligned}
+    n = \frac{N}{V} = \frac{1}{v}
+\end{aligned}$. 
+
+回忆巨正则系综: $\begin{aligned}
+    \left\langle (\Delta E)^{2}\right\rangle = k_{B}T^{2}C_{v}
+\end{aligned}$, 即 canonical 项. 将其和粒子数涨落项 $\begin{aligned}
+    \left\langle (\Delta N)^{2}\right\rangle
+\end{aligned}$ 分离, 从而写作
+
+$\begin{aligned}
+    \langle (\Delta E)^{2}\rangle = \langle (\Delta E)^{2}\rangle_{\text{canonical}} + \left(\frac{\partial \langle E\rangle}{\partial N}\right)_{TV}^{2}\langle(\Delta N)^{2}\rangle
+\end{aligned}$, 其中 $\begin{aligned}
+    \langle(\Delta N)^{2}\rangle = \frac{\langle N\rangle^{2}k_{B}T{\color{red}{\kappa_{T}}}}{V}
+\end{aligned}$
+
+观察相对涨落与体积 $V$ 关系为 $\begin{aligned}
+    \frac{\sqrt{\langle(\Delta T)^{2}\rangle}}{\langle T\rangle} \sim \frac{1}{\sqrt{V}},\quad \frac{\sqrt{\langle(\Delta V)^{2}\rangle}}{\langle V\rangle}\propto \frac{1}{\sqrt{V}}
+\end{aligned}$. 因此 MFT 难以用于小尺度系统. 
+
+\subsubsection{Time Analysis of Fluctuations}
+$\begin{aligned}
+    x_{0}\rightarrow x_{f}(t)
+\end{aligned}$. 视涨落为含时信号 $A(t)$. 时间平均 $\begin{aligned}
+    \langle A\rangle = \frac{1}{T}\int_{0}^{T}A(t)\mathrm{d}t
+\end{aligned}$; 定义时间关联函数 $\begin{aligned}
+    \phi(t) = \frac{1}{T}\int_{0}^{T}\delta A(u)\delta A(u+t)\mathrm{d}u
+\end{aligned}$. 
+
+假定 ergodic(各态历经), 时间平均化为系综平均: $\begin{aligned}
+    \phi(t_{1},t_{2}) = \stackrel{\text{ensemble}}{\langle\delta A(t_{1})\delta A(t_{2})\rangle}
+\end{aligned}$. 时间平移不变性: $\begin{aligned}
+    \phi(t_{1},t_{2}) \rightarrow \phi(t_{2}-t_{1})
+\end{aligned}$. 
+
+时间平移不变性 in Joint probability $\begin{aligned}
+    P_{n}(x_{1},t_{1};x_{2},t_{2};\cdots;x_{n},t_{n}) = P_{n}(x_{1},t_{1}+\Delta t;x_{2},t_{2}+\Delta t;\cdots;x_{n},t_{n}+\Delta t) 
+\end{aligned}$
+
+\vspace{0.3em}\hrule\vspace{0.3em}
+
+[Discussion] Correlation \& Macroscopic properties.
+
+1. \textbf{空间关联函数} $\begin{aligned}
+    g_{ij}\stackrel{\text{in equilibrium}}{\longrightarrow}\text{Response }\chi
+\end{aligned}$;
+
+2. \textbf{时间关联函数} $\begin{aligned}
+    \phi(t) \stackrel{\text{out of equilibrium}}{\longrightarrow}\text{conductivity, viscosity(粘度)}
+\end{aligned}$. 
+
+[Example] 测量 $k_{B}$. 分光出点光源, 凸透镜聚焦后散射至垂吊镜面, 相机收集其反射光. 镜子受空气撞击即布朗运动(视为热浴). 热平衡下 $\begin{aligned}
+    \frac{1}{2}L\langle\theta^{2}\rangle = \frac{1}{2}k_{B}T\Rightarrow \langle \theta^{2}\rangle = \frac{k_{B}T}{L}
+\end{aligned}$. (能均分定理: Hamiltonian $\propto$ 自由度平方) 分别在 1 atom 和 $10^{-4}$ mmHg 进行实验. 前者相比后者的偏转产生频率高得多. 但只要温度一样, 仅凭 $\begin{aligned}
+    \langle\theta^{2}\rangle
+\end{aligned}$ 无法区分. 类比于价格/股票的含时变化. 
+
+\paragraph{Spectral Analysis}
+
+[Discussion] 使用三棱镜分光, 实际上就是一种频谱分析. 
+
+$\begin{aligned}
+    \widetilde{x}(\omega) = \int_{-\infty}^{+\infty}x(t)e^{i\omega t}\mathrm{d}t,\quad 
+    x(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\widetilde{x}(\omega)e^{-i\omega t}\mathrm{d}\omega
+\end{aligned}$
+
+对 statistically stationary signal(稳态信号), 关联函数
+$\begin{aligned}
+    \phi\left(t^{\prime}-t\right) = \left\langle
+        x\left(t^{\prime}\right)x(t)
+    \right\rangle = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\left\langle \widetilde{x}(\omega)\widetilde{x}\left(\omega^{\prime}\right)\right\rangle e^{-i\left(\omega t+\omega^{\prime}t^{\prime}\right)}\mathrm{d}\omega\mathrm{d}\omega^{\prime}
+\end{aligned}$, 
+    
+可推断频域内关联函数为 $\begin{aligned}
+    \left\langle \widetilde{x}(\omega)\widetilde{x}\left(\omega^{\prime}\right)\right\rangle 
+    = 2\pi\left[\widetilde{x^{2}}(\omega)\right]\delta\left(\omega-\omega^{\prime}\right)
+\end{aligned}$, 那么变换回时域形式: $\begin{aligned}
+    \phi(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\widetilde{x^{2}}(\omega)e^{-i\omega t}\mathrm{d}\omega
+\end{aligned}$, 
+
+其中 $\begin{aligned}
+    \widetilde{x^{2}}(\omega)
+\end{aligned}$ 是 $\begin{aligned}
+    x^{2}(t)
+\end{aligned}$ 的傅里叶变换. 令 $\begin{aligned}
+    \widetilde{x^{2}}(\omega)
+\end{aligned}$ 对频域积分并归一化, 得到
+
+$\begin{aligned}
+    \phi(0) 
+    = \left\langle \widetilde{x^{2}}(\omega)\right\rangle 
+    = \int_{-\infty}^{+\infty}\widetilde{x^{2}}(\omega)\frac{\mathrm{d}\omega }{2\pi}
+    = 2\int_{0}^{+\infty}\widetilde{x^{2}}(\omega)\frac{\mathrm{d}\omega}{2\pi}
+\end{aligned}$, 即得出 \textbf{Wiener-Khinchin theorem}(for random process \& statistically stationary signal).
+
+[Example] $\begin{aligned}
+    \phi(t) = \langle x(0)x(t)\rangle = \langle x(0)^{2}\rangle e^{-\lambda|t|}
+\end{aligned}$. $\begin{aligned}
+    \widetilde{x^{2}}(\omega) = \langle x(0)^{2}\rangle \frac{2\lambda}{\omega^{2} + \lambda^{2}}
+\end{aligned}$, $\begin{aligned}
+    \left\langle x^{2}(t)\right\rangle 
+    = \left\langle 2\int_{0}^{+\infty}\widetilde{x^{2}}(\omega)\frac{\mathrm{d}\omega}{2\pi}\right\rangle 
+\end{aligned}$, 
+    
+    $\begin{aligned}\int_{0}^{+\infty}\frac{\lambda}{\omega^{2}+\lambda^{2}}\mathrm{d}\omega = \int_{0}^{+\infty}\frac{1}{\omega^{\prime 2}+1}\mathrm{d}\omega^{\prime} = \frac{\pi}{2}\Rightarrow \left\langle x^{2}(t)\right\rangle = \langle x^{2}(0)\rangle
+\end{aligned}$. 
+
+\subsection{Relaxation of Weakly Non-equilibrium State}
+
+形如 $\begin{aligned}
+    \frac{\mathrm{d}x(t)}{\mathrm{d}t} = -\lambda x(t)\Rightarrow x(t) = x(0)e^{-\lambda t}
+\end{aligned}$ 的(描述性) Relaxation equation. 物质输运和热量输运是耦合的, 则 
+
+$\begin{aligned}
+    \langle x_{i}(t)\rangle\Rightarrow \frac{\mathrm{d}x_{i}(t)}{\mathrm{d}t} = -\sum_{k}\lambda_{ik}x_{k}(t)
+\end{aligned}$. 延拓 $\begin{aligned}
+    \phi_{ik}\left(t^{\prime}-t\right) = \left\langle x_{i}\left(t^{\prime}\right)x_{k}(t)\right\rangle = \left\langle x_{k}(t)x_{i}\left(t^{\prime}\right)\right\rangle = \phi_{ki}\left(t-t^{\prime}\right)\Rightarrow \boxed{\phi_{ik}(t) = \phi_{ki}(-t)}
+\end{aligned}$.
+
+$\begin{aligned}
+    \text{若 }x_{i}(-t) = x_{i}(t), \phi_{ik}\left(t^{\prime}-t\right) 
+    = \left\langle x_{i}\left(t^{\prime}\right)x_{k}(t)\right\rangle 
+    = \left\langle x_{i}\left(-t^{\prime}\right)x_{k}(-t)\right\rangle = \phi_{ik}\left[-t^{\prime}-(-t)\right] = \phi_{ik}\left(t-t^{\prime}\right)\Rightarrow \phi_{ik}(t) = \phi_{ik}(-t)
+\end{aligned}$
+
+因此时间反演对称下, 有$\begin{aligned}
+    \boxed{\phi_{ik}(t) = \phi_{ki}(t)}
+\end{aligned}$
+
+\subsubsection{Flux \& Force}
+
+求和约定: $\begin{aligned}
+    \dot{x}_{i}(t) = -\lambda_{ik}x_{k}(t)
+\end{aligned}$, 定义共轭量 $\begin{aligned}
+    X_{i} = \frac{\partial S}{\partial x_{i}}
+\end{aligned}$ 以引入熵 $S(x_{1},x_{2},\cdots,x_{n})$. $\begin{aligned}
+    \dot{x}_{i}(t), X_{i}(t)
+\end{aligned}$ 分别为 flux 和 force.
+
+Taylor 展开: $\begin{aligned}
+    S(x_{i}) = \stackrel{\text{equilibrium}}{S(0)} + \cancel{\left(\frac{\partial S}{\partial x_{i}}\right)_{x_{i}=0}x_{i}} + \frac{1}{2}\left(\frac{\partial^{2}S}{\partial x_{i}\partial x_{j}}\right)_{x_{i}=x_{j} = 0}x_{i}x_{j} + \cdots = S(0) - \frac{1}{2}\beta_{ij}x_{i}x_{j}
+\end{aligned}$, 其中 $\begin{aligned}
+    \beta_{ij} = \beta_{ji}
+\end{aligned}$. 
+
+代入展开式: $\begin{aligned}
+    X_{i} = \frac{\partial S}{\partial x_{i}} = \frac{\partial}{\partial x_{i}}\left[
+        S(0) - \frac{1}{2}\beta_{jk}x_{j}x_{k}
+    \right] = -\frac{\beta_{jk}}{2}\frac{\partial}{\partial x_{i}}(x_{j}x_{k}) = -\frac{\beta_{jk}}{2}(\delta_{ij}x_{k} + x_{j}\delta_{ik}) = -\beta_{ik}x_{k}
+\end{aligned}$. 
+
+于是 Force $\begin{aligned}
+    X_{i} = -\beta_{ik}x_{k}
+\end{aligned}$, 从而得到 \textbf{Force-Flux 关系} $\begin{aligned}
+    \boxed{\dot{x}_{i} = \gamma_{ik}X_{k}},
+\end{aligned}$, 其中 $\begin{aligned}
+    \gamma_{ik} = \lambda_{il}(\beta^{-1})_{lk}
+\end{aligned}$ 是 \textbf{Kinetic Coefficient}. 
+
+比如写作二阶形式的 $\begin{aligned}
+    \begin{bmatrix}
+        \dot{x}_{1}\\\dot{x}_{2}
+    \end{bmatrix} = \begin{bmatrix}
+        \gamma_{11} & \gamma_{12}\\
+        \gamma_{21} & \gamma_{22}
+    \end{bmatrix}\begin{bmatrix}
+        X_{1}\\X_{2}
+    \end{bmatrix}
+\end{aligned}$. 若常数项 $S(0) = 0$, 则熵可写作共轭量乘积: $\begin{aligned}
+    S = \frac{1}{2}X_{i}x_{i}
+\end{aligned}$, 
+
+变化率为 $\begin{aligned}
+    \frac{\mathrm{d}S}{\mathrm{d}t} = \frac{1}{2}\left(
+    \dot{X}_{i}x_{i} + X_{i}\dot{x}_{i}
+    \right)
+\end{aligned}$. 利用 force-flux 关系处理 $\begin{aligned}
+    x_{i}\dot{X}_{i} = x_{i}\left(-\beta_{ik}\dot{x}_{k}\right) = x_{i}\left(-\beta_{ki}\dot{x}_{k}\right) = X_{k}\dot{x}_{k}
+\end{aligned}$, 
+
+因此 $\begin{aligned}
+    \dot{S} = X_{i}\dot{x}_{i} = \frac{\partial S}{\partial x_{i}}\dot{x}_{i}
+\end{aligned}$, 显然就是链式求导规则. 
+
+[Example] 考虑铜棒, 忽略体积变化($\mathrm{d}V = 0$). 存在热流 $\begin{aligned}
+    \vec{J}_{h}
+\end{aligned}$. Internal energy per volume: $\begin{aligned}
+    u(x,y,z,t)
+\end{aligned}$. 则有 
+
+$\begin{aligned}
+    \frac{\partial u}{\partial t} + \nabla\cdot\vec{J}_{h} = 0\stackrel{\mathrm{d}u = T\mathrm{d}S}{\Longrightarrow}\frac{\partial S}{\partial t} = -\frac{1}{T}\nabla\cdot\vec{J}_{h}\Rightarrow \frac{\partial S}{\partial t} + \nabla\cdot\left(\frac{\vec{J}_{h}}{T}\right) = -\frac{1}{T^{2}}\vec{J}_{h}\cdot\nabla T
+\end{aligned}$. 
+
+等式右边为 rate of entropy production($\neq 0$ 时为非平衡过程), 即为 0 时形成对 $S$ 的连续性方程. 
+
+\subsubsection{Onsager's Reciprocal Relation}
+平衡态时, $\begin{aligned}
+    \langle \dot{x}_{i}\rangle = 0, \langle x_{i}\rangle = \widetilde{x}_{i}
+\end{aligned}$. $\begin{aligned}
+    \langle x_{i}X_{j}\rangle 
+    = \underset{x_{i}}{\Tr}{\left[x_{i}X_{j}Ae^{\Delta S(x_{1},x_{2},\cdots,x_{n})/k_{B}}\right]} 
+    = \underset{x_{i}}{\Tr}{\left[x_{i}X_{j}Ae^{\frac{1}{2k_{B}}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)}\right]}
+\end{aligned}$
+
+$\begin{aligned}
+    \frac{\partial\langle x_{i}\rangle}{\partial \widetilde{x}_{j}} 
+    = \delta_{ij} 
+    = \frac{\partial}{\partial\widetilde{x}_{j}}
+    \underset{x_{i}}{\Tr}
+    {\left[
+        x_{i}
+        Ae^{-\frac{1}{2k_{B}}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)}
+    \right]} 
+    = \underset{x_{i}}{\Tr}
+    {\left[
+        x_{i}\frac{
+            \stackrel{{\color{red}{-X_{j}}}}{{\color{red}{\beta_{ij}x_{i}}}}
+            }{k_{B}}
+        Ae^{-\frac{1}{2k_{B}}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)}
+        \right]} = -\frac{1}{k_{B}}\langle x_{i}x_{j}\rangle. 
+\end{aligned}$
+
+于是得到关系 $\begin{aligned}
+    \boxed{\langle x_{i}X_{j}\rangle = -k_{B}\delta_{ij}}
+\end{aligned}$. 
+
+$\begin{aligned}
+    \text{Time reversal symmetry of }x_{i}: \quad\stackrel{\phi_{ij}(-t)}{\langle x_{i}(0)x_{j}(t)\rangle} = \stackrel{\phi_{ij}(t)}{\langle x_{i}(t)x_{j}(0)\rangle}\stackrel{t=0}{\Longrightarrow}\langle x_{i}(0)\dot{x}_{j}(0)\rangle = \langle\dot{x}_{i}(0)x_{j}(0)\rangle.
+\end{aligned}$ 
+
+等式两边分别代入 force-flux 关系: $\begin{aligned}
+    \left\{\begin{aligned}
+        \langle x_{i}(0)\gamma_{jl}X_{l}(0)\rangle = -k_{B}\gamma_{jl}\delta_{il} = -k_{B}\gamma_{ji}\\
+        \langle\gamma_{il}X_{l}(0)x_{j}(0)\rangle = -k_{B}\gamma_{il}\delta_{jl} = -k_{B}\gamma_{ij}
+    \end{aligned}\right.
+\end{aligned}$, 联立即得 $\begin{aligned}
+    \boxed{\gamma_{ij} = \gamma_{ji}}
+\end{aligned}$. 
+
+若将 $\begin{aligned}
+    \dot{x}_{i} = \gamma_{ij}X_{j}
+\end{aligned}$ 定义为 $\begin{aligned}
+    \frac{\partial f}{\partial X_{i}}
+\end{aligned}$, 则有 $\begin{aligned}
+    f = \frac{1}{2}\gamma_{ij}X_{i}X_{j}
+\end{aligned}$. 熵变化率可表述为 $\begin{aligned}
+    \frac{\mathrm{d}S}{\mathrm{d}t} = X_{i}\dot{x}_{i} = X_{i}\frac{\partial f}{\partial X_{i}} = 2f
+\end{aligned}$
+
+[Discussion] Dynamics of fluactuation $x_{i}=0\rightarrow x_{i}\neq 0$. 若过程可表述为 $\begin{aligned}
+    \dot{x}_{i} = -\Gamma_{ik}x_{k}
+\end{aligned}$;
+
+1. 且 $\Gamma_{ik}$ 可对角化, 则可进一步写作 decay $\begin{aligned}
+    \dot{x}_{i}^{\prime} = -\lambda_{i}x_{i}^{\prime}
+\end{aligned}$; 
+
+2. 且 $\Gamma_{ik}$ antisymmetric(特征值纯虚数), 即 $\begin{aligned}
+    \dot{x}_{i} = -\lambda_{ik}^{A}x_{k}
+\end{aligned}$, 则动力学为 oscillatory(振荡).
+
+\subsubsection{Fluactuation Phenomena}
+
+\paragraph{XY Model}
+Hamiltonian $\begin{aligned}
+    H = -\frac{1}{2}J\sum_{\langle i,j\rangle}\left\langle \vec{S}_{i}\cdot\vec{S}_{j}\right\rangle
+\end{aligned}$, 其中自旋形式为 $\begin{aligned}
+    \vec{S}_{i} = \left(\cos\theta_{i},\sin\theta_{i}\right)
+\end{aligned}$. 
+
+相比一般的 Ising model 多了 $\theta$ 进行控制. 选定 $\vec{R}$ 处一格点, 设 $\theta$ 足够小. 则 Hamiltonian 为 
+
+$\begin{aligned}
+    \lim_{\theta\rightarrow 0}H = \frac{J}{4}\sum_{\vec{R}}\sum_{\vec{a}}\left[
+        \theta\left(\vec{R}\right) - \theta\left(\vec{R}+\vec{a}\right)
+    \right]^{2}
+\end{aligned}$; 使用 Fourier 变换 $\begin{aligned}
+    \theta_{\vec{k}} = \frac{1}{\sqrt{N}}\sum_{\vec{R}}\theta\left(\vec{R}\right)e^{-i\vec{k}\cdot\vec{R}}
+\end{aligned}$, 
+
+将 Hamiltonian 写作动量 $\begin{aligned}
+    \vec{k}
+\end{aligned}$ 形式 $\begin{aligned}
+    H = \frac{1}{2}\sum_{\vec{k}}J_{\vec{k}}|\theta_{\vec{k}}|^{2}
+\end{aligned}$, 其中 $\begin{aligned}
+    J_{\vec{k}} = 2J\sum_{\vec{a}}\left[
+        1-\cos{\left(\vec{k}\cdot\vec{a}\right)}
+    \right]. 
+\end{aligned}$
+
+$\begin{aligned}
+    \left\langle \vec{S}\left(\vec{R}\right)\cdot\vec{S}\left(\vec{0}\right)\right\rangle = \begin{cases}
+        \exp{\left(-\frac{T}{\alpha}\frac{R}{a}\right)},&d=1,\text{short range order}\\
+        \left(R/a\right)^{-T/2\pi\alpha},&d=2,\text{quasi-long-range order}\\
+        \exp{\left[-\frac{Tk_{D}a}{\pi^{2}\alpha}\right]}\left(1 + \frac{\pi}{4k_{D}R}\right),&d=3, \text{long range order}
+    \end{cases}
+\end{aligned}$
+
+\paragraph{Topological Defects}
+拓扑缺陷: vortex. 通过矢量场分析(汇源, winding number).
+
+[Example] 二维点电荷电场, 点电荷所在位置即 defect core. 沿着圆周电场矢量方向旋转 360 度(规定旋转方向和圆周旋转方向相同为+, 反之为-). 则 winding number 为 +1. 匀强电场则为 0. 即 $\begin{aligned}
+    \oint\mathrm{d}\theta = 2\pi k, k\in\mathbb{Z}
+\end{aligned}$. 
+
+根据 $\begin{aligned}
+    H\sim \int(\nabla\theta)^{2}
+\end{aligned}$ 可知, 拓扑缺陷的激发需要能量, 并且和角度梯度有关. 设 $\begin{aligned}
+    \frac{\partial\theta}{\partial r} = 0\Rightarrow\nabla\theta = \frac{1}{r}\frac{\partial\theta}{\partial\phi}\hat{e}_{\phi} + \cancel{\frac{\partial\theta}{\partial r}\hat{e}_{r}},
+\end{aligned}$,
+
+$\begin{aligned}\oint\mathrm{d}\theta = \oint\nabla\theta\cdot \mathrm{d}\vec{l} = \frac{1}{r}\frac{\partial\theta}{\partial\phi}2\pi r = 2\pi k\Rightarrow \frac{\partial\theta}{\partial\phi} = k\Rightarrow \theta = k\phi + c_{0}
+\end{aligned}$, $c_{0}$ 使得全局相位偏移. 
+
+对 $\begin{aligned}
+    H\sim \int(\nabla\theta)^{2}
+\end{aligned}$ 使用变分法, 即 $\begin{aligned}
+    \delta H = 0\Rightarrow \nabla^{2}\theta = 0
+\end{aligned}$
+
+1. One defect: $\begin{aligned}
+    E = \stackrel{\text{core energy}}{\varepsilon_{0}(a)} + \frac{K}{2}\int(\nabla\theta)^{2}\mathrm{d}^{2}\vec{x} \stackrel{\theta=k\phi}{=} \varepsilon_{0}(a) + \pi K k^{2}\ln{\left(\frac{R}{a}\right)}
+\end{aligned}$
+
+2. Two defects. $r$ 为两缺陷间距, $\begin{aligned}
+    E_{\text{int}} = 2\pi k_{1}k_{2}K\ln{\left(\frac{R}{r}\right)}
+\end{aligned}$, 可类比二维形式的 Coulomb 势能(但不完全等效), $k_{1},k_{2}$ acts as charge. 温度从 0K 升高, 涨落变强, 激发出结构.
+
+\vspace{0.3em}\hrule\vspace{0.3em}
+
+[Discussion] KPZ 方程(fluactuation/growth of interfaces). $\begin{aligned}
+    h\left(\vec{x},t\right)
+\end{aligned}$ 为界面厚度. 
+
+$\begin{aligned}
+    \frac{\partial h\left(\vec{x},t\right)}{\partial t} = \nu\nabla^{2}h + \lambda\left(\nabla h\right)^{2} + \eta\left(\vec{x},t\right),\quad \eta = \text{white noise}\quad \left\langle \eta\left(\vec{x},t\right)\right\rangle = 0
+\end{aligned}$
+
+\subsection{Brownian Motion}
+[Discussion] 墨滴在水中的扩散并不完全是布朗运动, 较大的影响因素是 flux. Brownian motion 本质是可以写出 Hamiltonian 的, 应当是一个完全确定系统. 随机性的来源: 观察的时间间隔 $\Delta t$. 散点连线后是完全无规律的. 长链分子(Polymer) 的空间结构也可类比于布朗运动, 但不完全相同(需要考虑之前分子所占体积, 亦即 Self Avoidance); 特征是 $\begin{aligned}
+    \sqrt{\left\langle \vec{R}^{2}\right\rangle} \sim L^{\frac{1}{2}+\delta}
+\end{aligned}$, 其中 $\delta$ 为分子自身体积产生的. 
+
+\subsubsection{Random walk model}
+
+$\begin{aligned}
+    \left\langle r^{2}\right\rangle\propto t
+\end{aligned}$. 
+
+\paragraph{$n$ steps on 1D lattice} $n$ 步后处于第 $m$ 格的概率为
+
+$\begin{aligned}
+    \stackrel{x = ml}{P_{n}(m)} = C_{n}^{\frac{n+m}{2}}\left(\frac{1}{2}\right)^{\frac{n+m}{2}}\left(\frac{1}{2}\right)^{\frac{n-m}{2}}
+\end{aligned}$, 设 $\begin{aligned}
+    k=\frac{n+m}{2}
+\end{aligned}$ 检验归一化: $\begin{aligned}
+    \sum_{m=-n}^{n}P_{n}(m) = \sum_{k=0}^{n}C_{n}^{k}P_{L}^{k}P_{R}^{n-k} = 1.
+\end{aligned}$
+
+$\begin{aligned}
+    \langle m\rangle = \sum_{m=-n}^{n}mP_{n}(m) = 0,\quad \langle m^{2}\rangle = \sum_{m=-n}^{n}m^{2}P_{n}(m) = n\rightarrow \langle x^{2}\rangle\propto t
+\end{aligned}$. 
+
+极限下取高斯分布 $\begin{aligned}
+    \lim_{n\rightarrow\infty}P_{n}(m) = \frac{1}{\sqrt{2\pi n}}\exp{\left(-\frac{m^{2}}{2n}\right)}
+\end{aligned}$. 使用 $\begin{aligned}
+    \left\{\begin{aligned}
+        x=ml\\
+        t=n\tau\\
+    \end{aligned}\right. 
+\end{aligned}$ 连续化为 $\begin{aligned}
+    P(x,t)\mathrm{d}x = \frac{\mathrm{d}x}{\sqrt{4\pi Dt}}\exp{\left(-\frac{x^{2}}{4Dt}\right)}
+\end{aligned}$, 其中扩散系数 $\begin{aligned}
+    D = \frac{l^{2}}{2t}
+\end{aligned}$, 在气体中约 $\begin{aligned}
+    \left(10^{-6},10^{-5}\right)\text{ m}^{2}/\text{s},
+\end{aligned}$ 在液体中约 $\begin{aligned}
+    \left(10^{-10},10^{-9}\right)\text{ m}^{2}/\text{s}.
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Discussion] 从单粒子到粒子群. 设 $N$ particles, 且均为 $\delta(x,0)$ 分布. 经过时段 $t_{1}$ 后, 则有分布函数 $\begin{aligned}
+    P(x,t_{1})\mathrm{d}x\rightarrow n\left(\vec{x},t\right)\mathrm{d}x
+\end{aligned}$. 这就是扩散现象. 
+
+连续性方程 $\begin{aligned}
+    \frac{\partial n\left(\vec{x},t\right)}{\partial t} = -\nabla\cdot\vec{j}\left(\vec{x},t\right)
+\end{aligned}$, Fick's law $\begin{aligned}
+    \vec{j}\left(\vec{x},t\right) = -D\nabla n\left(\vec{x},t\right)
+\end{aligned}$, 从而导出扩散方程 $\begin{aligned}
+    \frac{\partial n\left(\vec{x},t\right)}{\partial t} = D\nabla^{2}n\left(\vec{x},t\right)
+\end{aligned}$. 
+
+一维扩散方程解为 $\begin{aligned}
+    n\left(\vec{x},t\right) = \frac{N}{(4\pi Dt)^{d/2}}\exp{\left(-\frac{|\vec{x}|^{2}}{4Dt}\right)}.
+\end{aligned}$
+
+$\begin{aligned}
+    \langle x\rangle = 0, \left\langle x^{2}\right\rangle = \frac{1}{N}\int_{-\infty}^{+\infty} x^{2} n\left(\vec{x},t\right)\mathrm{d}^{{\color{red}{d}}}\vec{x} = \boxed{2{\color{red}{d}}Dt}
+\end{aligned}$, 可见各轴分量独立. 
+
+$\begin{aligned}
+    \left\langle (\Delta x)^{2}\right\rangle \sim Dt
+\end{aligned}$, 纯粹依靠扩散作用在空气中传播 1m 需耗时 $\begin{aligned}
+    t\sim \frac{\left\langle (\Delta x)^{2}\right\rangle}{D}\sim 10^{6}\text{ s}\approx 11\text{ days}
+\end{aligned}$. 
+
+
+[Discussion] $\begin{aligned}
+    \sqrt{\left\langle (\Delta x)^{2}\right\rangle}\sim t^{\gamma}
+\end{aligned}$. $\begin{aligned}
+    \gamma > \frac{1}{2}
+\end{aligned}$: super diffusion; $\begin{aligned}
+    \gamma < \frac{1}{2}
+\end{aligned}$: sub diffusion. e.g. cloud size: $\begin{aligned}
+    \gamma\approx \frac{3}{2}
+\end{aligned}$. 
+
+一种解释 $\begin{aligned}
+    \gamma \neq \frac{1}{2}
+\end{aligned}$ 非 normal diffusion 的思路: Levy flight(令步长为概率分布). 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+\textbf{Galton Board}. 每层都是 $X_{i}=\pm 1$ 的离散随机变量. 最后位置 $\begin{aligned}
+    S_{n} = \sum_{i=1}^{n}X_{i}
+\end{aligned}$, 处于 $k$ 的概率 $\begin{aligned} 
+    P(S = k) = C_{n}^{k}p^{k}(1-p)^{k}
+\end{aligned}$. 
+
+一般性地, 步长期望 $\begin{aligned}
+    \langle X_{i}\rangle = (+l)\times p + (-l)\times (1-p) = l(2p-1)
+\end{aligned}$, 最后位置期望为 $\begin{aligned}
+    \langle S_{n}\rangle = \sum_{i=1}^{n}\langle X_{i}\rangle = nl(2p-1).
+\end{aligned}$
+
+$\begin{aligned}
+    \left\langle S_{n}^{2}\right\rangle = \langle\sum_{ij}X_{i}X_{j}\rangle = \sum_{i}\left\langle X_{i}^{2}\right\rangle + \sum_{i\neq j}\langle X_{i}X_{j}\rangle = \left[l^{2}p+l^{2}(1-p)\right]n + \sum_{i\neq j}\langle X_{i}\rangle\langle X_{j}\rangle = nl^{2} + n(n-1)(2p-1)^{2}l^{2}
+\end{aligned}$
+
+\paragraph{$d$-Dim Off-Lattice Random Walk} 将位矢 $\begin{aligned}
+    \vec{r}
+\end{aligned}$ 展开为基矢形式 $\begin{aligned}
+    \vec{r} = \sum_{\alpha=1}^{d}x_{\alpha}\hat{e}_{\alpha} 
+\end{aligned}$, 其中 $\begin{aligned}
+    x_{\alpha} = \sum_{i=1}^{N}\vec{a}_{i}\cdot\vec{e}_{\alpha} = a_{i}\sum_{i=1}^{N}\cos{\theta_{i}}
+\end{aligned}$. 
+
+根据独立性有 $\begin{aligned}
+    \left\langle r^{2}\right\rangle = \sum_{\alpha=1}^{d}\left\langle x_{\alpha}^{2}\right\rangle
+\end{aligned}$, 各轴 $\begin{aligned}
+    \left\langle x_{\alpha}^{2}\right\rangle = a^{2}\sum_{i=1}\langle\cos{\theta_{i}}\rangle + \stackrel{\langle\cos{\theta_{i}}\rangle = 0}{\cancel{a^{2}\sum_{i\neq j}\langle\cos{\theta_{i}}\cos{\theta_{j}}\rangle}} = Na^{2}\left\langle\cos^{2}{\theta}\right\rangle
+\end{aligned}$. 
+
+对2维球面 $\begin{aligned}
+    \mathrm{d}\Omega = \sin{\theta}\stackrel{[0,\pi]}{\mathrm{d}\theta}\stackrel{[0,2\pi]}{\mathrm{d}\phi}
+\end{aligned}$, 推广至 $(d-1)$ 维球面: $\begin{aligned}
+    \mathrm{d}\Omega = \sin^{d-2}{\theta_{1}}\sin^{d-3}{\theta_{2}}\cdots\sin^{1}{\theta_{d-2}}\mathrm{d}\theta_{1}\mathrm{d}\theta_{2}\cdots\mathrm{d}\theta_{d-1}\mathrm{d}\phi. 
+\end{aligned}$
+
+于是归一化条件 $\begin{aligned}
+    \int P(\{\theta\})\mathrm{d}\Omega = 1
+\end{aligned}$ 应写为
+
+$\begin{aligned}
+    \int P_{0} (\sin{\theta_{1}})^{d-2}(\sin{\theta_{2}})^{d-3}\cdots(\sin{\theta_{d-2}})^{1}\mathrm{d}\theta_{1}\mathrm{d}\theta_{2}\cdots\mathrm{d}\theta_{d-1} = \left[\int P_{0}(\sin{\theta_{1}})^{d-1}\mathrm{d}\theta_{1}\right]\times \Omega^{\prime}(\theta_{2},\theta_{3},\cdots,\theta_{d-1}) = 1
+\end{aligned}$. 
+
+计算 $\begin{aligned}
+    \left\langle\cos^{2}{\theta_{1}}\right\rangle 
+    = \int \cos^{2}{\theta_{1}}P_{0}\mathrm{d}\Omega = \Omega^{\prime}\int_{0}^{\pi} P_{0}\cos^{2}{\theta_{1}}\sin^{d-2}{\theta_{1}}\mathrm{d}\theta_{1}
+    = \frac{1}{d}
+\end{aligned}$, 于是 $\begin{aligned}
+    \left\langle r^{2}\right\rangle = \sum_{\alpha=1}^{d}Na^{2}\left\langle\cos^{2}{\theta}\right\rangle = Na^{2}\sum_{\alpha=1}^{d}\frac{1}{d} = Na^{2}.
+\end{aligned}$
+
+即极高 $d$ 维下, 矢量集中在球面的 "赤道" 上, 这是因为高维下赤道附近的 "面积" 更集中. 最后所得 $\begin{aligned}
+    \left\langle r^{2}\right\rangle
+\end{aligned}$ 与维数无关.
+
+[Discussion] Random unit vector $\begin{aligned}
+    \vec{n}
+\end{aligned}$ in $n-$dim space. $\begin{aligned}
+    \vec{n} = \sum_{\alpha=1}^{d}n_{\alpha}\hat{e}_{\alpha},\left\langle n_{\alpha}^{2}\right\rangle = \sum_{\alpha=1}^{d}\left\langle n_{\alpha}^{2}\right\rangle = d\left\langle n_{1}^{2}\right\rangle = d\left\langle \cos^{2}{\theta}\right\rangle = 1\Rightarrow \left\langle n_{1}^{2}\right\rangle = \frac{1}{d}
+\end{aligned}$
+
+\subsubsection{Stochastic process} 
+
+Static continuous random variable $\begin{aligned}
+    X_{i}:\quad\stackrel{t_{0}}{\{x_{0}\}}\rightarrow \stackrel{t_{1}}{[x_{1},x_{1}+\mathrm{d}x]}\rightarrow  \stackrel{t_{2}}{[x_{2},x_{2}+\mathrm{d}x]}\rightarrow \cdots
+\end{aligned}$
+
+令 $\begin{aligned}
+    P_{1}(x,t) = \text{Prob}\left[
+        x<x(t)<x+\mathrm{d}x
+    \right]
+\end{aligned}$ 为 $t$ 时刻 $x\in(x,x+\mathrm{d}x)$ 的概率, 
+
+$\begin{aligned}
+    P_{n}(x_{0},t_{0};x_{1},t_{1};\cdots;x_{n-1},t_{n-1})\mathrm{d}x_{0}\cdots\mathrm{d}x_{n-1} = \text{Prob}\left[
+    x_{0}<x(t_{0})<x_{0}+\mathrm{d}x_{0},\cdots,x_{n-1}<x(t_{n-1})<x_{n-1}+\mathrm{d}x_{n-1}
+    \right]
+\end{aligned}$
+
+
+定义 \textbf{Transition Probability}: $\begin{aligned}
+    \text{Prob}\left[(x_{0},t_{0})\rightarrow(x_{1},t_{1})\right]\mathrm{d}x_{1} = \frac{P_{2}(x_{0},t_{0};x_{1},t_{1})\mathrm{d}x_{1}}{P_{1}(x_{0},t_{0})}
+\end{aligned}$. 
+
+该语言下的关联函数为 $\begin{aligned}
+    \langle x_{0}(t_{0})x_{1}(t_{1})\rangle = \int
+    x_{0}(t_{0})x_{1}(t_{1})P_{n}(x_{0},t_{0};x_{1},t_{1},\cdots)\prod_{k=0}^{n-1}\mathrm{d}x_{k}
+\end{aligned}$. 
+
+\subsubsection{Smoluchowski's Approach} 
+
+从 $x_{0}$ 出发, 经过 $n$ 步后到达 $x$ 的概率为 $\begin{aligned}
+    \text{Prob}\left(x_{0}\stackrel{n\text{ steps}}{\longrightarrow} x\right) = P_{n}(x_{0}|x)
+\end{aligned}$, 可写作递推形式($\begin{aligned}
+    n\geq 1
+\end{aligned}$) $\begin{aligned}
+    \sum_{z=-\infty}^{+\infty}P_{n-1}(x_{0}|z)P_{1}(z|x)
+\end{aligned}$, 即从 $x_{0}$ 出发, 经过 $n-1$ 步到达任意位置 $z$, 再经过 1 步到达 $x$. 对于位置 $z$, 要求 
+
+$\begin{aligned}
+    P_{1}(z|x) = \frac{1}{2}\left(\delta_{z,x+1}+\delta_{z,x-1}\right), P_{0}(z|x) = \delta_{z,x}
+\end{aligned}$, 代入递推得 $\begin{aligned}
+    P_{n}(x_{0}|x) = \frac{1}{2}P_{n-1}(x_{0}|x-1) + \frac{1}{2}P_{n-1}(x_{0}|x+1). 
+\end{aligned}$
+
+构造辅助函数 $\begin{aligned}
+    Q_{n}(\xi)\equiv \sum_{x=-\infty}^{+\infty}P_{n}(x_{0}|x)\xi^{x-x_{0}}
+\end{aligned}$, 将其递推化: 
+
+$\begin{aligned}
+     Q_{n}(\xi) = \sum_{x=-\infty}^{+\infty}\left[\frac{1}{2}P_{n}(x_{0}|x-1)\xi^{x-x_{0}} + \frac{1}{2}P_{n-1}(x_{0}|x+1)\xi^{x-x_{0}}\right] = \frac{1}{2}\xi Q_{n-1}(\xi) + \frac{1}{2}\xi^{-1}Q_{n-1}(\xi) = \frac{1}{2}\left(\xi + \xi^{-1}\right)Q_{n-1}(\xi)
+\end{aligned}$
+
+代入初始条件 $\begin{aligned}
+    Q_{0}(\xi) = 1
+\end{aligned}$ 解得 $\begin{aligned}
+    Q_{n}(\xi) = \left(\frac{1}{2}\right)^{n}\sum_{|x-x_{0}|\leq n}C_{n}^{[n+(x-x_{0})]/2}\xi^{x-x_{0}}
+\end{aligned}$. 
+
+通过同构可知 $\begin{aligned}
+    P_{n}(x_{0}|x) = \left(\frac{1}{2}\right)^{n}C_{n}^{[n+(x-x_{0})]/2}
+\end{aligned}$, 其中 $\begin{aligned}
+    |x-x_{0}|\leq n
+\end{aligned}$. 
+
+\subsubsection{State of System(Markov Procss, History-Independent)}
+
+态: $n = 1,2,3,\cdots,M$; 
+态为 $n$ 的概率: $y(n)$; 
+时间: $t = s\tau$, $s = 0,1,2\cdots$
+系统在 $t=s\tau$ 时刻处于状态 $n$ 的概率: $\begin{aligned}
+    P(n,s)
+\end{aligned}$. 
+
+\textbf{Markov Chain}: $\begin{aligned}
+    P(n,s)\rightarrow P(n,s+1)\rightarrow P(n,s+2)\rightarrow\cdots
+\end{aligned}$, 即依赖于前一时刻的状态, 和历史无关.
+
+前文所谈则是 history-dependent $\begin{aligned}
+    P(n,s) = f[P(n,s-1),P(n,s-2),\cdots,P(n,0)]
+\end{aligned}$. 
+
+定义 Conditional Prob: $\begin{aligned}
+    P(n_{1},s_{1}|n_{2},s_{2}) 
+\end{aligned}$. 则从 $s_{0}$ 时刻的状态 $n_{0}$ 迁移至 $(s_{0}+1)$ 时刻的状态 $n$ 的概率为 
+
+$\begin{aligned}
+    \stackrel{n_{0}\rightarrow n}{P(n_{0},s_{0}|n,s+1)} = \sum_{m=1}^{M}\stackrel{n_{0}\rightarrow m\rightarrow n}{P(n_{0},s_{0}|m,s)P(m,s|n,s+1)} = \sum_{m=1}^{M}P(n_{0},s_{0}|m,s)Q_{mn}(s)
+\end{aligned}$. 
+
+那么系统在 $s$ 时刻处于状态 $n$ 的概率为 $\begin{aligned}
+    {\color{red}{P(n,s)}} = \sum_{m=1}^{M}{\color{red}{P(m,s-1)}}\stackrel{m\rightarrow n}{P(m,s-1|n,s)}
+\end{aligned}$, 重复该递推直至化为形式: 
+
+$\begin{aligned}
+    P(n,s) &= \sum_{m,m_{1},m_{2},\cdots,m_{s-1}}\stackrel{m\rightarrow m_{1}\rightarrow m_{2}\rightarrow \cdots\rightarrow m_{s-1}}{P(m,0)P(m,0|m_{1},1)P(m_{1},1|m_{2},2)\cdots P(m_{s-1},s-1|n,s)}\\
+    &= \sum_{m,m_{1},m_{2},\cdots,m_{s-1}}P(m,0)Q_{mm_{1}}(1)Q_{m_{1}m_{2}}(2)\cdots Q_{m_{s-1}n}(s-1) = \sum_{m}P(m,0)\left(Q^{S}\right)_{mn},P(m,s_{0}|n,s) = (Q^{s-s_{0}})_{mn}
+\end{aligned}$
+
+其中运用了类似于矩阵乘法 $\begin{aligned}
+    \sum_{j}A_{ij}B_{jk} = (AB)_{ik}
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Example] $N$-ring [$P(N+1)\equiv P(1)$]. 将 Random Walk 近似为 Markov Process. $\begin{aligned}
+    Q_{n,n+1} = Q_{n+1,n} = \frac{1}{2},n\in\mathbb{N}
+\end{aligned}$. 
+
+$\begin{aligned}
+    P(n,s) = P(n-1,s-1)Q_{n-1,n} + P(n+1,s-1)Q_{n+1,n} = \frac{1}{2}\left[P(n-1,s-1) + P(n+1,s-1)\right]
+\end{aligned}$
+
+$\begin{aligned}
+    \text{Define }\delta P(n,s)&\equiv P(n,s)-P(n,s-1) = P(n-1,s-1)Q_{n-1,n} + P(n+1,s-1)Q_{n+1,n} - P(n,s-1) \\
+    &= \frac{1}{2}[P(n-1,s-1) + P(n+1,s-1) - 2P(n,s-1)]
+\end{aligned}$
+
+Let $t$ be continuous: $\begin{aligned}
+    \tau\frac{\mathrm{d}P_{n}(t)}{\mathrm{d}t} = \frac{1}{2} \left[P_{n-1}(t) + P_{n+1}(t) - 2P_{n}(t)\right]
+\end{aligned}$; Then let $n$ be continuous:
+
+$\begin{aligned}
+    \tau\frac{\mathrm{d}P_{n}(t)}{\mathrm{d}t} = \frac{a^{2}}{2}\frac{P_{n-1}(t)+P_{n+1}(t)-2P_{n}(t)}{a^{2}}\Rightarrow \frac{\partial P(x,t)}{\partial t} = D \frac{\partial^{2}P(x,t)}{\partial x^{2}},\quad D \sim \frac{a^{2}}{2\tau}
+\end{aligned}$. 正是 \textbf{Feynmann Kac formula}.
+
+\subsubsection{Langevin's Theory}
+
+忽略粒子间关联(flux). Based on force \& dynamics, equation of motion. $\begin{aligned}
+    x(t+\delta t) - x(t) = f(t)\delta t\Rightarrow \dot{x}(t) = f,\text{random force}. 
+\end{aligned}$
+
+介观(mesoscopic) level: $\begin{aligned}
+    M\frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = \stackrel{\text{viscosity}}{-\frac{\vec{v}}{B}} + \stackrel{\text{random}}{\vec{F}(t)}
+\end{aligned}$. $\begin{aligned}
+    f_{\text{stokes}} = f(\stackrel{\text{半径}}{a},\stackrel{\text{粘度}}{\eta},\stackrel{\text{速度}}{v},\cancel{\stackrel{\text{质量}}{m}}) = 6\pi\eta a v\Rightarrow B = \frac{1}{6\pi\eta a}
+\end{aligned}$
+
+随机力满足 $\begin{aligned}
+    \langle F(t)\rangle = 0,\quad \left\langle\vec{F}(t)\vec{F}\left(t^{\prime}\right)\right\rangle = C_{1}\delta\left(t-t^{\prime}\right)
+\end{aligned}$. 
+
+[Discussion] 回忆 Ideal gas: $\begin{aligned}
+    \left\langle \delta n(x)\delta n\left(x^{\prime}\right)\right\rangle = c\delta\left(x-x^{\prime}\right)
+\end{aligned}$, 形式与随机力的二阶矩相似. 
+
+只有一阶矩和二阶矩非零, 则可使用 Gaussian distribution 描述.
+
+[Example] Irregular part(noise) of collective electron motion in circuit. $\begin{aligned}
+    L\frac{\mathrm{d}I}{\mathrm{d}t} = \stackrel{\text{dissipation}}{-RI} + \stackrel{\text{fluactuation}}{V(t)}
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+两边同乘 $\begin{aligned}
+    \vec{v}
+\end{aligned}$ 且求期望 $\begin{aligned}
+    \langle\cdot\rangle
+\end{aligned}$, 有 $\begin{aligned}
+    \frac{\mathrm{d}}{\mathrm{d}t}\left(\stackrel{K(t)}{\frac{1}{2}M\left\langle v(t)^{2}\right\rangle}\right) 
+    + M\tau^{-1}\left\langle v(t)^{2}\right\rangle 
+    = \langle v(t)F(t)\rangle
+\end{aligned}$, 即得到\textbf{动能形式的 Langevin 方程}. 
+
+$\begin{aligned}
+    \frac{\mathrm{d}K(t)}{\mathrm{d}t} 
+    = \langle v(t)F(t)\rangle - \frac{2}{\tau}K(t)
+\end{aligned}$. 其中 $\begin{aligned}
+    \tau = MB
+\end{aligned}$. 平衡态: $\begin{aligned}
+    \frac{\mathrm{d}K(t)}{\mathrm{d}t} = 0\Rightarrow \langle v(t)F(t)\rangle = \frac{2}{\tau}K_{0} = \frac{2}{\tau}\cdot\frac{d}{2}k_{B}T
+\end{aligned}$, $d$ 为维数.
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+在 $d=1$ 情况下, 定义 $\begin{aligned}
+    v(t) = e^{-t/\tau}u(t)
+\end{aligned}$, 其中 $\begin{aligned}
+    \tau = MB
+\end{aligned}$. 将其代入方程后解得 $\begin{aligned}
+    \boxed{v(t) = \frac{1}{M}\int_{0}^{t}\mathrm{d}t^{\prime}e^{-\left(t-t^{\prime}\right)/\tau}F\left(t^{\prime}\right)}
+\end{aligned}$. 
+
+那么 $\begin{aligned}
+    \langle v(t)F(t)\rangle = \frac{C_{1}}{2M}
+\end{aligned}$, 其中 $C_{1}$ 来自于 $\begin{aligned}
+    \left\langle\vec{F}(t)\vec{F}\left(t^{\prime}\right)\right\rangle = C_{1}\delta\left(t-t^{\prime}\right).
+\end{aligned}$
+
+平衡态: $\begin{aligned}
+    \frac{C_{1}}{2M} = \frac{2}{\tau}\cdot\frac{1}{2}k_{B}T\Rightarrow \boxed{C_{1} = \frac{2k_{B}T}{B}}
+\end{aligned}$, \textbf{Fluactuation-Dissipation Theorem(涨落耗散定理)}.
+
+\paragraph{Analysis of Particle Postion}
+检查 Langevin 语言下的 $\begin{aligned}
+    \left\langle r^{2}(t)\right\rangle = 2dDt
+\end{aligned}$ 是否仍然满足.
+
+方程写作 $\begin{aligned}
+    \frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = -\frac{\vec{v}}{\tau} + \vec{A}(t)
+\end{aligned}$, 其中 $\begin{aligned}
+    \vec{A}(t) = \frac{\vec{F}}{M}
+\end{aligned}$. 因为 $\begin{aligned}
+    \frac{\mathrm{d}^{2}r^{2}}{\mathrm{d}t^{2}} = 2v^{2} + 2\vec{r}\cdot\frac{\mathrm{d}\vec{r}}{\mathrm{d}t}
+\end{aligned}$, 等号两边同乘 $\begin{aligned}
+    \vec{r}
+\end{aligned}$ 后求系综平均 $\begin{aligned}
+    \langle\cdot\rangle
+\end{aligned}$, 有
+
+$\begin{aligned}
+    \frac{\mathrm{d}^{2}}{\mathrm{d}t^{2}}r^{2} + \frac{1}{\tau}\frac{\mathrm{d}}{\mathrm{d}t}r^{2} = 2v^{2} + \vec{r}\cdot\vec{A}\Rightarrow 
+    \frac{\mathrm{d}^{2}}{\mathrm{d}t^{2}}\left\langle r^{2}\right\rangle + \frac{1}{\tau}\frac{\mathrm{d}}{\mathrm{d}t}\left\langle r^{2}\right\rangle + 2\left\langle v^{2}\right\rangle + \stackrel{\vec{A}\cancel{\sim}\vec{r}}{\cancel{\left\langle \vec{r}\cdot\vec{A}\right\rangle}}
+\end{aligned}$, 因为 $\begin{aligned}
+    \vec{A}
+\end{aligned}$ 和 $\begin{aligned}
+    \vec{r}
+\end{aligned}$ 无关, 所以该期望项为 0.
+
+三维动能均值为 $\begin{aligned}
+    \frac{1}{2}M\left\langle v^{2}\right\rangle = \frac{1}{2}k_{B}T\times 3
+\end{aligned}$, 解得位移方均 $\begin{aligned}
+    \left\langle r^{2}(t)\right\rangle = \frac{6k_{B}T\tau^{2}}{M}\left[\frac{t}{\tau} - \left(1-e^{-t/\tau}\right)\right]
+\end{aligned}$
+
+1. $\begin{aligned}
+    t\ll \tau
+\end{aligned}$, $\begin{aligned}
+     \left\langle r^{2}(t)\right\rangle = \frac{3k_{B}T}{M}t^{2} = \left\langle v^{2}\right\rangle t^{2}
+\end{aligned}$, 即 Ballistic motion(弹道运动). 然而 Langevin 方程在 $t\rightarrow 0$ 时有效性存疑. 
+
+2. $\begin{aligned}
+    t\gg\tau
+\end{aligned}$, $\begin{aligned}
+    \left\langle r^{2}(t)\right\rangle = \frac{6k_{B}T\tau}{M}t = 6Bk_{B}Tt \stackrel{d=3}{=} 6Dt\Rightarrow \boxed{D = Bk_{B}T},\forall d
+\end{aligned}$, another form of \textbf{Fluactuation-Dissipation Theorem}, or \textbf{Einstein's Relation}.
+
+\paragraph{Analysis of Particle Velocity} $\begin{aligned}
+    \vec{v}(t)
+\end{aligned}$
+
+$\begin{aligned}
+    \left\langle v^{2}(t)\right\rangle = \left\langle\left[ v(0) +\frac{1}{M}\int_{0}^{t}\mathrm{d}t^{\prime}e^{-\left(t-t^{\prime}\right)/\tau}F\left(t^{\prime}\right)\right]^{2}\right\rangle = v^{2}(0) e^{-2t/\tau} + \frac{C}{M^{2}}\frac{\tau}{2}\left(1-e^{-2t/\tau}\right)
+\end{aligned}$, 其中带入了 $v(t)$ 表达式. 
+
+Requires $\begin{aligned}
+    \frac{1}{2}M\left\langle v^{2}(t)\right\rangle = \frac{3}{2}k_{B}T\Rightarrow C = \frac{6k_{B}T}{B}.
+\end{aligned}$. Let $\begin{aligned}
+    x\equiv \left\langle v^{2}(t)\right\rangle - \left\langle v^{2}(\infty)\right\rangle
+\end{aligned}$, 则 $\begin{aligned}
+    \frac{\mathrm{d}}{\mathrm{d}t} x = -\frac{2}{\tau} x
+\end{aligned}$
+
+[Discussion] 速度发散 $\begin{aligned}
+    \lim_{\delta t\rightarrow 0}\frac{\langle |x(t+\delta t)-x(t)|\rangle}{\delta t} \sim \lim_{\delta t\rightarrow 0}\frac{(\delta t)^{\frac{1}{2}}}{\delta t}\rightarrow \infty
+\end{aligned}$. Solution: 
+
+1. Stochastic Differential Equation 严格化; 
+
+2. 从场的观点出发. 将随机性转移至概率分布函数(particle-based approach $\rightarrow$ field-based approach). 场 $\begin{aligned}
+    f(x,t)
+\end{aligned}$, 则位置为 $\begin{aligned}
+    \rho(x) = q\delta(x-x_{0})
+\end{aligned}$, $\begin{aligned}
+    \int\rho(x)\mathrm{d}x = q
+\end{aligned}$. 如果是匀速直线运动, 则 $\begin{aligned}
+    f(x,t) = \delta(x-vt)
+\end{aligned}$. 若粒子 $x\rightarrow x+\delta x$, 则 $\begin{aligned}
+    f(x,t) = \langle\delta[x-x(t)]\rangle
+\end{aligned}$, 即场与粒子观点的转换. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+约束 $\begin{aligned}
+    \sum_{i}n_{i} = N
+\end{aligned}$. 态\textbf{迁移率(transition rate)} 为 $\begin{aligned}
+    \frac{n_{i}(t+\delta t)-n_{i}(t)}{\delta t} = -\sum_{j\neq i}n_{i}(t)P_{i\rightarrow j} + \sum_{j\neq i}n_{j}(t)P_{j\rightarrow i}
+\end{aligned}$, 这类方程被称为 \textbf{Master equation}. 
+
+1. 假定为 Markov Process; 
+
+2. 粒子数守恒: $\begin{aligned}
+    \frac{1}{\delta t}\left[\sum_{i}n_{i}(t+\delta t) - \sum_{i}n_{i}\right] = \sum_{i}\left(\sum_{i\neq j}n_{j}P_{j\rightarrow i} - \sum_{i\neq j}n_{i}P_{i\rightarrow j}\right) = 0
+\end{aligned}$.
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Application] 2-state system. $\begin{aligned}
+    n_{+}: |+\rangle,\quad n_{-}: |-\rangle
+\end{aligned}$. 迁移速率 $\omega_{\pm}$. 平衡态: $\begin{aligned}
+    \frac{n_{+}^{0}}{n_{-}^{0}} = \frac{\omega_{+}}{\omega_{-}}
+\end{aligned}$
+
+$\begin{aligned}
+    \frac{\mathrm{d}n_{+}}{\mathrm{d}t} = -n_{+}\omega_{-} + n_{-}\omega_{+},\quad \frac{\mathrm{d}n_{-}}{\mathrm{d}t} = -n_{-}\omega_{+} + n_{+}\omega_{-}
+\end{aligned}$
+
+Relaxation dynamics: 设 $n(t) = n_{-}-n_{+}$. 则微分方程化为 $\begin{aligned}
+    \frac{\mathrm{d}n(t)}{\mathrm{d}t} 
+    = \frac{1}{\tau}\left[n(t)-n^{0}\right]
+\end{aligned}$, 其中 $\begin{aligned}
+    \tau = \frac{1}{\omega_{+}+\omega_{-}}, n^{0} = n_{-}^{0}-n_{+}^{0}.
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Discussion] 连续变量 Master Equation. 前提: 
+1. \textbf{归一化条件}: $\begin{aligned}
+    \int_{-\infty}^{+\infty}f(x,t)\mathrm{d}x = 1
+\end{aligned}$; 
+
+2. \textbf{概率函数定义}: $\begin{aligned}
+    f(x,t)\mathrm{d}x
+\end{aligned}$ 是粒子在 $t$ 时刻处于 $\begin{aligned}
+    [x,x+\mathrm{d}x]
+\end{aligned}$ 的概率.
+
+3. \textbf{动力学}: $\begin{aligned}
+    \frac{\partial f(x,t)}{\partial t} = \int_{-\infty}^{+\infty}\left[
+        -f(x,t)W\left(x,x^{\prime}\right) + f\left(x^{\prime},t\right)W\left(x^{\prime},x\right)
+    \right]\mathrm{d}x^{\prime}
+\end{aligned}$, $\begin{aligned}
+    W(x,x^{\prime})\mathrm{d}x^{\prime}
+\end{aligned}$ 是 $\begin{aligned}
+    x\rightarrow x^{\prime}
+\end{aligned}$ 的迁移概率.
+
+以上动力学方程可改写为 $\begin{aligned}
+    \frac{\partial}{\partial t}f(x,t) = -\frac{\partial}{\partial x}\left(\mu_{1}(x)f(x,t)\right) + \frac{1}{2}\frac{\partial^{2}}{\partial x^{2}}\left[\mu_{2}(x)f(x,t)\right]
+\end{aligned}$, 即 \textbf{Fokker-Planck 方程}.
+
+其中矩系数 $\begin{aligned}
+    \mu_{1}(x) = \int_{-\infty}^{+\infty}\mathrm{d}\xi\xi W(x,\xi) = \frac{\langle \delta x\rangle_{\delta t}}{\delta t} = \langle v_{x}\rangle,\quad \mu_{2}(x) = \int_{-\infty}^{+\infty}\mathrm{d}\xi\xi^{2}W(x,\xi) = \frac{\langle (\delta x)^{2}\rangle_{\delta t}}{\delta t}
+\end{aligned}$. 
+
+写作概率流形式: $\begin{aligned}
+    \frac{\partial}{\partial t}f(x,t) = -\frac{\partial}{\partial x}j(x,t),\quad j(x,t) = \mu_{1}(x)f(x,t) - \frac{1}{2}\frac{\partial}{\partial x}\left[\mu_{2}(x)f(x,t)\right]
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Example] 粘液中振子. 矩系数信息为 $\begin{aligned}
+    \mu_{1}(x) = -\lambda Bx,\quad \mu_{2}(x) = \frac{\langle\delta x^{2}\rangle}{\delta t} = 2Bk_{B}T
+\end{aligned}$
+
+Fokker-Planck 方程为 $\begin{aligned}
+    \frac{\partial f(x,t)}{\partial t} = \lambda B\frac{\partial }{\partial x}(xf(x,t)) + Bk_{B}T\frac{\partial^{2}f(x,t)}{\partial x^{2}}
+\end{aligned}$
+
+平衡态解: $\begin{aligned}
+    \lambda B\frac{\partial}{\partial x}(xf(x,\infty)) + Bk_{B}T\frac{\partial^{2}}{\partial x^{2}}f(x,\infty) = 0\Rightarrow 
+    f(x,\infty) = \left(\frac{\lambda}{2\pi k_{B}T}\right)^{\frac{1}{2}}e^{-\frac{\lambda x^{2}}{2k_{B}T}}
+\end{aligned}$. 
+
+$\begin{aligned}
+    \langle x\rangle = 0,\quad \langle x^{2}\rangle = \int_{-\infty}^{+\infty}x^{2}f(x,\infty)\mathrm{d}x = \frac{k_{B}T}{\lambda}
+\end{aligned}$
+
+设初始为 $\delta{x}$ 分布, 则一般含时解为 $\begin{aligned}
+    f(x,t) = \left[\frac{\lambda}{2\pi k_{B}T(1-e^{-2\lambda B t})}\right]^{\frac{1}{2}} \exp\left[ -\frac{\lambda x^{2}}{2k_{B}T(1-e^{-2\lambda B t})} \right]
+\end{aligned}$. 
+
+该模型对应的 Langevin 方程为 $\begin{aligned}
+    \eta\frac{\mathrm{d}x}{\mathrm{d}t} = \stackrel{\text{potential}}{-U^{\prime}(x)} + \stackrel{\text{random}}{F(t)}
+\end{aligned}$, 其中 $\begin{aligned}
+    U(x) = \frac{1}{2}\lambda x^{2}
+\end{aligned}$, $\begin{aligned}
+    U^{\prime}(x) = \lambda x
+\end{aligned}$ 为势能的导数.
+
+\paragraph{Time Correlation of Velocity} $v(t)$. 令时间变量 $u_{1}$, $u_{2}$. 
+
+则位移方均 $\begin{aligned}
+    \left\langle x^{2}(t)\right\rangle = \left\langle
+        \left(\int_{0}^{t}\mathrm{d}u_{1}v(u_{1})\right)
+        \left(\int_{0}^{t}\mathrm{d}u_{1}v(u_{1})\right)
+    \right\rangle = \int_{0}^{t}\mathrm{d}u_{1}\int_{0}^{t}\mathrm{d}u_{2}\left\langle v(u_{1})v(u_{2})\right\rangle
+\end{aligned}$. 利用微积分性质 $\begin{aligned}
+    \frac{\mathrm{d}}{\mathrm{d}t} \int_{0}^{t}f(u)\mathrm{d}u = f(t)
+\end{aligned}$, 
+
+得到 $\begin{aligned}
+    \frac{\mathrm{d}\left\langle x^{2}(t)\right\rangle}{\mathrm{d}t} = 2\int_{0}^{t}\mathrm{d}u \langle v(u)v(t)\rangle \stackrel{\text{time reversal symmetry}}{=} 2\int_{-t}^{0}\mathrm{d}u \left\langle v(u)v(0)\right\rangle = 2\int_{0}^{t}\mathrm{d}u \left\langle v(u)v(0)\right\rangle = 2Dd
+\end{aligned}$
+
+观察对比得到 $\begin{aligned}
+    \int_{0}^{t}\langle v(u)v(0)\rangle\mathrm{d}u = Dd
+\end{aligned}$. 
+
+$\begin{aligned}
+    \frac{\partial f(x,t)}{\partial t} = \frac{1}{\eta}\frac{\partial}{\partial x}(U^{\prime}(x)f(x,t)) + \frac{k_{B}T}{\eta}\frac{\partial^{2}}{\partial x^{2}}f(x,t)
+\end{aligned}$
+
+\paragraph{Fourier Transformation of Langevin Equation}.
+
+约化 Langevin 方程形为 $\begin{aligned}
+    \frac{\mathrm{d}v(t)}{\mathrm{d}t} = -\frac{v(t)}{\tau} + A(t)
+\end{aligned}$, 其中 $\begin{aligned}
+    \left\langle A(t)A\left(t^{\prime}\right)\right\rangle = C_{1}^{\prime}\delta\left(t-t^{\prime}\right)
+\end{aligned}$. 
+
+速度变换为 $\begin{aligned}
+    \widetilde{v}(\omega) = \frac{\widetilde{A}(\omega)}{-i\omega + \tau^{-1}}
+\end{aligned}$, 约化随机力变换后满足 $\begin{aligned}
+    \left\langle \widetilde{A}(\omega)\widetilde{A}\left(\omega^{\prime}\right)\right\rangle = 2\pi C_{1}^{\prime}\delta \left(\omega + \omega^{\prime}\right)
+\end{aligned}$
+
+频域内速度关联为 $\begin{aligned}
+    \left\langle \widetilde{v}^{*}(\omega)\widetilde{v}\left(\omega^{\prime}\right)\right\rangle = S(\omega)\delta\left(\omega + \omega^{\prime}\right)
+\end{aligned}$, 其中 $\begin{aligned}
+    S(\omega) = \frac{2\pi C_{1}}{\tau^{-2} + \omega^{2}}
+\end{aligned}$. 令速度关联在 $\begin{aligned}
+    \omega^{\prime}
+\end{aligned}$ 域积分, 
+
+得到 $\begin{aligned}
+    \left\langle \widetilde{v}^{*}(\omega)\widetilde{v}\left(t=0\right)\right\rangle = S(\omega)
+\end{aligned}$; 再令其在 $\begin{aligned}
+    \omega
+\end{aligned}$ 域积分, 得到 $\begin{aligned}
+    \left\langle v(t)v(0)\right\rangle = \int_{-\infty}^{+\infty} S(\omega)e^{-i\omega t}\frac{\mathrm{d\omega}}{2\pi}
+\end{aligned}$. 
+
+令自由参数 $t=0$, 则 $\begin{aligned}
+    \left\langle v(0)^{2}\right\rangle = \int_{-\infty}^{+\infty}\frac{\mathrm{d}\omega}{2\pi}S(\omega)
+\end{aligned}$; 根据对称性, $\begin{aligned}
+    S(0) = 2\int_{0}^{+\infty}\mathrm{d}t\langle v(t)v(0)\rangle = \frac{2\pi C_{1}}{\tau^{-2}} = 2D
+\end{aligned}$. 
+
+
+
+\end{document}

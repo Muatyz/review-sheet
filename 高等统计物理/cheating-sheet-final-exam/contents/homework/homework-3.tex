@@ -1,0 +1,216 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 3}
+
+\subsection{1-D Harmonic Oscillators}
+\textbf{Derive} 
+  \begin{enumerate}
+    \item \textbf{an asymptotic expression for the number of ways in which a given energy $E$ can be distributed among a set of $N$ one-dimensional harmonic oscillators, the energy eigenvalues of the oscillators being $\begin{aligned}
+      \left(n+\frac{1}{2}\right)\hbar\omega;n=0,1,2,\cdots
+    \end{aligned}$;} 
+
+    The ground state energy for $N$ oscillators is
+    \begin{align*}
+      E_{\text{ground}} = N\cdot \frac{1}{2}\hbar\omega = \frac{N}{2}\hbar\omega.
+    \end{align*}
+    So the excitation energy above the ground state is
+    \begin{align*}
+      E^{*} = E - E_{\text{ground}} = E - \frac{N}{2}\hbar\omega.
+    \end{align*}
+    So we need to distribute $E^{*}$ among $N$ oscillators, or 
+    \begin{align*}
+      \sum_{i=1}^{N} = M,\quad \text{where } M = \frac{E^{*}}{\hbar\omega}  = \frac{E}{\hbar\omega} - \frac{N}{2}.
+    \end{align*}
+    So the number of ways, or the microstates, is given by the combinatorics
+    \begin{align*}
+      \Omega = \begin{pmatrix}
+        M + N - 1 \\
+        N - 1
+      \end{pmatrix}
+    \end{align*}
+    With the Stirling approximation, we have
+    \begin{align*}
+      \ln{\Omega}&\approx (M + N)\ln{(M+N)} - M\ln{M} - N\ln{N} - \frac{1}{2}\ln{(2\pi MN)}\\
+      \Omega &\approx \frac{(M+N)^{M+N}}{M^{M}N^{N}}\sqrt{\frac{M+N}{2\pi MN}}
+    \end{align*}
+    Apply $\begin{aligned}
+      M = \frac{E}{\hbar\omega} - \frac{N}{2}
+    \end{aligned}$ to the above equation, we have
+    \begin{align*}
+        \Omega\approx 
+        \frac{(\frac{E}{\hbar\omega} + \frac{N}{2})^{\frac{E}{\hbar\omega} + \frac{N}{2}}}
+        {(\frac{E}{\hbar\omega} - \frac{N}{2})^{\frac{E}{\hbar\omega} - \frac{N}{2}}N^{N}}
+        \sqrt{\frac{\frac{E}{\hbar\omega} + \frac{N}{2}}{2\pi(\frac{E}{\hbar\omega} - \frac{N}{2})N}}
+    \end{align*}
+    If $\begin{aligned}
+      \frac{E}{\hbar\omega}\gg N
+    \end{aligned}$, the number of states can be approximated as
+    \begin{align*}
+      \Omega\approx \frac{1}{N!}\left(\frac{E}{\hbar\omega}\right)^{N}.
+    \end{align*}
+
+    \item \textbf{and the corresponding expression for the "volume" of the relevant region of the phase space of this system. Establish the correspondence between the two results, showing that the conversion factor $\omega_{0}$ is precisely $h^{N}$.}
+    
+    For a one-dimensinal harmonic oscillator with energy $E_{i}$, its Hamiltonian is a elliptic curve: 
+    \begin{align*}
+      H_{i} = \frac{p_{i}^{2}}{2m} + \frac{1}{2}m\omega^{2}x_{i}^{2} = E_{i}
+    \end{align*}
+    So the phase space volume is given by the integral of the Hamiltonian over the energy surface:
+    \begin{align*}
+      \Gamma_{i} = \iint H_{i}\mathrm{d}p_{i}\mathrm{d}x_{i} = \pi\cdot\sqrt{\frac{2E_{i}}{m}}\cdot m\cdot\frac{1}{\omega} \sqrt{\frac{2E_{i}}{m}}= \frac{2\pi E_{i}}{\omega}
+    \end{align*}
+    So the total phase space volume is given by 
+    \begin{align*}
+      \Gamma = \int_{\sum E_{i}\leq E}\prod_{i=1}^{N}\frac{2\pi E_{i}}{\omega}\mathrm{d}E_{1}\cdots\mathrm{d}E_{N} = \frac{(2\pi/\omega)^{N}E^{N}}{N!} = \frac{1}{N!}\left(\frac{2\pi E}{\omega}\right)^{N}
+    \end{align*}
+    The classical microstate is 
+    \begin{align*}
+      \Omega = \frac{1}{N!}\left(\frac{E}{\hbar\omega}\right)^{N} = \frac{1}{N!}\left(\frac{2\pi E}{h\omega}\right)^{N} = \frac{1}{h^{N}}\Gamma
+    \end{align*}
+    So we get
+    \begin{align*}
+      \boxed{\omega_{0} = h^{N}}
+    \end{align*}
+
+    \item \textbf{On the basis of Problem 1, derive the entropy and temperature. Comment on the result.} 
+  
+  Since the number of microstates $\Omega$ is given by
+  \begin{align*}
+    \Omega\approx 
+    \frac{(\frac{E}{\hbar\omega} + \frac{N}{2})^{\frac{E}{\hbar\omega} + \frac{N}{2}}}
+    {(\frac{E}{\hbar\omega} - \frac{N}{2})^{\frac{E}{\hbar\omega} - \frac{N}{2}}N^{N}}
+    \sqrt{\frac{\frac{E}{\hbar\omega} + \frac{N}{2}}{2\pi(\frac{E}{\hbar\omega} - \frac{N}{2})N}},
+  \end{align*}
+  we can calculate the entropy $S$ using the Boltzmann entropy formula with Stirling approximation:
+  \begin{align*}
+    \boxed{S = k_{B}\left[
+        \left(\frac{E}{\hbar\omega}+\frac{N}{2}\right)\ln{\left(\frac{E}{\hbar\omega}+\frac{N}{2}\right)}
+      - \left(\frac{E}{\hbar\omega}-\frac{N}{2}\right)\ln{\left(\frac{E}{\hbar\omega}-\frac{N}{2}\right)}
+      - N\ln{N}
+      \right]}
+  \end{align*}
+  With the thermodynamic connection $\begin{aligned}
+    \frac{1}{T} = \frac{\partial S}{\partial E}
+  \end{aligned}$, we have
+  \begin{align*}
+    \frac{1}{T} = \frac{k_{B}}{\hbar\omega}
+    \ln{\left(
+      \frac{\frac{E}{\hbar\omega}+\frac{N}{2}}
+      {\frac{E}{\hbar\omega}-\frac{N}{2}}
+      \right)}\\
+      \Rightarrow \boxed{
+        T = \frac{\hbar\omega}{k_{B}}\left[\ln{\left(
+          \frac{E + \frac{N}{2}\hbar\omega}{E - \frac{N}{2}\hbar\omega}
+          \right)}\right]^{-1}
+      }
+  \end{align*}
+  \end{enumerate}
+  
+
+
+\subsection{Helmholtz Free Energy}
+\textbf{Making use of the fact that the Helmholtz free energy $A(N,V,T)$ of a thermodynamic system is an extensive property of the system, show that
+  \begin{align*}
+    N\left(\frac{\partial A}{\partial N}\right)_{V,T} + V\left(\frac{\partial A}{\partial V}\right)_{N,T} = A
+  \end{align*}
+  [Note that this result implies the well-known relationship: $N\mu = A + PV(\equiv G)$.]}
+
+  Since the Helmholtz free energy $A(N,V,T)$ satisfies the scaling relation
+  \begin{align*}
+    A(\lambda N, \lambda V, T) = \lambda A(N,V,T) \quad \text{for any } \lambda > 0,
+  \end{align*}
+  so $A(N,V,T)$ is homogeneous of degree $1$ in $N$ and $V$. So apply the Euler theorem for homogeneous functions to show that
+  \begin{align*}
+    N\left(\frac{\partial A}{\partial N}\right)_{V,T} + V\left(\frac{\partial A}{\partial V}\right)_{N,T} = A(N,V,T).
+  \end{align*} 
+
+  Since the chemical potential $\mu$ is defined as $\begin{aligned}
+    \mu = \left(\frac{\partial A}{\partial N}\right)_{V,T}
+  \end{aligned}$, and the pressure $P$ is defined as $\begin{aligned}
+    P = -\left(\frac{\partial A}{\partial V}\right)_{N,T}
+  \end{aligned}$, so we have the relation between the Helmholtz free energy and the chemical potential and pressure:
+  \begin{align*}
+    N\mu + V(-P) = A\Rightarrow N\mu = A + PV \equiv G.
+  \end{align*}
+
+  \subsection{Dilute Hard Sphere Gas}
+  \textbf{Assume there's a dilute hard sphere system, where exists $N$ hard spheres with radius $a$, or volume $\begin{aligned}
+    \omega_{e} = \frac{4}{3}\pi (2a)^{3}
+  \end{aligned}$.  The system is at thermal equilibrium at temperature $T$. The total energy is $E$, and the system is in a container with volume $V$. Derive}
+  \begin{enumerate}
+    \item \textbf{entropy $S(E,V)$. [Hint: For an $n$-dimensional sphere with radius $R$, its $(n-1)$-dimensional sphere area $S^{(n-1)}$ is  $\begin{aligned}
+      \text{Area} = \frac{2\pi^{n/2}}{\Gamma(n/2)}R^{n-1}s
+    \end{aligned}$]}
+    
+    The number of microstates is given by
+    \begin{align*}
+      \Omega(E,V,N) = \frac{1}{N!h^{3N}}\int_{\mathcal{D}}\mathrm{d}^{3N}q\mathrm{d}^{3N}p\delta\left(E - \sum_{i=1}^{N}\frac{p_{i}^{2}}{2m}\right),\quad \text{where } \mathcal{D}: |\vec{q}_{i}-\vec{q}_{j}|\geq 2a, \quad \forall i<j.
+    \end{align*}
+    At dilute gas limit, the free volume can be consideres as the rest volume:
+    \begin{align*}
+      V_{\text{free}} \approx V - \frac{N\omega_{e}}{2}.
+    \end{align*}
+    So for the real space integral part, we have
+    \begin{align*}
+      \int_{\mathcal{D}}\mathrm{d}^{3N}q\approx \left(V - \frac{N\omega_{e}}{2}\right)^{N}.
+    \end{align*}
+    Since the energy consists of the kinetic energy only, as
+    \begin{align*}
+      E = \sum_{i=1}^{N}\frac{p_{i}^{2}}{2m},
+    \end{align*}
+    the momentum integral part can be calculated:
+    \begin{align*}
+      \int\mathrm{d}^{3N}p\delta\left(E - \sum_{i=1}^{N}\frac{p_{i}^{2}}{2m}\right) = \int\mathrm{d}\Omega_{3N}\int_{0}^{\infty}\mathrm{d}p p^{3N-1}\delta(E-\frac{p^{2}}{2m}),\quad p = \sqrt{\sum_{i=1}^{3N}p_{i}^{2}}
+    \end{align*}
+    where $\mathrm{d}\Omega_{3N}$ is the angle interal part of the $3N$-dimensional sphere. As the hint gives, we have
+    \begin{align*}
+      S_{3N-1}(R) = \frac{2\pi^{3N/2}}{\Gamma(3N/2)}R^{3N-1}
+    \end{align*}
+    Let $R = \sqrt{2mE}$, and remember that $\begin{aligned}
+      \delta(E - \frac{p^{2}}{2m}) = \frac{m}{p}\delta(p-\sqrt{2mE})
+    \end{aligned}$, we have
+    \begin{align*}
+      \int\mathrm{d}^{3N}p\delta\left(E - \sum_{i=1}^{N}\frac{p_{i}^{2}}{2m}\right) \propto (2mE)^{3N/2 - 1}
+    \end{align*}
+    So the number of microstates is given by
+    \begin{align*}
+      \Omega(E,V,N) \approx \frac{1}{N!h^{3N}}\left(V - \frac{N\omega_{e}}{2}\right)^{N}\frac{(2\pi m)^{3N/2}}{\Gamma(3N/2)}E^{3N/2 - 1}
+    \end{align*}
+    So the Boltzmann entropy is given by
+    \begin{align*}
+      S(E,V,N) = k_{B}\left\{
+        -\ln{N!} - 3N\ln{h} + N\ln{\left(V - \frac{N\omega_{e}}{2}\right)}  + \left(\frac{3N}{2} - 1\right)\ln{E} + \frac{3N}{2}\ln{(2\pi m)} - \ln{\Gamma\left(\frac{3N}{2}\right)}
+      \right\}
+    \end{align*}
+
+    With thermodynamic limit $N\rightarrow \infty$ and Stirling approximation $\ln{N!}\approx N\ln{N} - N$, we have
+    \begin{align*}
+      S(E,V,N) \sim Nk_{B}\ln{\left(V - \frac{N\omega_{e}}{2}\right)} + \frac{3N}{2}k_{B}\ln{E} + \cdots
+    \end{align*}
+
+    \item \textbf{guess the equation of state.}  
+    
+    Since only the volume changed from $V$ to $\begin{aligned}
+      V - \frac{N\omega_{e}}{2}
+    \end{aligned}$, the state equation can be compared with the ideal gas one:
+    \begin{align*}
+      P\left(V - \frac{N\omega_{e}}{2}\right) = Nk_{B}T.
+    \end{align*}
+    \item \textbf{calculate the equation of state.}
+    
+    With the thermodynamic relation $\begin{aligned}
+      \frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)_{V,N}
+    \end{aligned}$ and $\begin{aligned}
+      \frac{P}{T} = \left(\frac{\partial S}{\partial V}\right)_{E,N}
+    \end{aligned}$, we have
+    \begin{align*}
+      S(E,V,N) &\sim NK_{B}\ln{\left(V - \frac{N\omega_{e}}{2}\right)} +\cdots\\
+      \frac{P}{T} &= \left(\frac{\partial S}{\partial V}\right)_{E,N} \sim \frac{Nk_{B}}{V - \frac{N\omega_{e}}{2}}\cdots\\
+    \end{align*}
+    So we have the equation of state for the dilute hard sphere system:
+    \begin{align*}
+      \boxed{P\left(V - \frac{N\omega_{e}}{2}\right) = Nk_{B}T}
+    \end{align*}
+  \end{enumerate}
+\end{document}

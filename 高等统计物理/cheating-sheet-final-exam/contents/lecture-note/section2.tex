@@ -1,0 +1,804 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Ensemble Theory}
+\subsection{Space}
+描述 gas model 的方法: 列出所有气体粒子的 $(q,p)$. 
+
+\subsubsection{$\mu$-space by Ehrenfest}
+    $(x,y,z,v_{x},v_{y},v_{z})$ 6-dim space. 其中的一个点描述的是一个粒子的状态. 共需 $N\sim N_{A}$ 个点进行描述. 
+    \begin{align*}
+        &\sum_{i}\delta(x-x_{i})\delta(y-y_{i})\delta(z-z_{i})\delta(v_{x}-v_{xi})\delta(v_{y}-v_{yi})\delta(v_{z}-v_{zi}) \\
+        &\text{Distribution function:}\quad f(\vec{x},\vec{v},t)\mathrm{d}^{3}\vec{x}\mathrm{d}^3\vec{v}
+    \end{align*}
+    随着时间推移, $\begin{aligned}
+        H = \int f\ln{f}
+    \end{aligned}$ 总是趋向于减小. 在达成最小/细致平衡时: $\vec{x}$: 均匀; $\vec{v}$: Maxwell 分布. 
+    
+    [Discussion] 质疑: 令某一时刻 $t$ 下 $\vec{v}\rightarrow -\vec{v}$, 难道不会使 $H$ 回升吗? 
+    
+    \subsubsection{$\Gamma$-space}
+    $\{q_{1},q_{2},q_{3},p_{1},p_{2},p_{3},q_{4},q_{5},q_{6},p_{4},p_{5},p_{6},\cdots\}$, $6N$-dim. 空间中的一个点描述的是整团气体某时刻下的状态. 系统的演化即点的运动.
+
+    在 $\mu$-空间中的通过 course-graining 分割的一个 $|k\rangle$ 状态格子中, 有着 $n_{k}$ 个粒子. 该格子的体积为 6-dim phase volume $\omega_{k} = \Delta\vec{q}_{k}\Delta\vec{p}_{k}$. 相应地, 在 $\Gamma$ 空间中由这 $n_{k}$ 个粒子所占据的空间体积为 $\begin{aligned}
+        \prod_{\alpha=1}^{n_{k}}\Delta\vec{q}_{\alpha}\Delta\vec{p}_{\alpha} = \prod_{\alpha=1}^{n_{k}}\omega_{k} = \omega_{k}^{n_{k}}
+    \end{aligned}$. 因此所有粒子所占据的空间为 
+    $\begin{aligned}
+        \prod_{k}\omega_{k}^{n_{k}}
+    \end{aligned}$
+
+    在给定的 $\{n_{k}\}$ 中, 同状态 $|k\rangle$ 的粒子间交换不会产生新的状态数, 因此修正: $\begin{aligned}
+        W^{\prime} = \frac{N!}{\begin{aligned}
+            \prod_{k}n_{k}!
+        \end{aligned}}\prod_{k}\omega_{k}^{n_{k}}
+    \end{aligned}$. 该体积和状态数成正比, 那么寻找在 $\begin{aligned}
+        \sum_{k}n_{k} = N,\quad\sum_{k}\varepsilon_{k}n_{k} = E
+    \end{aligned}$ 约束下使得空间体积/状态数极大的 $\begin{aligned}
+         n_{k}^{*} = A\omega_{k}e^{-\beta\varepsilon_{k}}
+    \end{aligned}$. 
+
+    \subsubsection{Geomatry of High-Dimensional Space}
+    \paragraph{An Illustrative Example: Sphere in $n$-dim Space} 
+    
+    3-dim space: $\begin{aligned}
+        S^{2}, B^{3}
+    \end{aligned}$; $n$-dim space: $\begin{aligned}
+        S^{n-1}, B^{n}
+    \end{aligned}$. 
+
+    在 $n$-dim 欧式空间中的一个点 $x = (x_{1},x_{2},\cdots, x_{n})$. $\vec{x}$ 的长度为 $\begin{aligned}
+        |x| = \sqrt{\sum_{i=1}^{n}x_{i}^{2}}
+    \end{aligned}$.
+
+    $\begin{aligned}
+        \text{体积:}\quad V\left(B_{R}^{n}\right) &= C_{n}R^{n},\quad C_{n} = \frac{\pi^{\frac{n}{2}}}{\begin{aligned}
+            \Gamma\left(\frac{n}{2}+1\right)
+        \end{aligned}},\quad \Gamma(z+1)\equiv \int_{0}^{\infty}t^{-z} e^{-t}\mathrm{d}t\stackrel{z\in\mathbb{Z}}{=} z!\approx \sqrt{2\pi z}\left(\frac{z}{e}\right)^{z}\\
+        \quad C_{n} &\stackrel{n\text{ even}}{=} \frac{\pi^{n/2}}{\begin{aligned}
+            \left(\frac{n}{2}\right)!
+        \end{aligned}}\Rightarrow V\left(B_{R}^{n}\right) \simeq \frac{1}{\sqrt{n\pi}}\left(\sqrt{\frac{2\pi e}{n}}\right)^{n}R^{n},\quad \text{unit sphere: }V\left(B_{R}^{n}\right) = 1\Leftrightarrow R = \sqrt{\frac{n}{2\pi e}}
+    \end{aligned}$
+
+    设两共心球半径分别为 $R$, $R(1+\varepsilon)$. 求夹层(Shell)体积为 $V_{\text{shell}} = V(R)[(1+\varepsilon)^{n}-1^{n}]$. 即使 $\varepsilon$ 很小, 也会随着 $n\uparrow$ 使得 $V[R(1+\varepsilon)]$ 急剧上升. 即高维空间中体积集中在 "边缘".
+
+    [Example] 高维酒杯. 要求填满圆锥形酒杯的一半, 随着维度升高, 酒面高度也会升高, 趋近于酒杯边缘.
+
+    [Example] 密度均匀, $n$-dim, 半径为 $R$ 的高维球 $\begin{aligned}
+        B_{R}^{n}
+    \end{aligned}$. 只取单个轴 $x$, 另一个轴作为垂直 $x$ 分量的 $\begin{aligned}
+        B_{R}^{n}
+    \end{aligned}$ 球切片 $\begin{aligned}
+        B_{R^{\prime}}^{n-1}
+    \end{aligned}$, 其中 $\begin{aligned}
+        R^{\prime} = R\sqrt{1 - \frac{x^{2}}{R^{2}}}
+    \end{aligned}$. 存在 $\begin{aligned}
+        \int_{-R}^{R}\rho(x)\mathrm{d}x = \int_{-R}^{R}V\left(B_{R^{\prime}}^{n-1}\right)\mathrm{d}x = V\left(B_{R}^{n}\right)
+    \end{aligned}$, 求 $\rho(x)$ 表达式. 
+
+$\begin{aligned}
+        \frac{V\left(B_{R^{\prime}}^{n-1}\right)}{V\left(B_{R}^{n-1}\right)} = \left(\frac{R^{\prime}}{R}\right)^{n-1} = \left(1-\frac{x^{2}}{R^{2}}\right)^{\frac{n-1}{2}}\simeq e^{-(n-1)x^{2}/2R^{2}}\end{aligned}$; 
+For a unit ball, $\begin{aligned} R = \sqrt{\frac{n}{e}}\Rightarrow\rho(x) \simeq e^{-ex^{2}/2}V(B_{1}^{n-1})
+    \end{aligned}$
+
+\paragraph{The Geometric Deviation Principle}
+
+Minkowski 求和. 点集 $A$ + $B$ 对应于 $\vec{a}+\vec{b}$. $A$, $B$ 本身具有一定的形状.
+
+Brunn-Minkowski inequality: 
+$\begin{aligned}
+    [V(A+B)]^{\begin{aligned}
+        1/n
+    \end{aligned}}\geq [V(A)]^{\begin{aligned}
+        1/n
+    \end{aligned}} + [V(B)]^{\begin{aligned}
+        1/n
+    \end{aligned}}
+\end{aligned}$. $A$ 和 $B$ 为齐形凸体, 即 $A = \alpha B+x$ 时取等. 
+
+Isoperimetric principle: 等面积, 求周长最小; 等体积, 求表面积最小. 
+
+设 $n$-dim 无定形点集 $C$ 和 $n$-dim 球点集 $B$, 两者体积相同 $\begin{aligned}
+    V(C) = V(B) = V(B^{n}_{R})
+\end{aligned}$. 设 $\epsilon\rightarrow 0$, $C+ \epsilon B$ 使得在 $C$ 表面增加薄壳. 那么 $C$ 的 $(n-1)$-dim 表面积(Area)可借该薄壳体积除以厚度 $\epsilon$ 得到:
+$\begin{aligned}
+    \text{Area} = \lim_{\epsilon\rightarrow 0}\frac{V(C+\epsilon B) - V(C)}{\epsilon}
+\end{aligned}$. 不等式: 
+$\begin{aligned}
+    V(C+\epsilon B)^{1/n}\geq V(C)^{1/n} + V(\epsilon B)^{1/n}
+    = V(B)^{1/n} + (\epsilon^{n}V(B))^{1/n}
+    \Rightarrow \text{Area} \geq \lim_{\epsilon\rightarrow 0}\frac{\left[(1+\epsilon)^{n}-1\right]}{\epsilon}V(B)\approx n\cdot V(B)
+\end{aligned}$, $C$ 为球时取等. 于是 "等体积, 表面积最小时为球" 得证. 
+
+[Example] 取两铁环沾肥皂水, 铁环间由肥皂水薄膜相连. 几何: curvature; 物理: surface tension. Laplace preessure: $p\propto \sigma \overline{H}$. 
+[Example] 悬链线(Catenary Curve).
+
+类比不等式 $\begin{aligned}
+    \frac{x+y}{2}\geq \sqrt{xy}
+\end{aligned}$, 那么 $\begin{aligned}
+    \sqrt{[V(C)V(D)]}\leq V\left[\frac{C+D}{2}\right]\leq \left(1-\frac{\epsilon^{2}}{8}\right)^{n}V(B)
+\end{aligned}$. $\epsilon$ 为不对齐程度. 
+
+设单位体积球点集 $B$, 而 $C$ 占据 $B$ 体积的 $\begin{aligned}
+    \frac{1}{2}
+\end{aligned}$, 剩下的 $\begin{aligned}
+    \frac{1}{2}
+\end{aligned}$ 体积为 $D$. 即有 $\begin{aligned}
+    V(C) = \frac{1}{2}V(B)
+\end{aligned}$. 那么 $\begin{aligned}
+    M = \frac{C+D}{2}
+\end{aligned}$ 所能占据的体积是有限的. 代入 $V(B) = 1$ 得 $\begin{aligned}
+    V(D)\leq 2(1-\frac{1}{8}\epsilon^{2})^{2n}\times V(B)
+    = 2e^{-n\epsilon^{2}/4}V(B)
+\end{aligned}$. 
+
+[Example] 考虑 $n$-dim 球的球面 $S^{n-1}$, 在球面上有一分布函数 $f$ 且随球面坐标缓慢变化. 找到 $f$ 的中位数 $M$, 分界为 $S_{1}(f<M)$ 和 $S_{2}(f>M)$. 令 $S_{1}$ 向 $S_{2}$ 方向膨胀微薄一层, 得到 $f = M+\epsilon$ 界线; 同样地, $S_{2}$ 向 $S_{1}$ 方向膨胀后, 得到 $f = M-\epsilon$ 界线. 因为 $V(S_{1})\ll V(S^{n-1})$ 且 $V(S_{2})\ll V(S^{n-1})$, 说明球面上大部分数值都集中在中值 $M$ 附近.
+
+\paragraph{Probability Perspective @ Levy, 1980} Uniform distribution of dots $\rightarrow$ volume interpretted as the probability. 
+
+[Example] Probability theory of large deviation. Toss coin(抛掷硬币): $X_{i} = 0,1$; 均值 $\begin{aligned}
+    M_{N} = \frac{1}{N}\sum_{i=1}^{N}X_{i}
+\end{aligned}$. 令 $\begin{aligned}
+    x\in\left(\frac{1}{2},1\right)
+\end{aligned}$, 
+
+$\begin{aligned}
+    P(M_{N}>x) < e^{-NI(x)},
+\end{aligned}$, 其中 $\begin{aligned}
+    I(x) = x\ln{x} + (1-x)\ln{(1-x)} + \ln{2}
+\end{aligned}$. 令 $\begin{aligned}
+    x = \frac{1}{2}+\epsilon
+\end{aligned}$, 则 $\begin{aligned}
+    P(M_{N}>\frac{1}{2}+\epsilon) < e^{-2N\epsilon^{2}}
+\end{aligned}$. 
+
+$M_{N}$, "macrostate". microstates: $\begin{aligned}
+    C_{N}^{NM_{N}} = C_{N}^{k}
+\end{aligned}$. 
+
+$\begin{aligned}
+    C_{N}^{k} &= \frac{N!}{k!(N-k)!}\Rightarrow
+    \ln{C_{k}} = \ln{\left[\frac{N!}{k!(N-k)!}\right]} \simeq -N\ln{x}\ln{x} - N(1-x)\ln{(1-x)} = -N[I(x)-\ln{2}]\\
+    S &= k_{B}\ln{C_{N}^{k}}
+\end{aligned}$
+
+[Example] $[-1,1]\otimes [-1,1]$ 空间内随机撒点. 设 $x+y=0$ 分割线, 该线上的点有 $\begin{aligned}
+    \lim_{n\rightarrow\infty}\sum_{i}^{n}x_{i}=0
+\end{aligned}$; 相应地, 若 $\begin{aligned}
+    \lim_{n\rightarrow\infty}x+y=\epsilon
+\end{aligned}$ 描述了偏离中心线的程度.
+
+\subsection{From Dynamics to Probability Description}
+
+Measurement: time-avarage. Phase space with macroscopic constraint: ensemble-avarage. Poincare recurrence theorem(庞加莱回归定理)
+
+时间平均: $\begin{aligned}
+    \langle f\rangle_{t} = \frac{\begin{aligned}
+        \sum_{i}f_{i}\tau_{i}
+    \end{aligned}}{\begin{aligned}
+        \sum_{i}\tau_{i}
+    \end{aligned}}
+\end{aligned}$
+
+Course-grained description of phase space: $f_{i} = f_{\alpha},\quad\forall i\in\alpha$.
+\begin{align*}
+    \langle f\rangle_{t} &= \frac{1}{T}\sum_{\alpha}f_{\alpha}t_{\alpha},\quad t_{\alpha} = \sum_{i\in\alpha}\tau_{\alpha}\\
+    &= \sum_{\alpha}f_{\alpha}\times \left(\frac{t_{\alpha}}{T}\right) = \sum_{\alpha}f_{\alpha}p_{\alpha},\quad\text{prob description: } p_{\alpha} = \frac{t_{\alpha}}{T}
+\end{align*}
+
+Formal presentation: in equilibrium, 
+\begin{align*}
+    \stackrel{\text{ensemble avarage}}{\langle f\rangle_{e}} &= \langle\langle f\rangle_{e}\rangle_{t} = \langle\langle f\rangle_{t}\rangle_{e}\\
+    \left\langle\lim_{T\rightarrow\infty}\langle f\rangle_{t}\right\rangle _{e} &= \lim_{T\rightarrow\infty}\langle f\rangle_{t}: \quad\text{ergodic(各态历经), 初态无关}\\
+    \langle f\rangle_{e} &= \lim_{T\rightarrow\infty}\langle f\rangle_{t}
+\end{align*}
+
+不同情况下的 microstate: 1. In $\Gamma$-space($6N$-dim), $(q,p)$; 2. $|n\rangle$; 3. $\sigma = \pm 1$; 4. $\sigma = \{0,1\}$...
+
+Representative point $\leftrightarrow$ one gas. Density function(continuum description) $\begin{aligned}
+    \sum_{i}\delta(x-x_{i})\rightarrow \rho(x)
+\end{aligned}$. 
+
+$\begin{aligned}
+    \langle f\rangle = \frac{\begin{aligned}
+        \sum_{\alpha}f_{\alpha}p_{\alpha,t}
+    \end{aligned}}{\begin{aligned}
+        \sum_{\alpha} p_{\alpha,t}
+    \end{aligned}}\Longrightarrow  \frac{\begin{aligned}
+        \int f(q,p)\rho(q,p,t)\mathrm{d}^{3N}q\mathrm{d}^{3N}p
+    \end{aligned}}{\begin{aligned}
+        \int \rho(q,p,t)\mathrm{d}^{3N}q\mathrm{d}^{3N}p
+    \end{aligned}}
+\end{aligned}$
+
+equilibrium condition: $\langle f\rangle$ time-invariant $\rightarrow$ $\begin{aligned}
+    \frac{\partial \rho}{\partial t} = 0
+\end{aligned}$
+
+[Discussion] 若 $\rho(q,p,t) = q(q,p)f(t)$, $\langle f\rangle$ 在数学上也是平衡的. 这种情况下需要考虑到
+\begin{align*}
+    \int g(q,p)f(t)\mathrm{d}^{3N}q\mathrm{d}^{3N}p = N\Rightarrow f(t) = \text{const.}\Rightarrow \frac{\partial \rho}{\partial t} = 0.
+\end{align*}
+
+\subsubsection{Dynamics}
+\paragraph{A Single Representative Point in $\Gamma$-Space}.
+
+Hamiltonian 力学: $\begin{aligned}
+    \dot{q}_{i} = \frac{\partial H}{\partial p_{i}},\quad \dot{p}_{i} = -\frac{\partial H}{\partial q_{i}}
+\end{aligned}$. 
+特征: 1. 轨迹不可能自相交; 2. 回归定理. 
+\paragraph{Multiple Representative Points}
+在 $\Gamma$-空间中选取一个体积 $\omega$, 将会有 $\begin{aligned}
+    \int_{\omega}\rho(q,p,t)\mathrm{d}\omega
+\end{aligned}$ 个代表点. 其表面为 $\partial\omega$. 代表点在 $\Gamma$-空间中的运动速度为 $\begin{aligned}
+    \vec{v}_{i} = \{\dot{q}_{i},\dot{p}_{i}\}
+\end{aligned}$. 那么存在关系
+\begin{align*}
+    \frac{\partial}{\partial t}\int_{\omega}\rho(q,p,t)\mathrm{d}\omega &= -\int_{\partial\omega}\rho\vec{v}\cdot\hat{n}\mathrm{d}\sigma = - \int_{\omega}\nabla\cdot(\rho\vec{v})\mathrm{d}\omega,\quad \nabla = \left(\frac{\partial}{\partial \mathbf{q}}, \frac{\partial}{\partial \mathbf{p}}\right)\\
+    \Rightarrow \frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\vec{v}) &= 0,\quad \text{Continuity Equation}
+\end{align*}
+Material deriavtive. 设 $g(\vec{x},t)$, flow field: $\vec{v}(\vec{x},t)$. 
+\begin{align*}
+    g(\vec{x}+\delta\vec{x},t+\delta t) - g(\vec{x},t) &= g(\vec{x},t) + \delta\vec{x}\frac{\partial g}{\partial\vec{x}} + \delta t\frac{\partial g}{\partial t} - g(\vec{x},t) = \delta\vec{x}\frac{\partial g}{\partial\vec{x}} + \delta t\frac{\partial g}{\partial t} = \delta t\left(\vec{v}\cdot\frac{\partial g}{\partial\vec{x}} + \frac{\partial g}{\partial t}\right)\\
+    \frac{\mathrm{D}g}{\mathrm{D}t} &\equiv \frac{g(\vec{x}+\delta\vec{x},t+\delta t) - g(\vec{x},t)}{\delta t} = \vec{v}\cdot\frac{\partial g}{\partial \vec{x}} + \frac{\partial g}{\partial t}
+\end{align*}
+ 
+$\begin{aligned}
+    \text{Liouville's theorem: }\frac{\mathrm{D}\rho(q,p,t)}{\mathrm{D}t} &= \frac{\partial\rho}{\partial t} + \vec{v}\cdot\nabla\rho
+    = \frac{\partial\rho}{\partial t} + \sum_{i}\left(\dot{q}_{i}\frac{\partial\rho}{\partial\rho_{i}} + \dot{p}_{i}\frac{\partial\rho}{\partial p_{i}}\right)\\
+    & = \frac{\partial\rho}{\partial t} + \sum_{i}\left(\frac{\partial H}{\partial p_{i}}\frac{\partial\rho}{\partial\rho_{i}} - \frac{\partial H}{\partial q_{i}}\frac{\partial\rho}{\partial p_{i}}\right)= \boxed{\frac{\partial \rho}{\partial t} + \{\rho, H\} = 0}
+\end{aligned}$
+
+[Discussion]How to understand $\begin{aligned}
+    \frac{\mathrm{D}\rho}{\mathrm{D}t} = 0
+\end{aligned}$? 1. canonical transform; 2. incompressibility ($\nabla\cdot\vec{v}=0$)
+
+$\begin{aligned}
+    \frac{\partial\rho}{\partial t} + \nabla(\rho\vec{v}) &= 0
+    \Rightarrow \stackrel{\frac{\mathrm{D}\rho}{\mathrm{D}t}=0}{\underline{\frac{\partial\rho}{\partial t} + \vec{v}\cdot\nabla\rho}} + \rho\nabla\cdot\vec{v} = 0 \Rightarrow \nabla\cdot\vec{v} = 0\\
+    \text{check:}\quad\nabla\cdot\vec{v} &= \sum_{i}\left(\frac{\partial}{\partial q_{i}}\dot{q}_{i} + \frac{\partial}{\partial p_{i}}\dot{p}_{i}\right) = \sum_{i}\left(\frac{\partial}{\partial q_{i}}\frac{\partial H}{\partial p_{i}} - \frac{\partial}{\partial p_{i}}\frac{\partial H}{\partial q_{i}}\right) = 0
+\end{aligned}$
+
+$H$-dynamics $\Leftrightarrow$ incompressibility of representative points.
+
+若$\rho$为$H$函数$\rho(H)$, 则$\begin{aligned}
+    \{\rho, H\} = 0\Rightarrow \frac{\partial \rho}{\partial t} = 0
+\end{aligned}$, 即达成 equilibrium; 两种可能: 1. $\rho = \text{const.}$; 2. @Gibbs: canonical $\Rightarrow\ln{\rho}\propto H$
+
+\subsection{Microcanonical Ensemble}
+气体模型 macrostate: $(E,N,V)$, to construct an ensemble of microstates. surface of $(6N-1)$-dim. 
+
+[Discussion] 可能总动量 $\vec{P}\neq \vec{0}$, 总角动量 $\vec{L}\neq\vec{0}$. 以动量为例子: 
+
+$\begin{aligned}
+    \stackrel{\text{1st particle}}{\underline{p_{1x}^{2}+p_{1y}^{2} + p_{1z}^{2}}} + p_{2x}^{2} + \cdots + p_{Nz}^{2} \stackrel{\text{ideal gas}}{=} 2m E,\quad 
+    P_{z} = \sum_{i=1}^{N}p_{1z} \rightarrow 0
+\end{aligned}$, due to high dimension.
+
+[Example] 2-state system. 
+$\begin{aligned}
+    |1\rangle: N_{1}, |2\rangle: N_{2}.\quad P_{1} = \frac{N_{1}}{N_{1}+N_{2}},P_{2} = \frac{N_{2}}{N_{1}+N_{2}}
+    \Rightarrow \langle f\rangle = f_{1}P_{1} + f_{2}P_{2}
+\end{aligned}$. 
+
+Equilibrium density function? 
+$\begin{aligned}
+    \rho(q,p) = \begin{cases}
+        \begin{aligned}
+            \text{const.}\quad H(q,p)\in \lim_{\Delta\rightarrow 0}\left[E - \frac{\Delta}{2},E+\frac{\Delta}{2}\right]
+        \end{aligned}\\
+        0,\quad \text{others}
+    \end{cases}
+\end{aligned}$
+
+Foudation of equilibrium: 等概率假设, 且为 ergodicity(各态历经). 
+
+$\begin{aligned}
+    \text{Closed system: }S &= k_{B}\ln{\Omega},\quad \Omega = \frac{\omega}{\omega_{0}},\quad \omega:\text{allowed region of motion},\omega_{0}:\text{some constant}\\
+    \delta q\delta p\sim h&\Rightarrow (\delta \mathbf{q}\delta \mathbf{p})\sim h^{3N}\Rightarrow \omega_{0} = h^{3N}\\
+    \Omega &= \frac{1}{{\color{red}{N!}}h^{3N}}\int_{\omega}\mathrm{d}^{3}\vec{q}_{1}\mathrm{d}^{3}\vec{q}_{2}\cdots\mathrm{d}^{3}\vec{q}_{N}\mathrm{d}^{3}\vec{p}_{1}\mathrm{d}^{3}\vec{p}_{2}\cdots\mathrm{d}^{3}\vec{p}_{N},\quad{\color{red}{N!}}\text{ to make }S\text{ is extensive}\\
+    &\Rightarrow\text{indisdinguishability of microscopic particles}
+\end{aligned}$
+
+\subsubsection{Equation of State for Ideal Gas}
+Derive the equation of state by microcanonical ensemble method. 
+
+理想气体的内能表达式: $\begin{aligned}
+    \sum_{i=1}^{N}\left|\vec{p}_{i}\right|^{2} = 2mE
+\end{aligned}$. 等能面为 $(3N-1)$ 维球面, 且球面半径约为 $\sqrt{E}$. 那么相空间体积/微观态数
+
+$\begin{aligned}
+    \Omega\sim (\sqrt{E})^{3N-1} \sim E^{3N/2}
+\end{aligned}$. 克劳修斯熵 $\begin{aligned}
+    S = k_{B}\ln{\Omega} = \frac{3}{2}k_{B}N\ln{E} + \text{const.}
+\end{aligned}$; 1st law: $\begin{aligned}
+    \frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)_{V}\Rightarrow E = \frac{3}{2}Nk_{B}T
+\end{aligned}$. 
+
+在 1D 下存在关系 $\begin{aligned}
+    p\cdot L&\sim \pi\Rightarrow p\sim \frac{1}{L}\Rightarrow\delta p\sim \frac{1}{L}
+\end{aligned}$, 则更良的微观态数表达式为 $\begin{aligned}
+    \Omega\sim \frac{(\sqrt{E})^{3N-1}}{(\delta p)^{3N}}\stackrel{V\sim L^{3}}{\longrightarrow} \left(E^{3/2}V\right)^{N}
+\end{aligned}$,
+
+$\begin{aligned}
+    S = k_{B}\ln{\Omega} = Nk_{B}\left(\frac{3}{2}\ln{E} + \ln{V} + \text{const.}\right)\Rightarrow \left(\frac{\partial S}{\partial V}\right)_{E} = \frac{Nk_{B}}{V}\Rightarrow \mathrm{d}S = \frac{3}{2}Nk_{B}\frac{\mathrm{d}E}{E} + {\color{red}{Nk_{B}\frac{\mathrm{d}V}{V}}} = \frac{\mathrm{d}E}{T} + {\color{red}{\frac{P\mathrm{d}V}{T}}}
+\end{aligned}$, 
+    
+观察比较得到 $\begin{aligned}
+    Nk_{B}\frac{\cancel{\mathrm{d}V}}{V} =\frac{P\cancel{\mathrm{d}V}}{T} \Rightarrow P = \frac{N}{V}k_{B}T
+\end{aligned}$. 
+
+\subsubsection{Dilute Hard Sphere System}
+各小球可占体积为因各自体积而相互减少. 设小球半径为 $a$, 体积为 $\begin{aligned}
+    \omega_{e} = \frac{4}{3}\pi(2a)^{3}
+\end{aligned}$. 接触距离至少为球心间距所以是 $2a$. 
+
+微观态数为 $\begin{aligned}
+    \Omega = \frac{1}{N!h^{N}}\int\mathrm{d}^{3}\vec{q}_{1}\mathrm{d}^{3}\vec{q}_{2}\cdots\mathrm{d}^{3}\vec{q}_{N}\mathrm{d}^{3}\vec{p}_{1}\mathrm{d}^{3}\vec{p}_{2}\cdots\mathrm{d}^{3}\vec{p}_{N}
+\end{aligned}$, 其中 
+
+$\begin{aligned}
+    \int\mathrm{d}^{3}\vec{q}_{1}\cdots\mathrm{d}^{3}\vec{q}_{N} = V(V-\omega_{e})(V-2\omega_{e})\cdots[V-(N-1)\omega_{e}] = \prod_{i=0}^{N-1}(V-i\omega_{e})
+    \stackrel{\ln}{\Rightarrow} 
+    \ln{\prod_{i=0}^{N-1}(V-i\omega_{e})} = \sum_{i=0}^{N-1}\ln{(V-i\omega_{e})}
+\end{aligned}$. 
+
+使用极限 $\begin{aligned}
+    \ln{(x+\delta x)} \Leftrightarrow \ln{x} + \frac{1}{x}\delta x
+\end{aligned}$, 则 $\begin{aligned}
+    \sum_{i=0}^{N-1}\ln{(V-i\omega_{e})} = \sum_{i=0}^{N-1}\left(\ln{V} - \frac{i\omega_{e}}{V}\right) = N\ln{V} - \frac{\omega_{e}}{V}\frac{(N-1)N}{2}
+\end{aligned}$
+
+$\begin{aligned}
+    \simeq N\left(\ln{V} - \frac{\omega_{e}N}{2V}\right)\simeq N\ln{\left(V-\frac{\omega_{e}N}{2}\right)}\Rightarrow
+    \int\mathrm{d}^{3N}q = \left(V - \frac{\omega_{e}N}{2}\right)^{N}
+\end{aligned}$
+
+[Exercise]设有 $N$ 个硬球, 半径 $a$, 约定 $\begin{aligned}
+    \omega_{e} = \frac{4}{3}\pi (2a)^{3}
+\end{aligned}$, 体系能量为 $E$, 总体积为 $V$, 温度为 $T$. 尝试计算 S(E,V), 状态方程. 
+
+[Hint:$\begin{aligned}
+    \text{Area}(S^{n-1}) = \frac{2\pi^{\begin{aligned}
+        \frac{n}{2}
+    \end{aligned}}}{\begin{aligned}
+        \Gamma\left(\frac{n}{2}\right)
+    \end{aligned}}R^{n-1}
+\end{aligned}$]
+
+\subsubsection{Einstein's Model for Heat Capacity of Solid(1907)}
+Excitations $\rightarrow$ Solid property? Quantum? 
+
+$N$ atoms, 等效于 $3N$ independent oscillators. Total energy: $U$, distributed to $3N$ oscillators. 等效为将 $\begin{aligned}
+    \frac{U}{\hbar\omega_{0}}
+\end{aligned}$ 个竖隔板插入由 $3N$ 个球间隔出的 $(3N-1)$ 的缝隙中.
+
+微观态数 $\begin{aligned}
+    W = \frac{\begin{aligned}
+        \left[(3N-1)+\left(\frac{U}{\hbar\omega_{0}}\right)\right]!
+    \end{aligned}}{\begin{aligned}
+        (3N-1)!\left(\frac{U}{\hbar\omega_{0}}\right)!
+    \end{aligned}}
+\end{aligned}$, 则每 1 mol 原子的熵为 $\begin{aligned}
+    s(u) = k_{B}\ln{W} \simeq 3R\left[\ln{\left(1 + \frac{u}{u_{0}}\right)} + \frac{u}{u_{0}}\ln{\left(1+\frac{u_{0}}{u}\right)}\right]
+\end{aligned}$, 
+
+其中 $\begin{aligned}
+    s = \frac{S}{N/N_{A}},\quad u = \frac{U}{N/N_{A}},\quad u_{0} = 3N_{A}\hbar\omega_{0}
+\end{aligned}$. 压强是某量对体积的偏导数 $\begin{aligned}
+    P = \frac{\partial\sharp}{\partial V},\quad \sharp: U,S\cdots
+\end{aligned}$, 热容则是 $\begin{aligned}
+    c = T\frac{\partial S}{\partial T}
+\end{aligned}$. 
+
+温度 $\begin{aligned}
+    \frac{1}{T} = \left[\frac{\partial S(U)}{\partial U}\right] = \frac{k_{B}}{\hbar\omega_{0}}\ln{\left(1+\frac{3}{u}\hbar\omega_{0}\right)}
+\end{aligned}$, 代入即有 $\begin{aligned}
+    \frac{1}{3N_{A}}u(T) &= \frac{\hbar\omega_{0}}{e^{\begin{aligned}
+        \hbar\omega_{0}/k_{B}T
+    \end{aligned}}-1}
+\end{aligned}$, 正是 Boson 行为. 
+
+热容为 $\begin{aligned}
+    c= \frac{\partial u}{\partial T} = 3N_{A}k_{B}\left(\frac{\hbar\omega_{0}}{k_{B}T}\right)^{2}e^{\begin{aligned}
+        -\frac{\hbar\omega_{0}}{k_{B}T}
+    \end{aligned}}
+\end{aligned}$. 
+
+\subsection{Canonical Ensemble}
+Macrostate: $(N,V,T)$. 能量允许涨落. 又名: Entropy representation.
+
+Equilibrium density function? @Gibbs: $\begin{aligned}
+    \frac{\partial\rho}{\partial t} = -\vec{v}\cdot \nabla\rho
+\end{aligned}$. If equilibrium $\begin{aligned}
+    \frac{\partial\rho}{\partial t} = 0
+\end{aligned}$, then $\begin{aligned}
+    \vec{v}\cdot \nabla\rho = 0
+\end{aligned}$. 
+
+$\begin{aligned}
+    \sum_{i}\left(\dot{q}_{i}\frac{\partial\rho}{\partial q_{i}} +\dot{p}_{i}\frac{\partial\rho}{\partial q_{i}}\right) = 0 \Rightarrow \sum_{i}\left(\frac{\partial H}{\partial p_{i}}\frac{\partial\rho}{\partial q_{i}} - \frac{\partial H}{\partial q_{i}}\frac{\partial\rho}{\partial q_{i}}\right) = 0
+\end{aligned}$. 若 $\rho$ 为 $H$ 函数 $\rho(H)$, 则方程自动满足. 
+
+$\begin{aligned}
+\rho_{1+2} = \rho_{1}\times \rho_{2}, \quad H_{1+2} = H_{1} + H_{2}\Rightarrow \ln{\rho}\propto \alpha H \Rightarrow \rho\propto e^{\alpha H}
+\end{aligned}$
+
+\subsubsection{Connection to Microcanonical Ensemble}
+
+\paragraph{Environment \& System Perspective} 
+设环境为 $A^{\prime}$, 处于态 $\begin{aligned}
+    \left|r^{\prime}\right\rangle
+\end{aligned}$; 体系为 $A$, 处于态 $|r\rangle$, $A+A^{\prime}$ 整体是孤立系统. 那么有 $E_{r}+E_{r^{\prime}} = E^{(0)}=\text{const.}$; 设 $\begin{aligned}
+    \Omega^{\prime}
+\end{aligned}$ 为环境微观态数, 则体系处于态 $\begin{aligned}
+    \left|r\right\rangle
+\end{aligned}$ 的概率 $\begin{aligned}
+    P_{r} \propto \Omega^{\prime}(E_{r^{\prime}}) = \Omega^{\prime}(E^{(0)}-E_{r})
+\end{aligned}$. 假定体系所占能量足够小, 即 $\begin{aligned}
+    E_{r}\ll E^{(0)}
+\end{aligned}$, 则可 Taylor 展开: $\begin{aligned}
+    \ln{\Omega^{\prime}(E^{(0)}-E_{r})} = 
+    \ln{\Omega^{\prime}(E^{(0)})} 
+    + \frac{\partial \ln{\Omega^{\prime}}}{\partial E^{\prime}}\bigg|_{E^{\prime} = E^{(0)}}\stackrel{-E_{r}}{\underline{(E_{r^{\prime}}-E^{(0)})}}
+    + \cdots 
+    = \text{const.} - \beta E_{r}
+\end{aligned}$
+
+$\begin{aligned}
+    \text{于是得到 Boltzmann factor/Canonical distribution}\quad  P_{r} = \frac{\begin{aligned}
+        e^{-\beta E_{r}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r}e^{-\beta E_{r}}
+    \end{aligned}}
+\end{aligned}$.
+
+[Discussion] Taylor 展开时, 为何不需要保留更高次? $\Rightarrow$ 为了保持 $S$ 的广延性. 
+
+\paragraph{Multiple Systems Perspective} 
+
+制备 $N$ 个正则系综, 整体组成一个微正则系综. 设 $n_{r}$ 个系统处于状态 $|r\rangle$, 能量为 $E_{r}$. 则存在约束条件 $\begin{aligned}
+    \sum_{r}n_{r} = N,\quad \sum_{r}n_{r}E_{r} = NU = N\langle E_{r}\rangle
+\end{aligned}$. 微观态数为 $\begin{aligned}
+    W = \frac{N!}{\begin{aligned}
+        \prod_{r}n_{r}!
+    \end{aligned}}
+\end{aligned}$, 寻找 $\{n_{r}\}$ 使得 $W$ 最大化. 
+
+$\begin{aligned}
+    \Rightarrow\frac{n_{r}^{*}}{N} = \frac{e^{-\beta E_{r}}}{\begin{aligned}
+        \sum_{r}e^{-\beta E_{r}}
+    \end{aligned}}
+\end{aligned}$. 
+
+[Dsicussion] Why is $\begin{aligned}
+    \ln{\rho}\propto \alpha E\Rightarrow \rho\propto e^{\alpha E}
+\end{aligned}$ simple: 1. No dynamics information; 2. Time-reversal symmetry. Detailed-balance(细致平衡); 3. 具有可加性. 引申为 $\begin{aligned}
+    \ln{\rho} = \alpha + \beta E
+\end{aligned}$; 4. 设 $f(\epsilon)$ 为体系处于能量 $\epsilon$ 的概率, 则有 $\begin{aligned}
+    \frac{f(\epsilon_{1})}{f(\epsilon_{2})} = \frac{f(\epsilon_{1}+\epsilon)}{f(\epsilon_{2}+\epsilon)}
+\end{aligned}$. 定义
+
+$\begin{aligned}
+    f(\epsilon) = g(\epsilon - \epsilon_{2})\Rightarrow g(\epsilon) g(\epsilon_{1} - \epsilon_{2})= g(0)g(\epsilon_{1} - \epsilon_{2}-\epsilon)\Rightarrow g(\epsilon) = g(0)e^{-\beta \epsilon}\Rightarrow \frac{f(\epsilon_{1})}{f(\epsilon_{2})} = e^{-\beta(\epsilon_{1}-\epsilon_{2})}
+\end{aligned}$
+
+\subsubsection{Revisit Maxwell Distribution}
+\paragraph{Galton's Statistical Model}
+\paragraph{Based on Symmetry} 各向同性: $\begin{aligned}
+    f\left(\vec{v}\right) = f(v) = f_{0}(v_{x})f_{0}(v_{y})f_{0}(v_{z})
+\end{aligned}$
+\paragraph{Boltzmann} 能量离散化. $\begin{aligned}
+    \exists \{n_{r}\},\quad \text{s.t. }W = \frac{N!}{\begin{aligned}
+        \prod_{\alpha}n_{\alpha}!
+    \end{aligned}}
+\end{aligned}$
+\paragraph{Based on Ensemble Theory} 能量中动量和位置分离: $\begin{aligned}
+    E(q,p) &= \stackrel{\text{kinetic}}{K(p)} + \stackrel{\text{potential}}{U(q)}
+\end{aligned}$
+
+因此统计独立: $\begin{aligned}
+    \rho(q,p) \propto e^{-\beta E(q,p)}\Rightarrow \rho(q,p) = Ae^{-\beta [K(p)+U(q)]} = Ae^{-\beta K(p)}\cdot e^{-\beta U(q)}
+\end{aligned}$. 
+
+其中动能部分: $\begin{aligned}
+    e^{-\beta K(p)} 
+    = \exp\left[-\beta\left(\frac{p_{1}^{2}}{2m} + \frac{p_{1}^{2}}{2m} + \cdots + \frac{p_{N}^{2}}{2m}\right)\right] 
+    = \stackrel{e^{-\beta\frac{p_{1x}^{2}}{2m}}e^{-\beta\frac{p_{1y}^{2}}{2m}}e^{-\beta\frac{p_{1z}^{2}}{2m}}}{e^{-\beta\frac{p_{1}^{2}}{2m}}}\cdot e^{-\beta\frac{p_{2}^{2}}{2m}}\cdot e^{-\beta\frac{p_{3}^{2}}{2m}}\cdots e^{-\beta\frac{p_{N}^{2}}{2m}}
+\end{aligned}$.
+
+New perspective on gas model: 将各粒子单独视为一个系统, 只有 $E$ 交换而没有 $N$ 交换: $\begin{aligned}
+    \rho_{1} = Ae^{-\beta\frac{p_{1}^{2}}{2m}}
+\end{aligned}$
+\paragraph{Geometric Viewpoint}
+在 $(p_{1x},p_{1y},p_{1z},p_{2x},p_{2y},\cdots)$ $3N$-dim 空间中, 挑任意一轴(以 $p_{1x}$ 为例), 系统处于该轴上的概率分布为? $\Rightarrow\begin{aligned}
+    \rho(p_{1x}) \sim e^{-\beta p_{1x}^{2}}
+\end{aligned}$ (Energy partition theorem). 
+
+[Example] 受热浴谐振子: $H = \alpha p^{2} + \beta q^{2}$; $\begin{aligned}
+    \langle\alpha p^{2}\rangle = \int\alpha p^{2}A^{-\beta H}\mathrm{d}q\mathrm{d}p = \frac{1}{2}k_{B}T
+\end{aligned}$. 
+
+[Example] 推广: $\begin{aligned}
+    H = \sum_{i}\alpha p_{i}^{n},\quad E_{i} = \alpha p_{i}^{n},\quad \langle E_{i}\rangle = \int E_{i}e^{-\beta E_{i}}\mathrm{d}E_{i} \bigg/ \int e^{-\beta E_{i}}\mathrm{d}E_{i} = -\frac{\partial}{\partial \beta}\ln{\left(\int e^{-\beta E_{i}}\mathrm{d}p_{i}\right)}
+\end{aligned}$. 
+
+Let $\begin{aligned}
+    y = \beta^{\frac{1}{n}}p_{i}\Rightarrow\int e^{-\beta E_{i}}\mathrm{d}p_{i} = \beta^{-\frac{1}{n}}\int e^{-\alpha y^{n}}\mathrm{d}y\Rightarrow\boxed{\langle E_{i}\rangle = \frac{1}{{\color{red}{n}}}k_{B}T}
+\end{aligned}$. 
+
+\subsubsection{Thermodynamics}
+[Discussion] 已知 1st law: $\mathrm{d}U = T\mathrm{d}S - p\mathrm{d}V$, 如何将 $U(V,S)$ 转变为 $V$ 和 $T$ 的未知函数 $?(V,T)$. 
+
+定义 $F\equiv U - TS$, 全微分 $\mathrm{d}F = -p\mathrm{d}V-S\mathrm{d}T\Rightarrow F(V,T)$. 因此正则系综 $(N,V,T)$ 也被称作 $F$-representation. 
+
+类似地, 定义 $G\equiv F+PV$ 从而得到 $P$ 和 $T$ 的函数 $G(P,T)$. $G=\mu N$.
+
+平均能量 $\begin{aligned}
+    \langle E_{r}\rangle &= \frac{\begin{aligned}
+        \sum_{r}E_{r}e^{-\beta E_{r}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r}e^{-\beta E_{r}}
+    \end{aligned}} = -\frac{\partial}{\partial\beta}\ln{\left(\sum_{r}e^{-\beta E_{r}}\right)}
+\end{aligned}$
+
+内能 $\begin{aligned}
+    U = F + TS = F - T\left(\frac{\partial F}{\partial T}\right)_{N,V} = \frac{\partial}{\partial (1/T)}\left(\frac{F}{T}\right)_{N,V}
+\end{aligned}$
+
+记 $\begin{aligned}
+    \beta = \frac{1}{k_{B}T}
+\end{aligned}$, 则自由能 $\begin{aligned}
+    F = -k_{B}T\ln{Q_{N}(V,T)}
+\end{aligned}$, 其中正则配分函数对状态 $|r\rangle$ 求和形式为 $\begin{aligned}
+    Q_{N} = \sum_{r}e^{-\beta E_{r}}
+\end{aligned}$. 
+
+求 $\begin{aligned}
+    \langle \ln{P_{r}}\rangle =\left\langle \ln{\left(\frac{e^{-\beta E_{r}}}{Q_{N}}\right)}\right\rangle = -\ln{Q_{N}} - \beta\langle E_{r}\rangle = \beta(F-U) = -\frac{S}{k_{B}}
+    \Rightarrow S = -k_{B}\sum_{r}P_{r}\ln{P_{r}}
+\end{aligned}$, 正是 Gibbs entropy 形式. 
+
+对能量 $i$ 求和形式: $\begin{aligned}
+    Q_{N} = \sum_{i}g_{i}e^{-\beta E_{i}} = \int g(E)e^{-\beta E}\mathrm{d}E
+\end{aligned}$, 其中 $g_{i}$ 为 degeneracy of energy level $E_{i}$(能级的简并度).
+
+微观态数/$\Gamma$-相空间体积的形式: $\begin{aligned}
+    Q_{N} &= \frac{1}{N!h^{3N}}\int e^{-\beta H(q,p)}\mathrm{d}^{3N}q\mathrm{d}^{3N}p
+\end{aligned}$
+
+[Discussion] $\begin{aligned}
+    Q_{N} = \sum_{r}e^{-\beta E_{r}}
+\end{aligned}$, 根据 $e^{-\beta E_{r}}$ 能定论 $E_{r}=0$ 是概率最高的能量吗? $(E_{r})_{\text{most prob}} = U$. 因为还存在着 $g(E)$ 调控了概率, 使得 $U$ 才是真正概率最高的能量. $e^{-\beta U}e^{S/k_{B}}$.
+
+\subsubsection{Fluctuations}
+已知内能 $U$ 可通过对正则配分函数求 $\beta$ 偏导得到: $\begin{aligned}
+    U = -\frac{\partial}{\partial\beta}\left(\ln\sum_{r}e^{-\beta E_{r}}\right)
+\end{aligned}$. 若再对 $U$ 求一次 $\beta$ 偏导, 则有
+
+$\begin{aligned}
+    \frac{\partial U}{\partial\beta} = -\frac{\begin{aligned}
+        \sum_{r}E_{r}^{2}e^{-\beta E_{r}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r}e^{-\beta E_{r}}
+    \end{aligned}} + \left(\frac{\begin{aligned}
+        \sum_{r}E_{r}e^{-\beta E_{r}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r}e^{-\beta E_{r}}
+    \end{aligned}}\right)^{2}= -\langle E^{2}\rangle + \langle E\rangle^{2}
+    \equiv \langle(\Delta E)^{2}\rangle = k_{B}T^{2}C_{v}
+\end{aligned}$
+
+定义相对变化量/涨落为 $\begin{aligned}
+    \frac{\sqrt{\langle(\Delta E)^{2}\rangle}}{\langle E\rangle} &= \frac{\sqrt{k_{B}T^{2}C_{v}}}{U}\sim N^{-\frac{1}{2}}
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Example] Classical harmonic oscillator $\begin{aligned}
+    (\varepsilon_{n} = nh\nu)
+\end{aligned}$. Single oscillator: 
+
+$\begin{aligned}
+    \langle E_{1}\rangle = \frac{\begin{aligned}
+        \sum_{n}\varepsilon_{n}e^{-\beta\varepsilon_{n}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{n}e^{-\beta\varepsilon_{n}}
+    \end{aligned}} = \frac{h\nu}{e^{\beta h\nu}-1}
+\end{aligned}$. $\begin{aligned}
+    \langle E_{1}^{2}\rangle = (h\nu)^{2}\frac{1+e^{\beta h\nu}}{(e^{\beta h\nu}-1)^{2}}
+\end{aligned}$, $\begin{aligned}
+    \langle(\Delta E_{1})^{2}\rangle = (h\nu)^{2}\frac{e^{\beta h\nu}}{(e^{\beta h\nu}-1)^{2}}
+\end{aligned}$, $\begin{aligned}
+    \frac{\sqrt{\langle (\Delta E_{1})^{2}\rangle}}{\langle E_{1}\rangle} = e^{\frac{1}{2}\beta h\nu}
+\end{aligned}$. $T\rightarrow 0$, 涨落趋于发散. 
+
+$N$ oscillators: $\begin{aligned}
+    \langle (\Delta E)^{2}\rangle = N\langle(\Delta E_{1})^{2}\rangle,\quad 
+    \frac{\sqrt{\langle(\Delta E)^{2}\rangle}}{\langle E\rangle} = N^{-\frac{1}{2}}\frac{\sqrt{\langle(\Delta E_{1})^{2}\rangle}}{\langle E_{1}\rangle}
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Example] Reletive fluctuation of speed in Maxwell distribution. $\begin{aligned}
+    f(v) = A\text{exp}\left\{-\frac{mv^{2}}{2k_{B}T}\right\}{\color{red}{v^{2}}}\mathrm{d}v
+\end{aligned}$, where ${\color{red}{v^{2}}}$ for 3D gas. 
+
+$\begin{aligned}
+    \langle g(v)\rangle = \frac{\begin{aligned}
+        \int g(v)f(v)\mathrm{d}v
+    \end{aligned}}{\begin{aligned}
+        \int f(v)\mathrm{d}v
+    \end{aligned}},\quad 
+   \frac{\sqrt{\langle v^{2}\rangle}}{\langle v\rangle} = \sqrt{\frac{3\pi}{8}-1}
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Example] Ideal gas. $\begin{aligned}
+    H = \sum_{i=1}^{N}\frac{\vec{p}_{i}^{2}}{2m}
+\end{aligned}$. 
+
+1. \textbf{使用正则系综方法}. 配分函数为 
+
+$\begin{aligned}
+    Q_{N}(V,T) = \sum_{r}e^{-\beta E_{r}} = \frac{1}{N!h^{3N}}\int e^{\begin{aligned}
+        -\beta\sum_{i=1}^{N}\frac{\vec{p}_{i}^{2}}{2m}
+    \end{aligned}}\mathrm{d}^{3N}q\mathrm{d}^{3N}p = \frac{1}{N!}\left(\frac{1}{\hbar^{3}}\int_{-\infty}^{+\infty}e^{-\beta\frac{p_{1}^{2}}{2m}}4\pi p_{1}^{2}\mathrm{d}p_{1}\underbrace{\int\mathrm{d}^{3}\vec{q}_{1}}_{V}\right)^{N}
+    = \frac{Q_{1}(T,V)^{N}}{N!}
+\end{aligned}$, 
+
+即各粒子统计独立. 单粒子配分函数 $\begin{aligned}
+    Q_{1} = \frac{V}{h^{3}}(2\pi mk_{B}T)^{\frac{3}{2}} = \frac{V}{\lambda_{T}^{3}}
+\end{aligned}$, 其中 $\begin{aligned}
+    \lambda_{T} = \frac{h}{\sqrt{2\pi mk_{B}T}}
+\end{aligned}$ 为热波长. 粒子间平均间距可估算为 $\begin{aligned}
+    a\sim \left(\frac{V}{N}\right)^{\frac{1}{3}}
+\end{aligned}$. 若 $\lambda_{T}\ll a$, 即可认为 $h\rightarrow 0$, 无量子效应. 更一般性地, 若 Hamiltonian 仅为动量 $p$ 的函数 $H = H(p)$, 则单粒子配分函数形为 $Q_{1} = Vf(T)$. 当 $\begin{aligned}
+    H = \sum_{i}\frac{p_{i}^{2}}{2m}
+\end{aligned}$ 特殊情形时, 有 $f(T) = \lambda_{T}^{-3}$. 继续一般性的讨论: 
+
+$\begin{aligned}
+    \ln{Q_{N}} = \ln{\left[\frac{(Vf(T))^{N}}{N!}\right]} = N\ln{f(T)} + \ln{\frac{V^{N}}{N!}} = N\ln{f(T)} + \ln{\left(\frac{e^{N}}{N^{N}}V^{N}\right)} = N\ln{f(T)} + N\ln{\left(\frac{eV}{N}\right)}
+\end{aligned}$
+
+记 $\begin{aligned}
+    n = \frac{N}{V}
+\end{aligned}$, 则 $\begin{aligned}
+    \frac{F}{V} = nk_{B}T\left[\ln{\left(\frac{n}{f}\right)}-1\right]\Rightarrow P = \left(\frac{\partial F}{\partial V}\right)_{N,T} = \frac{Nk_{B}T}{V}
+\end{aligned}$, 和理想气体相同. 这说明满足该形式的状态方程, 真正重要的是各粒子统计独立. 
+
+$\begin{aligned}
+    S = -\left(\frac{\partial F}{\partial T}\right)_{N,V} = k_{B}V\left[-n\ln{\left(\frac{n}{f}\right)} + \frac{5}{2}n\right]
+\end{aligned}$, extensive by adding $N!$.
+
+2. \textbf{通过态密度分析配分函数}. $\begin{aligned}
+    Q_{N} = \int g(E)e^{-\beta E}\mathrm{d}E,\quad g(E)\sim E^{\frac{3N}{2}-1}
+\end{aligned}$. 那么概率则是 $\begin{aligned}
+    P(E)\mathrm{d}E = g(E)e^{-\beta E}\mathrm{d}E
+\end{aligned}$
+
+概率 $P(E)$ 对能量 $E$ 导数为 $0$ 以寻找极值点 $E_{0}$: 
+
+$\begin{aligned}
+    \frac{\partial}{\partial E}\left[g(E)e^{-\beta E}\right] &= g^{\prime}(E)e^{-\beta E} + g(E)(-\beta)e^{-\beta E} = \left(\frac{3N}{2}-1\right)E^{\frac{3N}{2}-2}e^{-\beta E} + E^{\frac{3N}{2}-1}(-\beta)e^{-\beta E}\\
+    &= \left[\left(\frac{3N}{2}-1\right)E^{-1} - \beta\right]\times \sharp = 0\Rightarrow  E_{0} = \left(\frac{3N}{2}-1\right)\frac{1}{\beta}\Rightarrow \lim_{N\rightarrow \infty}E_{0} = \frac{3N}{2}k_{B}T
+\end{aligned}$
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Example] Colored Ideal Gas. $N$ red atoms, $N$ blue atoms, $N$ green atoms. Statistically independent.  microstate: $(q,p,\text{color})$
+
+1. \textbf{存在三种颜色时的熵} $S_{3c}$: 单种颜色的配分函数 $\begin{aligned}
+    Q_{N}(T,V) = \frac{1}{N!}\left(\frac{V}{\lambda_{T}}\right)^{N}
+\end{aligned}$, 则三种颜色总共的配分函数为 $\begin{aligned}
+    Q = Q_{N}^{3}
+\end{aligned}$. 那么自由能为 $\begin{aligned}
+    F = -k_{B}T\ln{Q} = -3k_{B}T\ln{\left(\frac{V}{N\lambda_{T}}\right)}
+\end{aligned}$. 熵为 $\begin{aligned}
+    S_{3c} = -\left(\frac{\partial F}{\partial T}\right)_{N,V} = 3Nk_{B}\ln{\left(\frac{eV}{N}\right)} - 3Nf^{\prime}(T)
+\end{aligned}$
+
+2. \textbf{只存在一种颜色时的熵} $S_{1c}$: $\begin{aligned}
+    S_{1c} &= 3Nk_{B}\ln{\left(\frac{eV}{3N}\right)} - 3Nf^{\prime}
+\end{aligned}$
+
+比较以上两个结果, 就会发现由于多出颜色自由度产生的混合熵 $\begin{aligned}
+    \Delta S = S_{3c} - S_{1c} = k_{B}\ln{3^{3N}}
+\end{aligned}$. 
+
+[Discussion] 1. How to understand $\ln{3^{3N}}$? statistically independent $\rightarrow$ analyze a single particle. 底数 $3$: 3 种颜色/状态. 2. $S_{\text{tot}} = S_{\{q,p\}} + S_{\text{color}}$. 新的自由度独立于 $(q,p)$, 则熵直接相加.
+
+    [Example] 2-state. $|1\rangle: P_{1} = r; |2\rangle: P_{2} = 1 - r$. For a single particle, 
+    
+    $\begin{aligned}
+        \widetilde{S}_{\text{mix}} = -k_{B}\sum_{r=1}^{2}P_{r}\ln{P_{r}} = = -k_{B}[r\ln{r} + (1-r)\ln{(1-r)}]
+    \end{aligned}$. 取极值: $\begin{aligned}
+        r= \frac{1}{2}\Rightarrow \widetilde{S}_{\text{mix}} = k_{B}\ln{2}
+    \end{aligned}$
+
+
+\subsection{Grand Canonical Ensemble}
+exchange energy, matter. $(T,V,\mu)$. $|rs\rangle$: 粒子数为 $N_{r}$, 能量为 $E_{r}$. 令该系统 $A$ 与环境 $A^{\prime}$ 整体组成一个孤立系统. 
+
+$\begin{aligned}
+    P_{rs} = \frac{\begin{aligned}
+        e^{-\alpha N_{r}-\beta E_{s}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r,s}e^{-\alpha N_{r} - \beta E_{s}}
+    \end{aligned}}
+\end{aligned}$
+
+系综中能量的延拓: $\begin{aligned}
+    U(S,V,N) \stackrel{F = U-TS}{\longrightarrow} F(T,V,N) \stackrel{\Phi = F-\mu N}{\longrightarrow} \Phi(T,V,\mu)
+\end{aligned}$, 即 Grand potential. 
+
+$\begin{aligned}
+    \langle N\rangle = \sum_{r,s}NP_{rs} = \frac{\begin{aligned}
+        \sum_{r,s}N_{r}e^{-\alpha N_{r}-\beta E_{s}}
+    \end{aligned}}{\begin{aligned}
+        \sum_{r,s}e^{-\alpha N_{r} - \beta E_{s}}
+    \end{aligned}} = -\frac{\partial q}{\partial\alpha}
+\end{aligned}$,  $\begin{aligned}
+    q = \ln{\left(\sum_{r,s}e^{-\alpha N_{r} - \beta E_{s}}\right)}
+\end{aligned}$.  可类比于 $\begin{aligned}
+    \langle E\rangle = -\frac{\partial q}{\partial\beta}
+\end{aligned}\Rightarrow$ q-potential
+
+$\begin{aligned}
+    Q(Z,V,T) = \sum_{N_{r}=0}^{\infty}Z^{N_{r}}Q_{N_{r}}(V,T),\quad Z \equiv e^{-\alpha}
+\end{aligned}$,  fugacity(逸度)
+
+导出 Gibbs entropy(for open system): $\begin{aligned}
+    \langle \ln{P_{rs}}\rangle = \sum_{r,s}P_{rs}(\ln{P_{rs}})\Rightarrow S = -k_{B}\sum_{r,s}P_{rs}\ln{P_{rs}}
+\end{aligned}$. 
+
+粒子数涨落: $\begin{aligned}
+    \langle(\Delta N)^{2}\rangle = \frac{\langle N\rangle^{2}k_{B}T\kappa_{T}}{V}
+    \Rightarrow \frac{\langle (\Delta n)^{2}\rangle}{\langle n^{2}\rangle} = \frac{k_{B}T}{V}\kappa_{T},\quad \kappa_{T} = -\frac{1}{V}\left(\frac{\partial V}{\partial T}\right)
+\end{aligned}$.
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Example] \textbf{Ideal gas}. $\begin{aligned}
+    Q_{N}(V,T) = \frac{Q_{1}^{N}}{N!}, Q_{1}(V,T) = \frac{1}{h^{3}}\int e^{-\beta \frac{p^{2}}{2m}}\mathrm{d}^{3}\vec{q}\mathrm{d}^{3}\vec{p} = \frac{V}{\lambda_{T}^{3}}
+\end{aligned}$. 若 $H = H(p)$, 则形式为 
+$Q_{1}(V,T) = Vf(T)$. 
+
+从巨正则系综角度出发, 配分函数为 $\begin{aligned}
+    Q(Z,V,T) = \sum_{N_{r}=0}^{\infty}Z^{N_{r}}\frac{[Vf(T)]^{N_{r}}}{N_{r}!} = e^{ZVf(T)}
+\end{aligned}$, 其中 $\begin{aligned}
+    Z = e^{-\alpha}
+\end{aligned}$. 
+
+那么 q-potential 为 $\begin{aligned}
+    q(Z,V,T) = \ln{Q} = ZVf(T)
+\end{aligned}$. 各热力学量根据与 $q$ 的关系分别导出: 压强 $\begin{aligned}
+    P = \frac{k_{B}T}{V}q = Zk_{B}Tf(T)
+\end{aligned}$; 
+
+粒子数 $\begin{aligned}
+    N = -\frac{\partial q}{\partial\alpha} = ZVf(T)
+\end{aligned}$; 内能 $\begin{aligned}
+    U = -\frac{\partial q}{\partial\beta} = ZVk_{B}T^{2}f^{\prime}(T)
+\end{aligned}$; 状态方程 $\begin{aligned}
+    PV = Nk_{B}T
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Example] Fluctuation of number of particles. 考虑体系 $(V,N)$ 中的小区域 $\Omega$, 体积为 $v$, 粒子数为 $n$. 则 $\Omega$ 中有 $n$ 个粒子的概率 $\begin{aligned} 
+    P_{n} = \frac{\begin{aligned}
+        \sum_{s}e^{-\alpha n - \beta E_{n}^{(s)}}
+    \end{aligned}}{Q}
+\end{aligned}$. 猜测平均粒子数为 $\begin{aligned}
+    \langle n\rangle = \frac{N}{V}v
+\end{aligned}$. 独立同分布. 单个粒子在/不在 $\Omega$ 中的概率: $\begin{aligned}
+    P_{1} = \frac{v}{V}, \quad P_{0} = 1 - \frac{v}{V}
+\end{aligned}$. 则 $\Omega$ 中有 $n$ 个粒子的概率为 $\begin{aligned}
+    P(n) = \frac{N!}{(N-n)!n!}P_{1}^{n}P_{0}^{N-n}
+\end{aligned}$, $\begin{aligned}
+    \lim_{N\rightarrow\infty}P(n)
+\end{aligned}$ 将化为 Poisson 分布: $\begin{aligned}
+    P(n) = \frac{\langle n\rangle^{n}}{n!}e^{-\langle n\rangle}
+\end{aligned}$, 其中 $\begin{aligned}
+    \langle n\rangle = \frac{N}{V}v
+\end{aligned}$.
+
+\end{document}

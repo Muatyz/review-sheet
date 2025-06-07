@@ -1,0 +1,77 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Homework 6}
+\subsection{Landau's Theory}
+\textbf{Derive the critical exponents based on Landau's theory for second-order phase transition. 
+  \begin{align*}
+    \psi_{0}(t,m_{0}) = q(t) + r(t)m_{0}^{2} + s(t)m_{0}^{4} + \cdots\quad \left(t = \frac{T-T_{c}}{T_{c}},|t|\ll 1\right);
+  \end{align*}}
+
+  Assuming that 
+  \begin{itemize}
+    \item Symmetry: The free energy is even in $m_{0}$;
+    \item Analticity: $\psi_{0}$ is analytic in $m_{0}$ and $t$, which allows a Taylor expansion;
+    \item Critical behavior: Near $T_{c}$, the coefficients behave as $\begin{aligned}
+      r(r)\approx r_{0}t,\quad s(t)\approx s_{0}>0
+    \end{aligned}$. 
+  \end{itemize}
+
+  The exponents are given by:
+  \begin{align*}
+    m_{0}\sim (-t)^{\beta}, \quad \chi\sim |-t|^{-1},\quad m_{0}\sim h^{1/\delta},\quad \xi\sim|t|^{-\nu}
+  \end{align*}
+
+  The equilibrium order parameter $m_{0}$ minimizes the free energy:
+  \begin{align*}
+    \frac{\partial\psi_{0}}{\partial m_{0}} = 0&\Rightarrow 2r(t)m_{0} + 4s(t)m_{0}^{3} = 0\\
+    &\Rightarrow m_{0}[r(t) + 2s(t)m_{0}^{2}] = 0
+  \end{align*}
+
+  So
+  \begin{itemize}
+    \item Disordered phase($T>T_{c}$): $m_{0}=0$, since $r(t)>0$;
+    \item Ordered phase($T<T_{c}$): $\begin{aligned}
+      m_{0}^{2} = -\frac{r(t)}{2s(t)}\approx -\frac{r_{0}t}{2s_{0}}
+    \end{aligned}$, since $r(t)\approx r_{0}t$ and $s(t)\approx s_{0}$.
+  \end{itemize}
+
+  \begin{enumerate}
+    \item For $T< T_{c}$, $t<0$, $\begin{aligned}
+    m_{0}\sim \sqrt{-t}\Rightarrow m_{0}\sim (-t)^{1/2}\Rightarrow \boxed{\beta = \frac{1}{2}}
+  \end{aligned}$
+    \item Susceptibility $\chi$, which is defined as $\begin{aligned}
+      \chi^{-1} = \left.\frac{\partial^{2}\psi_{0}}{\partial m_{0}^{2}}\right|_{m_{0}=m_{eq}}
+    \end{aligned}$. 
+    \begin{itemize}
+      \item For $T>T_{c}$, $m_{0}=0$. $\begin{aligned}
+        \chi^{-1} = 2r(t)\approx 2r_{0}t\Rightarrow \chi\sim t^{-1}
+      \end{aligned}$
+      \item For $T<T_{c}$, $\begin{aligned}
+        m_{0}^{2} = -\frac{r(t)}{2s(t)}
+      \end{aligned}$:
+      \begin{align*}
+        \frac{\partial^{2}\psi_{0}}{\partial m_{0}^{2}} &= 2r(t) + 12s(t)m_{0}^{2} = 2r(t) + 12s(t)\left[-\frac{r(t)}{2s(t)}\right] = -4r(t)\\
+        \chi^{-1} &= -4r(t)\approx -4r_{0}t\Rightarrow \chi\sim(-t)^{-1}\Rightarrow \boxed{\gamma = 1}
+      \end{align*}
+    \end{itemize}
+    \item Specific heat. 
+    \begin{itemize}
+      \item For $T>T_{c}$, $\psi_{0}=q(t)$;
+      \item For $T<T_{c}$, $\begin{aligned}
+        \psi_{0} = q(t) + r(t)m_{0}^{2} + s(t)m_{0}^{4} = q(t) - \frac{r(t)^{2}}{4s(t)}
+      \end{aligned}$. And the specific heat is defined as $\begin{aligned}
+        C = -T\frac{\partial^{2}\psi_{0}}{\partial T^{2}}
+      \end{aligned}$. Since $r(t)\sim t$, the singular part is $C$, which jumps at $t=0$. So $\boxed{\alpha = 0}$.
+    \end{itemize}
+    \item Critical isotherm. At $T = T_{c}$, the free energy is $\begin{aligned}
+      \psi_{0} = q(0) + s(0)m_{0}^{4} + \cdots
+    \end{aligned}$. Applying an external field $h$, the equilibrium condition is
+    \begin{align*}
+      h = \frac{\partial\psi_{0}}{\partial m_{0}} = 4s(0)m_{0}^{3}\Rightarrow m_{0}\sim h^{1/3}\Rightarrow \boxed{\delta = 3}.
+    \end{align*}
+    \item Correlation length, which is defined as $\begin{aligned}
+      \xi \sim \sqrt{\frac{c}{r(t)}}\sim t^{-1/2}\Rightarrow \boxed{\nu = \frac{1}{2}}
+    \end{aligned}$
+  \end{enumerate}
+\end{document}

@@ -1,0 +1,1376 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Phase Transition}
+A system containing many degrees of freedom $\rightarrow$ exhibits collective behavior.
+
+[Example] 1. condensation of water vapor; 2. critical behavior; 3. magnetic system. ferromagnetism(自发磁化). 加热后化为 paramagnetism $M\propto H$. 这些相变存在着共性. 4. fluid-superfulid phase transition(He-3 fermion, $T_{c} = 2.491\text{ mK}$; He-4 boson, $T_{c} = 2172\text{ K}$) fermion pair 才可以产生凝聚, 而产生 fermion pair 需要极低温; 5. social/crowd behavior, market price...
+
+$\mathrm{d}\mu = v\mathrm{d}P - s\mathrm{d}T$, 化学势的一阶导数突变为一级相变(水结冰), 二阶导数突变为二级相变. 
+
+\subsection{Van der Waals Theory}
+motivation: to find the universal law for gas-liquid phase transition. 
+
+分子间相互作用势: 近程排斥, 远程吸引. 临界点 $r_{0}$. 修正 ideal gas: $\begin{aligned}
+    P = \frac{RT}{v-b} - \frac{a}{v^{2}}
+\end{aligned}$. $b$: hard-core repulsion(硬球排斥); $a$: attraction, $\begin{aligned}
+    \frac{a}{v^{2}} \sim n^{2} = \left(\frac{N}{V}\right)^{2}
+\end{aligned}$. 1. $T\gg |\varepsilon_{0}|$, 可忽略相互作用; 2. $T\downarrow$, interaction $\uparrow$, condensed state(liquid state); 3. $T\rightarrow 0$, crystal state/amorphous state (mechanical in equilibrium).
+
+\subsubsection{Derivation of Van der Waals Equation}
+
+$\begin{aligned}
+    Q_{N}(T,V) &= \frac{1}{N!h^{3N}}\int\prod_{i=1}^{N}\mathrm{d}^{3}\vec{q}_{i}\mathrm{d}^{3}\vec{p}_{i}\exp\left\{
+        -\beta \sum_{i}\frac{p_{i}^{2}}{2m} - \beta \sum_{i<j}V(\vec{q}_{i}-\vec{q}_{j})
+    \right\}= \frac{1}{\begin{aligned}
+        N!\underbrace{\lambda_{T}^{3N}}_{\int\mathrm{d}^{3}\vec{p}}
+    \end{aligned}}\underbrace{\left(V - \frac{N\omega}{2}\right)^{N}}_{\text{hard-core repulsion}}e^{-\beta \overline{U}}\\
+    \overline{U} &= \frac{1}{2}\sum_{i,j}V_{\text{attract}}\left(\vec{q}_{i}-\vec{q}_{j}\right) = \frac{1}{2}\int\mathrm{d}^{3}\vec{r}_{1}\mathrm{d}^{3}\vec{r}_{2}n(\vec{r}_{1})n(\vec{r}_{2})V_{\text{attract}}(\vec{r}_{1}-\vec{r}_{2}) = \frac{1}{2} n^{2}V \underbrace{\int V_{\text{attract}}(\vec{r})\mathrm{d}^{3}\vec{r}}_{u} = \frac{1}{2}\frac{N^{2}}{V}u\\
+    F &= -k_{B}T\ln{Q_{N}(V,T)} = -Nk_{B}T\ln{\left(V - \frac{N\omega}{2}\right)} + Nk_{B}T\ln{\left(\frac{N}{e}\right)} + 3Nk_{B}T\ln{\lambda_{T}} - u\frac{N^{2}}{2V}\\
+    \Rightarrow P &= -\left(\frac{\partial F}{\partial V}\right)_{T,N} = \frac{Nk_{B}T}{\begin{aligned}
+        V - \underbrace{\frac{N\omega}{2}}_{b}
+    \end{aligned}} - \underbrace{\frac{u}{2}}_{a}\frac{N^{2}}{V^{2}}
+\end{aligned}$
+
+使用 cluster expansion 对 $\begin{aligned}
+    V\left(\vec{q}_{i}-\vec{q}_{j}\right)
+\end{aligned}$ 进行处理. 
+
+[Example] $\begin{aligned}
+    U(r) = \begin{cases}
+        \infty, & r\leq r_{0}\\
+        \begin{aligned}
+            -U_{0}\left(\frac{r_{0}}{r}\right)^{6}
+        \end{aligned}, & r > r_{0}
+    \end{cases}
+\end{aligned}$. $\begin{aligned}
+    B(T) = -2\pi\int_{0}^{\infty}[e^{-U(r)/k_{B}T}-1]r^{2}\mathrm{d}r = \frac{2\pi r_{0}^{2}}{3}\left(1 - \frac{U_{0}}{k_{B}T}\right)
+\end{aligned}$, 
+
+$\begin{aligned}
+    a = \frac{2\pi r_{0}^{3}U_{0}}{3},\quad b = \frac{2\pi r_{0}^{3}}{3}
+\end{aligned}$
+
+\paragraph{Simpler Argument}
+Statistical independence of particles $\rightarrow$ consider a single particle. Accessible volume(repulsion): $V - V_{0}, \quad V_{0}\propto N\Rightarrow V_{0} = bN$; potential energy(attraction): $\begin{aligned}
+    u\propto \frac{N}{V} = n\Rightarrow u = -a\frac{N}{V}
+\end{aligned}$. 
+
+$\begin{aligned}
+    Q_{1}(V,T) = f(T)\int_{V-V_{0}} e^{aN/VT}\mathrm{d}^{3}\vec{r} = f(T)(V-bN)e^{aN/VT}
+\end{aligned}$, 
+
+$\begin{aligned}
+    P = -\left(\frac{\partial F}{\partial V}\right)_{T,N} = k_{B}T\frac{\partial\ln{Q_{N}}}{\partial V}\bigg|_{T,N} =  k_{B}T \frac{\partial}{\partial V}\left(\ln{\frac{Q_{1}^{N}}{N!}}\right)_{T,N}\stackrel{\frac{\partial N}{\partial V}=0}{=} k_{B}TN\frac{\partial\ln{Q_{1}}}{\partial V}
+\end{aligned}$
+
+\subsection{Phase Diagram}
+Van der Waals equation: real gas. 
+
+Other ways to describe: $\begin{aligned}
+    PV = RT\left(1 + \frac{A_{2}}{V} + \frac{A_{3}}{V^{2}} + \cdots\right),\quad \text{or }\frac{Pv}{k_{B}T} = 1 + \frac{B(T)}{v} + \frac{C(T)}{v^{2}} + \cdots
+\end{aligned}$
+
+$\begin{aligned}
+    P = \frac{RT}{v-b}-\frac{a}{v^{2}}
+\end{aligned}$ 数学上是一个 $v$ 的三次方程. 存在三个解代表的是 gas-liquid coexistence. $v_{1} = v_{l}, v_{3} = v_{g}$. 特殊情况: $v_{1},v_{2},v_{3}\rightarrow v_{c}$, 即 critical point. 
+
+\subsubsection{Maxwell Construction}
+ $G = \mu N$. 在等温曲线上, $\mathrm{d}G = \cancel{-S\mathrm{d}T} + V\mathrm{d}P$. 设 $y = P$ 水平线与 $P(v)$ 交点左右分别为 $A$, $B$. 那么从 $A$ 到 $B$ 的自由能变化量为 $\begin{aligned}
+    \Delta G = \int_{A}^{B}V\mathrm{d}P = \int_{A}^{B}[\mathrm{d}(PV) - P\mathrm{d}V] = P(V_{B}-V_{A}) - \int_{V_{A}}^{V_{B}}P\mathrm{d}V = 0
+ \end{aligned}$, 前后分别是 $y=P$ 直线下矩形面积和 $P(v)$ 曲线下的面积, 它也可以理解为 $P(v)$ 曲线在 $y=P$ 水平线上下两面积相等. 也就是说, 在这条水平线上 liquid-gas coexistence.
+
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$v$}, ylabel={$P$},
+    xmin=0.1, xmax=0.8, ymin=1.8, ymax=2.9,
+    axis lines=left,
+    samples=200, smooth
+  ]
+    % Van der Waals 型等温曲线（示意）
+    \addplot[name path=curve, thick, domain=0.15:3] {(2.7)/(x-0.1) - 1/(x^2)};
+    % Maxwell 水平线 P = 2.5263
+    \addplot[name path=line, dashed] coordinates {(0,2.5263) (3,2.5263)};
+    % 填充上下两部分区域
+    \addplot[blue!30] fill between[of=curve and line, soft clip={domain=0.185:0.324}];
+    \addplot[red!30]  fill between[of=curve and line, soft clip={domain=0.324:0.660}];
+    % 标注交点 A, B 和相区
+    \coordinate (A) at (axis cs:0.185,2.5263);
+    \coordinate (B) at (axis cs:0.660,2.5263);
+    \node[below left]  at (A) {A};
+    \node[below] at (B) {B};
+    \node at (axis cs:0.25, 2.45) {liquid};
+    \node at (axis cs:0.45, 2.60) {gas};
+  \end{axis}
+\end{tikzpicture}
+
+计算气液两相所占体积: $\begin{aligned}
+    v_{0} = xv_{l} + (1-x)v_{g}\Rightarrow x = \frac{v_{g}-v_{0}}{v_{g}-v_{l}}
+\end{aligned}$, 即 lever rule. $\begin{aligned}
+    \frac{\partial P}{\partial v}>0
+\end{aligned}$ 是热力学不稳定的. 
+
+\subsubsection{Critical Behavior}
+Critical point:  $\begin{aligned}
+    \frac{\partial P}{\partial v}\bigg|_{c} = 0,\quad \frac{\partial^{2}P}{\partial v^{2}}\bigg|_{c} = 0\Rightarrow P_{c} = \frac{a}{27b^{2}},\quad T_{c} = \frac{8a}{27bR},\quad v_{c} = 3b
+\end{aligned}$, material dependent; $\begin{aligned}
+    \frac{RT_{c}}{P_{c}v_{c}} = \frac{8}{3}
+\end{aligned}$, material independent.
+
+$\begin{aligned}
+    P_{r} = \frac{P}{P_{c}},\quad v_{r} = \frac{v}{v_{c}},\quad T_{r} = \frac{T}{T_{c}}\Rightarrow \left(P_{r} + \frac{3}{v_{r}^{2}}\right)(3v_{r}-1) = 8T_{r}
+\end{aligned}$. 所以即使是不同类的 Van der Waals gas, 也可以通过判断 $(P_{r},v_{r})$ 相等而判断其处于 \textbf{corresponding state}.
+
+进一步使用小量: $\begin{aligned}
+    P_{r} = 1 + \pi,\quad v_{r} = 1 + \Psi, \quad T_{r} = 1 + t
+\end{aligned}$, 从而使用 $(\pi,\Psi,t)$ 描述临界点附近状态.
+
+\paragraph{Along the isothermal curve at $t=0$($T=T_{c}$)}
+
+$\begin{aligned}
+    \pi = -\frac{3}{2}\Psi^{{\color{red}{3}}}
+\end{aligned}$, ${\color{red}{3}}$: critical exponent. 
+
+\paragraph{$\Psi_{l}$ 和 $\Psi_{g}$ 对 critical point 的逼近行为}
+$\begin{aligned}
+    \pi = 4t - 6t\Psi + \frac{3}{2}\Psi^{3}\Rightarrow \left\{\begin{aligned}
+            \pi &= \begin{aligned}
+                4t - 6t\Psi_{l} + \frac{3}{2}\Psi_{l}^{3}
+            \end{aligned}\\
+            \pi &= \begin{aligned}
+                4t - 6t\Psi_{g} + \frac{3}{2}\Psi_{g}^{3}
+            \end{aligned}
+    \end{aligned}\right.
+\end{aligned}$. 原始的 $v_{l}$ 和 $v_{g}$ 是通过 Maxwell construction $\begin{aligned}
+    \int \mathrm{d}G = 0\Rightarrow P(V_{B}-V_{A}) - \int_{V_{A}}^{V_{B}}P\mathrm{d}V = 0
+\end{aligned}$ 得到的. 使用 $(\pi,\Psi,t)$ 重构: 
+
+$\begin{aligned}
+    \int_{\Psi_{l}}^{\Psi_{g}}\pi(\Psi;t)\mathrm{d}\Psi = \pi(\Psi_{g}-\Psi_{l}) \Rightarrow 4t - 3t(\Psi_{g}+\Psi_{l}) - \frac{3}{8}(\Psi_{g} + \Psi_{l})(\Psi_{g}^{2}+\Psi_{l}^{2}) = \pi
+\end{aligned}$. 
+
+联立方程组得到 $\begin{aligned}
+    2\pi = 8t-6t(\Psi_{l}+\Psi_{g}) - \frac{3}{2}\left(\Psi_{l}^{2}+\Psi_{g}^{2}\right)\Rightarrow (\Psi_{g}+\Psi_{l})(\Psi_{g}-\Psi_{l}) = 0\Rightarrow \Psi_{g} = -\Psi_{l}.
+\end{aligned}$ 
+
+因此在临界点附近, $\Psi_{l}$ 和 $\Psi_{g}$ 对称地分布在临界点两侧. 
+
+\paragraph{Isothermal Compressibility Near the Critical State} 
+$\begin{aligned}
+    -\left(\frac{\partial\Psi}{\partial\pi}\right)_{t} = \begin{cases}
+        \begin{aligned}
+            \frac{1}{6}t^{{\color{red}{-1}}}
+        \end{aligned}, &t>0\\
+        \begin{aligned}
+            \frac{1}{12}|t|^{{\color{red}{-1}}}
+        \end{aligned}, &t<0
+    \end{cases}
+\end{aligned}$, ${\color{red}{-1}}$: critical exponent. 
+
+[Example] First observation of critical phenomenon. Water: $T_{c} = 373.946^{\circ}\text{C}$, $P_{c} = 217.7\text{ atom}$.
+
+[Discussion] $\begin{aligned}
+    Q(Z,V,T) = \sum_{N=0}^{N_{\text{max}}}Z^{N}Q_{N}(V,T),\quad P = \frac{k_{B}T}{V}\ln{Q}
+\end{aligned}$. 级数各项表达式均为解析的. 若要产生奇点(singularity), 应要求 Thermodynamic limit(热力学极限), 即 $\begin{aligned}
+    \lim_{N_{\text{max}},V\rightarrow\infty}
+\end{aligned}$ 的同时 $\begin{aligned}
+    \frac{N}{V} = \text{finite const.}
+\end{aligned}$. 
+
+\subsection{Ising Model: From Thermodynamic Approach to Statistical Approach}
+
+$\begin{aligned}
+    H(\{\sigma_{i}\}) = -J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j} - \mu B\sum_{i}\sigma_{i},\quad \sigma_{i} = \pm 1(\text{binary variable})
+\end{aligned}$
+
+\subsubsection{Preliminary Analysics}
+
+设 $N_{+}$ 个自旋 $\uparrow$, $N_{-}$ 个自旋 $\downarrow$; 又令 $N_{++}$ 为相邻 $\uparrow\uparrow$ 的数, $N_{--}$ 为相邻 $\downarrow\downarrow$ 的数, $N_{+-}$ 为相邻 $\downarrow\uparrow$ 与 $\uparrow\downarrow$ 的数. 
+
+通过这些参数重构哈密顿量: $\begin{aligned}
+    H_{N} = -J(N_{++}+N_{--}-N_{+-}) - \mu B(N_{+}-N_{-})
+\end{aligned}$. 
+
+设 $q$ 是各自旋的配位数(对于 Ising Model 即 $2$), 存在约束关系 $N = N_{+} + N_{-}$,  $qN_{+} = 2N_{++} + N_{+-}$,  $qN_{-} = 2N_{--} + N_{+-}$. 因此只有两个独立变量. 
+
+$(N_{+},N_{++})$ 不是单个微观态, 存在着{\color{red}{简并}}. 因此$\begin{aligned}
+    H_{N}(N_{+},N_{++}) = -J\left(\frac{1}{2}qN - 2qN_{+} + 4N_{++}\right) - \mu B(N_{+}-N)\end{aligned}$, 
+    
+$\begin{aligned}
+        Q_{N} = \sum_{(N_{+},N_{++})} e^{-\beta H_{N}(N_{+},N_{++})}{\color{red}{g_{N}(N_{+},N_{++})}}
+    \end{aligned}$ 
+
+\subsubsection{Mean-Field Approximation}
+
+Order parameter(序参量): $\begin{aligned}
+    L = \frac{1}{N}\sum_{i}\sigma_{i} = \frac{N_{+}-N_{-}}{N}\in[-1,+1]
+\end{aligned}$. 而 $M = \mu(N_{+}-N_{-}) = \mu NL$.
+
+[Discussion] 为了照顾到 $L = 0$ 中"前半全 $\uparrow$, 后半全 $\downarrow$"的特殊情况, 可以进一步定义新的序参量 $\begin{aligned}
+    S = \frac{N_{++}+N_{--}-N_{+-}}{\frac{1}{2}qN}
+\end{aligned}$. 即相邻自旋方向相同为有序, 反之为无序. 因此序参量依赖于对 "序" 的定义.
+\begin{align*}
+    H(\{\sigma_{i}\}) 
+    &= -J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j} -\mu B\sum_{i}\sigma_{i} 
+    = -\frac{J}{2}\sum_{i}\left(\sum_{\langle j\rangle}\sigma_{j}\right)\sigma_{i} - \mu B\sum_{i}\sigma_{i}\\
+    &= -\frac{J}{2}\sum_{i}(q\overline{\sigma})\sigma_{i} - \mu B\sum_{i}\sigma_{i} 
+    = -\mu\left(B+\frac{1}{2}B^{\prime}\right)\sum_{i}\sigma_{i},\quad B^{\prime} 
+    = \frac{qJ}{\mu}\overline{\sigma},\quad\text{Effective field}
+\end{align*}
+
+spin flip($\uparrow\Leftrightarrow\downarrow$) 引起能量变化 $\begin{aligned}
+    \delta\varepsilon 
+    = \varepsilon_{-} - \varepsilon_{+} 
+    = \left(-J\sum_{\langle j\rangle}\sigma_{i}-\mu B\sigma_{i}\right)_{\sigma_{i}=-1} - \left(-J\sum_{\langle j\rangle}\sigma_{i}-\mu B\sigma_{i}\right)_{\sigma_{i}=+1} = 2\mu(B+B^{\prime})
+\end{aligned}$. 
+
+记 $\begin{aligned}
+    \overline{N}_{\pm} = N\frac{e^{-\beta\varepsilon_{\pm}}}{\begin{aligned}
+        \sum_{+,-}e^{-\beta \varepsilon_{i}}
+    \end{aligned}}
+\end{aligned}$, 则有 \textbf{self-consistency function}(自洽方程): $\begin{aligned}
+    \frac{\overline{N}_{-}}{\overline{N}_{+}} = \frac{1-\overline{L}}{1+\overline{L}} = e^{-2\beta(\mu B + qJ\overline{L})},\quad \overline{L} = \overline{\sigma} = \frac{1}{N}\sum_{i}\sigma_{i}
+\end{aligned}$. 
+
+等式两边同 $\ln$, 且引入 $\begin{aligned}
+    \arctanh{x} = \frac{1}{2}\ln{\left(\frac{1+x}{1-x}\right)}
+\end{aligned}$, 得到 $\begin{aligned}
+    \beta\left(qJ\overline{L}+\mu B\right) = \arctanh{\left(\overline{L}\right)}
+\end{aligned}$, 即 $\overline{L}$ 形式的 \textbf{Equation of State}. 
+
+[Example] 其它使用 Mean-Field approximation 的例子
+
+1. 溶液中 electric potential $\phi(\vec{r})$, 粒子分布 $\begin{aligned}
+    \rho(\vec{r}) = \sum_{s}e_{s}n_{s_{0}}e^{-\frac{e_{s}\phi(\vec{r})}{k_{B}T}}
+\end{aligned}$, $\nabla^{2}\phi(\vec{r}) = -4\pi\rho(\vec{r})$. 
+
+2. 在 $\overline{L}\rightarrow 0$ 时, 即有 $\overline{L}\sim M \propto B$, 即 paramagnetism(顺磁). 非线性项 $\rightarrow$ ferromagnetism(铁磁). 
+
+\paragraph{$B = 0$ 下的 $\overline{L}$} 
+
+令 $\begin{aligned}
+    L_{0} = \overline{L}(B=0)
+\end{aligned}$, 得到无外场条件下的状态方程 $\begin{aligned}
+    \overline{L}_{0} = \tanh{(\beta Jq\overline{L}_{0})}
+\end{aligned}$. $\overline{L}_{0}\rightarrow 0$ 代表可相变. 
+
+使用极限 $\begin{aligned}
+    \lim_{x\rightarrow 0}\tanh{(x)} \simeq x - \frac{x^{3}}{3} + O(x^{5})
+\end{aligned}$, 展开状态方程: $\begin{aligned}
+    (\beta qJ-1)\overline{L}_{0} = \frac{1}{3}\left(\beta qJ\overline{L}_{0}\right)^{3}
+\end{aligned}$. 若 $\begin{aligned}
+    \beta qJ-1 > 0\Leftrightarrow T < \frac{qJ}{k_{B}} = T_{c}
+\end{aligned}$, 
+
+则存在顺磁解 $\overline{L}_{0} = 0$; 同时还存在着 2 个非零解, 代表系统可自发磁化. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Discussion] 几何观点: $y = x$ 和 $y = \tanh(\beta Jqx)$ 的交点. 
+在高温时只有 1 个交点, 而低温时则能产生 3 个交点. 
+
+根据中值定理, 为产生交点, 应存在 $\begin{aligned}
+    \frac{\mathrm{d}\tanh{\left(\beta J\overline{L}_{0}\right)}}{\mathrm{d}\overline{L}_{0}}\bigg|_{\overline{L}_{0}>0} = 1\Rightarrow \frac{qJ}{k_{B}T_{c}} = 1
+\end{aligned}$. 
+
+对于 $L_{0}$-$T$ 相图. 这是一种 continuous phase transition, 属于二阶相变. symmetry abrupt change(对称性突变).
+
+1. 在 $T_{c}$ 左邻域, 有近似 $\begin{aligned}
+    \lim_{T\rightarrow T_{c}^{-}}\overline{L}_{0} = \overline{L}_{0}\frac{T_{c}}{T} - \frac{1}{3}\overline{L}_{0}^{3}\left(\frac{T_{c}}{T}\right)^{3}\Rightarrow \overline{L}_{0} \simeq 3^{\frac{1}{2}}\left(1 - \frac{T}{T_{c}}\right)^{\frac{1}{2}}
+\end{aligned}$. 
+
+2. 在 $T\rightarrow 0$ 时, 有近似 $\begin{aligned}
+    \lim_{T\rightarrow 0}\overline{L}_{0}\simeq 1 - 2\text{exp }\left(-\frac{2T_{c}}{T}\right)
+\end{aligned}$, 斜率 $\begin{aligned}
+    \frac{\mathrm{d}\overline{L}_{0}}{\mathrm{d}T} \rightarrow 0
+\end{aligned}$. 
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+\textbf{研究在 $B=0$ 时的 Specific Heat(热容)}. 无外场时系统内能为 $\begin{aligned}
+    H(\{\sigma_{i}\}) = -\frac{J}{2}\sum_{i}(q\overline{\sigma})\sigma_{i} = -\frac{1}{2}qJN\overline{L}_{0}^{2}
+\end{aligned}$; 
+
+热容为内能偏导 $\begin{aligned}
+    c_{0} = \frac{\partial U_{0}}{\partial T} = -qJN\overline{L}_{0}\frac{\mathrm{d}\overline{L}_{0}}{\mathrm{d}T}
+\end{aligned}$. 可见其依赖于 $\begin{aligned}
+    \frac{\mathrm{d}\overline{L}_{0}}{\mathrm{d}T}
+\end{aligned}$; 因此 1. $T>T_{c}$ 时,  $c_{0} = 0$; 
+
+2. $\begin{aligned}
+    \lim_{T\rightarrow T_{c}^{-}}
+\end{aligned}$ 时, 对物态方程两边都 $\begin{aligned}
+    \frac{\partial}{\partial T}
+\end{aligned}$, 得到 $\begin{aligned}
+    c_{0} = k_{B}N\frac{T_{c}}{T}\overline{L}_{0}^{2}\frac{1 - \overline{L}_{0}^{2}}{\begin{aligned}
+        \frac{T}{T_{c}} - \left(1 - \overline{L}_{0}^{2}\right)
+    \end{aligned}} \simeq \frac{3}{2}Nk_{B}
+\end{aligned}$
+
+\textbf{研究在 $B=0$ 时的熵 $S_{0}$.} 1. Statistical method. 熵 $\begin{aligned}
+    S_{0}(T\geq T_{c}) = k_{B}\ln{(2^{N})} = Nk_{B}\ln{2}
+\end{aligned}$. 
+
+2. Thermodynamic method. $\begin{aligned}
+    \text{ }S_{0}(T\geq T_{c}) &= \int_{0}^{T}\frac{c_{0}(T)\mathrm{d}T}{T} = \int_{0}^{T_{c}}\frac{c_{0}(T)\mathrm{d}T}{T} + \cancel{\int_{T_{c}}^{T}\frac{c_{0}(T)\mathrm{d}T}{T}} = -qJN\int_{1}^{0}\frac{\overline{L}_{0}}{T}\mathrm{d}\overline{L}_{0}\end{aligned}$
+
+$\begin{aligned}
+    = Nk_{B}\int_{0}^{1}\arctanh{\left(\overline{L}_{0}\right)}\mathrm{d}\overline{L}_{0} = Nk_{B}\ln{2}
+\end{aligned}$
+
+\textbf{研究 $B=0$ 时的磁化率 $\chi_{0}$}. 
+
+$\begin{aligned}
+    \chi_{0} = \left(\frac{\partial M}{\partial B}\right)_{T}\Rightarrow
+    \lim_{T\rightarrow T_{c}^{+}}\chi_{0} \simeq \frac{NM^{2}}{k_{B}}{\color{red}{\frac{1}{T-T_{c}}}},\quad 
+    \lim_{T\rightarrow T_{c}^{-}}\chi_{0} \simeq \frac{NM^{2}}{2k_{B}}{\color{red}{\frac{1}{T_{c}-T}}},\quad
+    \lim_{T\rightarrow 0}\chi_{0}\simeq \frac{4NM^{2}}{k_{B}T}\exp\left\{\begin{aligned}
+        -\frac{2T_{c}}{T}
+    \end{aligned}\right\}
+\end{aligned}$. 
+
+\paragraph{Weak External Field $B\rightarrow 0$}
+
+在 $T\geq T_{c}$ 时, 有 $\begin{aligned}
+    \overline{L}\simeq \frac{\mu\beta}{1-\beta qJ}B = \frac{\mu}{k_{B}(T-T_{c})}B\Rightarrow \overline{L}\propto B
+\end{aligned}$, 即 \textbf{Curie's law}. 
+
+\subsubsection{Lost Correlation under Mean-Field Approximation}
+
+\paragraph{概率检验} 取任意两相邻格点 $\langle i,j\rangle$, 其自旋均为 $\uparrow$ 的概率 $\begin{aligned}
+    P_{++} = \frac{N_{++}}{\begin{aligned}
+        \frac{1}{2}qN
+    \end{aligned}}
+\end{aligned}$ 是否等价于单自旋 $\uparrow$ 概率乘积
+
+$\begin{aligned}
+    \frac{N_{+}}{N}\times\frac{N_{+}}{N} = P_{+}\times P_{+}
+\end{aligned}$? 通过 MFT 给出的 $\begin{aligned}
+    U_{0} = -\frac{1}{2}qJN\overline{L}_{0}^{2}, N_{+} = \frac{1}{2}N(1+\overline{L}_{0}), H_{N}(N_{+},N_{++})
+\end{aligned}$ 进行验证($\sqrt{}$). 
+
+同理 $P_{--}=P_{-}^{2}$, $P_{+-}=2P_{+}P_{-}$. 如果 Random mixing(完全随机): $\begin{aligned}
+    \frac{N_{++}N_{--}}{N_{+-}^{2}} = \frac{P_{++}P_{--}}{(P_{+-}+P_{-+})^{2}} = \frac{P_{+}^{2}P_{-}^{2}}{4P_{+}^{2}P_{-}^{2}} = \frac{1}{4}
+\end{aligned}$. 
+
+因此若该值偏离 $\begin{aligned}
+    \frac{1}{4}
+\end{aligned}$, 则存在着某种自旋间的 correlation.
+
+\paragraph{涨落检验} 将 $\sigma_{i}$ 视为 continuous variable $\sigma = \langle\sigma_{i}\rangle + \delta\sigma_{i} = m+\delta\sigma_{i}$, 则
+
+$\begin{aligned}
+    H = -J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j} = -J\sum_{\langle i,j\rangle}(m+\delta\sigma_{i})(m+\delta\sigma_{j}) = -Jmq\sum_{i}\delta\sigma_{i} = -Jmq\sum_{i}(\sigma_{i}-m) = -Jmq\sum_{i}\sigma_{i} + \text{const.}
+\end{aligned}$. 
+
+在处理时运用了 $\delta\sigma_{i}\delta\sigma_{j}\rightarrow 0$ 的技巧, 这也意味着 lost of correlation of fluctuation. 
+
+\subsubsection{Derivation of Equation of State in Terms of Order Parameter $L$}
+Also as an [Exercise]: 
+\begin{align*}
+    \frac{N_{+}}{N} &= \frac{1}{2}(1+L),\quad \frac{N_{-}}{N} = \frac{1}{2}(1-L), \quad L = \frac{N_{+}-N_{-}}{N}\\
+    \frac{N_{++}}{\frac{1}{2}qN} &= \left(\frac{N_{+}}{N}\right)^{2}\rightarrow \frac{N_{++}}{N} = \frac{q}{8}(1+L)^{2},\quad\text{similarly }\frac{N_{--}}{N} = \frac{q}{8}(1-L)^{2},\quad \frac{N_{+-}}{N} = \frac{q}{4}(1-L^{2})\\
+    U(L) &= -\frac{1}{2}qJNL^{2} - \mu BNL\\
+    S &= k_{B}\ln{\left(\frac{N!}{N_{+}!N_{-}!}\right)} \stackrel{N\rightarrow\infty}{=} -k_{B}N\left[\frac{1+L}{2}\ln{\left(\frac{1+L}{2}\right)} + \frac{1-L}{2}\ln{\left(\frac{1-L}{2}\right)}\right]\\
+    F(L) &= U-TS = -\frac{1}{2}qJNL^{2} - \mu BNL + k_{B}TN\left[\frac{1+L}{2}\ln{\left(\frac{1+L}{2}\right)} + \frac{1-L}{2}\ln{\left(\frac{1-L}{2}\right)}\right]\\ 
+    \frac{\partial F}{\partial L} = 0 &\Rightarrow -qJNL - \mu BN + \frac{1}{2}k_{B}TN\left[\ln{\left(\frac{1+L}{2}\right)} + 1 - \ln{\left(\frac{1-L}{2}\right)} - 1\right] = 0\\
+    & \Rightarrow -qJNL - \mu BN + \frac{1}{2}k_{B}TN\ln{\left(\frac{1+L}{1-L}\right)} = 0\Rightarrow \frac{1}{2}\ln{\left(\frac{1+L}{1-L}\right)} = \frac{qJL + \mu B}{k_{B}T}\\
+    & \Rightarrow \arctanh{L} = \beta(qJL+\mu B),\quad \beta = \frac{1}{k_{B}T}
+\end{align*}
+\subsubsection{1st-Order Approximation-Bethe's Method @ 1935}
+$(q+1)$ system. $\sigma_{0}$ 感受到 $q$ 个 $\sigma_{i}$ 的作用. $\begin{aligned}
+    H_{q+1} = -\mu B\sigma_{0} - \mu\left(B+B^{\prime}\right)\sum_{j=1}^{q}\sigma_{j} - J\sum_{j=1}^{q}\sigma_{0}\sigma_{j}
+\end{aligned}$. Requirement: $\begin{aligned}
+    \overline{\sigma}_{0} = \overline{\sigma}_{j},\quad\forall j
+\end{aligned}$. 
+
+$\begin{aligned}
+    Z = \sum_{\sigma_{0}=\pm 1}\sum_{\sigma_{j}=\pm 1}e^{-\beta H_{q+1}} = \stackrel{\sigma_{0}=+1}{Z_{+}} + \stackrel{\sigma_{0}=-1}{Z_{-}},\quad Z_{\pm} = e^{\pm \alpha}\left[2\cosh{\left(\alpha+\alpha^{\prime}\pm\gamma\right)}\right]^{q},\quad 
+    \alpha = \frac{\mu B}{k_{B}T},\quad \alpha^{\prime} = \frac{\mu B^{\prime}}{k_{B}T},\quad \gamma = \frac{J}{k_{B}T}
+\end{aligned}$.
+
+$\begin{aligned}
+    \overline{\sigma}_{0} = (+1)\frac{Z_{+}}{Z} + (-1)\frac{Z_{-}}{Z} ,\quad \overline{\sigma}_{j} = \langle \frac{1}{q}\sum_{j}\sigma_{j}\rangle = \frac{1}{q}\frac{1}{Z} \frac{\partial Z}{\partial\alpha^{\prime}}
+\end{aligned}$ (类比巨正则系综 $\begin{aligned}
+    Z = \sum_{r,s}e^{-\alpha N_{r}-\beta E_{s}},\quad \langle N\rangle = -\frac{\partial\ln{Z}}{\partial\alpha}
+\end{aligned}$).
+
+要求 $\begin{aligned}
+    \overline{\sigma}_{0} = \overline{\sigma}_{j}\Rightarrow e^{2\alpha^{\prime}} = \left[
+        \frac{\cosh{(\alpha+\alpha^{\prime}+\gamma)}}{\cosh{(\alpha+\alpha^{\prime}-\gamma)}}
+    \right]^{q-1}
+\end{aligned}$. $\alpha^{\prime} = \alpha^{\prime}(\alpha,\gamma)$. 
+
+若 $\alpha = 0$ (no external field), 此时 $\alpha^{\prime} = 0$ 解存在(顺磁). 非零解: $\begin{aligned}
+    \alpha^{\prime} = (q-1)\tanh{\gamma} \left(\alpha^{\prime}-\sech^{2}{\gamma}\frac{\alpha^{\prime 2}}{3}\right)
+\end{aligned}$. 根据中值定理, 
+
+有解即要求斜率$\begin{aligned}
+    \left(\frac{\partial}{\partial\alpha^{\prime}}\right)
+\end{aligned}$ 满足 $\begin{aligned}(q-1)\tanh{\gamma}>1
+\end{aligned}$. 解得 $\begin{aligned}
+    \gamma_{c} = \frac{1}{2}\ln{\left(\frac{q}{q-2}\right)},\quad T_{c} = \frac{2J}{k_{B}}\frac{1}{\begin{aligned}
+        \ln{\left(\frac{q}{q-2}\right)}
+    \end{aligned}}
+\end{aligned}$. 
+
+$\begin{aligned}
+    \left[\text{回忆之前通过 MFT 得到的 }T_{c} = \frac{qJ}{k_{B}}\right]
+    \lim_{q\rightarrow\infty}T_{c} = \lim_{q\rightarrow\infty}\frac{2J}{k_{B}}\frac{1}{\begin{aligned}
+        \ln{\left(\frac{1}{1-2/q}\right)}
+    \end{aligned}} \simeq \frac{qJ}{k_{B}},\text{即 MFT}
+\end{aligned}$.
+
+检验发现对于 1-dim Ising Model, $\begin{aligned}
+    q = 2\Rightarrow T_{c} = 0
+\end{aligned}$.  
+
+$\begin{aligned}
+    \alpha^{\prime}(T\leq T_{c}) = \left[
+        3(q-1)\frac{J}{k_{B}T_{c}}\left(1-\frac{T}{T_{c}}\right)
+    \right]^{\frac{1}{2}},\quad \overline{\sigma}_{0} = \frac{(+1)\cdot Z_{+} + (-1)\cdot Z_{-}}{Z_{+} + Z_{-}} = \frac{\begin{aligned}
+        \frac{Z_{+}}{Z_{-}}-1
+    \end{aligned}}{\begin{aligned}
+        \frac{Z_{+}}{Z_{-}}+1
+    \end{aligned}} = \frac{\sinh{(2\alpha+2\alpha^{\prime})}}{\cosh{(2\alpha+2\alpha^{\prime})}+e^{-2\gamma}}
+\end{aligned}$.
+
+若 $\alpha = 0$, 则 $\begin{aligned}
+    \lim_{{\alpha^{\prime}\rightarrow 0}}\overline{\sigma}_{0} = \frac{2\alpha^{\prime}}{1+e^{-2\gamma_{c}}} = \left[
+        \frac{q^{2}}{q-1}\frac{J}{k_{B}T_{c}}3\left(1-\frac{T}{T_{c}}\right)
+    \right]^{\frac{1}{2}}
+\end{aligned}$. 无论是否存在关联 $q$, 都存在于 $T=T_{c}$ 附近的发散斜率. 
+
+\paragraph{Correlation of Spin}
+对于 no correlation 体系, $\begin{aligned}
+    \frac{N_{++}N_{--}}{N_{+-}^{2}} = \frac{1}{4}
+\end{aligned}$. 
+
+将求和形式写作 $\begin{aligned}
+    Z = \sum_{\sigma_{0}=\pm 1}\sum_{\sigma_{1}\pm 1}\left(\sum_{\sigma_{2},\sigma_{3},\cdots,\sigma_{q}=\pm 1}\right) = Z_{++} + Z_{+-} + Z_{--}
+\end{aligned}$. 存在键数约束 $\begin{aligned}
+    N_{++} + N_{--} + N_{+-} = \frac{1}{2}qN
+\end{aligned}$. 
+
+可解得 $\begin{aligned}
+    (N_{++},N_{--},N_{+-}) = \frac{qN}{\begin{aligned}
+        4[e^{\gamma}\cosh{(2\alpha+2\alpha^{\prime})+e^{-\gamma}}]
+    \end{aligned}}\left(
+        e^{2\alpha+2\alpha^{\prime}+\gamma},e^{-2\alpha-2\alpha^{\prime}+\gamma},2e^{-\gamma}
+    \right)
+\end{aligned}$. 
+
+代入检验自旋关联 $\begin{aligned}
+    \frac{N_{++}N_{--}}{N_{+-}^{2}} = \frac{1}{4}\stackrel{\text{correlation}}{e^{4\gamma}},\quad \gamma = \frac{J}{k_{B}T}
+\end{aligned}$
+
+\paragraph{Specific Heat}
+无外场内能为 $\begin{aligned}
+    U_{0} = -\frac{1}{2}qJN\frac
+    {\cosh{(2\alpha^{\prime})}-e^{-2\gamma}}
+    {\cosh{(2\alpha^{\prime})}+e^{-2\gamma}}
+\end{aligned}$. 在 $\begin{aligned}
+    T>T_{c}
+\end{aligned}$ 时, 等效平均场为 $\begin{aligned}
+    \alpha^{\prime} = 0
+\end{aligned}$. 此时热容为 
+
+$\begin{aligned}
+    \frac{c_{0}}{Nk_{B}} = \frac{1}{2}q\gamma^{2}\sech^{2}{\gamma}>0\left[\text{回忆 MFT 给出的 }c_{0} \propto \overline{L}_{0}\frac{\mathrm{d}\overline{L}_{0}}{\mathrm{d}T} = 0\text{ 和此处结果相悖, 显然是忽略了涨落关联造成的}\right]
+\end{aligned}$
+
+
+\subsubsection{Exact Solution of 1-D Ising Model}
+
+考虑周期性条件 $(\sigma_{N+1} = \sigma_{1})$, 哈密顿量 $\begin{aligned}
+    H_{N}(\{\sigma_{i}\}) = -J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j} - \mu B\sum_{i=1}^{N}\sigma_{i} = -J\sum_{i=1}^{N}\sigma_{i}\sigma_{i+1} - \frac{1}{2}\mu B\sum_{i=1}^{N}(\sigma_{i}+\sigma_{i+1})
+\end{aligned}$
+
+1. \textbf{矩阵法推导}: $\begin{aligned}
+    Q_{N} = \sum_{\{\sigma_{i}\}}\exp\left\{
+        \beta \sum_{i}\left[J\sigma_{i}\sigma_{i+1} + \frac{1}{2}\mu B(\sigma_{i}+\sigma_{i+1})\right]\right\} = \sum_{\{\sigma_{i}\}}\prod_{i}\exp\left\{\beta\left[
+                J\sigma_{i}\sigma_{i+1}+\frac{1}{2}\mu B(\sigma_{i}+\sigma_{j})
+                \right]\right\}
+\end{aligned}$, 
+
+观察到可将其写作矩阵元形式: $\begin{aligned}
+    Q_{N} 
+    = \sum_{\{\sigma_{i}\}}\prod_{i}\langle\sigma_{i}|P|\sigma_{i+1}\rangle 
+    = \sum_{\{\sigma_{i}\}}\langle \sigma_{1}|P\stackrel{\mathbb{I}}{\underline{|\sigma_{2}\rangle\langle \sigma_{2}|}}P|\sigma_{3}\rangle\cdots\langle\sigma_{N-1}|P\stackrel{\mathbb{I}}{\underline{|\sigma_{N}\rangle\langle\sigma_{N}|}}P|\sigma_{N+1}\rangle
+\end{aligned}$
+
+$\begin{aligned}
+     = \sum_{\sigma_{1}=\pm 1}\langle \sigma_{1}|P^{N}|\sigma_{1}\rangle 
+     = \Tr{P^{N}}
+     = \lambda_{+}^{N} + \lambda_{-}^{N}\stackrel{\lambda_{+}\gg \lambda_{-}}{\approx} \lambda_{+}^{N}
+\end{aligned}$. 其中 $\lambda_{\pm}$ 是 矩阵 $P$ 的特征值.
+
+定义基矢 $\begin{aligned}
+    |\sigma=+1\rangle &= \begin{bmatrix}
+        1\\0
+    \end{bmatrix},\quad |\sigma=-1\rangle = \begin{bmatrix}
+        0\\1
+    \end{bmatrix}\Rightarrow 
+    P = \begin{bmatrix}
+        P_{++} & P_{+-}\\P_{-+} & P_{--}
+    \end{bmatrix} = \begin{bmatrix}
+        e^{\beta(J+\mu B)} & e^{-\beta J}\\
+        e^{-\beta J} & e^{\beta(J-\mu B)}
+    \end{bmatrix}
+\end{aligned}$. 
+
+$P$ 有两个特征值 $\begin{aligned}
+    \lambda_{\pm}=e^{\beta J}\cosh{(\beta\mu B)}\pm [e^{-2\beta J}+e^{2\beta J}\sinh^{2}{(\beta\mu B)}]^{\frac{1}{2}}
+\end{aligned}$. 
+
+$\begin{aligned}
+    \frac{1}{N}\ln{Q_{N}} &\approx \ln{\lambda_{+}} = \ln{\left\{e^{\beta J}\cosh{(\beta\mu B)} + \left[e^{-2\beta J} + e^{2\beta J}\sinh^{2}{(\beta\mu B)}\right]^{\frac{1}{2}}\right\}}\\
+    F(B,T) &= -Nk_{B}T\ln{Q_{N}} = -NJ - Nk_{B}T\ln{\left\{
+        \cosh{(\beta\mu B)} + \left[
+            e^{-4\beta J} + \sinh^{2}{(\beta\mu B)}
+        \right]^{\frac{1}{2}}
+    \right\}},\quad M = \left(\frac{\partial F}{\partial B}\right),\quad \lim_{B\rightarrow 0}M = 0
+\end{aligned}$
+
+2. \textbf{递推法导出配分函数}. 将 $J$ 写作形式 $J_{i}$, 在无外场($B=0$)下: $\begin{aligned}
+    Q_{N} = \sum_{\{\sigma_{i}\}}\prod_{i}e^{\beta J_{i}\sigma_{i}\sigma_{i+1}}
+\end{aligned}$. 分离出最后一项 
+
+$\begin{aligned}
+    \sum_{\sigma_{N}=\pm 1}e^{\beta J_{N-1}\sigma_{N-1}\sigma_{N}} = e^{\beta J_{N-1}\sigma_{N-1}} + e^{-\beta J_{N-1}\sigma_{N-1}} = 2\cosh{(\beta J_{N-1}\sigma_{N-1})} \stackrel{\text{even function}}{=} 2\cosh{(\beta J_{N-1})}
+\end{aligned}$
+
+于是有递推关系: $\begin{aligned}
+    Q_{N} = 2\cosh{(\beta J_{N-1})}Q_{N-1},\quad Q_{1} = \sum_{\sigma_{1}=\pm 1}(1) = 2\Rightarrow Q_{N} = Q_{1}\prod_{i=1}^{N-1}2\cosh{(\beta J_{i})}
+\end{aligned}$
+
+类比 $\begin{aligned}
+    \langle E\rangle = -\frac{\partial\ln{Q}}{\partial\beta}
+\end{aligned}$, 通过求偏导得到空间关联 $\begin{aligned}
+    \langle\sigma_{k}\sigma_{k+1}\rangle = -\frac{1}{\beta}\frac{\partial\ln{Q_{N}}}{\partial J_{k}} = \tanh{(\beta J_{k})}\end{aligned}$, 
+    
+    $\begin{aligned}
+        \langle\sigma_{k}\sigma_{k+r}\rangle &\stackrel{\sigma_{i}^{2}=1}{=} \langle \sigma_{k}\sigma_{k+1}\cdot \sigma_{k+1}\sigma_{k+2}\cdots \sigma_{k+r-1}\sigma_{k+r}\rangle
+    = \frac{1}{Q_{N}}\frac{\partial}{\beta\partial J_{k}}\frac{\partial}{\beta\partial J_{k+1}} \cdots \frac{\partial}{\beta\partial J_{k+r-1}}Q_{N}
+    = \prod _{i=k}^{k+r-1}\tanh{(\beta J_{i})} = \tanh^{r}{(\beta J)}\\
+    &= e^{-r/\xi},\quad \text{correlation length: }\xi = \frac{1}{\ln{[\coth{(\beta)}]}}\Rightarrow\text{随距离增大而迅速衰减}.\quad \lim_{T\rightarrow 0}\xi = \infty,\quad \lim_{T\rightarrow\infty}\xi = 0
+\end{aligned}$. 
+
+\subsubsection{Phase Transition \& Space Dimension}
+
+spin flip: energetically unfavored, entropically favored. $\begin{aligned}
+    F = 2J - k_{B}T\ln{N} < 0\Rightarrow T > \frac{2J}{k_{B}\ln{N}}
+\end{aligned}$. 
+
+1D: $\begin{aligned}
+    (+,+,-,{\color{red}{+}},+)
+\end{aligned}$ {\color{red}{染色}} 元素翻转 $+\rightarrow -$, 不会消耗能量; 2D: $\begin{aligned}
+    \begin{pmatrix}
+        - & - & - & - & - \\
+        - & - & - & - & - \\
+        - & + & + & {\color{red}{+}} & - \\
+        - & - & - & - & - 
+    \end{pmatrix}
+\end{aligned}$ {\color{red}{染色}}元素翻转, 需要消耗能量. 
+
+\subsubsection{Development of Ising Model}
+\paragraph{Spin Glass} 
+$\begin{aligned}
+    H = -\sum_{\langle i,j\rangle} J_{ij}\sigma_{i}\sigma_{j} - h\sum_{i}\sigma_{i}
+\end{aligned}$, metastable state. 
+\paragraph{Hopfield Network} 
+Learning \& Computation. $\begin{aligned}
+    V_{i} \rightarrow \begin{cases}
+        1,&\text{if }\begin{aligned}
+            \sum_{j}\omega_{ij}V_{j}>U
+        \end{aligned}\\
+        0,&\text{if }\begin{aligned}
+            \sum_{j}\omega_{ij}V_{j}<U
+        \end{aligned}
+    \end{cases}
+\end{aligned}$. 
+\paragraph{Boltzmann Machine} $\begin{aligned}
+    V_{i} = 0\rightarrow 1,\quad \frac{P_{V_{i}=0}}{P_{V_{i}=1}} = e^{-\Delta E_{i}/k_{B}T}
+\end{aligned}$. 
+
+\subsection{Landau's Theory (of 2nd Order Phase Transition)}
+Critical exponents: $\begin{aligned}
+    \alpha,\beta,\gamma,\delta
+\end{aligned}$. External field $h$; Order parameter: $m_{0} = m(h=0)$; 
+
+Response functions: $C_{0}$ (热容), $\begin{aligned}
+    \chi_{0}\sim\frac{\partial m}{\partial h}
+\end{aligned}$ (磁化率). 
+
+$\begin{aligned}
+    \lim_{h\rightarrow 0,T\rightarrow T_{c}^{-}}m_{0}&\sim (T_{c}-T)^{\beta},\quad \lim_{h\rightarrow 0}\chi_{0}\sim \begin{cases}
+        (T-T_{c})^{-\gamma},&T\rightarrow T_{c}^{+}\\
+        (T_{c}-T)^{-\gamma^{\prime}},&T\rightarrow T_{c}^{-}
+    \end{cases},\\
+    \lim_{h\rightarrow 0}m\bigg|_{T=T_{c}}&\sim h^{1/\delta},\quad
+    \lim_{h\rightarrow 0}C_{0}\sim \begin{cases}
+        (T-T_{c})^{-\alpha}, &T\rightarrow T_{c}^{+}\\
+        (T_{c}-T)^{-\alpha^{\prime}}, &T\rightarrow T_{c}^{-}
+    \end{cases}
+\end{aligned}$
+
+[Example] 1. superfluid He: $\alpha \approx -0.01294$; 2. 0th approximation of Ising Model \& Van der Waals theory of gas-liquid phase transition: $\begin{aligned}
+    \alpha = \alpha^{\prime} = 0, \quad \beta = \frac{1}{2}, \gamma = \gamma^{\prime} = 1,\delta = 3
+\end{aligned}$; 3. CO2: $\begin{aligned}
+    \beta = 0.34 ,\quad \delta = 0.42, \quad \gamma = 1.32
+\end{aligned}$. N2: $\begin{aligned}
+    \beta = 0.33, \quad \delta=0.42, \quad \gamma = 1.35
+\end{aligned}$
+
+[Discussion] Critical exponents. 考虑稳定性条件, 导出其关系 $\begin{aligned}
+    \alpha^{\prime} + 2\beta + \gamma^{\prime} \geq 2
+\end{aligned}$ (Rushbrooke's inequality).
+
+\subsubsection{Constrained Free Energy}
+平衡态下, $\begin{aligned}
+    \mathrm{d}F = -S\mathrm{d}T - M\mathrm{d}H,\quad M = -\left(\frac{\partial F}{\partial H}\right)_{T}\Rightarrow F(T,H,M)
+\end{aligned}$, let $\begin{aligned}
+    \frac{\partial F(T,H,M)}{\partial M}\bigg|_{\text{equilibrium}} = 0
+\end{aligned}$. $M$ acts as a constraint.
+
+Continuous variable $m_{0}$: $\begin{aligned}
+    m_{0}=0\stackrel{\text{phase transition}}{\longrightarrow}m_{0}\neq 0
+\end{aligned}$.  
+
+Free energy (analytic function of $m_{0}$): $\begin{aligned}
+    \lim_{t,m_{0}\rightarrow 0}\psi_{0}(t,m_{0}) = q(t) + r(t)m_{0}^{2} + s(t)m_{0}^{4}+\cdots,t = \frac{T-T_{c}}{T_{c}}
+\end{aligned}$, 
+
+其中 $q(t),r(t),s(t)$ 是 phenomenological parameters(唯象参数). 
+
+一级相变: $m_{0}$-$T$ 相图中, $m_{0}$ 出现骤降. 在 gas-liquid PT 中, $m_{0} = \rho_{l}-\rho_{g}$. 
+
+[Discussion] $\psi_{0}$ 是对 $m_{0}$ 的偶函数, 因为要求系统具有: 
+
+1. symmetry: 能量不应依赖于磁化的方向, 即 $\begin{aligned}
+    \psi_{0}(m_{0}) = \psi_{0}(-m_{0})
+\end{aligned}$; 
+
+2. 稳定性: 自由能需要在 $m_{0}=0$ (高温相) 取得极小值, 若有奇次项则使得 $\begin{aligned}
+    \frac{\partial\psi_{0}}{\partial m_{0}}\bigg|_{m_{0}=0} \neq 0
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+化学势 $\mu$ 全微分: $\begin{aligned}
+    \mathrm{d}\mu(T,p,h) = -S\mathrm{d}T + v\mathrm{d}p -m\mathrm{d}h
+\end{aligned}$. 加入外场 $h$ 得到约化的化学势: $\begin{aligned}
+    \widetilde{\mu} = \mu+ mh
+\end{aligned}$, 
+
+其全微分为 $\begin{aligned}
+    \mathrm{d}\widetilde{\mu} = -S\mathrm{d}T + v\mathrm{d}p -h\mathrm{d}m
+\end{aligned}$. 那么 $\begin{aligned}
+    \mu 
+    = \widetilde{\mu} - mh 
+    =\stackrel{\text{Gibbs Free Energy}}{\underline{\widetilde{\mu}_{0}(T,p) + \alpha(T,p)m^{2} + \beta(T,p)m^{4}}} - mh. 
+\end{aligned}$
+
+平衡态: $\begin{aligned}
+    \frac{\partial\psi_{0}}{\partial m_{0}} = r(t)m_{0} + 2s(t)m_{0}^{3} = 0 \Rightarrow m_{0} = 0,\pm\sqrt{\frac{-r(t)}{s(t)}}
+\end{aligned}$. 将 $r(t)$, $s(t)$ 以 $t$ 阶数展开: 
+
+$\begin{aligned}
+    r(t) = r_{0} + \boxed{r_{1}t} + r_{2}t^{2}+\cdots, \quad s(t) = \boxed{s_{0}} + s_{1}t + s_{2}t^{2}+\cdots
+\end{aligned}$. 仅取框选项, 即
+
+$\begin{aligned}
+    \psi_{0} = q_{0} + r_{1}tm_{0}^{2} + s_{0}m_{0}^{4},\quad r_{1}>0,\quad s_{0}>0
+\end{aligned}$. 存在关系 $\begin{aligned}
+    \sqrt{\frac{-r(t)}{2s(t)}} \simeq \sqrt{\frac{r_{1}{\color{red}{|t|}}}{2s_{0}}}\Rightarrow \beta = \frac{1}{2},\quad m_{0}\sim t^{\beta}
+\end{aligned}$($\beta$ 的定义). 
+
+\begin{tikzpicture}[scale=1.8, >=stealth]
+
+    % ========== 自由能 ψ(m₀) 曲线 ==========
+    % 参数定义
+    \def\rOne{1.0}    % r₁ > 0
+    \def\sZero{0.5}   % s₀ > 0
+    \def\qZero{0.0}   % q₀
+    \def\tAbove{0.5}  % t = (T - T_c)/T_c > 0 (T > T_c)
+    \def\tBelow{-0.5} % t < 0 (T < T_c)
+
+    % T > Tc 时的自由能 (t > 0)
+    \draw[domain=-1.2:1.2, smooth, variable=\x, blue, thick] 
+        plot ({\x}, {\qZero + \rOne*\tAbove*\x*\x + \sZero*\x*\x*\x*\x}) 
+        node[right] {$\psi_0(m_0) = q_0 + r_1 t m_0^2 + s_0 m_0^4$\quad $T > T_c$ ($t > 0$)};
+
+    % T < Tc 时的自由能 (t < 0)
+    \draw[domain=-1.5:1.5, smooth, variable=\x, red, thick] 
+        plot ({\x}, {\qZero + \rOne*\tBelow*\x*\x + \sZero*\x*\x*\x*\x}) 
+        node[right] {$T < T_c$ ($t < 0$)};
+
+    % 坐标轴标注
+    \draw[->] (-2, 0) -- (2, 0) node[right] {$m_0$};
+    \draw[->] (0, -0.5) -- (0, 2.5) node[above] {$\psi_0(m_0)$};
+
+    % 标记平衡解
+    \filldraw[blue] (0, {\qZero + \rOne*\tAbove*0 + \sZero*0}) circle (1pt) node[below left] {$\psi_0(0)$};
+    \filldraw[red] (0, {\qZero + \rOne*\tBelow*0 + \sZero*0}) circle (1pt) node[above left] {$\psi_0(0)$};
+    \filldraw[red] ({sqrt(-\rOne*\tBelow/(2*\sZero))}, {\qZero + \rOne*\tBelow*pow(sqrt(-\rOne*\tBelow/(2*\sZero)),2) + \sZero*pow(sqrt(-\rOne*\tBelow/(2*\sZero)),4)}) circle (1pt) node[below right] {$\psi_0(m_0^*)$};
+    \filldraw[red] ({-sqrt(-\rOne*\tBelow/(2*\sZero))}, {\qZero + \rOne*\tBelow*pow(-sqrt(-\rOne*\tBelow/(2*\sZero)),2) + \sZero*pow(-sqrt(-\rOne*\tBelow/(2*\sZero)),4)}) circle (1pt) node[below left] {$\psi_0(-m_0^*)$};
+
+    % 临界指数标注
+    \node[red, align=left] at (-1.5, 2) {
+        $\begin{aligned}
+            m_0^* &\sim |t|^{1/2} \\
+            \beta &= \frac{1}{2}
+        \end{aligned}$
+    };
+\end{tikzpicture}
+
+热容 $\begin{aligned}
+    c_{0}\sim\frac{\partial\text{ Entropy}}{\partial t},\quad 
+    \text{Entropy} = \frac{\partial\psi_{0}}{\partial t} \simeq r_{1}m_{0}^{2} \begin{cases}
+        0,&t > 0\\
+        \begin{aligned}
+            m_{0}\sim|t|^{\frac{1}{2}}
+        \end{aligned},&t<0
+    \end{cases}
+\end{aligned}$
+
+[Discussion] The concept of "\textbf{Universality Class(普适类)}". 以 critical exponents 对相变进行分类. 比如 Ising Model 和 Van der Waals gas 属于同类($\begin{aligned}
+    \alpha=\alpha^{\prime} = 0, \beta = \frac{1}{2}, \gamma = \gamma^{\prime} = 1, \delta = 3
+\end{aligned}$). $q(t),r(t),s(t)$ 不影响 critical exponents, 而是描述具体实验. 
+
+[Discussion] Wriss model @ 1907
+
+$\begin{aligned}
+    F = U-TS,\quad \mathrm{d}U = -\int H\mathrm{d}M,\quad H = H_{\text{ext}}+b,\quad b\propto M:\text{mean field}\Rightarrow U = -H_{\text{ext}}M + \alpha M^{2}
+\end{aligned}$
+
+$\begin{aligned}
+    S = S(m),\quad m = \frac{N_{+}-N_{-}}{N},\quad S(m) = -Nk_{B}\sum_{j}P_{j}\ln{P_{j}},\quad P_{\pm}(m) = \frac{1\pm m}{2}
+\end{aligned}$
+
+$\begin{aligned}
+    F = -h m + \alpha m^{2} -Nk_{B}T [(1+m)\ln{(1+m)} + (1-m)\ln{(1-m)}]
+\end{aligned}$
+
+\textbf{Landau Free Energy 物态方程}:  $\begin{aligned}
+    \frac{\partial F}{\partial m}\bigg|_{m_{0}} = 0\Rightarrow h = 2r_{1}m + 4s_{0}m^{3}\Rightarrow |m_{0}|= \sqrt{\frac{r_{1}|t|}{2s_{0}}},\quad t\rightarrow 0^{-}
+\end{aligned}$. 
+
+$\begin{aligned}
+    2^{\frac{1}{2}}\left[
+        2\sgn{(t)}\left(\frac{m}{r_{1}^{\frac{1}{2}}|t|^{\frac{1}{2}}/s_{0}^{\frac{1}{2}}}\right) + 4 \left(\frac{m}{r_{1}^{\frac{1}{2}}|t|^{\frac{1}{2}}/s_{0}^{\frac{1}{2}}}\right)^{3}
+    \right] = \frac{h}{r_{1}^{\frac{3}{2}}|t|^{\frac{3}{2}}s_{0}^{\frac{1}{2}}} \Leftrightarrow 2^{\frac{1}{2}}\left[2\sgn{(t)}\widetilde{m}+\widetilde{m}^{3}\right] = \widetilde{h},\quad \widetilde{\psi} = -\widetilde{h} \widetilde{m} + \sgn{(t)}\widetilde{m}^{2} + \widetilde{m}^{4}
+\end{aligned}$
+
+约化自由能: $\begin{aligned}
+    \widetilde{\psi} = \frac{\psi}{r_{1}^{2}|t|^{2}/s_{0}}\sim \widetilde{h}
+\end{aligned}$, 或 $\begin{aligned}
+    \frac{\psi}{|t|^{2}}\sim \frac{h}{|t|^{\frac{3}{2}}}
+\end{aligned}$. 于是有 $\begin{aligned}
+    \boxed{\psi = C_{2}|t|^{2}f\left(\frac{C_{1}h}{|t|^{\frac{3}{2}}}\right)}
+\end{aligned}$. 
+
+Beyond MFT: 将指数延拓为 $\begin{aligned}
+    \psi = C_{2}|t|^{{\color{red}{2-\alpha}}}f\left(\frac{C_{1}h}{|t|^{{\color{red}{\Delta}}}}\right), m_{0} \sim \lim_{h\rightarrow 0}\left(\frac{\partial\psi}{\partial h}\right)\sim \lim_{h\rightarrow 0}|t|^{2-\alpha-\Delta}f^{\prime}\left(\frac{C_{1}h}{|t|^{\Delta}}\right)\Rightarrow \beta = 2-\alpha-\Delta
+\end{aligned}$
+
+$\begin{aligned}
+    \gamma = \gamma^{\prime} = \alpha + 2\Delta - 2, \quad \delta = \frac{\Delta}{\beta}
+\end{aligned}$. 不需要知道具体的 Hamiltonian. 
+
+\subsubsection{Fluctuations \& Correlation Functions}
+
+无关联体系: $\begin{aligned}
+    \langle\sigma_{i}\sigma_{j}\rangle = \langle\sigma_{i}\rangle\langle\sigma_{j}\rangle
+\end{aligned}$. 定义\textbf{关联函数} $\begin{aligned}
+    g_{ij} = \langle\sigma_{i}\sigma_{j}\rangle - \langle\sigma_{i}\rangle\langle\sigma_{j}\rangle = \langle\delta\sigma_{i}\delta\sigma_{j}\rangle
+\end{aligned}$, 其中 $\begin{aligned}
+        \delta\sigma = \sigma - \langle\sigma\rangle
+\end{aligned}$.
+
+配分函数为 $\begin{aligned}
+    Q_{N}(H,T) = \sum_{\{\sigma_{i}\}}\exp{\left(
+        \beta J\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j}+\beta\mu H\sum_{i}\sigma_{i}
+    \right)}
+\end{aligned}$, 通过对 $\ln{Q_{N}}$ 求偏导以得到期望值: 
+
+$\begin{aligned}
+    \frac{\partial\ln{Q_{N}}}{\partial H} = \beta\mu\left\langle\sum_{i}\sigma_{i}\right\rangle = \beta\langle M\rangle,\quad \frac{\partial^{2}\ln{Q_{N}}}{\partial H^{2}} = \beta^{2}\left(\left\langle M^{2}\right\rangle - \langle M\rangle^{2}\right);
+\end{aligned}$
+
+$\begin{aligned}
+    \chi = \frac{\partial\overline{M}}{\partial H} = \frac{\partial}{\partial H}\left(\frac{1}{\beta}\frac{\partial\ln{Q_{N}}}{\partial H}\right)= \beta\left(\left\langle M^{2}\right\rangle - \langle M\rangle^{2}\right) = \beta\mu^{2}\sum_{ij}g_{ij}
+\end{aligned}$, 
+
+[Discussion] Fluctuation \& Response Theorem. 
+
+1. 热容 $\begin{aligned}
+    C_{v} = \left. \frac{\partial \langle E \rangle}{\partial T} \right|_V = \frac{\langle (\Delta E)^2 \rangle}{k_B T^2} 
+\end{aligned}$;
+
+2. 等温压缩率 $\begin{aligned}
+    \kappa_T = - \frac{1}{\langle V \rangle} \left. \frac{\partial \langle V \rangle}{\partial P} \right|_T = \frac{\langle (\Delta V)^2 \rangle}{k_B T \langle V \rangle} 
+\end{aligned}$. 
+
+For homegeneous system, $\begin{aligned}
+    g_{j}=g(\vec{r}),\quad \chi = \beta\mu^{2}N\sum_{\vec{r}}g\left(\vec{r}\right) = N\beta\mu^{2}\frac{1}{a^{d}}\int\mathrm{d}^{d}\vec{r}g\left(\vec{r}\right),\quad a:\text{lattice constant}
+\end{aligned}$. 也可理解为再乘上 $\begin{aligned}
+    e^{i\vec{k}\cdot\vec{r}}
+\end{aligned}$ 进行傅里叶变换得到 $\begin{aligned}
+    \widetilde{g}\left(\vec{k}\right)
+\end{aligned}$, 但仅取 $\vec{k}=0$ 的分量, 即 $\begin{aligned}
+    \widetilde{g}\left(\vec{k}=0\right)\rightarrow \chi
+\end{aligned}$. 
+
+[Discussion] \textbf{Linear Response}. $\begin{aligned}
+    H = H_{0}[m(x)] - \int\mathrm{d}x m(x)h(x)
+\end{aligned}$, 其中 $m(x)$ 和 $h(x)$ 是 linear coupling 的. 那么
+
+$\begin{aligned}
+    F = -k_{B}T\ln{Q},\quad \chi(x,x^{\prime}) = \frac{\partial m(x^{\prime})}{\delta h(x)} = -\frac{\partial^{2}F}{\partial h(x)\partial h(x^{\prime})} = \beta\left(
+        \langle m(x)m(x^{\prime})\rangle - \langle m(x)\rangle\langle m(x^{\prime})\rangle
+    \right)
+\end{aligned}$
+
+\paragraph{Generalized Landau Free Energy Correlation Function}  
+
+一般性地, 自由能 $\begin{aligned}
+    F = \int\mathrm{d}^{d}\vec{x} \left\{am\left(\vec{x}\right)^{2} + b\left[\nabla m\left(\vec{x}\right)\right]^{2}\right\}
+\end{aligned}$, 
+
+$\begin{aligned}
+    m\left(\vec{x}\right)
+\end{aligned}$ 为 order parameter, 其中 $\begin{aligned}
+    a = kt
+\end{aligned}$, 于是存在关联长度 $\begin{aligned}
+    \xi = \sqrt{\frac{b}{kt}}
+\end{aligned}$. 尝试求解序参量 $\begin{aligned}
+    m\left(\vec{x}\right)
+\end{aligned}$ 的关联函数 $\begin{aligned}
+    \langle m\left(\vec{x}\right)m\left(\vec{x}^{\prime}\right)\rangle
+\end{aligned}$. 
+
+可使用 Fourier 变换 $\begin{aligned}
+    m\left(\vec{x}\right) = \frac{1}{(2\pi)^{d}}\int\mathrm{d}^{d}\vec{q}e^{i\vec{q}\cdot\vec{x}}\widetilde{m}\left(\vec{q}\right),\quad \widetilde{m}\left(\vec{q}\right) = \int\mathrm{d}^{d}\vec{x}e^{-i\vec{q}\cdot\vec{x}}m\left(\vec{x}\right)
+\end{aligned}$ 将其在 $\begin{aligned}
+    \vec{q}
+\end{aligned}$ 空间中处理. 
+
+规定 $\begin{aligned}
+    \int e^{i\left(\vec{q}-\vec{q}^{\prime}\right)\cdot\vec{x}}\mathrm{d}^{d}\vec{x} = (2\pi)^{d}\delta(\vec{q}-\vec{q}^{\prime})
+\end{aligned}$. 变换后自由能为 $\begin{aligned}
+    F\left[\widetilde{m}\left(\vec{q}\right)\right] = \int\frac{\mathrm{d}^{d}\vec{q}}{(2\pi)^{d}} \left(kt + bq^{2}\right)\widetilde{m}\left(\vec{q}\right)\widetilde{m}\left(-\vec{q}\right)
+\end{aligned}$. 
+
+记关联函数 $\begin{aligned}
+    C\left(\vec{x}\right) \equiv \left\langle m\left(\vec{x}\right)m(0)\right\rangle = \frac{1}{(2\pi)^{d}}\int\mathrm{d}^{d}\vec{q}e^{i\vec{q}\cdot\vec{x}}\left\langle\left|
+        \widetilde{m}\left(\vec{q}\right)
+    \right|^{2}\right\rangle
+\end{aligned}$, 其 Fourier 变换后形式为: 
+
+$\begin{aligned}
+    \widetilde{C}\left(\vec{q}\right) = \frac{\begin{aligned}
+        \int\left|\widetilde{m}\left(\vec{q}\right)\right|^{2}\exp{\{-\beta F\left[\widetilde{m}\left(\vec{q}\right)\right]\}}\mathrm{d}^{d}\vec{q}
+    \end{aligned}}{\begin{aligned}
+        \int \exp{\{-\beta F\left[\widetilde{m}\left(\vec{q}\right)\right]\}}\mathrm{d}^{d}\vec{q}
+    \end{aligned}} = \frac{(2\pi)^{d}}{2}\frac{T}{kt+bq^{2}} = \frac{(2\pi)^{d}}{2}\frac{T}{kt(1+\xi^{2}q^{2})}
+\end{aligned}$
+
+重新变换回 $\begin{aligned}
+    \vec{x}
+\end{aligned}$ 空间, 得到 $\begin{aligned}
+    C\left(\vec{x}\right) = \frac{T}{2}\int\mathrm{d}^{d}\vec{q}e^{i\vec{q}\cdot\vec{x}}\frac{1}{kt+bq^{2}}
+\end{aligned}$. 
+
+1. $d=1$: Residue theorem. $\begin{aligned} 
+    \lim_{r\gg\xi}C(r) \propto r^{-(d-1)/2}e^{-r/\xi}
+\end{aligned}$;
+
+2. $d=3$: $\begin{aligned}
+    C(r) \sim \frac{1}{r}e^{-r/\xi}
+\end{aligned}$. 
+
+[Discussion] New critical exponents. 对于关联现象存在 $\begin{aligned}
+    \lim_{h\rightarrow 0,t\rightarrow 0^{+}}\xi\sim t^{-\nu},\quad C(r)\bigg|_{t=0}\sim r^{-(d-2+\eta)}.
+\end{aligned}$
+
+\paragraph{Validity of Mean-Field Approximation} 平均场理论的生效范围
+
+1. \textbf{涨落 v.s. 效应}. 选任意一点 $\sigma_{0}$, 设范围尺度(半径)为 $\xi$, 圈出范围 $\Omega$. 范围内其余自旋为 $\sigma_{r}$. 
+
+If $\begin{aligned}
+    \int_{\Omega}\langle\delta\sigma_{r}\delta\sigma_{0}\rangle\mathrm{d}^{d}\vec{r}\ll \int_{\Omega}\langle\sigma_{r}\rangle\langle\sigma_{0}\rangle\mathrm{d}^{d}\vec{r}\Leftrightarrow T\chi\ll m^{2}\xi^{d}\Leftrightarrow T(T_{c}-T)^{-\gamma}\ll (T_{c}-T)^{2\beta}(T_{c}-T)^{-\nu d}\Rightarrow \gamma < \nu d-2\beta
+\end{aligned}$, 
+
+即涨落相对效应很小, 则 MFT($\begin{aligned}
+    \gamma = 1, \beta = \nu = \frac{1}{2}
+\end{aligned}$) 较好 $\begin{aligned}
+    \Rightarrow \boxed{d>4}
+\end{aligned}$. 
+
+2. \textbf{涨落/关联贡献}. 对相变/关联有贡献的内能: $\begin{aligned}
+    U_{f} = -J\sum_{i,j}\left(
+        \langle\sigma_{i}\sigma_{j}\rangle - \langle\sigma_{i}\rangle\langle\sigma_{j}\rangle
+    \right) = -J\sum_{i,j}g(r_{ij})
+\end{aligned}$, 
+
+其中 $\begin{aligned} 
+    g(r)\sim \int\mathrm{d}^{d}\left(\vec{q}a\right)\frac{e^{-i\vec{q}\cdot\vec{x}}}{t(1+\xi^{2}q^{2})} 
+\end{aligned}$ 为关联函数. 关联/涨落部分的热容与 $\begin{aligned}
+    C_{f} = -\frac{\partial g(r)}{\partial t} = \int q^{d-1}\frac{e^{-i\vec{q}\cdot\vec{r}}}{t^{2}(1+\xi^{2}q^{2})}\mathrm{d}q
+\end{aligned}$ 有关. 
+
+考虑 Long wavelength limit (small $\begin{aligned}
+    q\sim \frac{1}{\xi}
+\end{aligned}$): $\begin{aligned}
+    \Rightarrow C_{f}\sim \int\mathrm{d}q\frac{q^{d-1}}{t^{2}(1+\xi^{2}q^{2})}\sim \xi^{-d}t^{-2}\sim \left(t^{-\frac{1}{2}}\right)^{-d}t^{-2}\sim t^{-(d-4)/2}
+\end{aligned}$, 
+
+发现 $\begin{aligned}
+    \lim_{d<4,t\rightarrow 0}C_{f}=\infty
+\end{aligned}$, 和 1. 中表述一致. 
+
+\subsection{Scale Transformation}
+
+对 2D spin lattice 进行标度变换: $\begin{aligned}
+    \begin{bmatrix}
+        x & o & x\\
+        o & o & x\\
+        x & x & x
+    \end{bmatrix}\stackrel{N_{x}>N_{o}}{\longrightarrow} X
+\end{aligned}$. 观察发现, 对于 Critical state$\begin{aligned}
+    (\xi\rightarrow \infty)
+\end{aligned}$, 会保持 Scale invariance. 
+
+[Discussion] Symmetry consideration (\textbf{Noether's theorem}). 
+
+$\begin{aligned}
+    L = \left(\dot{x}^{2} + \dot{y}^{2}\right) + V(x-y)
+\end{aligned}$, 对 $(x,y)\rightarrow (x+\delta,y+\delta)$ 表现出平移不变性; $\begin{aligned}
+    L = \dot{x}^{2} + \dot{y}^{2} + x^{2} + y^{2}
+\end{aligned}$, 表现出旋转不变性. 
+
+\subsubsection{Implement Scale Transformation}
+存在两种尺度变换思路:
+
+1. Block-spin transformation: $\begin{aligned}
+    \begin{bmatrix}
+        {\color{red}{o}} & {\color{red}{o}} & o & o  \\
+        {\color{red}{o}} & {\color{red}{o}} & o & o  \\
+        o & o & o & o  \\
+        o & o & o & o
+    \end{bmatrix}\stackrel{l=2}{\longrightarrow} \begin{bmatrix}
+        {\color{red}{\bullet}} & \bullet \\
+        \bullet & \bullet
+    \end{bmatrix}
+\end{aligned}$, 晶格常数 $\begin{aligned}
+    a\rightarrow a^{\prime} = la(l=2)
+\end{aligned}$; 自旋个数 $\begin{aligned}
+    N\rightarrow N^{\prime} = l^{-d}N(d = 2)
+\end{aligned}$; 
+
+尺度 $\begin{aligned}
+    r\rightarrow r^{\prime} = l^{-1}r
+\end{aligned}$. Number density invariant: $\begin{aligned}
+    \frac{N}{a^{d}} = \frac{N^{\prime}}{\left(a^{\prime}\right)^{d}}
+\end{aligned}$. $\begin{aligned}
+    \sigma = \pm 1\rightarrow \sigma^{\prime} = \pm 1
+\end{aligned}$. 
+
+2. $\begin{aligned}
+    \begin{bmatrix}
+        \cancel{o} & {\color{red}{o}} & \cancel{o} & o & \cancel{o} & o\\
+        {\color{red}{o}} & \cancel{o} & {\color{red}{o}} & \cancel{o} & o & \cancel{o}\\
+        \cancel{o} & {\color{red}{o}} & \cancel{o} & o & \cancel{o} & o\\
+        o & \cancel{o} & o & \cancel{o} & o & \cancel{o}\\
+        \cancel{o} & o & \cancel{o} & o & \cancel{o} & o\\
+        o & \cancel{o} & o & \cancel{o} & o & \cancel{o}
+    \end{bmatrix},Q_{N} = \sum_{\sigma_{i}}\exp{\left[-\beta 
+    H_{N}(\{\sigma_{i}\},J)
+    \right]} = \sum_{\sigma_{j}^{\prime}}\exp{\left[-\beta 
+    H_{N^{\prime}}\left(\{\sigma_{j}^{\prime}\},J^{\prime}\right)
+    \right]}, N^{\prime} = \frac{N}{2},a^{\prime} = \sqrt{2}a, l = \frac{a^{\prime}}{a} = \sqrt{2}
+\end{aligned}$. 
+
+考察对相变有贡献的自由能(Landau 自由能是 Helmholtz 自由能), {\color{red}{S}}ingle point: $\begin{aligned}
+    N^{\prime}\psi^{({\color{red}{s}})}\left(t^{\prime},h^{\prime}\right) = N\psi^{(s)}(t,h)
+\end{aligned}$,
+
+类比 $\begin{aligned}
+    N\rightarrow N^{\prime} = l^{-d}N
+\end{aligned}$, 线性假设 $\begin{aligned}
+    t\rightarrow t^{\prime} = l^{y_{t}}t, h\rightarrow h^{\prime} = l^{y_{h}}h
+\end{aligned}$. 于是将 $\psi^{(s)}$ 变换写作 $\begin{aligned}
+    \psi^{(s)}(t,h) = l^{-d}\psi^{(s)}\left(l^{y_{t}}t,l^{y_{h}}h\right)
+\end{aligned}$ 形式. 
+
+已知自由能 $\begin{aligned}
+    \psi^{(s)}(t,h) = |t|^{\beta}\widetilde{\psi}\left(\frac{h}{|t|^{\alpha}}\right)
+\end{aligned}$, 变换前后分别代入得 $\begin{aligned}
+    |t|^{\beta}\widetilde{\psi}\left(\frac{h}{|t|^{\alpha}}\right) = l^{-d}\left|t^{\prime}\right|^{\beta}\widetilde{\psi}\left(\frac{h^{\prime}}{\left|t^{\prime}\right|^{\alpha}}\right)
+\end{aligned}$, 
+
+比较可得 $\begin{aligned}
+    \frac{h}{|t|^{\alpha}} = \frac{h^{\prime}}{\left|t^{\prime}\right|^{\alpha}},\quad |t|^{\beta} = l^{-d}\left|t^{\prime}\right|^{\beta}
+\end{aligned}$. 因此指数间存在关系 $\begin{aligned}
+    \alpha = \frac{y_{h}}{y_{t}},\quad \beta = \frac{d}{y_{t}}
+\end{aligned}$. 
+
+\subsubsection{Scale Transformation in 1D \& 2D Ising Models}
+
+\paragraph{1D Ising Model}
+
+研究 $\begin{aligned}
+    J\rightarrow J^{\prime},\quad B\rightarrow B^{\prime}
+\end{aligned}$ 变换的具体形式. 将配分函数写作形式: 
+
+$\begin{aligned}
+    Q_{N} = \sum_{\sigma}\exp{\left\{
+        \beta\sum_{i}\left[
+            J\sigma_{i}\sigma_{i+1} + \frac{1}{2}\mu B(\sigma_{i}+\sigma_{i+1})
+        \right]
+    \right\}} 
+    = \sum_{\sigma}\exp{\left\{
+        \sum_{i} \left[K_{0} + K_{1}\sigma_{i}\sigma_{i+1} + \frac{1}{2}K_{2}(\sigma_{i}+\sigma_{i+1})\right]
+    \right\}}
+\end{aligned}$
+
+将系数写作矢量形式 $\begin{aligned}
+    \vec{K} = (K_{0},K_{1},K_{2}) = (0, \beta J, \beta\mu B) 
+\end{aligned}$. 可知变换时有 $\begin{aligned}
+    \vec{K}\rightarrow \vec{K}^{\prime}
+\end{aligned}$, 其蕴含具体变换的信息. 
+
+不妨假定总自旋数 $N$ 为偶数, 则取自旋链环中所有偶数位置, 则自旋数变换: $\begin{aligned}
+    N\rightarrow N^{\prime} = \frac{N}{2}
+\end{aligned}$. 变换前后的配分函数相等: 
+
+$\begin{aligned}
+    Q_{N} = \sum_{\sigma_{j}^{\prime}}\prod_{j=1}^{\frac{N}{2}}e^{2K_{0}}e^{\frac{1}{2}K_{2}\left(\sigma_{j}^{\prime} + \sigma_{j+1}^{\prime}\right)}2\cosh{\left[
+        K_{1}\left(\sigma_{j}^{\prime} + \sigma_{j+1}^{\prime}\right)+K_{2}
+    \right]} = \sum_{\sigma_{j}^{\prime}}\prod_{j=1}^{\frac{N}{2}}e^{K_{0}^{\prime}+K_{1}^{\prime}\sigma_{j}^{\prime}\sigma_{j+1}^{\prime}+ \frac{1}{2}K_{2}^{\prime}\left(\sigma_{j}^{\prime}+\sigma_{j+1}^{\prime}\right)}
+\end{aligned}$
+
+$\begin{aligned}
+    \sigma\rightarrow\sigma^{\prime}
+\end{aligned}$ 的变换即相邻自旋求和, 涉及 3 类情况: $\begin{aligned}
+    \sigma_{2j} = \sigma_{2j+1} = \pm 1\Rightarrow \sigma_{j}^{\prime} = \pm 1;\quad \sigma_{2j} = -\sigma_{2j+1}\Rightarrow \sigma_{j}^{\prime} = 0
+\end{aligned}$, 作为约束方程.
+
+解得 $\begin{aligned}
+    \vec{K}\rightarrow\vec{K}^{\prime}
+\end{aligned}$ 的具体表达式: 
+
+$\begin{aligned}
+    e^{K_{0}^{\prime}} = 2e^{2K_{0}}[
+        \cosh{(2K_{1}+K_{2})\cosh{(2K_{1}-K_{2})}}\cosh^{2}{K_{2}}
+        ]^{\frac{1}{4}} = \sharp_{0}(K_{0},K_{1},K_{2}),\quad e^{K_{1}^{\prime}} =\sharp_{1}(K_{1},K_{2}),\quad e^{K_{2}^{\prime}} = \sharp_{2}(K_{1},K_{2})
+\end{aligned}$
+
+[Discussion] 研究无外场条件($K_{2}=0$)下各量. 配分函数变换为 $\begin{aligned}
+    Q_{N}(K_{1},K_{2}) = e^{N^{\prime}K_{0}^{\prime}}Q_{N^{\prime}}(K_{1}^{\prime},K_{2})^{\prime}
+\end{aligned}$, 
+
+因此自由能变换为 $\begin{aligned}
+    F_{N}(K_{1},K_{2}) = -N^{\prime}K_{0}^{\prime} + F_{N^{\prime}}(K_{1}^{\prime},K_{2}^{\prime})
+\end{aligned}$. 
+
+设单自旋自由能为 $f(K_{1},K_{2})$ 形式: $\begin{aligned}
+    f(K_{1};K_{2}=0) = -\frac{1}{2}\ln{\left[
+        2\cosh^{\frac{1}{2}}{(2K_{1})}
+    \right]} + \frac{1}{2}f\left(
+        K_{1}^{\prime} = \ln{\left[
+            \cosh^{\frac{1}{2}}{(2K_{1})}
+        \right]};K_{2}^{\prime}=0
+    \right)
+\end{aligned}$
+
+令 $x = K_{1}$, 即有 $\begin{aligned} 
+    f(x) = -\frac{1}{2}\ln{\left[
+        2\cosh^{\frac{1}{2}}{(2x)}
+    \right]} + \frac{1}{2}f\left(
+        \ln{\left[
+            \cosh^{\frac{1}{2}}{(2x)}
+        \right]}
+    \right)
+\end{aligned}$, 代入 $x = 0$ 发现 $\begin{aligned}
+    f(0) = -\ln{2}
+\end{aligned}$. 
+
+猜测 $\begin{aligned}
+    f(x) = -\ln{[2y(x)]}
+\end{aligned}$, 代入单自旋自由能变换式: $\begin{aligned}
+    \frac{y^{2}(x)}{y\left\{\ln{\left[
+        \cosh^{\frac{1}{2}}{(2x)}
+    \right]}\right\}} = \cosh^{\frac{1}{2}}{(2x)}
+\end{aligned}$, 解得 $\begin{aligned}
+    y(x) = \cosh(x)
+\end{aligned}$. 
+
+因此 $\begin{aligned}
+    \boxed{f(K_{1};K_{2}=0) = -\ln{(2\cosh{K_{1}})}}
+\end{aligned}$. 
+
+\paragraph{2D Ising Model}
+$\begin{aligned}
+    Q_{N} = e^{NK_{0}}\sum_{\sigma_{i}}\exp{\left\{
+        K\sum_{\langle i,j\rangle}\sigma_{i}\sigma_{j} + L\sum_{}\sigma_{i}\sigma_{j} + M\sum\sigma_{j}\sigma_{r}\sigma_{l}\sigma_{m}
+    \right\}}
+\end{aligned}$
+
+
+\paragraph{Origin of Fixed Point}
+变换 $\begin{aligned}
+    K^{\prime} = R_{l}(K)
+\end{aligned}$ 可以视为点在 $\vec{K}$ 空间中的 flow(轨迹). 
+
+那么可能存在点 $\begin{aligned}
+    K^{*}
+\end{aligned}$, 使得 $\begin{aligned}
+    R_{l}(K^{*}) = K^{*}
+\end{aligned}$. 这类点即 \textbf{Fixed Point}. 
+
+[Example] $\begin{aligned}
+    X_{i+1} = \lambda X_{i}(1-X_{i})
+\end{aligned}$, 存在两个不动点 $X^{*}=0,1$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+变换对应于矩阵, 即可用特征值来进行描述. 令变换无穷小, 则 $\begin{aligned}
+    R_{l_{2}}[R_{l_{1}}(K)] = R_{l_{1}*l_{2}}(K)\longrightarrow\lambda_{l_{1}}\lambda_{l_{2}} = \lambda_{l_{1}*l_{2}}
+\end{aligned}$. 
+
+这说明特征值可能为 $\begin{aligned}
+    \lambda(l)\sim l^{\alpha}
+\end{aligned}$ 形式, 从而满足 $\begin{aligned}
+    l_{1}^{\alpha}l_{2}^{\alpha} = (l_{1}\cdot l_{2})^{\alpha}
+\end{aligned}$. 
+
+研究 $\begin{aligned}
+    \vec{K}
+\end{aligned}$ 的连续变换. 记 $\begin{aligned}
+    R_{l}^{n}(K^{*}) = K^{(n)}
+\end{aligned}$ 为对 $\begin{aligned}
+    \vec{K}
+\end{aligned}$ 进行了 $n$ 次 $\begin{aligned}
+    R_{l}
+\end{aligned}$ 变换的结果. 那么关联长度将会满足变换式 $\begin{aligned}
+    \xi^{(n)} = l^{-n}\xi^{(0)}
+\end{aligned}$. 
+
+对于不动点 $\begin{aligned}
+    K^{*}
+\end{aligned}$ 而言, 将会有 $\begin{aligned}
+    \xi(K^{*}) = l^{-1}\xi(K^{*})
+\end{aligned}$. 该方程具有两个解 $\begin{aligned}
+    \{\stackrel{\text{trivial}}{0},\stackrel{\text{critical}}{\infty}\}
+\end{aligned}$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Discussion] 若经过 $n$ 次变换后的关联长度 $\begin{aligned}
+    \xi\left[K^{(n)}\right]
+\end{aligned}$, 能推导出初始点 $\begin{aligned}
+    K^{(0)} =  R_{l}^{0}(K)
+\end{aligned}$ 的关联长度 $\begin{aligned}
+    \xi(K^{(0)}) = \infty
+\end{aligned}$ 吗? 
+
+由于 $l>1$, 则关联长度有 $\begin{aligned}
+    \xi\left(K^{\prime}\right) = l^{-1}\xi(K)<\xi(K)
+\end{aligned}$. 可见 $\begin{aligned}
+    \xi\left[K^{(n)}\right]
+\end{aligned}$ 递减, 其仍发散说明初项 $\begin{aligned}
+    \xi\left[K^{(0)}\right] = \infty
+\end{aligned}$. 
+
+可见 $\begin{aligned}
+    \xi = \infty
+\end{aligned}$ 不仅会在不动点/Critical point 出现, 也会在 $\vec{K}$ 空间中连续出现而形成 \textbf{Critical Curve}.
+
+\paragraph{RG Flow Near the Critical/Fixed Point in $\vec{K}$ Space}
+
+研究不动点附近的 $\begin{aligned}
+    \vec{K} = \vec{K}^{*} + \vec{k}
+\end{aligned}$, 其中 $\begin{aligned}
+    \vec{k}\rightarrow \vec{0}
+\end{aligned}$. 
+
+那么可将 $\begin{aligned}
+    K\rightarrow K^{\prime}
+\end{aligned}$ 变换写作 Taylor 展开: $\begin{aligned}
+    \vec{K}^{\prime} = \vec{K}^{*} + \vec{k}^{\prime} = R_{l}\left(\vec{K}^{*} + \vec{k}\right) = R_{l}\left(\vec{K}^{*}\right) + \frac{\partial R_{l}\left(\vec{q}\right)}{\partial\vec{q}}\bigg|_{\vec{q}=\vec{K}^{*}}\vec{k} + \cdots
+\end{aligned}$, 
+
+其中 $\begin{aligned}
+    \vec{k}^{\prime} = A_{l}\vec{k},\quad A_{l} = \frac{\partial R_{l}\left(\vec{q}\right)}{\partial\vec{q}}\bigg|_{\vec{q}=\vec{K}^{*}}
+\end{aligned}$. 将 $\begin{aligned}
+    \vec{k}
+\end{aligned}$ 以基矢展开 $\begin{aligned}
+    \vec{k} = \sum_{i}u_{i}\hat{\phi}_{i}
+\end{aligned}$, 则变换式 $\begin{aligned}
+    \vec{k}^{\prime} = A_{l}\vec{k}
+\end{aligned}$ 即可写作 $\begin{aligned}
+    \sum_{i}u_{i}^{\prime}\hat{\phi}_{i} = A_{l}\sum_{i}u_{i}\hat{\phi}_{i}
+\end{aligned}$. 
+
+特征方程 $\begin{aligned}
+    A_{l}\hat{\phi}_{i} = \lambda_{i}\hat{\phi}_{i}
+\end{aligned}$, 代入为 $\begin{aligned}
+    \sum_{i}u_{i}^{\prime}\hat{\phi}_{i} = \sum_{i}u_{i}\lambda_{i}\hat{\phi}_{i}
+\end{aligned}$, 即得分量变换式 $\begin{aligned}
+    u_{i}\rightarrow u_{i}^{\prime} = \lambda_{i}u_{i} = l^{y_{i}}u_{i}
+\end{aligned}$. 
+
+$n$ 次变换后, 分量 $\begin{aligned}
+    u_{i}^{(n)} = l^{ny_{i}}u_{i}^{(0)} = \lambda_{i}^{n}u_{i}^{(0)}
+\end{aligned}$; 可见:
+
+    1. $\begin{aligned}
+    \lambda_{i} > 1
+    \end{aligned}$, 则分量发散, 此时 $u_{i}$ 为 \textbf{Relevant Variable}(有相变贡献); 
+
+    2. $\begin{aligned}
+    \lambda_{i}<1
+    \end{aligned}$, 则分量收敛于 $0$, 此时 $u_{i}$ 为 \textbf{Irrelevant Variable}(无相变贡献). 
+
+[Discussion] Scale transformation 是一个信息丢失的过程, 所以重整化群严格来说不能被称为群结构. 
+
+现在研究 2D Ising Model 中的 RG flow. 取公式中的 $K$ 和 $L$ 作为坐标轴, 得到大致的 RG flow 示意图:
+
+\begin{tikzpicture}[thick]
+
+\tikzset{
+    midarrow/.style={
+        postaction={decorate},
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{>}}
+        }
+    }
+}
+
+% Axes
+\draw[->] (0,0) -- (6,0) node[right] {$K$};
+\draw[->] (0,0) -- (0,6) node[above] {$L$};
+
+% Arrows representing RG flow
+\draw[midarrow] (3,3) .. controls (4,4) .. (5,5);
+\draw[midarrow] (3,3) .. controls (2,2) .. (1,1);
+\draw[midarrow] (1,5) .. controls (2,4) .. (3,3);
+\draw[midarrow] (5,1) .. controls (4,2) .. (3,3);
+
+\draw[midarrow] (4.5,1) .. controls (3,2) .. (1.5,1);
+\draw[midarrow] (1,4.5) .. controls (2,3) .. (1,1.5);
+\draw[midarrow] (1.5,5) .. controls (3,4) .. (4.5,5);
+\draw[midarrow] (5,1.5) .. controls (4,3) .. (5,4.5);
+
+% Fixed point
+\filldraw[red] (3,3) circle (2pt) node[right] {$\vec{K}^*$};
+
+% Relevant and irrelevant directions
+\draw[->, blue, very thick] (3,3) -- (3.5,3.5) node[midway, above left] {$\vec{\phi}_{\text{relevant}}$};
+\draw[->, green!70!black, very thick] (3,3) -- (3.5,2.5) node[midway, below left] {$\vec{\phi}_{\text{irrelevant}}$};
+
+\end{tikzpicture}
+
+在不动点附近存在 $\begin{aligned}
+    \vec{\phi}_{\text{relevant}}
+\end{aligned}$ 和 $\begin{aligned}
+    \vec{\phi}_{\text{irrelevant}}
+\end{aligned}$, 两本征矢所指的方向. 亦即, 若要流沿着指向 $K^{*}$ 的曲线移动, 要求分量 $u_{\text{relevant}} \rightarrow 0$. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+[Discussion] Emergence of Non-analyticity/singularity
+
+1. 回忆: 在研究配分函数时, 每一项都是解析的, 若要产生 singularity(奇点), 则需要求和项数无穷大, 而某些物理量保持有限值(e.g. $\begin{aligned}
+    \lim_{N,V\rightarrow\infty}n = \frac{N}{V}= n_{0}
+\end{aligned}$);
+
+2. 不动点也是通过无穷连续变换产生的;
+
+3. 微分方程 $\begin{aligned}
+    \frac{\mathrm{d}u}{\mathrm{d}t} = -2u\left(u^{2}-1\right)
+\end{aligned}$ 的精确解为 $\begin{aligned}
+    u(t) = \frac{u_{0}}{\sqrt{u_{0}^{2}-(u_{0}^{2}-1)e^{-4t}}}
+\end{aligned}$, 其中 $\begin{aligned}
+    u_{0} = u\bigg|_{t=0}
+\end{aligned}$. 存在不动点 $\begin{aligned}
+    u^{*} = \pm 1
+\end{aligned}$, 通过 $\begin{aligned}
+    \lim_{t\rightarrow\infty}u(t) = \sgn{(u_{0})}
+\end{aligned}$ 逼近. 
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Example] RG Equ. of 2D Ising Model: $\begin{aligned}
+    \left\{\begin{aligned}
+        K^{\prime} &= 2K^{2} + L\\
+        L^{\prime} &= K^{2}
+    \end{aligned}\right.
+\end{aligned}$, 通过 $\begin{aligned}
+    \left\{\begin{aligned}
+        K^{\prime} &= K\\
+        L^{\prime} &= L
+    \end{aligned}\right.
+\end{aligned}$ 解得 $\begin{aligned}
+    \left\{\begin{aligned}
+        K^{*} &= \frac{1}{3}\\
+        L^{*} &= \frac{1}{9}
+    \end{aligned}\right.
+\end{aligned}$. 取不动点附近 $\begin{aligned}
+    \left\{\begin{aligned}
+        K &= K^{*} + k_{1}\\
+        L &= L^{*} + k_{2}
+    \end{aligned}\right.
+\end{aligned}$, 
+
+小量变换满足 $\begin{aligned}
+    \left\{\begin{aligned}
+        k_{1}^{\prime} &= \frac{4}{3}k_{1} + k_{2}\\
+        k_{2}^{\prime} &= \frac{2}{3}k_{1}
+    \end{aligned}\right.
+\end{aligned}$. 将其写作矩阵形式: $\begin{aligned}
+    \vec{k}^{\prime} = A_{l}\vec{k}\Rightarrow A_{l} = \begin{bmatrix}
+        4/3 & 1 \\
+        2/3 & 0
+    \end{bmatrix}
+\end{aligned}$. 该矩阵的特征值为 $\begin{aligned}
+    \lambda_{1,2} = \frac{2\pm\sqrt{14}}{3}
+\end{aligned}$. 
+
+($\lambda_{1}>1$, 则 $u_{1}$ 是 \textbf{Relevant Variable}, 表现为 $u_{1}\neq 0$ 时, RG flow 趋于发散. )
+
+特征矢量 $\begin{aligned}
+    \vec{\phi}_{1,2} = \begin{bmatrix}
+        2 \pm \sqrt{10}\\
+        2
+    \end{bmatrix}
+\end{aligned}$; 将其作为基矢, 则小量 $\begin{aligned}
+    \vec{k} = \begin{bmatrix}
+        k_{1}\\k_{2}
+    \end{bmatrix} = u_{1}\vec{\phi}_{1} + u_{2}\vec{\phi}_{2}
+\end{aligned}$. 反解得到 $\begin{aligned}
+    u_{1} = 2k_{1} + (\sqrt{10}-2)k_{2}
+\end{aligned}$. 
+
+令 $u_{1}=0$, 则 $\lambda_{1}>1$ 不影响流的轨迹经过不动点 $\begin{aligned}
+    \left(K^{*},L^{*}\right)
+\end{aligned}$. 此时得到 $K$-$L$ 空间中的一条斜线 $\begin{aligned}
+    2k_{1} + (\sqrt{10}-2)k_{2} = 0
+\end{aligned}$, 该斜线将与 $K$ 轴相交于 $ K_{c}\simeq 0.3979$.
+
+
+\vspace{0.5em}\hrule\vspace{0.5em}
+
+[Discussion] Complexity? Universal behavior? 
+
+形如 $\begin{aligned}
+    x_{j+1} = f(x_{i},\lambda)
+\end{aligned}$ 的迭代方程. 如 $\begin{aligned}
+    x_{i+1} = \lambda x_{i}(1-x_{i})
+\end{aligned}$, 随着 $\lambda$ 值变化出现不动点 $x^{*}$ 的分形. 
+
+定义 $\begin{aligned}
+    \delta_{n} = \frac{x_{n+1}-x_{n}}{x_{n}-x_{n-1}}
+\end{aligned}$, 发现其存在规律 $\begin{aligned}
+    \lim_{n\rightarrow\infty}\delta_{n} = 4.6692\cdots
+\end{aligned}$. 
+
+\end{document}

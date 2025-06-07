@@ -1,0 +1,320 @@
+\documentclass[../../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}} % 指定图片目录，后续可以直接使用图片文件名。
+\begin{document}
+\section{Introduction}
+\subsection{Review of Thermodynamics}
+\subsubsection{Central Theme of Thermodynamics: Work \& Heat}
+\paragraph{The Four Laws}
+    
+0th: If two systems are in thermal equilibrium with a third system, they are in thermal equilibrium with each other.
+
+1st: The change in internal energy of a closed system is equal to the heat added to the system minus the work done by the system.
+
+2nd: The total entropy of an isolated system can never decrease over time. In any reversible process, the total entropy of the system and its surroundings remains constant.
+
+3rd: As the temperature approaches absolute zero, the entropy of a perfect crystal approaches a constant minimum.
+\begin{align*}
+    \stackrel{\text{increase of internal energy}}{\mathrm{d}U} &= \stackrel{\text{input heat}}{\delta Q }- \stackrel{\text{output work}}{\delta W}
+\end{align*}
+\begin{itemize}
+    \item reversible process: $\mathrm{d}U = T\mathrm{d}S - P\mathrm{d}V$
+    \item mechanical system: $\begin{aligned}
+        \delta W = f\mathrm{d}x = -\mathrm{d}V(x)
+    \end{aligned}$;
+    \item \textit{adiabatic process}(\textit{绝热过程}): $\begin{aligned}
+        \delta W = P\mathrm{d}V = -\mathrm{d}U
+    \end{aligned}$. $U$: thermodynamic/adiabatic potential.
+    \item \textit{isothemal process}(\textit{等温过程}). $F$: isothermal potential.
+    \begin{align*}
+        F \equiv U - TS, \quad\mathrm{d}F = -S\mathrm{d}T - P\mathrm{d}V,\quad \delta W\bigg|_{T} &= P\mathrm{d}V = -\mathrm{d}F
+    \end{align*}
+\end{itemize}
+
+\paragraph{Maximum Work}
+\begin{itemize}
+    \item isothermal process, $A\rightarrow B$:
+    \begin{align*}
+        \text{1st law: }\Delta W &= -\Delta U + \Delta Q\\
+        \text{2nd law: }\Delta Q &\leq T(S_{B}-S_{A})\\
+        \Delta W &\leq U_{A} - U_{B} + T(S_{B} - S_{A}) = -\Delta F,\quad \Delta F = F_{B} - F_{A}
+    \end{align*}
+    \item $A\rightarrow B$, $U_{A} = U_{B}$: $\begin{aligned}
+        \Delta W_{\text{max}} = T(S_{B}-S_{A})
+    \end{aligned}$. Example: Rubber band(橡皮筋), shrinking: $S\uparrow$.
+\end{itemize}
+
+\paragraph{Extensivity(广延)}
+形如 $\begin{aligned}
+    E = E_{1} + E_{2}
+\end{aligned}$
+的广延性在传统热力学中要求短程相互作用. Assume extensive quantity $X$, 
+
+$\begin{aligned}
+    U(\lambda S,\lambda X) &= \lambda U(S,X)\stackrel{\partial_{\lambda}}{\Longrightarrow}\frac{\partial U(\lambda S,\lambda X)}{\partial(\lambda S)}\dot{S} + \frac{\partial U(\lambda S,\lambda X)}{\partial (\lambda X)}\dot{X} = U(S,X) \\
+    \text{let }\lambda &= 1,\quad \frac{\partial U}{\partial S}\dot{S} + \frac{\partial U}{\partial X}\dot{X} = U \Rightarrow U = TS + QX, \quad Q = \frac{\partial U}{\partial X}\\
+    \text{Introduce physics: }U &= TS-PV+\mu N
+    \Rightarrow \mathrm{d}U = T\mathrm{d}S + S\mathrm{d}T - P\mathrm{d}V - V\mathrm{d}P + \mu\mathrm{d}N + N\mathrm{d}\mu\\
+    \text{Since }\mathrm{d}U &= T\mathrm{d}S - P\mathrm{d}V + \mu\mathrm{d}N\\
+    \text{So new physics: }\mathrm{d}\mu &= -s\mathrm{d}T + v\mathrm{d}P,\quad s = \frac{S}{N},\quad v = \frac{V}{N},\quad s = \left(\frac{\partial \mu}{\partial T}\right)_{P},\quad v = \left(\frac{\partial \mu}{\partial P}\right)_{T}
+\end{aligned}$
+
+一/二级相变分类依据: 化学势 $\mu$ 的导数连续性
+
+一级相变. $s$ 突变: 潜热; $v$ 突变: 水结冰; 二级相变. $\begin{aligned}
+    \frac{\partial s}{\partial T}
+\end{aligned}$ 突变: 热容$\begin{aligned}
+    \left(T\frac{\partial S}{\partial T}\right)
+\end{aligned}$变化; $\begin{aligned}
+    \frac{\partial v}{\partial P}
+\end{aligned}$ 压缩率 $\begin{aligned}
+    \left(\frac{1}{v}\frac{\partial v}{\partial P}\right)
+\end{aligned}$ 变化
+
+\subsubsection{Jacobian \& Thermodynamics Relations}
+\paragraph{Definition of Jacobian}
+
+$(x,y)$ plane, functions: $\xi(x,y)$, $\eta(x,y)$. relative functions: $x(\xi, \eta)$, $y(\xi, \eta)$.
+
+\begin{align*}
+    \mathrm{d}x &= \frac{\partial x}{\partial\xi}\mathrm{d}\xi + \frac{\partial x}{\partial \eta}\mathrm{d}\eta,\quad \mathrm{d}y = \frac{\partial y}{\partial\xi}\mathrm{d}\xi + \frac{\partial y}{\partial\eta}\mathrm{d}\eta\\
+    \mathrm{d}x\wedge\mathrm{d}y &= \frac{\partial (x,y)}{\partial (\xi,\eta)}\mathrm{d}\xi\wedge\mathrm{d}\eta,\quad \text{Jacobian matrix: }\frac{\partial (x,y)}{\partial (\xi,\eta)} = \begin{vmatrix}
+        \begin{aligned}
+            \frac{\partial x}{\partial\xi}
+        \end{aligned} & \begin{aligned}
+            \frac{\partial x}{\partial\eta}
+        \end{aligned}\\
+        \begin{aligned}
+            \frac{\partial y}{\partial\xi}
+        \end{aligned} & \begin{aligned}
+            \frac{\partial y}{\partial\eta}
+        \end{aligned}
+    \end{vmatrix} = \begin{vmatrix}
+        J_{11} & J_{12}\\
+        J_{21} & J_{22}
+    \end{vmatrix}
+\end{align*}
+正则变换: $J = 1$, 相空间体积不变. State function $\leftrightarrow $ total differential(全微分) $\leftrightarrow$ $J = 1$:
+\begin{align*}
+    \mathrm{d}U &= T\mathrm{d}S - P\mathrm{d}V = \frac{\partial U}{\partial x}\mathrm{d}x + \frac{\partial U}{\partial y}\mathrm{d}y\Rightarrow
+    T = \left(\frac{\partial U}{\partial S}\right)_{V}, -P = \left(\frac{\partial U}{\partial V}\right)_{S}\\
+    \frac{\partial^{2}U}{\partial V\partial S} &= \frac{\partial^{2}U}{\partial S\partial V},\quad \text{derivative exchange symmetry}\\
+    \left(\frac{\partial T}{\partial V}\right)_{S} &= -\left(\frac{\partial P}{\partial S}\right)_{V}\Rightarrow \frac{\partial (T,S)}{\partial (P,V)} = 1, \quad \text{Maxwell's relation(s)}\\
+    \mathrm{d}T\wedge\mathrm{d}S &= \frac{\partial (T,S)}{\partial (P,V)}\mathrm{d}P\wedge\mathrm{d}V,\quad J = 1 \text{和温标选取对应}
+\end{align*}
+
+\paragraph{Property of Jacobian Matrix}.
+
+1. $\begin{aligned}
+    \frac{\partial (T,S)}{\partial (P,V)} = \frac{\partial (T,S)}{\partial (\mu,\nu)}\frac{\partial (\mu,\nu)}{\partial (P,V)} = 1
+\end{aligned}$, to produce numerous Maxwell's relations; 
+
+[Example] let $(\mu,\nu) = (V,S)$, $\begin{aligned}
+    \frac{\partial (T,S)}{\partial (V,S)}\frac{\partial (V,S)}{\partial (P,V)} = 1\Rightarrow \left(\frac{\partial T}{\partial V}\right)_{S} \cdot\left(-\frac{\partial S}{\partial P}\right)_{V} = 1\Rightarrow \left(\frac{\partial T}{\partial V}\right)_{S} = -\left(\frac{\partial P}{\partial S}\right)_{V}
+\end{aligned}$
+
+As $\begin{aligned}
+    \left(\frac{\partial\gamma}{\partial\mu}\right)_{\nu}
+\end{aligned}$, variables $\gamma,\mu,\nu$ as $P,V,T,S$. $\begin{aligned}
+    \frac{1}{2}A_{4}^{3} = 12
+\end{aligned}$. Write down these elements as a big matrix:
+\begin{align*}
+    \begin{bmatrix}
+        \begin{aligned}
+            \left(\frac{\partial V}{\partial P}\right)_{T}
+        \end{aligned} & 
+        \begin{aligned}
+            \left(\frac{\partial P}{\partial T}\right)_{V}
+        \end{aligned} & 
+        \begin{aligned}
+            \left(\frac{\partial V}{\partial P}\right)_{T}
+        \end{aligned} \\
+        \vdots & \vdots & \vdots
+    \end{bmatrix}_{4\times 3},\quad \text{Only 3 elements are independent}.
+\end{align*}
+
+    
+2. $\begin{aligned}
+        \frac{\partial (x,y)}{\partial (\xi, y)} =\left(\frac{\partial x}{\partial\xi}\right)_{y}
+    \end{aligned}$; 
+3. $\begin{aligned}
+        \frac{\partial (y,x)}{\partial(\xi,\eta)} = -\frac{\partial (x,y)}{\partial(\xi,\eta)}
+    \end{aligned}$
+
+
+
+
+\subsubsection{Exterior derivative(外微分)}
+$p$-form $\stackrel{\mathrm{d}}{\rightarrow}$ $p+1$-form.
+0-form: $\begin{aligned}
+        f(x)\rightarrow \mathrm{d}f(x) = \frac{\mathrm{d}f(x)}{\mathrm{d}x}\mathrm{d}x
+    \end{aligned}$;
+    
+1-form: $\begin{aligned}
+        g(x,y)\mathrm{d}x\rightarrow \mathrm{d}[g(x,y)\mathrm{d}x] = \left(\frac{\partial g}{\partial x}\mathrm{d}x + \frac{\partial f}{\partial y}\mathrm{d}y\right)\wedge \mathrm{d}x = \frac{\partial f}{\partial y}\mathrm{d}y\wedge\mathrm{d}x,\quad\mathrm{d}x\wedge\mathrm{d}y = -\mathrm{d}y\wedge\mathrm{d}x\Rightarrow \mathrm{d}^{2} = 0
+    \end{aligned}$;
+
+2-form: $f(x,y)\mathrm{d}x\wedge\mathrm{d}y$
+
+$\begin{aligned}
+    \mathrm{d}U &= T\mathrm{d}S - P\mathrm{d}V\Rightarrow
+    \mathrm{d}(\mathrm{d}U)  = \mathrm{d}(T\mathrm{d}S) - \mathrm{d}(P\mathrm{d}V)
+    \Rightarrow 0 = \mathrm{d}T\wedge\mathrm{d}S - \mathrm{d}P \wedge \mathrm{d}V\Rightarrow
+    \mathrm{d}T\wedge\mathrm{d}S = \mathrm{d}P\wedge\mathrm{d}V\\
+    \mathrm{d}^{2}&=0\Rightarrow{\color{red}{\mathrm{d}T}}\wedge\left[\left(\frac{\partial S}{\partial V}\right)_{T}\mathrm{d}V + \cancel{\left(\frac{\partial S}{\partial T}\right)_{V}{\color{red}{\mathrm{d}T}}}\right] = \left[\cancel{\left(\frac{\partial P}{\partial V}\right)_{T}{\color{red}{\mathrm{d}V}}} + \left(\frac{\partial P}{\partial T}\right)_{V}\mathrm{d}T\right]\wedge{\color{red}{\mathrm{d}V}}\Rightarrow\left(\frac{\partial S}{\partial V}\right)_{T} = \left(\frac{\partial P}{\partial T}\right)_{V}
+\end{aligned}$
+
+\subsection{Some Key Concepts in Thermodynamics}
+
+\subsubsection{Temperature}
+\paragraph{Thermodynamic Perspective} 
+    $\begin{aligned}
+        \mathrm{d}U = T\mathrm{d}S - P\mathrm{d}V, T \equiv \left(\frac{\partial U}{\partial S}\right)_{V}
+    \end{aligned}$, thermodynamic definition of temperature.
+    \begin{align*}
+        {\color{red}{\text{1st law: }}}E &= E_{1} + E_{2} = \text{const.}\\
+        \frac{\mathrm{d}S}{\mathrm{d}E_{1}} &= 0,\quad \text{condition of thermal equilibrium}\\
+        \frac{\mathrm{d}S_{1}}{\mathrm{d}E_{1}} + \frac{\mathrm{d}S_{2}}{\mathrm{d}E_{1}} &= \frac{\mathrm{d}S_{1}}{\mathrm{d}E_{1}} + \frac{\mathrm{d}S_{2}}{\mathrm{d}E_{2}}\frac{\mathrm{d}E_{2}}{\mathrm{d}E_{1}} = \frac{\mathrm{d}S_{1}}{\mathrm{d}E_{1}} - \frac{\mathrm{d}S_{2}}{\mathrm{d}E_{2}} = 0\Rightarrow \frac{\mathrm{d}S_{1}}{\mathrm{d}E_{1}} = \frac{\mathrm{d}S_{2}}{\mathrm{d}E_{2}}\leftrightarrow\frac{1}{T_{1}} = \frac{1}{T_{2}}\\
+        {\color{red}{\text{2nd law: }}}\frac{\mathrm{d}S}{\mathrm{d}t}&\geq 0\Rightarrow
+        \frac{\mathrm{d}S}{\mathrm{d}E_{1}}\frac{\mathrm{d}E_{1}}{\mathrm{d}t}\geq 0\Rightarrow 
+        \left(\frac{\mathrm{d}S_{1}}{\mathrm{d}E_{1}}-\frac{\mathrm{d}S_{2}}{\mathrm{d}E_{2}}\right)\frac{\mathrm{d}E_{1}}{\mathrm{d}t}\geq 0\Rightarrow
+        \left(\frac{1}{T_{1}} - \frac{1}{T_{2}}\right)\frac{\mathrm{d}E_{1}}{\mathrm{d}t}\geq 0\\
+        \text{if }T_{2}>T_{1},\quad \frac{1}{T_{1}} - \frac{1}{T_{2}} &> 0\Rightarrow \frac{\mathrm{d}E_{1}}{\mathrm{d}t}\geq 0
+    \end{align*}
+    *Gibbs' geometric viewpoint of thermodynamics $U(S,V)$.
+\paragraph{Kinetic Viewpoint}
+Microscopic structure of the system needed. Ideal gas, Maxwell distribution(3D): 
+    \begin{align*}
+        P(\vec{v})\mathrm{d}^{3}\vec{v} &= A\text{exp}\left[-\frac{mv^{2}/2}{k_{B}T}\right]\mathrm{d}^{3}\vec{v}\\
+        \frac{1}{2}m\langle v^{2}\rangle &= \frac{1}{2}m\left(\langle v_{x}^{2}\rangle + \langle v_{y}^{2}\rangle + \langle v_{z}^{2}\rangle\right)= \frac{3}{2}k_{B}T,\quad\langle v_{x}^{2}\rangle = \int v_{x}^{2}P(\vec{v})\mathrm{d}^{3}\vec{v}
+    \end{align*}
+
+    [Example] Rod particles in thermal equilibrium. 若棒的长轴为 $z$ 轴, 则角动量 $\vec{J}$ 倾向于 $\begin{aligned}
+        \text{平行/ }\boxed{\text{垂直}}
+    \end{aligned}$ 于 $z$ 轴. 每个自由度都是分得 $\begin{aligned}
+        \frac{1}{2}k_{B}T
+    \end{aligned}$ 的能量.
+    \begin{align*}
+        \frac{1}{2}I_{z}\overline{\omega_{z}^{2}} &= \frac{1}{2}k_{B}T,\quad 
+        \frac{1}{2}I_{x}\overline{\omega_{x}^{2}} = \frac{1}{2}k_{B}T\\
+        I_{z}&\ll I_{x} = I_{y}  \Rightarrow \overline{\omega_{z}^{2}} \gg \overline{\omega_{x}^{2}} = \overline{\omega_{y}^{2}}\\
+        \frac{J_{z}}{J_{x}} &= \frac{I_{z}\omega_{z}}{I_{x}\omega_{x}} \approx \frac{\omega_{x}}{\omega_{z}} \ll 1\Rightarrow J_{z} \ll J_{x}\Rightarrow \vec{J}\text{ 主要在 }x-y\text{ 平面}
+    \end{align*}
+
+\subsubsection{Entropy}
+
+\paragraph{Thermodynamic Perspective}
+For a reversible cyclic process, $\begin{aligned}
+        \oint\frac{\delta Q}{T} = 0
+    \end{aligned}$. $\delta Q$: heat absorbed by the system.
+    
+    $\begin{aligned}
+        \forall\text{ reversible process, }\int_{\Gamma_{A\rightarrow B}}\frac{\delta Q}{T} + \int_{\Gamma_{B\rightarrow A}}\frac{\delta Q}{T}  = 0 \Rightarrow \int_{\Gamma_{A\rightarrow B}}\frac{\delta Q}{T}
+    \end{aligned}$ is independent of the path. 
+
+    State variable $\begin{aligned}
+        \mathrm{d}S\equiv\frac{\delta Q}{T} 
+    \end{aligned}$ reflects intrinsic property of the system. 熔化热(相变潜热), 吸热而 $T$ 不变(change of state). 
+    
+    $\begin{aligned}
+        \text{2nd law: }\oint\frac{\delta Q}{T}&\leq 0,\quad \forall\text{ process}\\
+        \int_{\gamma_{A\rightarrow B}^{(I)}}\frac{\delta Q}{T} + {\color{red}{\int_{\gamma_{B\rightarrow A}^{(R)}}\frac{\delta Q}{T}}}&\leq 0,\quad \text{(I) for Irreversible, (R) for reversible}\\
+        \Rightarrow {\color{red}{S(B) - S(A)}} &\geq \int_{\Gamma_{A\rightarrow B}^{(I)}}\frac{\delta Q}{T}\Rightarrow \text{isolated system: }S(B) - S(A)\geq 0
+    \end{aligned}$
+
+\paragraph{Boltzmann's Entropy}
+Statistical interpretation of thermodynamics. $\begin{aligned}
+        S = k\ln{W}
+    \end{aligned}$, 
+
+1. closed/isolated system. $W$: number of microstates. states: $(q,p)$; $(0,1)$; $|n\rangle$, disdinguishable(等价, 不可区分). 
+        
+2. 两系统微观态数 $W_{1}$, $W_{2}$. 熵广延性 $S = S_{1} + S_{2} = k\ln{W_{1}} + k\ln{W_{2}} = k\ln{(W_{1}W_{2})}$. ln: 化$\times$为$+$.
+        
+3. $W = e^{S/k}\sim e^{O(N)}$, $W$: thermodynamic probability. 
+
+[Example] Closed system consisted of $N$ non-interacting oscillators. 各振子 $k$ 处于 $|k\rangle$ 状态. 总能量为 $E$. distribution of energy? $n_{k}$ 为处于 $|k\rangle$ 状态的振子数目且充分大.
+
+    \begin{align*}
+        \sum_{k}\varepsilon_{k}n_{k} &= E = \text{const.},\quad \sum_{k}n_{k} = N\\
+        \exists\{n_{k}\}\text{ s.t. } W &= \frac{N!}{\begin{aligned}
+            \prod_{k}n_{k}!
+        \end{aligned}}\text{ reaches max}
+        \stackrel{\ln{M!} = M\ln{M} - M}{\Longrightarrow}\ln{W} = -\sum_{k}n_{k}\ln{\frac{n_{k}}{N}},\quad (\sharp\ln{\sharp})\\
+        \text{拉格朗日乘子法: }I &= \ln{W} - \alpha\sum_{k}n_{k} - \beta\sum_{k}n_{k}\varepsilon_{k},\quad
+        \delta n_{k}\rightarrow \delta I = 0\Rightarrow n_{k}^{*} = \frac{e^{-\beta \varepsilon_{k}}}{\begin{aligned}
+            \sum_{k}e^{-\beta \varepsilon_{k}}
+        \end{aligned}},\quad \text{ Boltzmann factor}
+    \end{align*}
+    Stirling's formula: $\ln{N!} = N\ln{N} - N$
+    \begin{align*}
+        N! &= \Gamma(N+1) = \int_{0}^{\infty}e^{-x}x^{N}\mathrm{d}x = \int_{0}^{\infty} e^{-S(x)}\mathrm{d}x\\
+        S(x)&\approx S(x_{0}) + \frac{1}{2}\frac{\partial^{2}S(x)}{\partial x^{2}}\bigg|_{x_{0}}(x-x_{0})^{2} + \cdots,\quad \frac{\partial S_{x}}{\partial x}\bigg|_{x_{0}} = 0\\
+        \Rightarrow N!&\simeq N^{N}e^{-N}(2\pi N)^{\frac{1}{2}}
+    \end{align*}
+\paragraph{Gibbs' Entropy} 
+Open system: $\begin{aligned}
+        S = -k_{B}\sum_{i}P_{i}\ln{P_{i}}
+    \end{aligned}$. 微观态处于 $|i\rangle$ 的概率为 $P_{i}$. 
+
+        1. 使得 $S$ 最大的 $\{P_{i}\}$ 为等概率分布. [Example] 两状态系统.
+        
+        2. $\begin{aligned}
+            P_{i} = \frac{e^{-\beta E_{i}}}{\begin{aligned}
+                \sum_{i}e^{-\beta E_{i}}
+            \end{aligned}} = \frac{e^{-\beta E_{i}}}{Z}
+        ,\quad
+            S = \frac{\langle E\rangle}{T} + k_{B}\ln{Z}
+        ,\quad
+            -k_{B}T\ln{Z} = \langle E\rangle - TS
+        \end{aligned}$. 
+
+\subsection{Learn Thermodynamics by Examples/Applications}
+
+\subsubsection{Ideal Gas}
+\paragraph{Entropy}
+\begin{align*}
+    \mathrm{d}U =T\mathrm{d}S - P\mathrm{d}V&\Leftrightarrow T\mathrm{d}S = \mathrm{d}U + P\mathrm{d}V\\
+    \text{If }V = \text{const.}:\quad \mathrm{d}U &= T\mathrm{d}S\Rightarrow \frac{\partial S(U,V)}{\partial U}\bigg|_{V} = T(U,V)\\
+    S(U,V) - S(U_{0},V) &= \int_{U_{0}}^{U}\frac{1}{T(U,V)}\mathrm{d}U,\quad\text{ideal gas: }U = \frac{3}{2}k_{B}TN\\
+    \Rightarrow S(U,V) - S(U_{0},V) &= \frac{3}{2}Nk_{B}\ln{\left(\frac{U}{U_{0}}\right)};\\
+    \text{similarly,}\quad S(T,V) - S(T_{0},V) &= \frac{3}{2}Nk_{B}\ln{\left(\frac{T}{T_{0}}\right)}
+\end{align*}
+
+[Discussion] 1. Extensivity: $S\propto N$; Dimension(量纲);   2. Physics: log-dependence on $U$ and $T$ @ high $T$(low response)
+\subsubsection{Electromagnetic Radiation @ Thermodynamic Viewpoint}
+
+$\begin{aligned}
+    &\text{Stafan-Boltzmann Law: }U = bVT^{4}, \quad b = 7.65\times 10^{-16}\text{J/m}^{3}\text{K}^{4}\\
+    \mathrm{d}U = T\mathrm{d}S - P\mathrm{d}V&\stackrel{\begin{aligned}
+        \frac{1}{\mathrm{d}V}
+    \end{aligned}}{\Longrightarrow}
+    \frac{\partial U(T,V)}{\partial V} = T\frac{\partial S(T,V)}{\partial V} - P\stackrel{\begin{aligned}
+        \frac{\partial S(T,V)}{\partial V} = \frac{\partial P(T,V)}{\partial T}
+    \end{aligned}}{\Longrightarrow}
+    bT^{4} = T\frac{\partial P(T,V)}{\partial T} - P\Longrightarrow P = \frac{b}{3}T^{4}\\
+    &U= TS - PV\quad \text{(for extensive system)}\Longrightarrow P = \frac{1}{3}\frac{U}{V},\quad S = \frac{4}{3}b^{\frac{1}{4}}U^{\frac{3}{4}}V^{\frac{1}{4}}\sim T^{3}
+\end{aligned}$
+
+对光子而言, "化学势" 为 0. 所以很容易因为升温激发出光子.
+
+[Example] 更多高响应体系的例子: 1. Bending rigidity: $B\sim h^{3}$; 2. Power in fusion: $\sim B^{4}$;
+
+\subsubsection{Rubber Band}
+前置: 1. thermodynamic laws(general); 2. equation of state, molecular/microscopic model
+
+\paragraph{定性分析}
+假定为快速拉伸, 即设 $\Delta Q = 0$. 拉长后构型减少, 即其构型熵 $S_{\text{conf}}$ 减少, $T\Delta S_{\text{conf}}\downarrow$; 长链分子本身也在振动, 振动熵 $S_{\text{vib}}$ 上升使得总热量为 $0$. 因此温度 $T\uparrow$. 相应地, 一个绷直的橡皮筋快速收缩会 $T\downarrow$.
+
+假定橡皮筋垂吊一重物 $G$. 可将其视为一(低效)热机. 收缩之后, 其构型熵增加. 所以若要使得其收缩/做功, 令其吸热即可.
+
+\paragraph{定量分析}
+$L$: 长度; $\tau$: tension(张力); $T$: 温度, $U$: 内能. 
+
+$L_{0}<L<L_{1}$, $U$ 对 $L$ 无关; $\tau$ 随着 $T$ 升高而增大. 
+\begin{align*}
+    U &= cL_{0}T,\quad U\sim T\\
+    \tau &= bT\frac{L-L_{0}}{L_{1}-L_{0}}, \quad \text{self-consistent condition: }\frac{\partial^{2} S}{\partial U\partial V} = \frac{\partial^{2}S}{\partial V\partial U}\\
+    \Rightarrow \mathrm{d}S &= \frac{1}{T}\mathrm{d}U - \frac{\tau}{T}\mathrm{d}L = cL_{0}\frac{\mathrm{d}U}{U} - b\frac{L - L_{0}}{L_{1}-L_{0}}\mathrm{d}L
+    \stackrel{\int}{\Longrightarrow} S = S_{0} + cL_{0}\ln{\frac{U}{U_{0}}} - b\frac{(L-L_{0})^{2}}{2(L_{1}-L_{0})},\quad \text{entropy elasticity}
+\end{align*}
+\end{document}
