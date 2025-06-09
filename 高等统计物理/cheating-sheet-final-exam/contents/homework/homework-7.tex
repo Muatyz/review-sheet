@@ -27,9 +27,13 @@
 
   Expand $y(x)$ in eigenmodes which satisfies the boundary conditions: $\begin{aligned}
     y(x) = \sum_{n=1}^{\infty}a_{n}\sin{\left(\frac{n\pi x}{l}\right)}
-  \end{aligned}$, so the derivative becomes $\begin{aligned}
+  \end{aligned}$, 
+  
+  so the derivative becomes $\begin{aligned}
     \frac{\mathrm{d}y}{\mathrm{d}x} = \sum_{n=1}^{\infty}a_{n}\frac{n\pi}{l}\cos{\left(\frac{n\pi x}{l}\right)}
-  \end{aligned}$. Substitute into the energy: $\begin{aligned}
+  \end{aligned}$. 
+  
+  Substitute into the energy: $\begin{aligned}
     \Phi = \frac{F}{2}\int_{0}^{l}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^{2}\mathrm{d}x = \frac{F}{2}\sum_{n=1}^{\infty}a_{n}^{2}\left(\frac{n\pi}{l}\right)^{2}\frac{l}{2} = \sum_{n=1}^{\infty}\frac{F\pi^{2}n^{2}}{4l}a_{n}^{2}
   \end{aligned}$.
 
@@ -135,7 +139,7 @@
       \int_{-\infty}^{+\infty}x_{i}\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
     \end{aligned}}{\begin{aligned}
       \int_{-\infty}^{+\infty}\text{exp }\left\{-\frac{1}{2k}\beta_{ij}\left(x_{i}-\widetilde{x}_{i}\right)\left(x_{j}-\widetilde{x}_{j}\right)\right\}\prod_{i}\mathrm{d}x_{i}
-    \end{aligned}} = \widetilde{x}_{i},\quad \frac{\partial\langle x_{i}\rangle}{\partial x_{j}} = 0\Rightarrow \langle x_{i}X_{j}\rangle = -k\delta_{ij}
+    \end{aligned}} = \widetilde{x}_{i},\quad \frac{\partial\langle x_{i}\rangle}{\partial x_{j}} = \delta_{ij}\Rightarrow \langle x_{i}X_{j}\rangle = -k\delta_{ij}
   \end{aligned}$. 
 
   According to time reversal symmetry(in microscopic process), 
@@ -148,9 +152,10 @@
     \langle x_{i}(0)\dot{x}_{j}(0)\rangle = \langle \dot{x}_{i}(0)x_{j}(0)\rangle
   \end{aligned}$. 
   
-  Substitute the force-current relation, and get $\begin{aligned}
-    \langle x_{i}(0)\gamma_{jl}X_{l}(0)\rangle &= -k\gamma_{jl}\delta_{il} = -k\gamma_{ji}\\
+  Substitute the force-current relation, and get $\begin{aligned}\left\{\begin{aligned}
+     \langle x_{i}(0)\gamma_{jl}X_{l}(0)\rangle &= -k\gamma_{jl}\delta_{il} = -k\gamma_{ji}\\
     \langle \gamma_{il}X_{l}(0)x_{j}(0)\rangle &= -k\gamma_{il}\delta_{jl} = -k\gamma_{ij}
-  \end{aligned}\Rightarrow \boxed{\gamma_{ij} = \gamma_{ji}}$.
+  \end{aligned}\right.\Rightarrow \boxed{\gamma_{ij} = \gamma_{ji}}
+  \end{aligned}$.
 
 \end{document}

@@ -487,7 +487,7 @@ $\begin{aligned}
 1. \textbf{矩阵法推导}: $\begin{aligned}
     Q_{N} = \sum_{\{\sigma_{i}\}}\exp\left\{
         \beta \sum_{i}\left[J\sigma_{i}\sigma_{i+1} + \frac{1}{2}\mu B(\sigma_{i}+\sigma_{i+1})\right]\right\} = \sum_{\{\sigma_{i}\}}\prod_{i}\exp\left\{\beta\left[
-                J\sigma_{i}\sigma_{i+1}+\frac{1}{2}\mu B(\sigma_{i}+\sigma_{j})
+                J\sigma_{i}\sigma_{i+1}+\frac{1}{2}\mu B(\sigma_{i}+\sigma_{i+1})
                 \right]\right\}
 \end{aligned}$, 
 
@@ -518,12 +518,18 @@ $\begin{aligned}
 \end{aligned}$. 
 
 $P$ 有两个特征值 $\begin{aligned}
-    \lambda_{\pm}=e^{\beta J}\cosh{(\beta\mu B)}\pm [e^{-2\beta J}+e^{2\beta J}\sinh^{2}{(\beta\mu B)}]^{\frac{1}{2}}
+    \lambda_{\pm}=e^{\beta J}\cosh{(\beta\mu B)}\pm [e^{-2\beta J}+e^{2\beta J}\sinh^{2}{(\beta\mu B)}]^{\frac{1}{2}} = e^{\beta J}\left[
+        \cosh{(\beta\mu B)}\pm \sqrt{e^{-4\beta J}+\sinh^{2}{(\beta\mu B)}}
+    \right]
 \end{aligned}$. 
 
 $\begin{aligned}
-    \frac{1}{N}\ln{Q_{N}} &\approx \ln{\lambda_{+}} = \ln{\left\{e^{\beta J}\cosh{(\beta\mu B)} + \left[e^{-2\beta J} + e^{2\beta J}\sinh^{2}{(\beta\mu B)}\right]^{\frac{1}{2}}\right\}}\\
-    F(B,T) &= -Nk_{B}T\ln{Q_{N}} = -NJ - Nk_{B}T\ln{\left\{
+    \ln{Q_{N}} &\approx N\ln{\lambda_{+}} = N\beta J + N\ln{\left\{
+        \cosh{(\beta\mu B)} + \left[
+            e^{-4\beta J} + \sinh^{2}{(\beta\mu B)}
+        \right]^{\frac{1}{2}}
+    \right\}}\\
+    F(B,T) &= -k_{B}T\ln{Q_{N}} = -NJ - Nk_{B}T\ln{\left\{
         \cosh{(\beta\mu B)} + \left[
             e^{-4\beta J} + \sinh^{2}{(\beta\mu B)}
         \right]^{\frac{1}{2}}
